@@ -54,6 +54,13 @@ import { ReactComponent as ChatIcon } from "./chat.svg?react";
 import { ReactComponent as MoreDotIcon } from "./moredot.svg?react";
 import { ReactComponent as AlertHexaIcon } from "./alert-hexa.svg?react";
 import { ReactComponent as ErrorHexaIcon } from "./info-hexa.svg?react";
+import { ReactComponent as TwitterIcon } from "./twitter.svg?react";
+import { ReactComponent as FacebookIcon } from "./facebook.svg?react";
+import { ReactComponent as LinkedinIcon } from "./linkedin.svg?react";
+import { ReactComponent as PinterestIcon } from "./pinterest.svg?react";
+import { ReactComponent as AppStoreIcon } from "./app-store.svg?react";
+import { ReactComponent as GooglePlayIcon } from "./google-play.svg?react";
+import { ReactComponent as SearchIcon } from "./search.svg?react";
 
 export {
   ErrorHexaIcon,
@@ -112,4 +119,11 @@ export {
   ChatIcon,
   AngleLeftIcon,
   AngleRightIcon,
+  TwitterIcon,
+  FacebookIcon,
+  LinkedinIcon,
+  PinterestIcon,
+  AppStoreIcon,
+  GooglePlayIcon,
+  SearchIcon,
 };
