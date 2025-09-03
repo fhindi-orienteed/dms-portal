@@ -16,7 +16,7 @@ export default function TrackPackage({ onTrack, isTracking }: TrackPackageProps)
 
   return (
     <div className="w-full max-w-md pt-6 mx-auto">
-      <div className="p-5 rounded-xl">
+      <div className="rounded-xl">
         <div className="flex items-center gap-2 mb-4">
           
           <h3 className="text-base font-semibold text-gray-800 dark:text-white mb-2 font-semibold text-gray-800 text-title-sm dark:text-white/90 sm:text-title-md">

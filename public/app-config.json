@@ -1,0 +1,99 @@
+{
+  "company": {
+    "name": "TailAdmin",
+    "tagline": "Delivery Management System",
+    "logo": {
+      "light": "/images/logo/logo.svg",
+      "dark": "/images/logo/logo-dark.svg",
+      "auth": "/images/logo/auth-logo.svg"
+    },
+    "description": "Professional delivery management solution for modern businesses"
+  },
+  "socialLinks": [
+    {
+      "name": "Twitter",
+      "url": "https://twitter.com/tailadmin",
+      "icon": "TwitterIcon",
+      "enabled": true
+    },
+    {
+      "name": "Facebook",
+      "url": "https://facebook.com/tailadmin",
+      "icon": "FacebookIcon",
+      "enabled": true
+    },
+    {
+      "name": "LinkedIn",
+      "url": "https://linkedin.com/company/tailadmin",
+      "icon": "LinkedinIcon",
+      "enabled": true
+    },
+    {
+      "name": "Pinterest",
+      "url": "https://pinterest.com/tailadmin",
+      "icon": "PinterestIcon",
+      "enabled": true
+    }
+  ],
+  "appStoreLinks": [
+    {
+      "name": "App Store",
+      "url": "https://apps.apple.com/app/tailadmin",
+      "icon": "AppStoreIcon",
+      "enabled": true
+    },
+    {
+      "name": "Google Play",
+      "url": "https://play.google.com/store/apps/details?id=com.tailadmin.app",
+      "icon": "GooglePlayIcon",
+      "enabled": true
+    }
+  ],
+  "branches": [
+    {
+      "id": "nablus",
+      "name": "Palestine - Nablus",
+      "address": "Nablus, Palestine",
+      "phone": "+970 59 999 9999",
+      "hours": "Mon - Fri: 9:00 AM - 6:00 PM",
+      "enabled": true
+    },
+    {
+      "id": "ramallah",
+      "name": "Palestine - Ramallah",
+      "address": "Ramallah, Palestine",
+      "phone": "+970 59 888 8888",
+      "hours": "Mon - Fri: 8:00 AM - 5:00 PM",
+      "enabled": true
+    },
+    {
+      "id": "jerusalem",
+      "name": "Palestine - Jerusalem",
+      "address": "Jerusalem, Palestine",
+      "phone": "+970 59 777 7777",
+      "hours": "Mon - Fri: 9:00 AM - 7:00 PM",
+      "enabled": true
+    }
+  ],
+  "contact": {
+    "email": "info@tailadmin.com",
+    "support": "support@tailadmin.com",
+    "sales": "sales@tailadmin.com",
+    "hotline": "+970 59 999 9999",
+    "enabled": true
+  },
+  "features": {
+    "showSocialLinks": true,
+    "showAppStoreLinks": true,
+    "showBranches": true,
+    "showContactInfo": true,
+    "showThemeToggle": true,
+    "enableAnalytics": true,
+    "enableNotifications": true
+  },
+  "theme": {
+    "primaryColor": "#3B82F6",
+    "secondaryColor": "#1E40AF",
+    "accentColor": "#F59E0B"
+  }
+} 

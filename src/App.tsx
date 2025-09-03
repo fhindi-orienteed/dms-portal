@@ -13,15 +13,17 @@ import LineChart from "./pages/Charts/LineChart";
 import BarChart from "./pages/Charts/BarChart";
 import Calendar from "./pages/Calendar";
 import BasicTables from "./pages/Tables/BasicTables";
+import DataTables from "./components/tables/DataTables/DataTableOne";
 import FormElements from "./pages/Forms/FormElements";
 import Blank from "./pages/Blank";
 import AppLayout from "./layout/AppLayout";
 import { ScrollToTop } from "./components/common/ScrollToTop";
 import Home from "./pages/Dashboard/Home";
+import { AppConfigProvider } from "./context/AppConfig";
 
 export default function App() {
   return (
-    <>
+    <AppConfigProvider>
       <Router>
         <ScrollToTop />
         <Routes>
@@ -39,6 +41,7 @@ export default function App() {
 
             {/* Tables */}
             <Route path="/basic-tables" element={<BasicTables />} />
+            <Route path="/data-tables" element={<DataTables />} />
 
             {/* Ui Elements */}
             <Route path="/alerts" element={<Alerts />} />
@@ -61,6 +64,6 @@ export default function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
-    </>
+    </AppConfigProvider>
   );
 }
