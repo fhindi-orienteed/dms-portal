@@ -3,20 +3,22 @@ import { Link, useLocation } from "react-router";
 
 // Assume these icons are imported from an icon library
 import {
-  BoxCubeIcon,
   CalenderIcon,
   ChevronDownIcon,
   GridIcon,
   HorizontaLDots,
-  ListIcon,
-  PageIcon,
   PieChartIcon,
   PlugInIcon,
-  TableIcon,
   UserCircleIcon,
+  BoxIcon,
+  DollarLineIcon,
+  ArrowRightIcon,
+  DocsIcon,
+  SearchIcon,
+  TaskIcon,
+  GroupIcon,
 } from "../icons";
 import { useSidebar } from "../context/SidebarContext";
-import SidebarWidget from "./SidebarWidget";
 
 type NavItem = {
   name: string;
@@ -29,68 +31,129 @@ const navItems: NavItem[] = [
   {
     icon: <GridIcon />,
     name: "Dashboard",
-    subItems: [{ name: "Ecommerce", path: "/", pro: false }],
+    path: "/",
   },
   {
-    icon: <CalenderIcon />,
-    name: "Calendar",
-    path: "/calendar",
-  },
-  {
-    icon: <UserCircleIcon />,
-    name: "User Profile",
-    path: "/profile",
-  },
-  {
-    name: "Forms",
-    icon: <ListIcon />,
-    subItems: [{ name: "Form Elements", path: "/form-elements", pro: false }],
-  },
-  {
-    name: "Tables",
-    icon: <TableIcon />,
+    icon: <PieChartIcon />,
+    name: "Summary",
     subItems: [
-      { name: "Basic Tables", path: "/basic-tables", pro: false },
-      { name: "Data Tables", path: "/data-tables", pro: true },
+      { name: "Overview", path: "/summary/overview", pro: false },
+      { name: "Analytics", path: "/summary/analytics", pro: false },
+      { name: "Performance", path: "/summary/performance", pro: false },
     ],
   },
   {
-    name: "Pages",
-    icon: <PageIcon />,
+    icon: <BoxIcon />,
+    name: "Package List",
     subItems: [
-      { name: "Blank Page", path: "/blank", pro: false },
-      { name: "404 Error", path: "/error-404", pro: false },
+      { name: "All Packages", path: "/packages", pro: false },
+      { name: "In Transit", path: "/packages/in-transit", pro: false },
+      { name: "Delivered", path: "/packages/delivered", pro: false },
+      { name: "Pending", path: "/packages/pending", pro: false },
+      { name: "Failed Delivery", path: "/packages/failed", pro: false },
+    ],
+  },
+  {
+    icon: <TaskIcon />,
+    name: "Follow-ups",
+    subItems: [
+      { name: "Customer Follow-ups", path: "/follow-ups/customers", pro: false },
+      { name: "Delivery Follow-ups", path: "/follow-ups/deliveries", pro: false },
+      { name: "Payment Follow-ups", path: "/follow-ups/payments", pro: false },
+      { name: "Return Follow-ups", path: "/follow-ups/returns", pro: false },
+    ],
+  },
+  {
+    icon: <PieChartIcon />,
+    name: "Reports",
+    subItems: [
+      { name: "Delivery Reports", path: "/reports/delivery", pro: false },
+      { name: "Financial Reports", path: "/reports/financial", pro: false },
+      { name: "Performance Reports", path: "/reports/performance", pro: false },
+      { name: "Customer Reports", path: "/reports/customers", pro: false },
+      { name: "Export Data", path: "/reports/export", pro: false },
+    ],
+  },
+  {
+    icon: <DollarLineIcon />,
+    name: "Payments",
+    subItems: [
+      { name: "Payment History", path: "/payments/history", pro: false },
+      { name: "Pending Payments", path: "/payments/pending", pro: false },
+      { name: "Payment Methods", path: "/payments/methods", pro: false },
+      { name: "Billing", path: "/payments/billing", pro: false },
+      { name: "Invoices", path: "/payments/invoices", pro: false },
+    ],
+  },
+  {
+    icon: <ArrowRightIcon />,
+    name: "Returns",
+    subItems: [
+      { name: "Return Requests", path: "/returns/requests", pro: false },
+      { name: "Return Processing", path: "/returns/processing", pro: false },
+      { name: "Return History", path: "/returns/history", pro: false },
+      { name: "Refund Management", path: "/returns/refunds", pro: false },
     ],
   },
 ];
 
 const othersItems: NavItem[] = [
   {
-    icon: <PieChartIcon />,
-    name: "Charts",
+    icon: <SearchIcon />,
+    name: "Tracking",
     subItems: [
-      { name: "Line Chart", path: "/line-chart", pro: false },
-      { name: "Bar Chart", path: "/bar-chart", pro: false },
+      { name: "Track Package", path: "/tracking", pro: false },
+      { name: "Bulk Tracking", path: "/tracking/bulk", pro: false },
+      { name: "Tracking History", path: "/tracking/history", pro: false },
     ],
   },
   {
-    icon: <BoxCubeIcon />,
-    name: "UI Elements",
+    icon: <UserCircleIcon />,
+    name: "Customers",
     subItems: [
-      { name: "Alerts", path: "/alerts", pro: false },
-      { name: "Avatar", path: "/avatars", pro: false },
-      { name: "Badge", path: "/badge", pro: false },
-      { name: "Buttons", path: "/buttons", pro: false },
-      { name: "Images", path: "/images", pro: false },
-      { name: "Videos", path: "/videos", pro: false },
+      { name: "Customer List", path: "/customers", pro: false },
+      { name: "Customer Details", path: "/customers/details", pro: false },
+      { name: "Customer Support", path: "/customers/support", pro: false },
+    ],
+  },
+  {
+    icon: <GroupIcon />,
+    name: "Drivers",
+    subItems: [
+      { name: "Driver List", path: "/drivers", pro: false },
+      { name: "Driver Performance", path: "/drivers/performance", pro: false },
+      { name: "Driver Assignments", path: "/drivers/assignments", pro: false },
+    ],
+  },
+  {
+    icon: <CalenderIcon />,
+    name: "Schedule",
+    subItems: [
+      { name: "Delivery Schedule", path: "/schedule/delivery", pro: false },
+      { name: "Driver Schedule", path: "/schedule/driver", pro: false },
+      { name: "Route Planning", path: "/schedule/routes", pro: false },
+    ],
+  },
+  {
+    icon: <DocsIcon />,
+    name: "Other Links",
+    subItems: [
+      { name: "Terms of Service", path: "/terms", pro: false },
+      { name: "Privacy Policy", path: "/privacy", pro: false },
+      { name: "FAQ", path: "/faq", pro: false },
+      { name: "Help Center", path: "/help", pro: false },
+      { name: "Contact Support", path: "/support", pro: false },
+      { name: "About Us", path: "/about", pro: false },
     ],
   },
   {
     icon: <PlugInIcon />,
-    name: "Authentication",
+    name: "Settings",
     subItems: [
-      { name: "Sign In", path: "/signin", pro: false },
-      { name: "Sign Up", path: "/signup", pro: false },
+      { name: "Profile Settings", path: "/profile", pro: false },
+      { name: "Account Settings", path: "/settings/account", pro: false },
+      { name: "Notification Settings", path: "/settings/notifications", pro: false },
+      { name: "System Settings", path: "/settings/system", pro: false },
     ],
   },
 ];
@@ -108,7 +171,6 @@ const AppSidebar: React.FC = () => {
   );
   const subMenuRefs = useRef<Record<string, HTMLDivElement | null>>({});
 
-  // const isActive = (path: string) => location.pathname === path;
   const isActive = useCallback(
     (path: string) => location.pathname === path,
     [location.pathname]
@@ -346,7 +408,7 @@ const AppSidebar: React.FC = () => {
                 }`}
               >
                 {isExpanded || isHovered || isMobileOpen ? (
-                  "Menu"
+                  "Main Menu"
                 ) : (
                   <HorizontaLDots className="size-6" />
                 )}
@@ -362,7 +424,7 @@ const AppSidebar: React.FC = () => {
                 }`}
               >
                 {isExpanded || isHovered || isMobileOpen ? (
-                  "Others"
+                  "Additional Features"
                 ) : (
                   <HorizontaLDots />
                 )}
@@ -371,7 +433,6 @@ const AppSidebar: React.FC = () => {
             </div>
           </div>
         </nav>
-        {isExpanded || isHovered || isMobileOpen ? <SidebarWidget /> : null}
       </div>
     </aside>
   );
