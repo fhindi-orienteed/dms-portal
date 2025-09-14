@@ -42,7 +42,7 @@ const LanguageSwitcher: React.FC = () => {
         variant="outline"
         size="md"
       >
-        <span className="text-lg">{currentLang?.flag}</span>
+        <span>{currentLang?.flag}</span>
         <span className="hidden sm:inline">{currentLang?.nativeName}</span>
         <ChevronDownIcon className="w-4 h-4" />
       </Button>
