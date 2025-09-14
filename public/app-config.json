@@ -89,8 +89,43 @@
     "showContactInfo": true,
     "showThemeToggle": true,
     "enableAnalytics": true,
-    "enableNotifications": true
+    "enableNotifications": true,
+    "enableLanguageSwitcher": true
   },
+  "languages": [
+    {
+      "code": "en",
+      "name": "English",
+      "nativeName": "English",
+      "flag": "🇺🇸",
+      "enabled": true,
+      "isRTL": false
+    },
+    {
+      "code": "ar",
+      "name": "Arabic",
+      "nativeName": "العربية",
+      "flag": "🇸🇦",
+      "enabled": true,
+      "isRTL": true
+    },
+    {
+      "code": "fr",
+      "name": "French",
+      "nativeName": "Français",
+      "flag": "🇫🇷",
+      "enabled": false,
+      "isRTL": false
+    },
+    {
+      "code": "es",
+      "name": "Spanish",
+      "nativeName": "Español",
+      "flag": "🇪🇸",
+      "enabled": false,
+      "isRTL": false
+    }
+  ],
   "theme": {
     "primaryColor": "#3B82F6",
     "secondaryColor": "#1E40AF",

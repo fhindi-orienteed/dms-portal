@@ -1,0 +1,81 @@
+{
+  "common": {
+    "search": "Search",
+    "addPackage": "Add Package",
+    "notifications": "Notifications",
+    "profile": "Profile",
+    "settings": "Settings",
+    "logout": "Logout",
+    "dashboard": "Dashboard",
+    "calendar": "Calendar",
+    "forms": "Forms",
+    "tables": "Tables",
+    "uiElements": "UI Elements",
+    "charts": "Charts",
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "welcome": "Welcome",
+    "loading": "Loading...",
+    "save": "Save",
+    "cancel": "Cancel",
+    "edit": "Edit",
+    "delete": "Delete",
+    "view": "View",
+    "close": "Close",
+    "submit": "Submit",
+    "reset": "Reset",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "confirm": "Confirm",
+    "yes": "Yes",
+    "no": "No"
+  },
+  "header": {
+    "searchPlaceholder": "Search packages, customers, or tracking numbers...",
+    "toggleSidebar": "Toggle Sidebar",
+    "applicationMenu": "Application Menu"
+  },
+  "sidebar": {
+    "dashboard": "Dashboard",
+    "profile": "Profile",
+    "calendar": "Calendar",
+    "blank": "Blank",
+    "formElements": "Form Elements",
+    "basicTables": "Basic Tables",
+    "dataTables": "Data Tables",
+    "alerts": "Alerts",
+    "avatars": "Avatars",
+    "badges": "Badges",
+    "buttons": "Buttons",
+    "images": "Images",
+    "videos": "Videos",
+    "lineChart": "Line Chart",
+    "barChart": "Bar Chart"
+  },
+  "auth": {
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "forgotPassword": "Forgot Password?",
+    "rememberMe": "Remember Me",
+    "dontHaveAccount": "Don't have an account?",
+    "alreadyHaveAccount": "Already have an account?",
+    "createAccount": "Create Account"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "welcomeMessage": "Welcome to your dashboard",
+    "totalPackages": "Total Packages",
+    "deliveredPackages": "Delivered Packages",
+    "pendingPackages": "Pending Packages",
+    "recentActivity": "Recent Activity"
+  },
+  "language": {
+    "english": "English",
+    "arabic": "العربية",
+    "switchLanguage": "Switch Language"
+  }
+}

@@ -188,6 +188,53 @@ layer(base);
   body {
     @apply relative font-normal font-outfit z-1 bg-gray-50;
   }
+  
+  /* RTL Support */
+  .rtl {
+    direction: rtl;
+  }
+  
+  .rtl .rtl\:text-right {
+    text-align: right;
+  }
+  
+  .rtl .rtl\:text-left {
+    text-align: left;
+  }
+  
+  .rtl .rtl\:ml-auto {
+    margin-left: auto;
+  }
+  
+  .rtl .rtl\:mr-auto {
+    margin-right: auto;
+  }
+  
+  .rtl .rtl\:pl-4 {
+    padding-left: 1rem;
+  }
+  
+  .rtl .rtl\:pr-4 {
+    padding-right: 1rem;
+  }
+  
+  .rtl .rtl\:border-l {
+    border-left-width: 1px;
+  }
+  
+  .rtl .rtl\:border-r {
+    border-right-width: 1px;
+  }
+  
+  .rtl .rtl\:rounded-l {
+    border-top-left-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+  }
+  
+  .rtl .rtl\:rounded-r {
+    border-top-right-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+  }
 }
 
 @utility menu-item {
