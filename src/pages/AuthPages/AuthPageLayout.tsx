@@ -12,6 +12,7 @@ import {
   GooglePlayIcon,
 } from "../../icons";
 import { useAppConfig } from "../../hooks/useAppConfig";
+import type { SocialLink, AppStoreLink } from "../../types";
 
 const iconMap = {
   TwitterIcon,
@@ -71,7 +72,7 @@ export default function AuthLayout({
               {/* Social Links */}
               {isFeatureEnabled('showSocialLinks') && enabledSocialLinks.length > 0 && (
                 <div className="flex justify-center space-x-4 mb-8">
-                  {enabledSocialLinks.map((link) => (
+                  {enabledSocialLinks.map((link: SocialLink) => (
                     <a
                       key={link.name}
                       href={link.url}
@@ -88,7 +89,7 @@ export default function AuthLayout({
               {/* Mobile App Links */}
               {isFeatureEnabled('showAppStoreLinks') && enabledAppStoreLinks.length > 0 && (
                 <div className="flex justify-center space-x-3 mb-8">
-                  {enabledAppStoreLinks.map((link) => (
+                  {enabledAppStoreLinks.map((link: AppStoreLink) => (
                     <a
                       key={link.name}
                       href={link.url}

@@ -40,6 +40,15 @@ export interface ContactInfo {
   enabled: boolean;
 }
 
+export interface Language {
+  code: string;
+  name: string;
+  nativeName: string;
+  flag: string;
+  enabled: boolean;
+  isRTL: boolean;
+}
+
 export interface FeatureFlags {
   showSocialLinks: boolean;
   showAppStoreLinks: boolean;
@@ -48,6 +57,7 @@ export interface FeatureFlags {
   showThemeToggle: boolean;
   enableAnalytics: boolean;
   enableNotifications: boolean;
+  enableLanguageSwitcher: boolean;
 }
 
 export interface AppConfig {
@@ -57,6 +67,7 @@ export interface AppConfig {
   branches: Branch[];
   contact: ContactInfo;
   features: FeatureFlags;
+  languages: Language[];
   theme: {
     primaryColor: string;
     secondaryColor: string;

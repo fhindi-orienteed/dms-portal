@@ -28,12 +28,12 @@ type NavItem = {
   subItems?: { name: string; path: string; pro?: boolean; new?: boolean }[];
 };
 
-type NavItemKey = {
-  nameKey: string;
-  icon: React.ReactNode;
-  path?: string;
-  subItems?: { nameKey: string; path: string; pro?: boolean; new?: boolean }[];
-};
+// type NavItemKey = {
+//   nameKey: string;
+//   icon: React.ReactNode;
+//   path?: string;
+//   subItems?: { nameKey: string; path: string; pro?: boolean; new?: boolean }[];
+// };
 
 const navItems: NavItem[] = [
   {

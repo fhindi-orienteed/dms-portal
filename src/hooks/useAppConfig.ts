@@ -1,42 +1,5 @@
 import { useState, useEffect } from 'react';
-
-export interface Language {
-  code: string;
-  name: string;
-  nativeName: string;
-  flag: string;
-  enabled: boolean;
-  isRTL: boolean;
-}
-
-export interface AppConfig {
-  company: {
-    name: string;
-    tagline: string;
-    logo: {
-      light: string;
-      dark: string;
-      auth: string;
-    };
-    description: string;
-  };
-  features: {
-    showSocialLinks: boolean;
-    showAppStoreLinks: boolean;
-    showBranches: boolean;
-    showContactInfo: boolean;
-    showThemeToggle: boolean;
-    enableAnalytics: boolean;
-    enableNotifications: boolean;
-    enableLanguageSwitcher: boolean;
-  };
-  languages: Language[];
-  theme: {
-    primaryColor: string;
-    secondaryColor: string;
-    accentColor: string;
-  };
-}
+import type { AppConfig, Language } from '../types';
 
 export const useAppConfig = () => {
   const [config, setConfig] = useState<AppConfig | null>(null);
@@ -72,11 +35,43 @@ export const useAppConfig = () => {
     return config?.features.enableLanguageSwitcher ?? false;
   };
 
+  // Company info
+  const companyName = config?.company.name ?? '';
+  const companyTagline = config?.company.tagline ?? '';
+  const companyLogo = config?.company.logo ?? { light: '', dark: '', auth: '' };
+
+  // Enabled items
+  const enabledSocialLinks = config?.socialLinks.filter(link => link.enabled) ?? [];
+  const enabledAppStoreLinks = config?.appStoreLinks.filter(link => link.enabled) ?? [];
+  const enabledBranches = config?.branches.filter(branch => branch.enabled) ?? [];
+
+  // Contact info
+  const contactInfo = config?.contact ?? {
+    email: '',
+    support: '',
+    sales: '',
+    hotline: '',
+    enabled: false
+  };
+
+  // Feature flags
+  const isFeatureEnabled = (feature: keyof NonNullable<AppConfig>['features']): boolean => {
+    return config?.features[feature] ?? false;
+  };
+
   return {
     config,
     loading,
     error,
     getEnabledLanguages,
     isLanguageSwitcherEnabled,
+    companyName,
+    companyTagline,
+    companyLogo,
+    enabledSocialLinks,
+    enabledAppStoreLinks,
+    enabledBranches,
+    contactInfo,
+    isFeatureEnabled,
   };
 };

@@ -47,12 +47,32 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     // Set initial language
     handleLanguageChange(currentLanguage);
 
-    // Listen for language changes
-    i18n.on('languageChanged', handleLanguageChange);
+    // Check if i18n is ready and has the on method
+    if (i18n && typeof i18n.on === 'function') {
+      // Listen for language changes
+      i18n.on('languageChanged', handleLanguageChange);
 
-    return () => {
-      i18n.off('languageChanged', handleLanguageChange);
-    };
+      return () => {
+        if (i18n && typeof i18n.off === 'function') {
+          i18n.off('languageChanged', handleLanguageChange);
+        }
+      };
+    } else {
+      // If i18n is not ready, set up a retry mechanism
+      const retryInterval = setInterval(() => {
+        if (i18n && typeof i18n.on === 'function') {
+          clearInterval(retryInterval);
+          i18n.on('languageChanged', handleLanguageChange);
+        }
+      }, 100);
+
+      return () => {
+        clearInterval(retryInterval);
+        if (i18n && typeof i18n.off === 'function') {
+          i18n.off('languageChanged', handleLanguageChange);
+        }
+      };
+    }
   }, [i18n, currentLanguage]);
 
   const changeLanguage = (language: string) => {

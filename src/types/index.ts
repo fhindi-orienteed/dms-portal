@@ -6,4 +6,5 @@ export type {
   Branch,
   ContactInfo,
   FeatureFlags,
+  Language,
 } from './AppConfig';
