@@ -9,6 +9,7 @@ import Alerts from "./pages/UiElements/Alerts";
 import Badges from "./pages/UiElements/Badges";
 import Avatars from "./pages/UiElements/Avatars";
 import Buttons from "./pages/UiElements/Buttons";
+import Loaders from "./pages/UiElements/Loaders";
 import LineChart from "./pages/Charts/LineChart";
 import BarChart from "./pages/Charts/BarChart";
 import Calendar from "./pages/Calendar";
@@ -48,6 +49,7 @@ export default function App() {
             <Route path="/avatars" element={<Avatars />} />
             <Route path="/badge" element={<Badges />} />
             <Route path="/buttons" element={<Buttons />} />
+            <Route path="/loaders" element={<Loaders />} />
             <Route path="/images" element={<Images />} />
             <Route path="/videos" element={<Videos />} />
 

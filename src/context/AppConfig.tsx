@@ -3,6 +3,7 @@
 import type React from "react";
 import { createContext, useContext, useState, useEffect } from "react";
 import type { AppConfig } from "../types";
+import { Loader } from "../components/ui";
 
 type AppConfigContextType = {
   config: AppConfig;
@@ -54,7 +55,7 @@ export const AppConfigProvider: React.FC<{ children: React.ReactNode }> = ({
   };
 
   if (!isLoaded || !config) {
-    return <div>Loading...</div>;
+    return <Loader />;
   }
 
   return (
