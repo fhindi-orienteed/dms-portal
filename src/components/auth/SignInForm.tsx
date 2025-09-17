@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { EyeCloseIcon, EyeIcon } from "../../icons";
 import Label from "../form/Label";
 import Input from "../form/input/InputField";
@@ -8,12 +8,21 @@ import Button from "../ui/button/Button";
 import TrackPackage from "../tracking/TrackPackage";
 import TrackingResults from "../tracking/TrackingResults";
 import { useTracking } from "../../hooks/useTracking";
+import { authService } from "../../services";
 
 export default function SignInForm() {
   const [showPassword, setShowPassword] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
   const [showSignIn, setShowSignIn] = useState(true);
   
+  const [credentials, setCredentials] = useState({
+    userName: '',
+    password: ''
+  });
+  const [isLoading, setIsLoading] = useState(false);
+  const [loginError, setLoginError] = useState<string | null>(null);
+  
+  const navigate = useNavigate();
   const { trackingResult, isTracking, error, trackPackage, resetTracking } = useTracking();
 
   const handleTrack = (trackingNumber: string) => {
@@ -30,16 +39,58 @@ export default function SignInForm() {
     setShowSignIn(true);
   };
 
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!credentials.userName || !credentials.password) {
+      setLoginError('Please enter both username and password');
+      return;
+    }
+
+    try {
+      setIsLoading(true);
+      setLoginError(null);
+      
+      await authService.login(credentials);
+      
+      navigate('/');
+    } catch (error: any) {
+      console.error('Login error:', error);
+      
+      if (error.status === 401) {
+        setLoginError('Invalid username or password');
+      } else if (error.status === 403) {
+        setLoginError('Access denied. Please contact administrator.');
+      } else if (error.isNetworkError) {
+        setLoginError('Network error. Please check your connection.');
+      } else {
+        setLoginError(error.message || 'Login failed. Please try again.');
+      }
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleInputChange = (field: 'userName' | 'password') => (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCredentials(prev => ({
+      ...prev,
+      [field]: e.target.value
+    }));
+    if (loginError) {
+      setLoginError(null);
+    }
+  };
+
   return (
     <div className="flex flex-col flex-1 md:justify-center">
       {/* Track Package Form - TOP */}
       <TrackPackage onTrack={handleTrack} isTracking={isTracking} />
 
       {/* Error Display */}
-      {error && (
+      {(error || loginError) && (
         <div className="w-full max-w-md mx-auto mt-4">
           <div className="p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg">
-            <p className="text-sm text-red-600 dark:text-red-400">{error}</p>
+            <p className="text-sm text-red-600 dark:text-red-400">{error || loginError}</p>
           </div>
         </div>
       )}
@@ -79,13 +130,18 @@ export default function SignInForm() {
             </div>
             
            
-            <form>
+            <form onSubmit={handleLogin}>
               <div className="space-y-6">
                 <div>
                   <Label>
                     Username <span className="text-error-500">*</span>{" "}
                   </Label>
-                  <Input placeholder="Enter your username" />
+                  <Input 
+                    placeholder="Enter your username" 
+                    value={credentials.userName}
+                    onChange={handleInputChange('userName')}
+                    disabled={isLoading}
+                  />
                 </div>
                 <div>
                   <Label>
@@ -95,6 +151,9 @@ export default function SignInForm() {
                     <Input
                       type={showPassword ? "text" : "password"}
                       placeholder="Enter your password"
+                      value={credentials.password}
+                      onChange={handleInputChange('password')}
+                      disabled={isLoading}
                     />
                     <span
                       onClick={() => setShowPassword(!showPassword)}
@@ -128,8 +187,10 @@ export default function SignInForm() {
                     size="md"
                     variant="primary"
                     type="submit"
+                    disabled={isLoading}
+                    loading={isLoading}
                   >
-                    Sign in
+                    {isLoading ? 'Signing in...' : 'Sign in'}
                   </Button>
                 </div>
               </div>
