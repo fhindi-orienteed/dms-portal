@@ -16,9 +16,7 @@ i18n
       ar: { translation: arTranslations },
     },
     fallbackLng: 'en',
-    supportedLngs: ['en', 'ar'],
-    debug: process.env.NODE_ENV === 'development',
-    
+    supportedLngs: ['en', 'ar'],    
     detection: {
       order: ['localStorage', 'navigator', 'htmlTag'],
       caches: ['localStorage'],
