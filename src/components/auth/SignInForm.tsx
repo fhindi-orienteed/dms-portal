@@ -9,6 +9,7 @@ import TrackPackage from "../tracking/TrackPackage";
 import TrackingResults from "../tracking/TrackingResults";
 import { useTracking } from "../../hooks/useTracking";
 import { authService } from "../../services";
+import Alert from "../ui/alert/Alert";
 
 export default function SignInForm() {
   const [showPassword, setShowPassword] = useState(false);
@@ -86,14 +87,6 @@ export default function SignInForm() {
       {/* Track Package Form - TOP */}
       <TrackPackage onTrack={handleTrack} isTracking={isTracking} />
 
-      {/* Error Display */}
-      {(error || loginError) && (
-        <div className="w-full max-w-md mx-auto mt-4">
-          <div className="p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg">
-            <p className="text-sm text-red-600 dark:text-red-400">{error || loginError}</p>
-          </div>
-        </div>
-      )}
 
     {isTracking || !trackingResult && (  
       <>
@@ -181,6 +174,18 @@ export default function SignInForm() {
                     Forgot password?
                   </Link>
                 </div>
+                
+                {/* Error Display - Before Sign In Button */}
+                {(error || loginError) && (
+                  <div>
+                    <Alert 
+                      variant="error"
+                      title="Error"
+                      message={error || loginError || ''}
+                    />
+                  </div>
+                )}
+                
                 <div>
                   <Button 
                     className="w-full" 
