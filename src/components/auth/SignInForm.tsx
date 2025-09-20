@@ -10,6 +10,7 @@ import TrackingResults from "../tracking/TrackingResults";
 import { useTracking } from "../../hooks/useTracking";
 import { authService } from "../../services";
 import Alert from "../ui/alert/Alert";
+import { useAuth } from "../../context/AuthContext";
 
 export default function SignInForm() {
   const [showPassword, setShowPassword] = useState(false);
@@ -24,6 +25,7 @@ export default function SignInForm() {
   const [loginError, setLoginError] = useState<string | null>(null);
   
   const navigate = useNavigate();
+  const { login } = useAuth();
   const { trackingResult, isTracking, error, trackPackage, resetTracking } = useTracking();
 
   const handleTrack = (trackingNumber: string) => {
@@ -52,9 +54,10 @@ export default function SignInForm() {
       setIsLoading(true);
       setLoginError(null);
       
-      await authService.login(credentials);
+      const response = await authService.login(credentials);
       
-      navigate('/');
+      login(response.user, response.accessToken);
+        navigate('/');
     } catch (error: any) {
       console.error('Login error:', error);
       

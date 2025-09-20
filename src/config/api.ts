@@ -44,10 +44,7 @@ api.interceptors.response.use(
       
       localStorage.removeItem('authToken');
       localStorage.removeItem('user');
-      
-      if (typeof window !== 'undefined') {
-        window.location.href = '/signin';
-      }
+
       
       return Promise.reject(error);
     }
@@ -68,7 +65,6 @@ api.interceptors.response.use(
           setTimeout(resolve, API_CONFIG.RETRY_DELAY * originalRequest._retryCount)
         );
         
-        console.log(`🔄 Retrying request (${originalRequest._retryCount}/${API_CONFIG.RETRY_ATTEMPTS}):`, originalRequest.url);
         return api(originalRequest);
       }
     }
