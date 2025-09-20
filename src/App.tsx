@@ -23,6 +23,7 @@ import Home from "./pages/Dashboard/Home";
 import { AppConfigProvider } from "./context/AppConfig";
 import { AuthProvider } from "./context/AuthContext";
 import { ProtectedRoute } from "./components/auth/ProtectedRoute";
+import { Toaster } from 'react-hot-toast';
 
 export default function App() {
   return (
@@ -127,6 +128,7 @@ export default function App() {
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Router>
+        <Toaster />
       </AuthProvider>
     </AppConfigProvider>
   );

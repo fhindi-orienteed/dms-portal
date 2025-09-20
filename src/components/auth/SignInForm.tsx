@@ -9,8 +9,8 @@ import TrackPackage from "../tracking/TrackPackage";
 import TrackingResults from "../tracking/TrackingResults";
 import { useTracking } from "../../hooks/useTracking";
 import { authService } from "../../services";
-import Alert from "../ui/alert/Alert";
 import { useAuth } from "../../context/AuthContext";
+import { showToast } from "../../utils/toast";
 
 export default function SignInForm() {
   const [showPassword, setShowPassword] = useState(false);
@@ -57,19 +57,27 @@ export default function SignInForm() {
       const response = await authService.login(credentials);
       
       login(response.user, response.accessToken);
-        navigate('/');
+      
+      showToast.success('Success! Login completed successfully!');
+      
+      navigate('/');
     } catch (error: any) {
       console.error('Login error:', error);
       
+      let errorMessage = 'Login failed. Please try again.';
+      
       if (error.status === 401) {
-        setLoginError('Invalid username or password');
+        errorMessage = 'Invalid username or password';
       } else if (error.status === 403) {
-        setLoginError('Access denied. Please contact administrator.');
+        errorMessage = 'Access denied. Please contact administrator.';
       } else if (error.isNetworkError) {
-        setLoginError('Network error. Please check your connection.');
+        errorMessage = 'Network error. Please check your connection.';
       } else {
-        setLoginError(error.message || 'Login failed. Please try again.');
+        errorMessage = error.message || errorMessage;
       }
+      
+      setLoginError(errorMessage);
+      showToast.error(errorMessage);
     } finally {
       setIsLoading(false);
     }
@@ -176,18 +184,7 @@ export default function SignInForm() {
                   >
                     Forgot password?
                   </Link>
-                </div>
-                
-                {/* Error Display - Before Sign In Button */}
-                {(error || loginError) && (
-                  <div>
-                    <Alert 
-                      variant="error"
-                      title="Error"
-                      message={error || loginError || ''}
-                    />
-                  </div>
-                )}
+                </div>                            
                 
                 <div>
                   <Button 
