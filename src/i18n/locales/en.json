@@ -77,5 +77,19 @@
     "english": "English",
     "arabic": "العربية",
     "switchLanguage": "Switch Language"
-  }
+  },
+  "profile": {
+ "personalinformation":"personal information",
+"firstName":"First Name ",
+"lastname":"Last Name ",
+"phone":"Phone",
+"emailAddress":"email address ",
+"bio":"Bio ",
+"adress":"Adress",
+"country":"Country",
+ "cityState": "City/State",
+"taxId": "TAX ID",
+"pastalCode":"pastal Code"
+}
+  
 }

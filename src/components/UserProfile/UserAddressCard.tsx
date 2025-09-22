@@ -3,8 +3,10 @@ import { Modal } from "../ui/modal";
 import Button from "../ui/button/Button";
 import Input from "../form/input/InputField";
 import Label from "../form/Label";
+import { useTranslation } from "react-i18next";
 
 export default function UserAddressCard() {
+    const { t } = useTranslation();
   const { isOpen, openModal, closeModal } = useModal();
   const handleSave = () => {
     // Handle save logic here
@@ -17,13 +19,13 @@ export default function UserAddressCard() {
         <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
           <div>
             <h4 className="text-lg font-semibold text-gray-800 dark:text-white/90 lg:mb-6">
-              Address
+             {t('profile.address')}
             </h4>
 
             <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 lg:gap-7 2xl:gap-x-32">
               <div>
                 <p className="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">
-                  Country
+                  {t('profile.country')}
                 </p>
                 <p className="text-sm font-medium text-gray-800 dark:text-white/90">
                   United States.
@@ -32,7 +34,7 @@ export default function UserAddressCard() {
 
               <div>
                 <p className="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">
-                  City/State
+                   {t('profile.cityState')}
                 </p>
                 <p className="text-sm font-medium text-gray-800 dark:text-white/90">
                   Phoenix, Arizona, United States.
@@ -41,7 +43,7 @@ export default function UserAddressCard() {
 
               <div>
                 <p className="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">
-                  Postal Code
+                   {t('profile.pastalCode')}
                 </p>
                 <p className="text-sm font-medium text-gray-800 dark:text-white/90">
                   ERT 2489
@@ -50,7 +52,7 @@ export default function UserAddressCard() {
 
               <div>
                 <p className="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">
-                  TAX ID
+                  {t('profile.taxId')}
                 </p>
                 <p className="text-sm font-medium text-gray-800 dark:text-white/90">
                   AS4568384
@@ -78,7 +80,7 @@ export default function UserAddressCard() {
                 fill=""
               />
             </svg>
-            Edit
+             {t('common.edit')}
           </button>
         </div>
       </div>
