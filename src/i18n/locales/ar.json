@@ -89,21 +89,18 @@
     "barChart": "الرسم البياني العمودي",
     "settings": "الإعدادات"
   },
-"profile": {
- "personalinformation":"المعلومات الشخصية",
-"firstName":"الاسم الاول",
-"lastname":"اسم العائلة",
-"phone": "الهاتف",
-"emailAddress":"البريد الالكتروني",
-"bio": "نبذة",
+  "profile": {
+    "personalInformation": "المعلومات الشخصية",
+    "firstName": "الاسم الاول",
+    "lastName": "اسم العائلة",
+    "phone": "الهاتف",
+    "emailAddress": "البريد الالكتروني",
+    "bio": "نبذة",
 
-"address": "العنوان",
+    "address": "العنوان",
     "country": "الدولة",
     "cityState": "المدينة/المحافظة",
-"taxId": "الرقم الضريبي",
-"pastalCode":"الرمز البريدي"
-
-}
-
-
+    "taxId": "الرقم الضريبي",
+    "pastalCode": "الرمز البريدي"
+  }
 }

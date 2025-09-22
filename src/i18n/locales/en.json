@@ -79,17 +79,17 @@
     "switchLanguage": "Switch Language"
   },
   "profile": {
- "personalinformation":"personal information",
-"firstName":"First Name ",
-"lastname":"Last Name ",
-"phone":"Phone",
-"emailAddress":"email address ",
-"bio":"Bio ",
-"adress":"Adress",
-"country":"Country",
- "cityState": "City/State",
-"taxId": "TAX ID",
-"pastalCode":"pastal Code"
-}
-  
+    "personalInformation": "personal information",
+    "firstName": "First Name ",
+    "lastName": "Last Name",
+    "phone": "Phone",
+    "emailAddress": "email address ",
+    "bio": "Bio ",
+
+    "address": "Adress",
+    "country": "Country",
+    "cityState": "City/State",
+    "taxId": "TAX ID",
+    "pastalCode": "pastal Code"
+  }
 }
