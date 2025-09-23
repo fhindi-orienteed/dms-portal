@@ -4,8 +4,9 @@ import { Dropdown } from "../ui/dropdown/Dropdown";
 import { DropdownItem } from "../ui/dropdown/DropdownItem";
 import { MoreDotIcon } from "../../icons";
 import { useState } from "react";
-
+import { useTranslation } from "react-i18next";
 export default function MonthlySalesChart() {
+  const {t}= useTranslation();
   const options: ApexOptions = {
     colors: ["#465fff"],
     chart: {
@@ -34,18 +35,18 @@ export default function MonthlySalesChart() {
     },
     xaxis: {
       categories: [
-        "Jan",
-        "Feb",
-        "Mar",
-        "Apr",
-        "May",
-        "Jun",
-        "Jul",
-        "Aug",
-        "Sep",
-        "Oct",
-        "Nov",
-        "Dec",
+        t("dashboard.Jan"),
+  t("dashboard.Feb"),
+  t("dashboard.Mar"),
+  t("dashboard.Apr"),
+  t("dashboard.May"),
+  t("dashboard.Jun"),
+  t("dashboard.Jul"),
+  t("dashboard.Aug"),
+  t("dashboard.Sep"),
+  t("dashboard.Oct"),
+  t("dashboard.Nov"),
+  t("dashboard.Dec"),
       ],
       axisBorder: {
         show: false,
@@ -87,7 +88,7 @@ export default function MonthlySalesChart() {
   };
   const series = [
     {
-      name: "Sales",
+      name: t("dashboard.Sales"),
       data: [168, 385, 201, 298, 187, 195, 291, 110, 215, 390, 280, 112],
     },
   ];
@@ -104,7 +105,7 @@ export default function MonthlySalesChart() {
     <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white px-5 pt-5 dark:border-gray-800 dark:bg-white/[0.03] sm:px-6 sm:pt-6">
       <div className="flex items-center justify-between">
         <h3 className="text-lg font-semibold text-gray-800 dark:text-white/90">
-          Monthly Sales
+          {t("dashboard.Monthly_Sales")}
         </h3>
         <div className="relative inline-block">
           <button className="dropdown-toggle" onClick={toggleDropdown}>
@@ -119,13 +120,14 @@ export default function MonthlySalesChart() {
               onItemClick={closeDropdown}
               className="flex w-full font-normal text-left text-gray-500 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300"
             >
-              View More
+              {t("dashboard.View_More")}
             </DropdownItem>
             <DropdownItem
               onItemClick={closeDropdown}
               className="flex w-full font-normal text-left text-gray-500 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300"
             >
-              Delete
+              {t("dashboard.Delete")}
+          
             </DropdownItem>
           </Dropdown>
         </div>
