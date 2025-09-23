@@ -1,6 +1,8 @@
 import { useState } from "react";
 
+import { useTranslation } from "react-i18next";
 const ChartTab: React.FC = () => {
+  const {t} = useTranslation();
   const [selected, setSelected] = useState<
     "optionOne" | "optionTwo" | "optionThree"
   >("optionOne");
@@ -18,7 +20,7 @@ const ChartTab: React.FC = () => {
           "optionOne"
         )}`}
       >
-        Monthly
+       {t("dashboard.Monthly")} 
       </button>
 
       <button
@@ -27,7 +29,7 @@ const ChartTab: React.FC = () => {
           "optionTwo"
         )}`}
       >
-        Quarterly
+        {t("dashboard.Quarterly")}
       </button>
 
       <button
@@ -36,7 +38,7 @@ const ChartTab: React.FC = () => {
           "optionThree"
         )}`}
       >
-        Annually
+       {t("dashboard.Annually")} 
       </button>
     </div>
   );
