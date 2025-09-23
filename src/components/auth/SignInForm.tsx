@@ -26,7 +26,7 @@ export default function SignInForm() {
   
   const navigate = useNavigate();
   const { login } = useAuth();
-  const { trackingResult, isTracking, error, trackPackage, resetTracking } = useTracking();
+  const { trackingResult, isTracking, trackPackage, resetTracking } = useTracking();
 
   const handleTrack = (trackingNumber: string) => {
     trackPackage(trackingNumber);
