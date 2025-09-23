@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Link, useLocation } from "react-router";
-
+import { Link, useLocation } from "react-router"; 
 // Assume these icons are imported from an icon library
 import {
   CalenderIcon,
@@ -35,73 +34,81 @@ type NavItem = {
 //   subItems?: { nameKey: string; path: string; pro?: boolean; new?: boolean }[];
 // };
 
+
+
+const AppSidebar: React.FC = () => {
+  const { isExpanded, isMobileOpen, isHovered, setIsHovered } = useSidebar();
+  const { t, isRTL } = useLanguage();
+  const location = useLocation();
+
+
 const navItems: NavItem[] = [
   
   {
     icon: <GridIcon />,
-    name: "Dashboard",
+    name: t('sidebar.dashboard'),
     path: "/",
   },
   {
     icon: <PieChartIcon />,
-    name: "Summary",
+    name: t('sidebar.summary'),
     subItems: [
-      { name: "Overview", path: "/summary/overview", pro: false },
-      { name: "Analytics", path: "/summary/analytics", pro: false },
-      { name: "Performance", path: "/summary/performance", pro: false },
+      { name: t('summary.overview'), path: "/summary/overview", pro: false },
+      { name: t('summary.analytics'), path: "/summary/analytics", pro: false },
+      { name: t('summary.performance'), path: "/summary/performance", pro: false },
     ],
   },
   {
     icon: <BoxIcon />,
-    name: "Package List",
+    name: t('sidebar.packageList'),
     subItems: [
-      { name: "All Packages", path: "/packages", pro: false },
-      { name: "In Transit", path: "/packages/in-transit", pro: false },
-      { name: "Delivered", path: "/packages/delivered", pro: false },
-      { name: "Pending", path: "/packages/pending", pro: false },
-      { name: "Failed Delivery", path: "/packages/failed", pro: false },
+      { name: t('packages.allPackages'), path: "/packages", pro: false },
+      { name: t('packages.inTransit'), path: "/packages/in-transit", pro: false },
+      { name: t('packages.delivered'), path: "/packages/delivered", pro: false },
+      { name: t('packages.pending'), path: "/packages/pending", pro: false },
+      { name: t('packages.failedDelivery'), path: "/packages/failed", pro: false },
     ],
   },
   {
     icon: <TaskIcon />,
-    name: "Follow-ups",
+    name: t('sidebar.followUps'),
     subItems: [
-      { name: "Customer Follow-ups", path: "/follow-ups/customers", pro: false },
-      { name: "Delivery Follow-ups", path: "/follow-ups/deliveries", pro: false },
-      { name: "Payment Follow-ups", path: "/follow-ups/payments", pro: false },
-      { name: "Return Follow-ups", path: "/follow-ups/returns", pro: false },
+      { name: t('followUps.customer'), path: "/follow-ups/customers", pro: false },
+      { name: t('followUps.delivery'), path: "/follow-ups/deliveries", pro: false },
+      { name: t('followUps.payment'), path: "/follow-ups/payments", pro: false },
+      { name: t('followUps.returns'), path: "/follow-ups/returns", pro: false },
     ],
   },
   {
     icon: <PieChartIcon />,
-    name: "Reports",
+    name: t('sidebar.reports'),
     subItems: [
-      { name: "Delivery Reports", path: "/reports/delivery", pro: false },
-      { name: "Financial Reports", path: "/reports/financial", pro: false },
-      { name: "Performance Reports", path: "/reports/performance", pro: false },
-      { name: "Customer Reports", path: "/reports/customers", pro: false },
-      { name: "Export Data", path: "/reports/export", pro: false },
+      { name: t('reports.deliveryReports'), path: "/reports/delivery", pro: false },
+      { name: t('reports.financialReports'), path: "/reports/financial", pro: false },
+      { name: t('reports.performanceReports'), path: "/reports/performance", pro: false },
+      { name: t('reports.customerReports'), path: "/reports/customers", pro: false },
+      { name: t('reports.exportData'), path: "/reports/export", pro: false },
     ],
   },
   {
     icon: <DollarLineIcon />,
-    name: "Payments",
+    name: t('sidebar.payments'),
     subItems: [
-      { name: "Payment History", path: "/payments/history", pro: false },
-      { name: "Pending Payments", path: "/payments/pending", pro: false },
-      { name: "Payment Methods", path: "/payments/methods", pro: false },
-      { name: "Billing", path: "/payments/billing", pro: false },
-      { name: "Invoices", path: "/payments/invoices", pro: false },
+      { name: t('payments.paymentHistory'), path: "/payments/history", pro: false },
+      { name: t('payments.pendingPayments'), path: "/payments/pending", pro: false },
+      { name: t('payments.paymentMethods'), path: "/payments/methods", pro: false },
+      { name: t('payments.billing'), path: "/payments/billing", pro: false },
+      { name: t('payments.invoices'), path: "/payments/invoices", pro: false },
     ],
   },
   {
     icon: <ArrowRightIcon />,
-    name: "Returns",
+    name: t('sidebar.returns'),
     subItems: [
-      { name: "Return Requests", path: "/returns/requests", pro: false },
-      { name: "Return Processing", path: "/returns/processing", pro: false },
-      { name: "Return History", path: "/returns/history", pro: false },
-      { name: "Refund Management", path: "/returns/refunds", pro: false },
+      { name: t('returns.returnRequests'), path: "/returns/requests", pro: false },
+      { name: t('returns.returnProcessing'), path: "/returns/processing", pro: false },
+      { name: t('returns.returnHistory'), path: "/returns/history", pro: false },
+      { name: t('returns.refundManagement'), path: "/returns/refunds", pro: false },
     ],
   },
 ];
@@ -109,68 +116,64 @@ const navItems: NavItem[] = [
 const othersItems: NavItem[] = [
   {
     icon: <SearchIcon />,
-    name: "Tracking",
+    name: t('sidebar.tracking'),
+    //tracking
     subItems: [
-      { name: "Track Package", path: "/tracking", pro: false },
-      { name: "Bulk Tracking", path: "/tracking/bulk", pro: false },
-      { name: "Tracking History", path: "/tracking/history", pro: false },
+      { name: t('tracking.trackPackage'), path: "/tracking", pro: false },
+      { name: t('tracking.bulkTracking'), path: "/tracking/bulk", pro: false },
+      { name: t('tracking.trackingHistory'), path: "/tracking/history", pro: false },
     ],
   },
   {
     icon: <UserCircleIcon />,
-    name: "Customers",
+    name: t('sidebar.customers'),
     subItems: [
-      { name: "Customer List", path: "/customers", pro: false },
-      { name: "Customer Details", path: "/customers/details", pro: false },
-      { name: "Customer Support", path: "/customers/support", pro: false },
+      { name: t('customers.customerList'), path: "/customers", pro: false },
+      { name: t('customers.customerDetails'), path: "/customers/details", pro: false },
+      { name: t('customers.customerSupport'), path: "/customers/support", pro: false },
     ],
   },
   {
     icon: <GroupIcon />,
-    name: "Drivers",
+    name: t('sidebar.drivers'),
     subItems: [
-      { name: "Driver List", path: "/drivers", pro: false },
-      { name: "Driver Performance", path: "/drivers/performance", pro: false },
-      { name: "Driver Assignments", path: "/drivers/assignments", pro: false },
+      { name: t('drivers.driverList'), path: "/drivers", pro: false },
+      { name: t('drivers.driverPerformance'), path: "/drivers/performance", pro: false },
+      { name: t('drivers.driverAssignments'), path: "/drivers/assignments", pro: false },
     ],
   },
   {
     icon: <CalenderIcon />,
-    name: "Schedule",
+    name: t('sidebar.schedule'),
     subItems: [
-      { name: "Delivery Schedule", path: "/schedule/delivery", pro: false },
-      { name: "Driver Schedule", path: "/schedule/driver", pro: false },
-      { name: "Route Planning", path: "/schedule/routes", pro: false },
+      { name: t('scheduling.deliverySchedule'), path: "/schedule/delivery", pro: false },
+      { name: t('scheduling.driverSchedule'), path: "/schedule/driver", pro: false },
+      { name: t('scheduling.routePlanning'), path: "/schedule/routes", pro: false },
     ],
   },
   {
     icon: <DocsIcon />,
-    name: "Other Links",
+    name:  t('sidebar.otherLinks'),
     subItems: [
-      { name: "Terms of Service", path: "/terms", pro: false },
-      { name: "Privacy Policy", path: "/privacy", pro: false },
-      { name: "FAQ", path: "/faq", pro: false },
-      { name: "Help Center", path: "/help", pro: false },
-      { name: "Contact Support", path: "/support", pro: false },
-      { name: "About Us", path: "/about", pro: false },
+      { name: t('otherLinks.termsOfService'), path: "/terms", pro: false },
+      { name: t('otherLinks.privacyPolicy'), path: "/privacy", pro: false },
+      { name: t('otherLinks.faq'), path: "/faq", pro: false },
+      { name: t('otherLinks.helpCenter'), path: "/help", pro: false },
+      { name: t('otherLinks.contactSupport'), path: "/support", pro: false },
+      { name: t('otherLinks.aboutUs'), path: "/about", pro: false },
     ],
   },
   {
     icon: <PlugInIcon />,
-    name: "Settings",
+    name: t('sidebar.settings'),
     subItems: [
-      { name: "Profile Settings", path: "/profile", pro: false },
-      { name: "Account Settings", path: "/settings/account", pro: false },
-      { name: "Notification Settings", path: "/settings/notifications", pro: false },
-      { name: "System Settings", path: "/settings/system", pro: false },
+      { name: t('settings.profileSettings'), path: "/profile", pro: false },
+      { name: t('settings.accountSettings'), path: "/settings/account", pro: false },
+      { name: t('settings.notificationSettings'), path: "/settings/notifications", pro: false },
+      { name: t('settings.systemSettings'), path: "/settings/system", pro: false },
     ],
   },
 ];
-
-const AppSidebar: React.FC = () => {
-  const { isExpanded, isMobileOpen, isHovered, setIsHovered } = useSidebar();
-  const { t, isRTL } = useLanguage();
-  const location = useLocation();
 
   const [openSubmenu, setOpenSubmenu] = useState<{
     type: "main" | "others";
@@ -238,7 +241,7 @@ const AppSidebar: React.FC = () => {
   const renderMenuItems = (items: NavItem[], menuType: "main" | "others") => (
     <ul className="flex flex-col gap-4">
       {items.map((nav, index) => (
-        <li key={nav.name}>
+        <li key={t(nav.name)}>
           {nav.subItems ? (
             <button
               onClick={() => handleSubmenuToggle(index, menuType)}
@@ -262,7 +265,7 @@ const AppSidebar: React.FC = () => {
                 {nav.icon}
               </span>
               {(isExpanded || isHovered || isMobileOpen) && (
-                <span className="menu-item-text">{nav.name}</span>
+                <span className="menu-item-text">{t(nav.name)}</span>
               )}
               {(isExpanded || isHovered || isMobileOpen) && (
                 <ChevronDownIcon
@@ -293,7 +296,7 @@ const AppSidebar: React.FC = () => {
                   {nav.icon}
                 </span>
                 {(isExpanded || isHovered || isMobileOpen) && (
-                  <span className="menu-item-text">{nav.name}</span>
+                  <span className="menu-item-text">{t(nav.name)}</span>
                 )}
               </Link>
             )

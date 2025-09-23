@@ -66,6 +66,7 @@
     "additionalFeatures": "الميزات الإضافية",
     "dashboard": "لوحة التحكم",
     "summary": "ملخص",
+    "overview": "نظرة عامة",
     "packageList": "قائمة الطرود",
     "followUps": "المتابعات",
     "reports": "التقارير",
@@ -73,6 +74,7 @@
     "returns": "المرتجعات",
     "tracking": "التتبع",
     "customers": "العملاء",
+    "drivers": "السائقون",
     "profile": "الملف الشخصي",
     "calendar": "التقويم",
     "blank": "صفحة فارغة",
@@ -87,7 +89,80 @@
     "videos": "الفيديوهات",
     "lineChart": "الرسم البياني الخطي",
     "barChart": "الرسم البياني العمودي",
-    "settings": "الإعدادات"
+    "settings": "الإعدادات",
+    "schedule": "الجدول الزمني",
+    "otherLinks": "روابط أخرى"
+     
+  },
+  "summary": {
+    "overview": "نظرة عامة",
+    "analytics": "التحليلات",
+    "performance": "الأداء"
+  },
+  "packages": {
+    "allPackages": "جميع الطرود",
+    "inTransit": "قيد التوصيل",
+    "delivered": "تم التوصيل",
+    "pending": "معلق",
+    "failedDelivery": "فشل التوصيل"
+  },
+  "followUps": {
+    "customer": "متابعة العملاء",
+    "delivery": "متابعة التوصيل",
+    "payment": "متابعة الدفع",
+    "returns": "متابعة المرتجعات"
+  },
+    "reports": {
+    "deliveryReports": "تقارير التسليم",
+    "financialReports": "تقارير مالية",
+    "performanceReports": "تقارير الأداء",
+    "customerReports": "تقارير العملاء",
+    "exportData": "تصدير البيانات"
+  },
+    "payments": {
+    "paymentHistory": "سجل المدفوعات",
+    "pendingPayments": "المدفوعات المعلقة",
+    "paymentMethods": "طرق الدفع",
+    "billing": "الفواتير",
+    "invoices": "الفواتير"
+  },  "returns": {
+    "returnRequests": "طلبات المرتجعات",
+    "returnProcessing": "معالجة المرتجعات",
+    "returnHistory": "سجل المرتجعات",
+    "refundManagement": "إدارة الاستردادات"
+  },
+    "tracking": {
+    "trackPackage": "تتبع الطرد",
+    "bulkTracking": "تتبع جماعي",
+    "trackingHistory": "سجل التتبع"
+  },"customers": {
+    "customerList": "قائمة العملاء",
+    "customerDetails": "تفاصيل العميل",
+    "customerSupport": "دعم العملاء"
+  },
+  "drivers": {
+    "driverList": "قائمة السائقين",
+    "driverPerformance": "أداء السائقين",
+    "driverAssignments": "مهام السائقين"
+  },
+  "scheduling": {
+    "deliverySchedule": "جدول التسليم",
+    "driverSchedule": "جدول السائقين",
+    "routePlanning": "تخطيط المسار"
+  },
+  "otherLinks": {
+    "termsOfService": "شروط الخدمة",
+    "privacyPolicy": "سياسة الخصوصية",
+    "faq": "الأسئلة الشائعة",
+    "helpCenter": "مركز المساعدة",
+    "contactSupport": "اتصل بالدعم",
+    "aboutUs": "من نحن"
+  },
+  "settings": {
+    "profileSettings": "إعدادات الملف الشخصي",
+    "accountSettings": "إعدادات الحساب", 
+    "notificationSettings": "إعدادات الإشعارات",
+    "systemSettings": "إعدادات النظام"
   },
   "profile": {
     "personalInformation": "المعلومات الشخصية",
