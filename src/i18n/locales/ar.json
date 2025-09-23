@@ -88,5 +88,19 @@
     "lineChart": "الرسم البياني الخطي",
     "barChart": "الرسم البياني العمودي",
     "settings": "الإعدادات"
+  },
+  "profile": {
+    "personalInformation": "المعلومات الشخصية",
+    "firstName": "الاسم الاول",
+    "lastName": "اسم العائلة",
+    "phone": "الهاتف",
+    "emailAddress": "البريد الالكتروني",
+    "bio": "نبذة",
+
+    "address": "العنوان",
+    "country": "الدولة",
+    "cityState": "المدينة/المحافظة",
+    "taxId": "الرقم الضريبي",
+    "pastalCode": "الرمز البريدي"
   }
 }

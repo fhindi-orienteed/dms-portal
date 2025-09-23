@@ -3,8 +3,10 @@ import { Modal } from "../ui/modal";
 import Button from "../ui/button/Button";
 import Input from "../form/input/InputField";
 import Label from "../form/Label";
+import { useTranslation } from "react-i18next";
 
 export default function UserMetaCard() {
+  const { t } = useTranslation();
   const { isOpen, openModal, closeModal } = useModal();
   const handleSave = () => {
     // Handle save logic here
@@ -138,7 +140,7 @@ export default function UserMetaCard() {
                 fill=""
               />
             </svg>
-            Edit
+            {t('common.edit')}
           </button>
         </div>
       </div>
