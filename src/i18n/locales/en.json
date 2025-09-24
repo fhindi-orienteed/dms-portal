@@ -36,8 +36,6 @@
     "toggleSidebar": "Toggle Sidebar",
     "applicationMenu": "Application Menu"
   },
-<<<<<<< HEAD
-=======
   "sidebar": {
     "dashboard": "Dashboard",
     "profile": "Profile",
@@ -53,10 +51,24 @@
     "images": "Images",
     "videos": "Videos",
     "lineChart": "Line Chart",
-    "barChart": "Bar Chart"
+    "barChart": "Bar Chart",
+    "mainMenu": "Main Menu",
+    "additionalFeatures": "Additional Features",
+    "summary": "Summary",
+    "overview": "Overview",
+    "packageList": "Package List",
+    "followUps": "Follow Ups",
+    "reports": "Reports",
+    "payments": "Payments",
+    "returns": "Returns",
+    "tracking": "Tracking",
+    "customers": "Customers",
+    "drivers": "Drivers",
+    "settings": "Settings",
+    "schedule": "Schedule",
+    "otherLinks": "Other Links"
     
   },
->>>>>>> main
   "auth": {
     "signIn": "Sign In",
     "signUp": "Sign Up",
@@ -127,38 +139,6 @@
     "english": "English",
     "arabic": "العربية",
     "switchLanguage": "Switch Language"
-  },
-  "sidebar": {
-    "mainMenu": "Main Menu",
-    "additionalFeatures": "Additional Features",
-    "dashboard": "Dashboard",
-    "summary": "Summary",
-    "overview": "Overview",
-    "packageList": "Package List",
-    "followUps": "Follow Ups",
-    "reports": "Reports",
-    "payments": "Payments",
-    "returns": "Returns",
-    "tracking": "Tracking",
-    "customers": "Customers",
-    "drivers": "Drivers",
-    "profile": "Profile",
-    "calendar": "Calendar",
-    "blank": "Blank Page",
-    "formElements": "Form Elements",
-    "basicTables": "Basic Tables",
-    "dataTables": "Data Tables",
-    "alerts": "Alerts",
-    "avatars": "Avatars",
-    "badges": "Badges",
-    "buttons": "Buttons",
-    "images": "Images",
-    "videos": "Videos",
-    "lineChart": "Line Chart",
-    "barChart": "Bar Chart",
-    "settings": "Settings",
-    "schedule": "Schedule",
-    "otherLinks": "Other Links"
   },
   "summary": {
     "overview": "Overview",
@@ -245,11 +225,4 @@
     "taxId": "TAX ID",
     "pastalCode": "Postal Code"
   }
-<<<<<<< HEAD
 }
-=======
-  
-    
-  
-}
->>>>>>> main
