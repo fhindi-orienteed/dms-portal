@@ -36,6 +36,8 @@
     "toggleSidebar": "Toggle Sidebar",
     "applicationMenu": "Application Menu"
   },
+<<<<<<< HEAD
+=======
   "sidebar": {
     "dashboard": "Dashboard",
     "profile": "Profile",
@@ -54,6 +56,7 @@
     "barChart": "Bar Chart"
     
   },
+>>>>>>> main
   "auth": {
     "signIn": "Sign In",
     "signUp": "Sign Up",
@@ -125,21 +128,128 @@
     "arabic": "العربية",
     "switchLanguage": "Switch Language"
   },
+  "sidebar": {
+    "mainMenu": "Main Menu",
+    "additionalFeatures": "Additional Features",
+    "dashboard": "Dashboard",
+    "summary": "Summary",
+    "overview": "Overview",
+    "packageList": "Package List",
+    "followUps": "Follow Ups",
+    "reports": "Reports",
+    "payments": "Payments",
+    "returns": "Returns",
+    "tracking": "Tracking",
+    "customers": "Customers",
+    "drivers": "Drivers",
+    "profile": "Profile",
+    "calendar": "Calendar",
+    "blank": "Blank Page",
+    "formElements": "Form Elements",
+    "basicTables": "Basic Tables",
+    "dataTables": "Data Tables",
+    "alerts": "Alerts",
+    "avatars": "Avatars",
+    "badges": "Badges",
+    "buttons": "Buttons",
+    "images": "Images",
+    "videos": "Videos",
+    "lineChart": "Line Chart",
+    "barChart": "Bar Chart",
+    "settings": "Settings",
+    "schedule": "Schedule",
+    "otherLinks": "Other Links"
+  },
+  "summary": {
+    "overview": "Overview",
+    "analytics": "Analytics",
+    "performance": "Performance"
+  },
+  "packages": {
+    "allPackages": "All Packages",
+    "inTransit": "In Transit",
+    "delivered": "Delivered",
+    "pending": "Pending",
+    "failedDelivery": "Failed Delivery"
+  },
+  "followUps": {
+    "customer": "Customer Follow-ups",
+    "delivery": "Delivery Follow-ups",
+    "payment": "Payment Follow-ups",
+    "returns": "Returns Follow-ups"
+  },
+  "reports": {
+    "deliveryReports": "Delivery Reports",
+    "financialReports": "Financial Reports",
+    "performanceReports": "Performance Reports",
+    "customerReports": "Customer Reports",
+    "exportData": "Export Data"
+  },
+  "payments": {
+    "paymentHistory": "Payment History",
+    "pendingPayments": "Pending Payments",
+    "paymentMethods": "Payment Methods",
+    "billing": "Billing",
+    "invoices": "Invoices"
+  },
+  "returns": {
+    "returnRequests": "Return Requests",
+    "returnProcessing": "Return Processing",
+    "returnHistory": "Return History",
+    "refundManagement": "Refund Management"
+  },
+  "tracking": {
+    "trackPackage": "Track Package",
+    "bulkTracking": "Bulk Tracking",
+    "trackingHistory": "Tracking History"
+  },
+  "customers": {
+    "customerList": "Customer List",
+    "customerDetails": "Customer Details",
+    "customerSupport": "Customer Support"
+  },
+  "drivers": {
+    "driverList": "Driver List",
+    "driverPerformance": "Driver Performance",
+    "driverAssignments": "Driver Assignments"
+  },
+  "scheduling": {
+    "deliverySchedule": "Delivery Schedule",
+    "driverSchedule": "Driver Schedule",
+    "routePlanning": "Route Planning"
+  },
+  "otherLinks": {
+    "termsOfService": "Terms of Service",
+    "privacyPolicy": "Privacy Policy",
+    "faq": "FAQ",
+    "helpCenter": "Help Center",
+    "contactSupport": "Contact Support",
+    "aboutUs": "About Us"
+  },
+  "settings": {
+    "profileSettings": "Profile Settings",
+    "accountSettings": "Account Settings",
+    "notificationSettings": "Notification Settings",
+    "systemSettings": "System Settings"
+  },
   "profile": {
-    "personalInformation": "personal information",
-    "firstName": "First Name ",
+    "personalInformation": "Personal Information",
+    "firstName": "First Name",
     "lastName": "Last Name",
     "phone": "Phone",
-    "emailAddress": "email address ",
-    "bio": "Bio ",
-
-    "address": "Adress",
+    "emailAddress": "Email Address",
+    "bio": "Bio",
+    "address": "Address",
     "country": "Country",
     "cityState": "City/State",
     "taxId": "TAX ID",
-    "pastalCode": "pastal Code"
+    "pastalCode": "Postal Code"
   }
+<<<<<<< HEAD
+}
+=======
   
     
   
 }
+>>>>>>> main
