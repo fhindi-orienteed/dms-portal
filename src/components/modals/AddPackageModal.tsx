@@ -25,7 +25,31 @@ export default function AddPackageModal({ isOpen, onClose }: AddPackageModalProp
     dimensions: '',
     specialInstructions: '',
     deliveryDate: '',
-    priority: 'standard'
+    priority: 'standard',
+    // Sender Details
+    commercialName: '',
+    branchAddress: '',
+    recipientSecondPhone: '',
+    recipientAddressDetails: '',
+    itemsCount: '',
+    note: '',
+    packageContent: '',
+    packageWeight: '',
+    privateNote: '',
+
+    // Properties
+    fragile: false,
+    needsPackaging: false,
+    recipientFingerprint: false,
+    flammable: false,
+    destructible: false,
+    preventOpening: false,
+    deliveryNote: false,
+    preventMeasuring: false,
+    serviceType: '',
+    invoiceNumber: '',
+    expectedDeliveryDate: '',
+    expectedPickupDate: '',
   });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -71,7 +95,7 @@ export default function AddPackageModal({ isOpen, onClose }: AddPackageModalProp
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} className="max-w-2xl">
-      <div className="p-6">
+      <div className="p-6 overflow-y-auto max-h-[100vh] ">
         <div className="mb-6">
           <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-2">
             Add New Package
@@ -94,32 +118,112 @@ export default function AddPackageModal({ isOpen, onClose }: AddPackageModalProp
               placeholder="Enter tracking number"
             />
           </div>
+          {/* Sender Details */}
+<div className="mb-6">
+ 
 
-          {/* Recipient Information */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <Label htmlFor="recipientName">Recipient Name *</Label>
-              <Input
-                type="text"
-                id="recipientName"
-                name="recipientName"
-                value={formData.recipientName}
-                onChange={handleInputChange}
-                placeholder="Full name"
-              />
-            </div>
-            <div>
-              <Label htmlFor="recipientEmail">Recipient Email *</Label>
-              <Input
-                type="email"
-                id="recipientEmail"
-                name="recipientEmail"
-                value={formData.recipientEmail}
-                onChange={handleInputChange}
-                placeholder="email@example.com"
-              />
-            </div>
-          </div>
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+    {/* Commercial Name */}
+    <div>
+      <Label htmlFor="commercialName">Commercial Name *</Label>
+      <Input
+        type="text"
+        id="commercialName"
+        name="commercialName"
+        value={formData.commercialName}
+        onChange={handleInputChange}
+        placeholder="Enter commercial name"
+      />
+    </div>
+
+    {/* Branch Address */}
+    <div>
+      <Label htmlFor="branchAddress">Branch Address *</Label>
+      <Select
+        options={[
+          { value: 'branch1', label: 'Branch 1' },
+          { value: 'branch2', label: 'Branch 2' },
+          { value: 'branch3', label: 'Branch 3' }
+        ]}
+        placeholder="Select branch address"
+        defaultValue={formData.branchAddress}
+        onChange={(value: string) =>
+          setFormData(prev => ({ ...prev, branchAddress: value }))
+        }
+      />
+    </div>
+  </div>
+</div>
+
+         {/* Recipient Information */}
+<div className="mb-6">
+  
+
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+    {/* Recipient Name */}
+    <div>
+      <Label htmlFor="recipientName">Recipient Name *</Label>
+      <Input
+        type="text"
+        id="recipientName"
+        name="recipientName"
+        value={formData.recipientName}
+        onChange={handleInputChange}
+        placeholder="Full name"
+      />
+    </div>
+
+    {/* Mobile Number */}
+    <div>
+      <Label htmlFor="recipientPhone">Mobile Number *</Label>
+      <Input
+        type="tel"
+        id="recipientPhone"
+        name="recipientPhone"
+        value={formData.recipientPhone}
+        onChange={handleInputChange}
+        placeholder="+970 59 123 4567"
+      />
+    </div>
+  </div>
+
+  {/* Second Mobile Number */}
+  <div className="mt-4">
+    <Label htmlFor="recipientSecondPhone">Second Mobile Number</Label>
+    <Input
+      type="tel"
+      id="recipientSecondPhone"
+      name="recipientSecondPhone"
+      value={formData.recipientSecondPhone}
+      onChange={handleInputChange}
+      placeholder="Optional second number"
+    />
+  </div>
+
+  {/* Recipient Address */}
+  <div className="mt-4">
+    <Label htmlFor="recipientAddress">Recipient Address *</Label>
+    <Input
+      type="text"
+      id="recipientAddress"
+      name="recipientAddress"
+      value={formData.recipientAddress}
+      onChange={handleInputChange}
+      placeholder="Start typing address..."
+    />
+  </div>
+
+  {/* Recipient Address details */}
+  <div className="mt-4">
+    <Label htmlFor="recipientAddressDetails">Recipient Address Details</Label>
+    <TextArea
+      placeholder="Apartment, floor, directions..."
+      rows={2}
+      value={formData.recipientAddressDetails}
+      onChange={handleTextAreaChange('recipientAddressDetails')}
+    />
+  </div>
+</div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
@@ -178,44 +282,188 @@ export default function AddPackageModal({ isOpen, onClose }: AddPackageModalProp
               />
             </div>
           </div>
+{/* Service & Order Information */}
+<div className="mb-6">
+  <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-4">
+    Service & Order Information
+  </h3>
 
-          {/* Package Details */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div>
-              <Label htmlFor="weight">Weight (kg)</Label>
-              <Input
-                type="number"
-                id="weight"
-                name="weight"
-                value={formData.weight}
-                onChange={handleInputChange}
-                placeholder="0.5"
-                step={0.1}
-              />
-            </div>
-            <div>
-              <Label htmlFor="dimensions">Dimensions (L×W×H)</Label>
-              <Input
-                type="text"
-                id="dimensions"
-                name="dimensions"
-                value={formData.dimensions}
-                onChange={handleInputChange}
-                placeholder="10×10×5 cm"
-              />
-            </div>
-            <div>
-              <Label htmlFor="deliveryDate">Delivery Date</Label>
-              <Input
-                type="date"
-                id="deliveryDate"
-                name="deliveryDate"
-                value={formData.deliveryDate}
-                onChange={handleInputChange}
-              />
-            </div>
-          </div>
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+    {/* Service Type */}
+    <div className="p-4 border rounded-lg bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-700">
+      <label className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">
+        Service Type
+      </label>
+      <select
+        value={formData.serviceType}
+        onChange={(e) => setFormData({ ...formData, serviceType: e.target.value })}
+        className="w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+      >
+        <option value="">Select Service</option>
+        <option value="standard">Standard Delivery</option>
+        <option value="express">Express Delivery</option>
+        <option value="sameDay">Same Day Delivery</option>
+      </select>
+    </div>
 
+    {/* Invoice Number */}
+    <div className="p-4 border rounded-lg bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-700">
+      <label className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">
+        Invoice Number
+      </label>
+      <input
+        type="text"
+        value={formData.invoiceNumber}
+        onChange={(e) => setFormData({ ...formData, invoiceNumber: e.target.value })}
+        placeholder="Enter invoice number"
+        className="w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+    </div>
+
+    {/* Expected Delivery Date */}
+    <div className="p-4 border rounded-lg bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-700">
+      <label className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">
+        Expected Delivery Date
+      </label>
+      <input
+        type="date"
+        value={formData.expectedDeliveryDate}
+        onChange={(e) => setFormData({ ...formData, expectedDeliveryDate: e.target.value })}
+        className="w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+    </div>
+
+    {/* Expected Pickup Date */}
+    <div className="p-4 border rounded-lg bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-700">
+      <label className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">
+        Expected Pickup Date
+      </label>
+      <input
+        type="date"
+        value={formData.expectedPickupDate}
+        onChange={(e) => setFormData({ ...formData, expectedPickupDate: e.target.value })}
+        className="w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+    </div>
+  </div>
+</div>
+         {/* Package Details */}
+<div className="mb-6">
+  
+
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+    {/* Items Count */}
+    <div>
+      <Label htmlFor="itemsCount">Items Count *</Label>
+      <Input
+        type="number"
+        id="itemsCount"
+        name="itemsCount"
+        value={formData.itemsCount}
+        onChange={handleInputChange}
+        placeholder="e.g., 3"
+      />
+    </div>
+
+    {/* Package Weight */}
+    <div>
+      <Label htmlFor="packageWeight">Package Weight (kg) *</Label>
+      <Input
+        type="number"
+        id="packageWeight"
+        name="packageWeight"
+        value={formData.packageWeight}
+        onChange={handleInputChange}
+        placeholder="0.5"
+        step={0.1}
+      />
+    </div>
+  </div>
+
+  {/* Package Content */}
+  <div className="mt-4">
+    <Label htmlFor="packageContent">Package Content *</Label>
+    <Input
+      type="text"
+      id="packageContent"
+      name="packageContent"
+      value={formData.packageContent}
+      onChange={handleInputChange}
+      placeholder="e.g., Clothes, Electronics"
+    />
+  </div>
+
+  {/* Note */}
+  <div className="mt-4">
+    <Label htmlFor="note">Note</Label>
+    <TextArea
+      placeholder="General notes..."
+      rows={2}
+      value={formData.note}
+      onChange={handleTextAreaChange('note')}
+    />
+  </div>
+
+  {/* Private Note */}
+  <div className="mt-4">
+    <Label htmlFor="privateNote">Private Note</Label>
+    <TextArea
+      placeholder="Internal note (not visible to recipient)..."
+      rows={2}
+      value={formData.privateNote}
+      onChange={handleTextAreaChange('privateNote')}
+    />
+  </div>
+</div>
+            {/* Properties */}
+<div className="mb-6">
+  <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-4">
+    Properties
+  </h3>
+
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+    {[
+      { key: 'fragile', label: 'Fragile' },
+      { key: 'needsPackaging', label: 'Needs Packaging' },
+      { key: 'recipientFingerprint', label: 'Recipient fingerprint required' },
+      { key: 'flammable', label: 'Contains Flammable or dangerous materials' },
+      { key: 'destructible', label: 'Destructible' },
+      { key: 'preventOpening', label: 'Prevent opening' },
+      { key: 'deliveryNote', label: 'Delivery Note' },
+      { key: 'preventMeasuring', label: 'Prevent Measuring' },
+    ].map((prop) => (
+      <div
+        key={prop.key}
+        onClick={() =>
+          setFormData((prev) => ({
+            ...prev,
+            [prop.key]: !prev[prop.key as keyof typeof formData],
+          }))
+        }
+        className={`cursor-pointer p-4 rounded-lg border transition ${
+          formData[prop.key as keyof typeof formData]
+            ? 'bg-blue-600 text-white border-blue-600'
+            : 'bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200'
+        }`}
+      >
+        <div className="flex items-center justify-between">
+          <span>{prop.label}</span>
+          {formData[prop.key as keyof typeof formData] && (
+            <svg
+              className="w-5 h-5 text-white"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+          )}
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
           {/* Special Instructions */}
           <div>
             <Label htmlFor="specialInstructions">Special Instructions</Label>
