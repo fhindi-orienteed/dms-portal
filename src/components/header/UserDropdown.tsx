@@ -4,12 +4,14 @@ import { Dropdown } from "../ui/dropdown/Dropdown";
 import { useNavigate } from "react-router";
 import { useAuth } from "../../context/AuthContext";
 import { Button } from "../ui";
+import { useTranslation } from "react-i18next";
 
 export default function UserDropdown() {
   const [isOpen, setIsOpen] = useState(false);
   const { user, logout } = useAuth();
   const navigate = useNavigate();
-
+ const { i18n } = useTranslation();
+  const isRTL = i18n.language === "ar";
   function toggleDropdown() {
     setIsOpen(!isOpen);
   }
@@ -57,8 +59,10 @@ export default function UserDropdown() {
       <Dropdown
         isOpen={isOpen}
         onClose={closeDropdown}
-        className="absolute right-0 mt-[17px] flex w-[260px] flex-col rounded-2xl border border-gray-200 bg-white p-3 shadow-theme-lg dark:border-gray-800 dark:bg-gray-dark"
-      >
+        className={`absolute mt-[17px] flex w-[260px] flex-col rounded-2xl border border-gray-200 bg-white p-3 shadow-theme-lg dark:border-gray-800 dark:bg-gray-dark
+  ${isRTL ? "lg:right-auto lg:left-0" : "left-0 lg:left-auto lg:right-0 right-0"}
+`}
+          >
         <div>
           <span className="block font-medium text-gray-700 text-theme-sm dark:text-gray-400">
             {user?.name || 'User'}

@@ -36,6 +36,27 @@
     "toggleSidebar": "Toggle Sidebar",
     "applicationMenu": "Application Menu"
   },
+<<<<<<< HEAD
+=======
+  "sidebar": {
+    "dashboard": "Dashboard",
+    "profile": "Profile",
+    "calendar": "Calendar",
+    "blank": "Blank",
+    "formElements": "Form Elements",
+    "basicTables": "Basic Tables",
+    "dataTables": "Data Tables",
+    "alerts": "Alerts",
+    "avatars": "Avatars",
+    "badges": "Badges",
+    "buttons": "Buttons",
+    "images": "Images",
+    "videos": "Videos",
+    "lineChart": "Line Chart",
+    "barChart": "Bar Chart"
+    
+  },
+>>>>>>> main
   "auth": {
     "signIn": "Sign In",
     "signUp": "Sign Up",
@@ -54,7 +75,53 @@
     "totalPackages": "Total Packages",
     "deliveredPackages": "Delivered Packages",
     "pendingPackages": "Pending Packages",
-    "recentActivity": "Recent Activity"
+    "recentActivity": "Recent Activity",
+    "Monthly": "Monthly",
+    "Quarterly": "Quarterly",
+    "Annually": "Annually",
+    "Orders": "Orders",
+    "Customers": "Customers",
+    "Monthly_Sales": "Monthly Sales",
+    "View_More": "View More",
+    "Delete": "Delete",
+    "monthlyTarget" : "Monthly Target",
+    "Monthly_Target_Description": " Target you’ve set for each month",
+    "Today": "Today",
+    "Revenue": "Revenue",
+    "Target": "Target",
+  
+    "dailyEarningsMessage": "You earn $3287 today, it's higher than last month. Keep up your good work!"
+    ,
+    "Statistics": "Statistics",
+    "monthlyTargetDesc": " Target you’ve set for each month",
+    "CustomersDemographics": "Customers Demographics",
+    "customerByCountry":"Number of customer based on country",
+    "RecentOrders": "Recent Orders",
+    "Filter": "Filter",
+    "SeeAll": "See All",
+    "Products"  : "Products",
+    "Category"    : "Category",
+    "Price": "Price",
+    "Status": "Status",
+   
+      "Jan": "Jan",
+      "Feb": "Feb",
+      "Mar": "Mar",
+      "Apr": "Apr",
+      "May": "May",
+      "Jun": "Jun",
+      "Jul": "Jul",
+      "Aug": "Aug",
+      "Sep": "Sep",
+      "Oct": "Oct",
+      "Nov": "Nov",
+      "Dec": "Dec",
+      "Sales": "Sales",
+      "status": {
+        "Delivered":"Delivered",
+        "Pending": "Pending",
+        "Canceled": "Canceled"
+      }
   },
   "language": {
     "english": "English",
@@ -178,4 +245,11 @@
     "taxId": "TAX ID",
     "pastalCode": "Postal Code"
   }
+<<<<<<< HEAD
 }
+=======
+  
+    
+  
+}
+>>>>>>> main

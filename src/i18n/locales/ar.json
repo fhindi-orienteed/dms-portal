@@ -54,8 +54,56 @@
     "totalPackages": "إجمالي الطرود",
     "deliveredPackages": "الطرود المسلمة",
     "pendingPackages": "الطرود المعلقة",
-    "recentActivity": "النشاط الأخير"
-  },
+    "recentActivity": "النشاط الأخير",
+    "Monthly": "شهري",
+    "Quarterly": "ربع سنوي",
+    "Annually": "سنوي",
+    "Orders": "الطلبات",
+    "Customers": "العملاء",
+    "Monthly_Sales": "المبيعات الشهرية",
+    "View_More": "عرض المزيد",
+    "Delete": "حذف",
+   "monthlyTarget" : "الهدف الشهري",
+   "Monthly_Target_Description": " الهدف الذي حددته لكل شهر",
+   "Today": "اليوم",
+   "Revenue": "الإيرادات",
+   "Target": "الهدف",
+     
+      "dailyEarningsMessage": "لقد ربحت 3287$ اليوم، وهذا أعلى من الشهر الماضي. استمر في عملك الجيد!"
+   ,
+   "Statistics": "الإحصائيات",
+   
+   "monthlyTargetDesc": "الهدف الذي حددته لكل شهر",
+  "CustomersDemographic": "العملاء - التركيبة السكانية",
+    "customerByCountry": "العملاء حسب البلد",
+    "RecentOrders": "الطلبات الأخيرة",
+    "Filter": "تصفية",
+    "SeeAll": "عرض الكل",
+    "Products"  : " المنتجات",
+    "Category"    : "الفئة",
+    "Price": "السعر",
+    "Status": "الحالة",
+    "Jan": "يناير",
+    "Feb": "فبراير",
+    "Mar": "مارس",
+    "Apr": "أبريل",
+    "May": "مايو",
+    "Jun": "يونيو",
+    "Jul": "يوليو",
+    "Aug": "أغسطس",
+    "Sep": "سبتمبر",
+    "Oct": "أكتوبر",
+    "Nov": "نوفمبر",
+    "Dec": "ديسمبر",
+    "Sales": "المبيعات",
+    "status": {
+      "Delivered": "تم التوصيل",
+      "Pending": "قيد الانتظار",
+      "Canceled": "ملغي"
+    }
+  }
+
+,
   "language": {
     "english": "English",
     "arabic": "العربية",
@@ -178,4 +226,5 @@
     "taxId": "الرقم الضريبي",
     "pastalCode": "الرمز البريدي"
   }
+  
 }

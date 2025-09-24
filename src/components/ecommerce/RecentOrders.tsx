@@ -6,7 +6,7 @@ import {
   TableRow,
 } from "../ui/table";
 import Badge from "../ui/badge/Badge";
-
+import { useTranslation } from "react-i18next";
 // Define the TypeScript interface for the table rows
 interface Product {
   id: number; // Unique identifier for each product
@@ -69,12 +69,13 @@ const tableData: Product[] = [
 ];
 
 export default function RecentOrders() {
+  const { t } = useTranslation();
   return (
     <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white px-4 pb-3 pt-4 dark:border-gray-800 dark:bg-white/[0.03] sm:px-6">
       <div className="flex flex-col gap-2 mb-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h3 className="text-lg font-semibold text-gray-800 dark:text-white/90">
-            Recent Orders
+           {t("dashboard.RecentOrders")} 
           </h3>
         </div>
 
@@ -115,10 +116,11 @@ export default function RecentOrders() {
                 strokeWidth="1.5"
               />
             </svg>
-            Filter
+            {t("dashboard.Filter")} 
+         
           </button>
           <button className="inline-flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-theme-sm font-medium text-gray-700 shadow-theme-xs hover:bg-gray-50 hover:text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200">
-            See all
+          {t("dashboard.SeeAll")}  
           </button>
         </div>
       </div>
@@ -131,25 +133,26 @@ export default function RecentOrders() {
                 isHeader
                 className="py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
               >
-                Products
+              {t("dashboard.Products")}  
               </TableCell>
               <TableCell
                 isHeader
                 className="py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
               >
-                Category
+                   {t("dashboard.Price")} 
               </TableCell>
               <TableCell
                 isHeader
                 className="py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
               >
-                Price
+                {t("dashboard.Category")}  
               </TableCell>
               <TableCell
                 isHeader
                 className="py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
               >
-                Status
+                {t("dashboard.Status")}  
+              
               </TableCell>
             </TableRow>
           </TableHeader>
@@ -195,7 +198,7 @@ export default function RecentOrders() {
                         : "error"
                     }
                   >
-                    {product.status}
+                    {t(`dashboard.status.${product.status}`)}
                   </Badge>
                 </TableCell>
               </TableRow>
