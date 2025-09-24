@@ -224,5 +224,24 @@
     "cityState": "City/State",
     "taxId": "TAX ID",
     "pastalCode": "Postal Code"
+  },
+  "notifications": {
+    "allNotifications": "All Notifications",
+    "notificationsList": "Notifications List",
+    "searchPlaceholder": "Search notifications...",
+    "allTypes": "All Types",
+    "allStatus": "All Status",
+    "unread": "Unread",
+    "read": "Read",
+    "markAllRead": "Mark All as Read",
+    "deleteAll": "Delete All",
+    "noNotifications": "No notifications found",
+    "noNotificationsDesc": "You're all caught up! No new notifications.",
+    "noNotificationsFiltered": "No notifications match your current filters.",
+    "project": "Project",
+    "task": "Task",
+    "comment": "Comment",
+    "file": "File",
+    "assignment": "Assignment"
   }
 }

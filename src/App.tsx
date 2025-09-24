@@ -17,6 +17,7 @@ import BasicTables from "./pages/Tables/BasicTables";
 import DataTables from "./components/tables/DataTables/DataTableOne";
 import FormElements from "./pages/Forms/FormElements";
 import Blank from "./pages/Blank";
+import AllNotifications from "./pages/AllNotifications";
 import AppLayout from "./layout/AppLayout";
 import { ScrollToTop } from "./components/common/ScrollToTop";
 import Home from "./pages/Dashboard/Home";
@@ -116,6 +117,12 @@ export default function App() {
               <Route path="/bar-chart" element={
                 <ProtectedRoute>
                   <BarChart />
+                </ProtectedRoute>
+              } />
+
+              <Route path="/notifications" element={
+                <ProtectedRoute>
+                  <AllNotifications />
                 </ProtectedRoute>
               } />
 
