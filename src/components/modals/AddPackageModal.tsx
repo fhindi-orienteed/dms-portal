@@ -1,16 +1,21 @@
 import React, { useState } from 'react';
 import { Modal } from '../ui/modal';
 import Button from '../ui/button/Button';
-import Input from '../form/input/InputField';
 import TextArea from '../form/input/TextArea';
-import Select from '../form/Select';
 import Label from '../form/Label';
-
+import TrackingNumberField from './AddPackaheModls/TrackingNumberField';
+import RecipientAddressField from './AddPackaheModls/RecipientAddressField';
+import SenderSection from './AddPackaheModls/SenderSection';
+import PackageDetailsSection from './AddPackaheModls/PackageDetailsSection';
+import SenderDetailsSection from './AddPackaheModls/SenderDetailsSection';
+import RecipientSection from './AddPackaheModls/RecipientSection';
+import PaymentSection from './AddPackaheModls/PaymentSection';
+import ServiceOrderSection from './AddPackaheModls/ServiceOrderSection';
+import PackagePropertiesSection from './AddPackaheModls/PackagePropertiesSection';
 interface AddPackageModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
-
 export default function AddPackageModal({ isOpen, onClose }: AddPackageModalProps) {
   const [formData, setFormData] = useState({
     trackingNumber: '',
@@ -25,53 +30,97 @@ export default function AddPackageModal({ isOpen, onClose }: AddPackageModalProp
     dimensions: '',
     specialInstructions: '',
     deliveryDate: '',
-    priority: 'standard'
+    priority: 'standard',
+    commercialName: '',
+    branchAddress: '',
+    shipmentType: '',
+    codAmount: '',
+    collectionMethod: '',
+    serviceType: '',
+    invoiceNumber: '',
+    expectedDeliveryDate: '',
+    expectedPickupDate: '',
+    fragile: false,
+    needsPackaging: false,
+    recipientFingerprint: false,
+    flammable: false,
+    destructible: false,
+    preventOpening: false,
+    preventMeasuring: false
   });
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
+  const [properties, setProperties] = useState({
+    fragile: false,
+    flammable: false,
+    destructible: false,
+    preventOpening: false,
+    preventMeasuring: false
+  });
+  const handlePropertyChange = (name: string, value: boolean) => {
+    setProperties(prev => ({
       ...prev,
       [name]: value
     }));
   };
-
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, checked } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: checked
+    }));
+  };
   const handleTextAreaChange = (name: string) => (value: string) => {
     setFormData(prev => ({
       ...prev,
       [name]: value
     }));
   };
-
   const handleSelectChange = (name: string) => (value: string) => {
     setFormData(prev => ({
       ...prev,
       [name]: value
     }));
   };
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log('Package data:', formData);
     onClose();
   };
-
   const priorityOptions = [
     { value: 'standard', label: 'Standard' },
     { value: 'express', label: 'Express' },
     { value: 'overnight', label: 'Overnight' }
   ];
-
   const packageTypeOptions = [
     { value: 'document', label: 'Document' },
     { value: 'package', label: 'Package' },
     { value: 'fragile', label: 'Fragile' },
     { value: 'electronics', label: 'Electronics' }
   ];
-
+  const branchOptions = [
+    { value: 'branch_1', label: '123 Main St, City' },
+    { value: 'branch_2', label: '456 Oak Ave, City' },
+  ];
+  const shipmentOptions = [
+    { value: 'standard', label: 'Standard Shipping' },
+    { value: 'express', label: 'Express Shipping' },
+    { value: 'overnight', label: 'Overnight Shipping' },
+  ];
+  const collectionOptions = [
+    { value: 'cash', label: 'Cash' },
+    { value: 'digital_wallet', label: 'Digital Wallet' },
+    { value: 'cheque', label: 'Cheque' },
+    { value: 'bank_transfer', label: 'Bank Transfer' },
+    { value: 'paymen_card', label: 'Payment Card' },
+    { value: 'cod', label: 'COD' },
+  ];
+  const serviceOptions = [
+    { value: 'standard', label: 'Standard Service' },
+    { value: 'express', label: 'Express Service' },
+    { value: 'overnight', label: 'Overnight Service' },
+  ];
   return (
     <Modal isOpen={isOpen} onClose={onClose} className="max-w-2xl">
-      <div className="p-6">
+      <div className="p-6 overflow-y-auto max-h-[100vh]">
         <div className="mb-6">
           <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-2">
             Add New Package
@@ -80,142 +129,70 @@ export default function AddPackageModal({ isOpen, onClose }: AddPackageModalProp
             Enter package details to create a new delivery order
           </p>
         </div>
-
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Tracking Number */}
-          <div>
-            <Label htmlFor="trackingNumber">Tracking Number *</Label>
-            <Input
-              type="text"
-              id="trackingNumber"
-              name="trackingNumber"
-              value={formData.trackingNumber}
-              onChange={handleInputChange}
-              placeholder="Enter tracking number"
-            />
-          </div>
-
+            <TrackingNumberField
+            value={formData.trackingNumber}
+            onChange={handleInputChange}
+              />
+            <SenderDetailsSection
+        commercialName={formData.commercialName}
+         branchAddress={formData.branchAddress}
+        branchOptions={branchOptions}
+        onInputChange={handleInputChange}
+        onSelectChange={handleSelectChange}
+          />
           {/* Recipient Information */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <Label htmlFor="recipientName">Recipient Name *</Label>
-              <Input
-                type="text"
-                id="recipientName"
-                name="recipientName"
-                value={formData.recipientName}
-                onChange={handleInputChange}
-                placeholder="Full name"
-              />
-            </div>
-            <div>
-              <Label htmlFor="recipientEmail">Recipient Email *</Label>
-              <Input
-                type="email"
-                id="recipientEmail"
-                name="recipientEmail"
-                value={formData.recipientEmail}
-                onChange={handleInputChange}
-                placeholder="email@example.com"
-              />
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <Label htmlFor="recipientPhone">Recipient Phone *</Label>
-              <Input
-                type="tel"
-                id="recipientPhone"
-                name="recipientPhone"
-                value={formData.recipientPhone}
-                onChange={handleInputChange}
-                placeholder="+1 (555) 123-4567"
-              />
-            </div>
-            <div>
-              <Label htmlFor="priority">Priority</Label>
-              <Select
-                options={priorityOptions}
-                placeholder="Select priority"
-                defaultValue={formData.priority}
-                onChange={handleSelectChange('priority')}
-              />
-            </div>
-          </div>
-
+          <RecipientSection
+            recipientName={formData.recipientName}
+            recipientPhone={formData.recipientPhone}
+            recipientSecondPhone={formData.recipientPhone}
+            priority={formData.priority}
+            priorityOptions={priorityOptions}
+            onInputChange={handleInputChange}
+            onSelectChange={handleSelectChange}/>
           {/* Recipient Address */}
-          <div>
-            <Label htmlFor="recipientAddress">Recipient Address *</Label>
-            <TextArea
-              placeholder="Street address, city, state, postal code"
-              rows={3}
-              value={formData.recipientAddress}
-              onChange={handleTextAreaChange('recipientAddress')}
+          <RecipientAddressField
+          value={formData.recipientAddress}
+          onChange={handleTextAreaChange('recipientAddress')}
             />
-          </div>
-
-          {/* Sender Information */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <Label htmlFor="senderName">Sender Name</Label>
-              <Input
-                type="text"
-                id="senderName"
-                name="senderName"
-                value={formData.senderName}
-                onChange={handleInputChange}
-                placeholder="Sender name"
-              />
-            </div>
-            <div>
-              <Label htmlFor="packageType">Package Type</Label>
-              <Select
-                options={packageTypeOptions}
-                placeholder="Select type"
-                defaultValue={formData.packageType}
-                onChange={handleSelectChange('packageType')}
-              />
-            </div>
-          </div>
-
+            {/*PaymentSection*/}
+            <PaymentSection
+  shipmentType={formData.shipmentType}
+  codAmount={formData.codAmount}
+  collectionMethod={formData.collectionMethod}
+  shipmentOptions={shipmentOptions}
+  collectionOptions={collectionOptions}
+  onInputChange={handleInputChange}
+  onSelectChange={handleSelectChange}
+/>
+<ServiceOrderSection
+  serviceType={formData.serviceType}
+  invoiceNumber={formData.invoiceNumber}
+  expectedDeliveryDate={formData.expectedDeliveryDate}
+  expectedPickupDate={formData.expectedPickupDate}
+  serviceOptions={serviceOptions}
+  onInputChange={handleInputChange}
+  onSelectChange={handleSelectChange}
+/>       {/* Sender Information */}
+          <SenderSection
+          senderName={formData.senderName}
+          packageType={formData.packageType}
+          packageTypeOptions={packageTypeOptions}
+          onInputChange={handleInputChange}
+          onSelectChange={handleSelectChange}
+            />
           {/* Package Details */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div>
-              <Label htmlFor="weight">Weight (kg)</Label>
-              <Input
-                type="number"
-                id="weight"
-                name="weight"
-                value={formData.weight}
-                onChange={handleInputChange}
-                placeholder="0.5"
-                step={0.1}
-              />
-            </div>
-            <div>
-              <Label htmlFor="dimensions">Dimensions (L×W×H)</Label>
-              <Input
-                type="text"
-                id="dimensions"
-                name="dimensions"
-                value={formData.dimensions}
-                onChange={handleInputChange}
-                placeholder="10×10×5 cm"
-              />
-            </div>
-            <div>
-              <Label htmlFor="deliveryDate">Delivery Date</Label>
-              <Input
-                type="date"
-                id="deliveryDate"
-                name="deliveryDate"
-                value={formData.deliveryDate}
-                onChange={handleInputChange}
-              />
-            </div>
-          </div>
-
+          <PackageDetailsSection
+          weight={formData.weight}
+          dimensions={formData.dimensions}
+          deliveryDate={formData.deliveryDate}
+          onInputChange={handleInputChange}
+            />
+<PackagePropertiesSection
+  properties={properties}
+  setProperties={handlePropertyChange}
+/>
           {/* Special Instructions */}
           <div>
             <Label htmlFor="specialInstructions">Special Instructions</Label>
@@ -226,7 +203,6 @@ export default function AddPackageModal({ isOpen, onClose }: AddPackageModalProp
               onChange={handleTextAreaChange('specialInstructions')}
             />
           </div>
-
           {/* Action Buttons */}
           <div className="flex justify-end gap-3 pt-4 border-t border-gray-200 dark:border-gray-700">
             <Button
