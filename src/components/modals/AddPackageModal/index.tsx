@@ -85,39 +85,12 @@ export default function AddPackageModal({ isOpen, onClose }: AddPackageModalProp
     console.log('Package data:', formData);
     onClose();
   };
-  const priorityOptions = [
-    { value: 'standard', label: 'Standard' },
-    { value: 'express', label: 'Express' },
-    { value: 'overnight', label: 'Overnight' }
-  ];
-  const packageTypeOptions = [
-    { value: 'document', label: 'Document' },
-    { value: 'package', label: 'Package' },
-    { value: 'fragile', label: 'Fragile' },
-    { value: 'electronics', label: 'Electronics' }
-  ];
-  const branchOptions = [
-    { value: 'branch_1', label: '123 Main St, City' },
-    { value: 'branch_2', label: '456 Oak Ave, City' },
-  ];
-  const shipmentOptions = [
-    { value: 'standard', label: 'Standard Shipping' },
-    { value: 'express', label: 'Express Shipping' },
-    { value: 'overnight', label: 'Overnight Shipping' },
-  ];
-  const collectionOptions = [
-    { value: 'cash', label: 'Cash' },
-    { value: 'digital_wallet', label: 'Digital Wallet' },
-    { value: 'cheque', label: 'Cheque' },
-    { value: 'bank_transfer', label: 'Bank Transfer' },
-    { value: 'paymen_card', label: 'Payment Card' },
-    { value: 'cod', label: 'COD' },
-  ];
-  const serviceOptions = [
-    { value: 'standard', label: 'Standard Service' },
-    { value: 'express', label: 'Express Service' },
-    { value: 'overnight', label: 'Overnight Service' },
-  ];
+  
+  
+
+ 
+ 
+  
   return (
     <Modal isOpen={isOpen} onClose={onClose} className="max-w-2xl">
       <div className="p-6 overflow-y-auto max-h-[100vh]">
@@ -138,17 +111,25 @@ export default function AddPackageModal({ isOpen, onClose }: AddPackageModalProp
             <SenderDetailsSection
         commercialName={formData.commercialName}
          branchAddress={formData.branchAddress}
-        branchOptions={branchOptions}
+        branchOptions={[
+          { value: 'branch_1', label: '123 Main St, City' },
+          { value: 'branch_2', label: '456 Oak Ave, City' },
+        ]}
         onInputChange={handleInputChange}
         onSelectChange={handleSelectChange}
           />
-          {/* Recipient Information */}
+          {/* Recipient Informati*/}
           <RecipientSection
             recipientName={formData.recipientName}
             recipientPhone={formData.recipientPhone}
             recipientSecondPhone={formData.recipientPhone}
             priority={formData.priority}
-            priorityOptions={priorityOptions}
+            priorityOptions={[
+
+              { value: 'standard', label: 'Standard' },
+              { value: 'express', label: 'Express' },
+              { value: 'overnight', label: 'Overnight' }
+            ]}
             onInputChange={handleInputChange}
             onSelectChange={handleSelectChange}/>
           {/* Recipient Address */}
@@ -161,8 +142,19 @@ export default function AddPackageModal({ isOpen, onClose }: AddPackageModalProp
   shipmentType={formData.shipmentType}
   codAmount={formData.codAmount}
   collectionMethod={formData.collectionMethod}
-  shipmentOptions={shipmentOptions}
-  collectionOptions={collectionOptions}
+  shipmentOptions={[
+    { value: 'standard', label: 'Standard Shipping' },
+    { value: 'express', label: 'Express Shipping' },
+    { value: 'overnight', label: 'Overnight Shipping' },
+  ]}
+  collectionOptions={[
+    { value: 'cash', label: 'Cash' },
+    { value: 'digital_wallet', label: 'Digital Wallet' },
+    { value: 'cheque', label: 'Cheque' },
+    { value: 'bank_transfer', label: 'Bank Transfer' },
+    { value: 'paymen_card', label: 'Payment Card' },
+    { value: 'cod', label: 'COD' },
+  ]}
   onInputChange={handleInputChange}
   onSelectChange={handleSelectChange}
 />
@@ -171,14 +163,23 @@ export default function AddPackageModal({ isOpen, onClose }: AddPackageModalProp
   invoiceNumber={formData.invoiceNumber}
   expectedDeliveryDate={formData.expectedDeliveryDate}
   expectedPickupDate={formData.expectedPickupDate}
-  serviceOptions={serviceOptions}
+  serviceOptions={[
+    { value: 'standard', label: 'Standard Service' },
+    { value: 'express', label: 'Express Service' },
+    { value: 'overnight', label: 'Overnight Service' },
+  ]}
   onInputChange={handleInputChange}
   onSelectChange={handleSelectChange}
 />       {/* Sender Information */}
           <SenderSection
           senderName={formData.senderName}
           packageType={formData.packageType}
-          packageTypeOptions={packageTypeOptions}
+          packageTypeOptions={[
+    { value: 'document', label: 'Document' },
+    { value: 'package', label: 'Package' },
+    { value: 'fragile', label: 'Fragile' },
+    { value: 'electronics', label: 'Electronics' }
+          ]}
           onInputChange={handleInputChange}
           onSelectChange={handleSelectChange}
             />
