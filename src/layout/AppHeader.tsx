@@ -7,7 +7,7 @@ import { ThemeToggleButton } from "../components/common/ThemeToggleButton";
 import NotificationDropdown from "../components/header/NotificationDropdown";
 import UserDropdown from "../components/header/UserDropdown";
 import LanguageSwitcher from "../components/header/LanguageSwitcher";
-import AddPackageModal from "../components/modals/AddPackageModal";
+import AddPackageModal from "../components/modals/AddPackageModls/AddPackageModal";
 import Button from "../components/ui/button/Button";
 import InputField from "../components/form/input/InputField";
 
