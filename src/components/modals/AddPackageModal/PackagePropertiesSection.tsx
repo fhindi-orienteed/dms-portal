@@ -1,19 +1,21 @@
-
 interface Props {
   properties: Record<string, boolean>;
   setProperties: (name: string, value: boolean) => void;
 }
 
-export default function PackagePropertiesSection({ properties, setProperties }: Props) {
+export default function PackagePropertiesSection({
+  properties,
+  setProperties,
+}: Props) {
   const propsList = [
-    { key: 'fragile', label: 'Fragile' },
-    { key: 'needsPackaging', label: 'Needs Packaging' },
-    { key: 'recipientFingerprint', label: 'Recipient fingerprint required' },
-    { key: 'flammable', label: 'Contains Flammable or dangerous materials' },
-    { key: 'destructible', label: 'Destructible' },
-    { key: 'preventOpening', label: 'Prevent opening' },
-    { key: 'deliveryNote', label: 'Delivery Note' },
-    { key: 'preventMeasuring', label: 'Prevent Measuring' },
+    { key: "fragile", label: "Fragile" },
+    { key: "needsPackaging", label: "Needs Packaging" },
+    { key: "recipientFingerprint", label: "Recipient fingerprint required" },
+    { key: "flammable", label: "Contains Flammable or dangerous materials" },
+    { key: "destructible", label: "Destructible" },
+    { key: "preventOpening", label: "Prevent opening" },
+    { key: "deliveryNote", label: "Delivery Note" },
+    { key: "preventMeasuring", label: "Prevent Measuring" },
   ];
 
   return (
@@ -30,8 +32,8 @@ export default function PackagePropertiesSection({ properties, setProperties }: 
               onClick={() => setProperties(prop.key, !isSelected)}
               className={`cursor-pointer p-4 rounded-lg border transition ${
                 isSelected
-                  ? 'bg-blue-600 text-white border-blue-600'
-                  : 'bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200'
+                  ? "bg-blue-600 text-white border-blue-600"
+                  : "bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200"
               }`}
             >
               <div className="flex items-center justify-between">
@@ -44,7 +46,11 @@ export default function PackagePropertiesSection({ properties, setProperties }: 
                     strokeWidth="2"
                     viewBox="0 0 24 24"
                   >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M5 13l4 4L19 7"
+                    />
                   </svg>
                 )}
               </div>

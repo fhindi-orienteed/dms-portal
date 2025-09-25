@@ -1,7 +1,7 @@
-import React from 'react';
-import Input from '../../form/input/InputField';
-import Select from '../../form/Select';
-import Label from '../../form/Label';
+import React from "react";
+import Input from "../../form/input/InputField";
+import Select from "../../form/Select";
+import Label from "../../form/Label";
 
 interface Option {
   value: string;
@@ -21,7 +21,7 @@ export default function SenderDetailsSection({
   branchAddress,
   branchOptions,
   onInputChange,
-  onSelectChange
+  onSelectChange,
 }: Props) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -42,7 +42,7 @@ export default function SenderDetailsSection({
           options={branchOptions}
           placeholder="Select branch address"
           defaultValue={branchAddress}
-          onChange={onSelectChange('branchAddress')}
+          onChange={onSelectChange("branchAddress")}
         />
       </div>
     </div>

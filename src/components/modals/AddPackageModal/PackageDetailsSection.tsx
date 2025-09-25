@@ -1,6 +1,6 @@
-import React from 'react';
-import Input from '../../form/input/InputField';
-import Label from '../../form/Label';
+import React from "react";
+import Input from "../../form/input/InputField";
+import Label from "../../form/Label";
 
 interface Props {
   weight: string;
@@ -13,7 +13,7 @@ export default function PackageDetailsSection({
   weight,
   dimensions,
   deliveryDate,
-  onInputChange
+  onInputChange,
 }: Props) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">

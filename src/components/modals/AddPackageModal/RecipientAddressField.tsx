@@ -1,5 +1,5 @@
-import TextArea from '../../form/input/TextArea';
-import Label from '../../form/Label';
+import TextArea from "../../form/input/TextArea";
+import Label from "../../form/Label";
 
 interface Props {
   value: string;

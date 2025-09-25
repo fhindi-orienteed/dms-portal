@@ -1,7 +1,7 @@
-import React from 'react';
-import Input from '../../form/input/InputField';
-import Select from '../../form/Select';
-import Label from '../../form/Label';
+import React from "react";
+import Input from "../../form/input/InputField";
+import Select from "../../form/Select";
+import Label from "../../form/Label";
 
 interface Option {
   value: string;
@@ -25,7 +25,7 @@ export default function PaymentSection({
   shipmentOptions,
   collectionOptions,
   onInputChange,
-  onSelectChange
+  onSelectChange,
 }: Props) {
   return (
     <div className="space-y-4">
@@ -36,7 +36,7 @@ export default function PaymentSection({
           options={shipmentOptions}
           placeholder="Select shipment type"
           defaultValue={shipmentType}
-          onChange={onSelectChange('shipmentType')}
+          onChange={onSelectChange("shipmentType")}
           className="w-full border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
       </div>
@@ -62,7 +62,7 @@ export default function PaymentSection({
           options={collectionOptions}
           placeholder="Select collection method"
           defaultValue={collectionMethod}
-          onChange={onSelectChange('collectionMethod')}
+          onChange={onSelectChange("collectionMethod")}
           className="w-full border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
       </div>

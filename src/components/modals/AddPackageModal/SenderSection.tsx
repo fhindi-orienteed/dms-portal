@@ -1,7 +1,7 @@
-import React from 'react';
-import Input from '../../form/input/InputField';
-import Select from '../../form/Select';
-import Label from '../../form/Label';
+import React from "react";
+import Input from "../../form/input/InputField";
+import Select from "../../form/Select";
+import Label from "../../form/Label";
 
 interface Option {
   value: string;
@@ -21,7 +21,7 @@ export default function SenderSection({
   packageType,
   packageTypeOptions,
   onInputChange,
-  onSelectChange
+  onSelectChange,
 }: Props) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -42,7 +42,7 @@ export default function SenderSection({
           options={packageTypeOptions}
           placeholder="Select type"
           defaultValue={packageType}
-          onChange={onSelectChange('packageType')}
+          onChange={onSelectChange("packageType")}
         />
       </div>
     </div>

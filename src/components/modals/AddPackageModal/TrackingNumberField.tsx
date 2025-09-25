@@ -1,7 +1,6 @@
-
-import React from 'react';
-import Input from '../../form/input/InputField';
-import Label from '../../form/Label';
+import React from "react";
+import Input from "../../form/input/InputField";
+import Label from "../../form/Label";
 
 interface Props {
   value: string;

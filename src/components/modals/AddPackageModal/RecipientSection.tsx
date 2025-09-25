@@ -1,7 +1,7 @@
-import React from 'react';
-import Input from '../../form/input/InputField';
-import Select from '../../form/Select';
-import Label from '../../form/Label';
+import React from "react";
+import Input from "../../form/input/InputField";
+import Select from "../../form/Select";
+import Label from "../../form/Label";
 
 interface Option {
   value: string;
@@ -25,7 +25,7 @@ export default function RecipientSection({
   priority,
   priorityOptions,
   onInputChange,
-  onSelectChange
+  onSelectChange,
 }: Props) {
   return (
     <div className="space-y-4">
@@ -81,7 +81,7 @@ export default function RecipientSection({
           options={priorityOptions}
           placeholder="Select priority"
           defaultValue={priority}
-          onChange={onSelectChange('priority')}
+          onChange={onSelectChange("priority")}
           className="w-full border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
       </div>
