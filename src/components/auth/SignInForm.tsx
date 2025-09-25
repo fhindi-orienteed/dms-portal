@@ -11,16 +11,20 @@ import { useTracking } from "../../hooks/useTracking";
 import { authService } from "../../services";
 import { useAuth } from "../../context/AuthContext";
 import { showToast } from "../../utils/toast";
+import { loginSchema, LoginFormData } from "../../validation/loginSchema";
+import { z } from "zod";
 
 export default function SignInForm() {
   const [showPassword, setShowPassword] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
   const [showSignIn, setShowSignIn] = useState(true);
   
-  const [credentials, setCredentials] = useState({
+  const [credentials, setCredentials] = useState<LoginFormData>({
     userName: '',
     password: ''
   });
+  
+  const [validationErrors, setValidationErrors] = useState<Partial<LoginFormData>>({});
   const [isLoading, setIsLoading] = useState(false);
   const [loginError, setLoginError] = useState<string | null>(null);
   
@@ -42,17 +46,43 @@ export default function SignInForm() {
     setShowSignIn(true);
   };
 
+  const validateForm = (): boolean => {
+    try {
+      loginSchema.parse(credentials);
+      setValidationErrors({});
+      return true;
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        const errors: Partial<LoginFormData> = {};
+        error.errors.forEach((err) => {
+          const path = err.path[0] as keyof LoginFormData;
+          errors[path] = err.message;
+        });
+        setValidationErrors(errors);
+        
+        // Show first error in toast
+        const firstError = error.errors[0];
+        if (firstError) {
+          showToast.error(firstError.message);
+        }
+      }
+      return false;
+    }
+  };
+
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!credentials.userName || !credentials.password) {
-      setLoginError('Please enter both username and password');
+    // Clear previous errors
+    setLoginError(null);
+    
+    // Validate form
+    if (!validateForm()) {
       return;
     }
 
     try {
       setIsLoading(true);
-      setLoginError(null);
       
       const response = await authService.login(credentials);
       
@@ -84,12 +114,53 @@ export default function SignInForm() {
   };
 
   const handleInputChange = (field: 'userName' | 'password') => (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    
     setCredentials(prev => ({
       ...prev,
-      [field]: e.target.value
+      [field]: value
     }));
+    
+    // Clear validation error for this field when user starts typing
+    if (validationErrors[field]) {
+      setValidationErrors(prev => ({
+        ...prev,
+        [field]: undefined
+      }));
+    }
+    
+    // Clear general login error
     if (loginError) {
       setLoginError(null);
+    }
+  };
+
+  // Real-time validation on blur
+  const handleInputBlur = (field: 'userName' | 'password') => () => {
+    // Validate only the specific field
+    const result = loginSchema.safeParse(credentials);
+    
+    if (!result.success) {
+      const fieldError = result.error.errors.find(err => 
+        err.path[0] === field
+      );
+      
+      if (fieldError) {
+        setValidationErrors(prev => ({
+          ...prev,
+          [field]: fieldError.message
+        }));
+      }
+    }
+  };
+
+  // Check if form is valid for button disabled state
+  const isFormValid = () => {
+    try {
+      loginSchema.parse(credentials);
+      return true;
+    } catch {
+      return false;
     }
   };
 
@@ -98,21 +169,20 @@ export default function SignInForm() {
       {/* Track Package Form - TOP */}
       <TrackPackage onTrack={handleTrack} isTracking={isTracking} />
 
-
-    {isTracking || !trackingResult && (  
-      <>
-        <div className="relative py-3 sm:py-5 w-full max-w-md mx-auto mt-4">
-              <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-gray-200 dark:border-gray-800"></div>
-              </div>
-              <div className="relative flex justify-center text-sm">
-                <span className="p-2 text-gray-400 bg-white dark:bg-gray-900 sm:px-5 sm:py-2">
-                  Or
-                </span>
-              </div>
-        </div>
-      </>
-    )}
+      {isTracking || !trackingResult && (  
+        <>
+          <div className="relative py-3 sm:py-5 w-full max-w-md mx-auto mt-4">
+            <div className="absolute inset-0 flex items-center">
+              <div className="w-full border-t border-gray-200 dark:border-gray-800"></div>
+            </div>
+            <div className="relative flex justify-center text-sm">
+              <span className="p-2 text-gray-400 bg-white dark:bg-gray-900 sm:px-5 sm:py-2">
+                Or
+              </span>
+            </div>
+          </div>
+        </>
+      )}
 
       {/* Tracking Results or Sign In Form */}
       {trackingResult ? (
@@ -133,7 +203,6 @@ export default function SignInForm() {
               </p>
             </div>
             
-           
             <form onSubmit={handleLogin}>
               <div className="space-y-6">
                 <div>
@@ -144,9 +213,13 @@ export default function SignInForm() {
                     placeholder="Enter your username" 
                     value={credentials.userName}
                     onChange={handleInputChange('userName')}
+                    onBlur={handleInputBlur('userName')}
                     disabled={isLoading}
+                    error={!!validationErrors.userName}
+                    hint={validationErrors.userName}
                   />
                 </div>
+                
                 <div>
                   <Label>
                     Password <span className="text-error-500">*</span>{" "}
@@ -157,7 +230,10 @@ export default function SignInForm() {
                       placeholder="Enter your password"
                       value={credentials.password}
                       onChange={handleInputChange('password')}
+                      onBlur={handleInputBlur('password')}
                       disabled={isLoading}
+                      error={!!validationErrors.password}
+                      hint={validationErrors.password}
                     />
                     <span
                       onClick={() => setShowPassword(!showPassword)}
@@ -171,6 +247,7 @@ export default function SignInForm() {
                     </span>
                   </div>
                 </div>
+                
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <Checkbox checked={isChecked} onChange={setIsChecked} />
@@ -192,7 +269,7 @@ export default function SignInForm() {
                     size="md"
                     variant="primary"
                     type="submit"
-                    disabled={isLoading}
+                    disabled={isLoading || !isFormValid()}
                     loading={isLoading}
                   >
                     {isLoading ? 'Signing in...' : 'Sign in'}
