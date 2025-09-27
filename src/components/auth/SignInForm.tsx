@@ -54,14 +54,14 @@ export default function SignInForm() {
     } catch (error) {
       if (error instanceof z.ZodError) {
         const errors: Partial<LoginFormData> = {};
-        error.errors.forEach((err) => {
-          const path = err.path[0] as keyof LoginFormData;
-          errors[path] = err.message;
+        error.issues.forEach((issue) => {
+          const path = issue.path[0] as keyof LoginFormData;
+          errors[path] = issue.message;
         });
         setValidationErrors(errors);
         
         // Show first error in toast
-        const firstError = error.errors[0];
+        const firstError = error.issues[0];
         if (firstError) {
           showToast.error(firstError.message);
         }
@@ -95,19 +95,28 @@ export default function SignInForm() {
       showToast.success('Success! Login completed successfully!');
       
       navigate('/');
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Login error:', error);
       
       let errorMessage = 'Login failed. Please try again.';
       
-      if (error.status === 401) {
-        errorMessage = 'Invalid username or password';
-      } else if (error.status === 403) {
-        errorMessage = 'Access denied. Please contact administrator.';
-      } else if (error.isNetworkError) {
-        errorMessage = 'Network error. Please check your connection.';
-      } else {
-        errorMessage = error.message || errorMessage;
+      // Type guard to check if error has expected properties
+      if (error && typeof error === 'object') {
+        const err = error as { 
+          status?: number; 
+          message?: string; 
+          isNetworkError?: boolean; 
+        };
+        
+        if (err.status === 401) {
+          errorMessage = 'Invalid username or password';
+        } else if (err.status === 403) {
+          errorMessage = 'Access denied. Please contact administrator.';
+        } else if (err.isNetworkError) {
+          errorMessage = 'Network error. Please check your connection.';
+        } else if (err.message) {
+          errorMessage = err.message;
+        }
       }
       
       setLoginError(errorMessage);
@@ -117,7 +126,7 @@ export default function SignInForm() {
     }
   };
 
-  const handleInputChange = (field: 'userName' | 'password') => (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (field: keyof LoginFormData) => (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     
     setCredentials(prev => ({
@@ -140,13 +149,13 @@ export default function SignInForm() {
   };
 
   // Real-time validation on blur
-  const handleInputBlur = (field: 'userName' | 'password') => () => {
+  const handleInputBlur = (field: keyof LoginFormData) => () => {
     // Validate only the specific field
     const result = loginSchema.safeParse(credentials);
     
     if (!result.success) {
-      const fieldError = result.error.errors.find(err => 
-        err.path[0] === field
+      const fieldError = result.error.issues.find(issue => 
+        issue.path[0] === field
       );
       
       if (fieldError) {
@@ -163,7 +172,7 @@ export default function SignInForm() {
       {/* Track Package Form - TOP */}
       <TrackPackage onTrack={handleTrack} isTracking={isTracking} />
 
-      {isTracking || !trackingResult && (  
+      {(isTracking || !trackingResult) && (  
         <>
           <div className="relative py-3 sm:py-5 w-full max-w-md mx-auto mt-4">
             <div className="absolute inset-0 flex items-center">
