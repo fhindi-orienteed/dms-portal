@@ -76,9 +76,13 @@ export default function SignInForm() {
     // Clear previous errors
     setLoginError(null);
     
-    // Validate form
-    if (!validateForm()) {
-      return;
+    // Validate form but don't prevent submission
+    const isValid = validateForm();
+    
+    // If form is invalid, we still allow submission but show validation errors
+    if (!isValid) {
+      // We'll let the server handle the final validation
+      console.log('Form has validation errors, but allowing submission');
     }
 
     try {
@@ -151,16 +155,6 @@ export default function SignInForm() {
           [field]: fieldError.message
         }));
       }
-    }
-  };
-
-  // Check if form is valid for button disabled state
-  const isFormValid = () => {
-    try {
-      loginSchema.parse(credentials);
-      return true;
-    } catch {
-      return false;
     }
   };
 
@@ -269,7 +263,7 @@ export default function SignInForm() {
                     size="md"
                     variant="primary"
                     type="submit"
-                    disabled={isLoading || !isFormValid()}
+                    disabled={isLoading} // Only disable when loading, not for validation errors
                     loading={isLoading}
                   >
                     {isLoading ? 'Signing in...' : 'Sign in'}
