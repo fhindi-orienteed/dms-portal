@@ -18,6 +18,11 @@ import DataTables from "./components/tables/DataTables/DataTableOne";
 import FormElements from "./pages/Forms/FormElements";
 import Blank from "./pages/Blank";
 import AllNotifications from "./pages/AllNotifications";
+import AllPackages from "./pages/Packages/AllPackages";
+import InTransitPackages from "./pages/Packages/InTransitPackages";
+import DeliveredPackages from "./pages/Packages/DeliveredPackages";
+import PendingPackages from "./pages/Packages/PendingPackages";
+import FailedDeliveryPackages from "./pages/Packages/FailedDeliveryPackages";
 import AppLayout from "./layout/AppLayout";
 import { ScrollToTop } from "./components/common/ScrollToTop";
 import Home from "./pages/Dashboard/Home";
@@ -123,6 +128,32 @@ export default function App() {
               <Route path="/notifications" element={
                 <ProtectedRoute>
                   <AllNotifications />
+                </ProtectedRoute>
+              } />
+
+              <Route path="/packages" element={
+                <ProtectedRoute>
+                  <AllPackages />
+                </ProtectedRoute>
+              } />
+              <Route path="/packages/in-transit" element={
+                <ProtectedRoute>
+                  <InTransitPackages />
+                </ProtectedRoute>
+              } />
+              <Route path="/packages/delivered" element={
+                <ProtectedRoute>
+                  <DeliveredPackages />
+                </ProtectedRoute>
+              } />
+              <Route path="/packages/pending" element={
+                <ProtectedRoute>
+                  <PendingPackages />
+                </ProtectedRoute>
+              } />
+              <Route path="/packages/failed" element={
+                <ProtectedRoute>
+                  <FailedDeliveryPackages />
                 </ProtectedRoute>
               } />
 

@@ -150,7 +150,19 @@
     "inTransit": "In Transit",
     "delivered": "Delivered",
     "pending": "Pending",
-    "failedDelivery": "Failed Delivery"
+    "failedDelivery": "Failed Delivery",
+    "packagesList": "Packages List",
+    "trackingNumber": "Tracking Number",
+    "recipient": "Recipient",
+    "packageDetails": "Package Details",
+    "carrier": "Carrier",
+    "createdDate": "Created Date",
+    "status": {
+      "Pending": "Pending",
+      "InTransit": "In Transit",
+      "Delivered": "Delivered",
+      "FailedDelivery": "Failed Delivery"
+    }
   },
   "followUps": {
     "customer": "Customer Follow-ups",
