@@ -30,6 +30,8 @@ import { AppConfigProvider } from "./context/AppConfig";
 import { AuthProvider } from "./context/AuthContext";
 import { ProtectedRoute } from "./components/auth/ProtectedRoute";
 import { Toaster } from 'react-hot-toast';
+import ForgotPassword from "./pages/AuthPages/ForgotPassword";
+
 
 export default function App() {
   return (
@@ -161,6 +163,7 @@ export default function App() {
 
             <Route path="/signin" element={<SignIn />} />
             <Route path="/signup" element={<SignUp />} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
 
             {/* Fallback Route */}
             <Route path="*" element={<NotFound />} />
