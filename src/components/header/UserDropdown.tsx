@@ -9,7 +9,6 @@ import { useTranslation } from "react-i18next";
 export default function UserDropdown() {
   const [isOpen, setIsOpen] = useState(false);
   const { user, logout } = useAuth();
-  
   const navigate = useNavigate();
  const { i18n } = useTranslation();
   const isRTL = i18n.language === "ar";
