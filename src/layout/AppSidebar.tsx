@@ -48,11 +48,12 @@ const navItems: NavItem[] = [
     icon: <GridIcon />,
     name: t('sidebar.summary'),
     path: "/",
+     
   },
   
   {
     icon: <BoxIcon />,
-    name: t('sidebar.packageList'),
+    name: t('sidebar.Packages'),
     subItems: [
       { name: t('packages.allPackages'), path: "/packages", pro: false },
       { name: t('packages.inTransit'), path: "/packages/in-transit", pro: false },
