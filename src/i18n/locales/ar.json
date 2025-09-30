@@ -183,10 +183,11 @@
     "trackPackage": "تتبع الطرد",
     "bulkTracking": "تتبع جماعي",
     "trackingHistory": "سجل التتبع"
-  },"customers": {
+  },
+  "customers": {
     "customerList": "قائمة العملاء",
-    "customerDetails": "تفاصيل العميل",
-    "customerSupport": "دعم العملاء"
+    "blackList": "القائمة السوداء",
+    "customerSegment": "تصنيف العملاء"
   },
   "drivers": {
     "driverList": "قائمة السائقين",

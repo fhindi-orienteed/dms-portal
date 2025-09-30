@@ -46,18 +46,10 @@ const navItems: NavItem[] = [
   
   {
     icon: <GridIcon />,
-    name: t('sidebar.dashboard'),
+    name: t('sidebar.summary'),
     path: "/",
   },
-  {
-    icon: <PieChartIcon />,
-    name: t('sidebar.summary'),
-    subItems: [
-      { name: t('summary.overview'), path: "/summary/overview", pro: false },
-      { name: t('summary.analytics'), path: "/summary/analytics", pro: false },
-      { name: t('summary.performance'), path: "/summary/performance", pro: false },
-    ],
-  },
+  
   {
     icon: <BoxIcon />,
     name: t('sidebar.packageList'),
@@ -129,8 +121,8 @@ const othersItems: NavItem[] = [
     name: t('sidebar.customers'),
     subItems: [
       { name: t('customers.customerList'), path: "/customers", pro: false },
-      { name: t('customers.customerDetails'), path: "/customers/details", pro: false },
-      { name: t('customers.customerSupport'), path: "/customers/support", pro: false },
+      { name: t('customers.blackList'), path: "/customers/blacklist", pro: false },
+      { name: t('customers.customerSegment'), path: "/customers/segment", pro: false },
     ],
   },
   {
@@ -413,19 +405,7 @@ const othersItems: NavItem[] = [
         <nav className="mb-6">
           <div className="flex flex-col gap-4">
             <div>
-              <h2
-                className={`mb-4 text-xs uppercase flex leading-[20px] text-gray-400 ${
-                  !isExpanded && !isHovered
-                    ? "lg:justify-center"
-                    : "justify-start"
-                }`}
-              >
-                {isExpanded || isHovered || isMobileOpen ? (
-                  t('sidebar.mainMenu')
-                ) : (
-                  <HorizontaLDots className="size-6" />
-                )}
-              </h2>
+              
               {renderMenuItems(navItems, "main")}
             </div>
             <div className="">
