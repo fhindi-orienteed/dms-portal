@@ -6,15 +6,12 @@ import Button from "../ui/button/Button";
 import { showToast } from "../../utils/toast";
 import { z } from "zod";
 import { authService } from "../../services";
-
-// Schema للتحقق من الإيميل
-const forgotPasswordSchema = z.object({
-  email: z.string().email("Please enter a valid email address"),
-});
-
-type ForgotPasswordFormData = z.infer<typeof forgotPasswordSchema>;
+import { useTranslation } from "../../hooks/useTranslation";
+import { forgotPasswordSchema, ForgotPasswordFormData } from "../../validation/forgotPasswordSchema";
 
 export default function ForgotPasswordForm() {
+  const { t } = useTranslation();
+
   const [formData, setFormData] = useState<ForgotPasswordFormData>({ email: "" });
   const [validationError, setValidationError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -28,21 +25,20 @@ export default function ForgotPasswordForm() {
     e.preventDefault();
 
     try {
-      forgotPasswordSchema.parse(formData); // تحقق محلي
+      forgotPasswordSchema.parse(formData); 
       setValidationError(null);
 
       setIsLoading(true);
-      // هنا بتعملي الريكوست للـ API الخاص بالـ forgot password
       await authService.forgotPassword(formData.email);
 
-      showToast.success("Password reset instructions sent to your email!");
+      showToast.success(t("forgotPassword.successMessage"));
     } catch (error) {
       if (error instanceof z.ZodError) {
-        const firstError = error.issues[0]?.message || "Invalid input";
+        const firstError = error.issues[0]?.message || t("forgotPassword.invalidInput");
         setValidationError(firstError);
         showToast.error(firstError);
       } else {
-        showToast.error("Something went wrong. Please try again.");
+        showToast.error(t("forgotPassword.errorMessage"));
       }
     } finally {
       setIsLoading(false);
@@ -53,19 +49,21 @@ export default function ForgotPasswordForm() {
     <div className="flex flex-col justify-center w-full max-w-md mx-auto">
       <div className="mb-5 sm:mb-8">
         <h1 className="mb-2 font-semibold text-gray-800 text-title-sm dark:text-white/90 sm:text-title-md">
-          Forgot Password
+          {t("forgotPassword.title")}
         </h1>
         <p className="text-sm text-gray-500 dark:text-gray-400">
-          Enter your email address and we’ll send you instructions to reset your password.
+          {t("forgotPassword.subtitle")}
         </p>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-6">
         <div>
-          <Label>Email <span className="text-error-500">*</span></Label>
+          <Label>
+            {t("forgotPassword.emailLabel")} <span className="text-error-500">*</span>
+          </Label>
           <Input
             type="email"
-            placeholder="Enter your email"
+            placeholder={t("forgotPassword.emailPlaceholder")}
             value={formData.email}
             onChange={handleInputChange}
             disabled={isLoading}
@@ -82,7 +80,7 @@ export default function ForgotPasswordForm() {
           disabled={isLoading}
           loading={isLoading}
         >
-          {isLoading ? "Sending..." : "Send Reset Link"}
+          {isLoading ? t("forgotPassword.sending") : t("forgotPassword.submitButton")}
         </Button>
       </form>
 
@@ -91,7 +89,7 @@ export default function ForgotPasswordForm() {
           to="/signin"
           className="text-sm text-brand-500 hover:text-brand-600 dark:text-brand-400"
         >
-          Back to Sign In
+          {t("forgotPassword.backToSignIn")}
         </Link>
       </div>
     </div>

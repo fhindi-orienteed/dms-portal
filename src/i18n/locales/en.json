@@ -256,11 +256,16 @@
     "file": "File",
     "assignment": "Assignment"
   },
-  "ForgotPassword": {
+  "forgotPassword": {
     "title": "Forgot Password",
-    "email": "Email",
-    "submit": "Submit",
+    "subtitle": "Enter your email address and we’ll send you instructions to reset your password.",
+    "emailLabel": "Email",
+    "emailPlaceholder": "Enter your email",
+    "submitButton": "Send Reset Link",
+    "sending": "Sending...",
     "backToSignIn": "Back to Sign In",
-    "instruction": "Enter your email address below and we'll send you a link to reset your password."
+    "successMessage": "Password reset instructions sent to your email!",
+    "invalidInput": "Invalid input",
+    "errorMessage": "Something went wrong. Please try again."
   }
 }
