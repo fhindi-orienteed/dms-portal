@@ -51,6 +51,10 @@ const AppHeader: React.FC = () => {
     };
   }, []);
 
+  function handleCustomerInquiry(): void {
+    alert("Customer Inquiry button clicked!");
+  }
+
   return (
     <>
       <header className="sticky top-0 flex w-full bg-white border-gray-200 z-99 dark:border-gray-800 dark:bg-gray-900 lg:border-b">
@@ -92,7 +96,7 @@ const AppHeader: React.FC = () => {
                   />
                 </svg>
               )}
-            {/* Cross Icon */}
+              {/* Cross Icon */}
             </button>
 
             <Link to="/" className="lg:hidden">
@@ -152,7 +156,7 @@ const AppHeader: React.FC = () => {
                     <InputField
                       ref={inputRef}
                       type="text"
-                      placeholder={t('header.searchPlaceholder')}
+                      placeholder={t("header.searchPlaceholder")}
                       className="pl-12 pr-14"
                     />
                     <button className="absolute right-2.5 top-1/2 inline-flex -translate-y-1/2 items-center gap-0.5 rounded-lg border border-gray-200 bg-gray-50 px-[7px] py-[4.5px] text-xs -tracking-[0.2px] text-gray-500 dark:border-gray-800 dark:bg-white/[0.03] dark:text-gray-400">
@@ -162,7 +166,6 @@ const AppHeader: React.FC = () => {
                   </div>
                 </div>
               </form>
-
             </div>
           </div>
           <div
@@ -178,7 +181,21 @@ const AppHeader: React.FC = () => {
                 size="md"
                 className="bg-brand-500 hover:bg-brand-600"
               >
-                <span className="hidden sm:inline">{t('common.addPackage')}</span>
+                <span className="hidden sm:inline">
+                  {t("common.addPackage")}
+                </span>
+              </Button>
+
+              {/* Customer Inquiry Button */}
+              <Button
+                onClick={handleCustomerInquiry}
+                variant="primary"
+                size="md"
+                className="bg-brand-500 hover:bg-brand-600"
+              >
+                <span className="hidden sm:inline">
+                  {t("common.customerInquiry")}
+                </span>
               </Button>
 
               {/* Language Switcher */}
@@ -186,11 +203,11 @@ const AppHeader: React.FC = () => {
 
               {/* Dark Mode Toggler */}
               <ThemeToggleButton />
-              
+
               {/* Notification Menu */}
               <NotificationDropdown />
             </div>
-            
+
             {/* User Area */}
             <UserDropdown />
           </div>
@@ -198,9 +215,9 @@ const AppHeader: React.FC = () => {
       </header>
 
       {/* Add Package Modal */}
-      <AddPackageModal 
-        isOpen={isAddPackageModalOpen} 
-        onClose={() => setIsAddPackageModalOpen(false)} 
+      <AddPackageModal
+        isOpen={isAddPackageModalOpen}
+        onClose={() => setIsAddPackageModalOpen(false)}
       />
     </>
   );
