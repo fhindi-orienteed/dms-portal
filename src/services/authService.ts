@@ -17,4 +17,8 @@ export const authService = {
   logout: (): void => {
     apiUtils.auth.clearAll();
   },
+  
+  forgotPassword: async (email: string): Promise<void> => {
+    await api.post('/auth/forgot-password', { email });
+  },
 };

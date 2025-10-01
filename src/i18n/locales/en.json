@@ -255,5 +255,17 @@
     "comment": "Comment",
     "file": "File",
     "assignment": "Assignment"
+  },
+  "forgotPassword": {
+    "title": "Forgot Password",
+    "subtitle": "Enter your email address and we’ll send you instructions to reset your password.",
+    "emailLabel": "Email",
+    "emailPlaceholder": "Enter your email",
+    "submitButton": "Send Reset Link",
+    "sending": "Sending...",
+    "backToSignIn": "Back to Sign In",
+    "successMessage": "Password reset instructions sent to your email!",
+    "invalidInput": "Invalid input",
+    "errorMessage": "Something went wrong. Please try again."
   }
 }
