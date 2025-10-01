@@ -56,7 +56,7 @@
     "additionalFeatures": "Additional Features",
     "summary": "Summary",
     "overview": "Overview",
-    "packageList": "Package List",
+    "Packages": "Packages",
     "followUps": "Follow Ups",
     "reports": "Reports",
     "payments": "Payments",
@@ -197,8 +197,8 @@
   },
   "customers": {
     "customerList": "Customer List",
-    "customerDetails": "Customer Details",
-    "customerSupport": "Customer Support"
+    "blackList": "Black List",
+    "customerSegment": "Customer Segment"
   },
   "drivers": {
     "driverList": "Driver List",

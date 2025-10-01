@@ -91,7 +91,6 @@ export default function SignInForm() {
       const response = await authService.login(credentials);
       
       login(response.user, response.accessToken);
-      
       showToast.success('Success! Login completed successfully!');
       
       navigate('/');
