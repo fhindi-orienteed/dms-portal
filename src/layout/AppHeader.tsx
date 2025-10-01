@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-
 import { Link } from "react-router";
 import { useSidebar } from "../context/SidebarContext";
 import { useLanguage } from "../context/LanguageContext";
@@ -10,14 +9,11 @@ import LanguageSwitcher from "../components/header/LanguageSwitcher";
 import AddPackageModal from "../components/modals/AddPackageModal";
 import Button from "../components/ui/button/Button";
 import InputField from "../components/form/input/InputField";
-
 const AppHeader: React.FC = () => {
   const [isApplicationMenuOpen, setApplicationMenuOpen] = useState(false);
   const [isAddPackageModalOpen, setIsAddPackageModalOpen] = useState(false);
-
   const { isMobileOpen, toggleSidebar, toggleMobileSidebar } = useSidebar();
   const { t } = useLanguage();
-
   const handleToggle = () => {
     if (window.innerWidth >= 1024) {
       toggleSidebar();
@@ -25,17 +21,13 @@ const AppHeader: React.FC = () => {
       toggleMobileSidebar();
     }
   };
-
   const toggleApplicationMenu = () => {
     setApplicationMenuOpen(!isApplicationMenuOpen);
   };
-
   const handleAddPackage = () => {
     setIsAddPackageModalOpen(true);
   };
-
   const inputRef = useRef<HTMLInputElement>(null);
-
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if ((event.metaKey || event.ctrlKey) && event.key === "k") {
@@ -43,18 +35,14 @@ const AppHeader: React.FC = () => {
         inputRef.current?.focus();
       }
     };
-
     document.addEventListener("keydown", handleKeyDown);
-
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
     };
   }, []);
-
   function handleCustomerInquiry(): void {
     alert("Customer Inquiry button clicked!");
   }
-
   return (
     <>
       <header className="sticky top-0 flex w-full bg-white border-gray-200 z-99 dark:border-gray-800 dark:bg-gray-900 lg:border-b">
@@ -98,7 +86,6 @@ const AppHeader: React.FC = () => {
               )}
               {/* Cross Icon */}
             </button>
-
             <Link to="/" className="lg:hidden">
               <img
                 className="dark:hidden"
@@ -111,7 +98,6 @@ const AppHeader: React.FC = () => {
                 alt="Logo"
               />
             </Link>
-
             <button
               onClick={toggleApplicationMenu}
               className="flex items-center justify-center w-10 h-10 text-gray-700 rounded-lg z-99999 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800 lg:hidden"
@@ -131,7 +117,6 @@ const AppHeader: React.FC = () => {
                 />
               </svg>
             </button>
-
             <div className="hidden lg:block">
               <form>
                 <div className="relative">
@@ -185,7 +170,6 @@ const AppHeader: React.FC = () => {
                   {t("common.addPackage")}
                 </span>
               </Button>
-
               {/* Customer Inquiry Button */}
               <Button
                 onClick={handleCustomerInquiry}
@@ -213,7 +197,6 @@ const AppHeader: React.FC = () => {
           </div>
         </div>
       </header>
-
       {/* Add Package Modal */}
       <AddPackageModal
         isOpen={isAddPackageModalOpen}
