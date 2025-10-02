@@ -61,11 +61,17 @@ import { ReactComponent as PinterestIcon } from "./pinterest.svg?react";
 import { ReactComponent as AppStoreIcon } from "./app-store.svg?react";
 import { ReactComponent as GooglePlayIcon } from "./google-play.svg?react";
 import { ReactComponent as SearchIcon } from "./search.svg?react";
+import { ReactComponent as DeliveredPackage } from "./deleverdPackage.svg?react";
+import { ReactComponent as PendingPackage } from "./pending.svg?react";
+import { ReactComponent as ReturnedPackage } from "./returned.svg?react";
 
 export {
   ErrorHexaIcon,
   AlertHexaIcon,
   MoreDotIcon,
+  DeliveredPackage,
+  PendingPackage,
+  ReturnedPackage,
   DownloadIcon,
   FileIcon,
   GridIcon,
