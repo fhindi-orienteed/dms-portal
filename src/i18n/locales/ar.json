@@ -29,7 +29,8 @@
     "previous": "السابق",
     "confirm": "تأكيد",
     "yes": "نعم",
-    "no": "لا"
+    "no": "لا",
+    "customerInquiry": "استفسار العميل"
   },
   "header": {
     "searchPlaceholder": "ابحث عن الطرود أو العملاء أو أرقام التتبع...",
