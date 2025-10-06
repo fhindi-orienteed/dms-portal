@@ -31,6 +31,9 @@ import { AuthProvider } from "./context/AuthContext";
 import { ProtectedRoute } from "./components/auth/ProtectedRoute";
 import { Toaster } from 'react-hot-toast';
 import ForgotPassword from "./pages/AuthPages/ForgotPassword";
+import AccountSettings from "./pages/Settings/AccountSettings";
+import NotificationSettings from "./pages/Settings/NotificationSettings";
+import SystemSettings from "./pages/Settings/SystemSettings";
 
 
 export default function App() {
@@ -156,6 +159,24 @@ export default function App() {
               <Route path="/packages/failed" element={
                 <ProtectedRoute>
                   <FailedDeliveryPackages />
+                </ProtectedRoute>
+              } />
+
+              <Route path="/settings/account" element={
+                <ProtectedRoute>
+                  <AccountSettings />
+                </ProtectedRoute>
+              } />
+
+              <Route path="/settings/notifications" element={
+                <ProtectedRoute>
+                  <NotificationSettings />
+                </ProtectedRoute>
+              } />
+
+              <Route path="/settings/system" element={
+                <ProtectedRoute>
+                  <SystemSettings />
                 </ProtectedRoute>
               } />
 
