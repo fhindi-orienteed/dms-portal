@@ -34,6 +34,7 @@ import ForgotPassword from "./pages/AuthPages/ForgotPassword";
 import AccountSettings from "./pages/Settings/AccountSettings";
 import NotificationSettings from "./pages/Settings/NotificationSettings";
 import SystemSettings from "./pages/Settings/SystemSettings";
+import List from "./pages/merchant/list";
 
 
 export default function App() {
@@ -161,6 +162,14 @@ export default function App() {
                   <FailedDeliveryPackages />
                 </ProtectedRoute>
               } />
+
+              <Route path="/merchant/list" element={
+                <ProtectedRoute>
+                  <List/>
+                </ProtectedRoute>
+              }
+              
+              />  
 
               <Route path="/settings/account" element={
                 <ProtectedRoute>

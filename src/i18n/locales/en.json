@@ -207,6 +207,12 @@
     "driverPerformance": "Driver Performance",
     "driverAssignments": "Driver Assignments"
   },
+
+  "merchants":{
+    "allMerchants" :"All Merchants",
+    "merchentsList": "Merchents list"
+  },
+
   "scheduling": {
     "deliverySchedule": "Delivery Schedule",
     "driverSchedule": "Driver Schedule",
