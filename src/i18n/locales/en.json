@@ -63,6 +63,7 @@
     "reports": "Reports",
     "payments": "Payments",
     "returns": "Returns",
+    "merchants" :"Merchants", 
     "tracking": "Tracking",
     "customers": "Customers",
     "drivers": "Drivers",
