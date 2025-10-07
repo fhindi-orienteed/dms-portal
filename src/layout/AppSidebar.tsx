@@ -98,6 +98,7 @@ const navItems: NavItem[] = [
     icon: <ArrowRightIcon />,
     name: t('sidebar.returns'),
     subItems: [
+      
       { name: t('returns.returnRequests'), path: "/returns/requests", pro: false },
       { name: t('returns.returnProcessing'), path: "/returns/processing", pro: false },
       { name: t('returns.returnHistory'), path: "/returns/history", pro: false },
@@ -107,6 +108,13 @@ const navItems: NavItem[] = [
 ];
 
 const othersItems: NavItem[] = [
+  {
+    icon:<GroupIcon/>,
+    name:t('sidebar.merchants'),
+    subItems:[
+      {name: t('merchants.marchentsList') , path:"/merchant/list", pro:false},
+    ],
+  },
   {
     icon: <SearchIcon />,
     name: t('sidebar.tracking'),
@@ -418,7 +426,7 @@ const othersItems: NavItem[] = [
                 }`}
               >
                 {isExpanded || isHovered || isMobileOpen ? (
-                  t('sidebar.additionalFeatures')
+                  t('sidebar.management')
                 ) : (
                   <HorizontaLDots />
                 )}

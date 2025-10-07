@@ -55,7 +55,8 @@
     "lineChart": "Line Chart",
     "barChart": "Bar Chart",
     "mainMenu": "Main Menu",
-    "additionalFeatures": "Additional Features",
+    "management": "Management",
+    "merchants":"Merchants",
     "summary": "Summary",
     "overview": "Overview",
     "Packages": "Packages",
@@ -206,6 +207,9 @@
     "driverList": "Driver List",
     "driverPerformance": "Driver Performance",
     "driverAssignments": "Driver Assignments"
+  },
+  "merchants":{
+    "marchentsList": "Marchents list"
   },
   "scheduling": {
     "deliverySchedule": "Delivery Schedule",
