@@ -113,7 +113,8 @@
   },
   "sidebar": {
     "mainMenu": "القائمة الرئيسية",
-    "additionalFeatures": "الميزات الإضافية",
+    "management": "ادارة المشروع",
+    "merchants" :"التجار",
     "dashboard": "لوحة التحكم",
     "summary": "ملخص",
     "overview": "نظرة عامة",
@@ -180,6 +181,9 @@
     "returnProcessing": "معالجة المرتجعات",
     "returnHistory": "سجل المرتجعات",
     "refundManagement": "إدارة الاستردادات"
+  },
+    "merchants":{
+    "marchentsList": "قائمة التجار"
   },
     "tracking": {
     "trackPackage": "تتبع الطرد",
