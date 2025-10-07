@@ -34,7 +34,7 @@ import ForgotPassword from "./pages/AuthPages/ForgotPassword";
 import AccountSettings from "./pages/Settings/AccountSettings";
 import NotificationSettings from "./pages/Settings/NotificationSettings";
 import SystemSettings from "./pages/Settings/SystemSettings";
-import List from "./pages/merchant/list";
+import MerchantsList from "./pages/merchant/list";
 
 
 export default function App() {
@@ -165,7 +165,7 @@ export default function App() {
 
               <Route path="/merchant/list" element={
                 <ProtectedRoute>
-                  <List/>
+                  <MerchantsList/>
                 </ProtectedRoute>
               }
               
