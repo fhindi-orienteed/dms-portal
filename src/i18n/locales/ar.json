@@ -81,8 +81,8 @@
     "RecentOrders": "الطلبات الأخيرة",
     "Filter": "تصفية",
     "SeeAll": "عرض الكل",
-    "Products"  : " المنتجات",
-    "Category"    : "الفئة",
+    "Products": " المنتجات",
+    "Category": "الفئة",
     "Price": "السعر",
     "Status": "الحالة",
     "Jan": "يناير",
@@ -103,9 +103,8 @@
       "Pending": "قيد الانتظار",
       "Canceled": "ملغي"
     }
-  }
+  },
 
-,
   "language": {
     "english": "English",
     "arabic": "العربية",
@@ -143,7 +142,6 @@
     "settings": "الإعدادات",
     "schedule": "الجدول الزمني",
     "otherLinks": "روابط أخرى"
-     
   },
   "summary": {
     "overview": "نظرة عامة",
@@ -163,20 +161,21 @@
     "payment": "متابعة الدفع",
     "returns": "متابعة المرتجعات"
   },
-    "reports": {
+  "reports": {
     "deliveryReports": "تقارير التسليم",
     "financialReports": "تقارير مالية",
     "performanceReports": "تقارير الأداء",
     "customerReports": "تقارير العملاء",
     "exportData": "تصدير البيانات"
   },
-    "payments": {
+  "payments": {
     "paymentHistory": "سجل المدفوعات",
     "pendingPayments": "المدفوعات المعلقة",
     "paymentMethods": "طرق الدفع",
     "billing": "الفواتير",
     "invoices": "الفواتير"
-  },  "returns": {
+  },
+  "returns": {
     "returnRequests": "طلبات المرتجعات",
     "returnProcessing": "معالجة المرتجعات",
     "returnHistory": "سجل المرتجعات",
@@ -215,7 +214,7 @@
   },
   "settings": {
     "profileSettings": "إعدادات الملف الشخصي",
-    "accountSettings": "إعدادات الحساب", 
+    "accountSettings": "إعدادات الحساب",
     "notificationSettings": "إعدادات الإشعارات",
     "systemSettings": "إعدادات النظام",
     "personalInformation": "المعلومات الشخصية",
@@ -318,7 +317,19 @@
     "loudSound": "عالي",
     "customSound": "مخصص",
     "settingsUpdatedSuccessfully": "تم تحديث إعدادات الإشعارات بنجاح!",
-    "updateFailed": "فشل في تحديث إعدادات الإشعارات. يرجى المحاولة مرة أخرى."
+    "updateFailed": "فشل في تحديث إعدادات الإشعارات. يرجى المحاولة مرة أخرى.",
+    "title": "الإشعارات",
+    "newCustomerTitle": "عميل جديد",
+    "newCustomerDesc": "تم إنشاء حساب عميل جديد.",
+    "newPackageTitle": "طلب جديد",
+    "newPackageDesc": "تم تقديم طلب طرد جديد من قبل العميل.",
+    "systemAlertTitle": "تنبيه النظام",
+    "systemAlertDesc": "تم اكتشاف تحميل مرتفع على الخادم، يرجى التحقق من الأداء.",
+    "deliveryCompletedTitle": "تم التوصيل",
+    "deliveryCompletedDesc": "تم تسليم طلب الطرد رقم #4478.",
+    "paymentReceivedTitle": "تم استلام الدفع",
+    "paymentReceivedDesc": "تم معالجة الدفع للفاتورة رقم #1234 بنجاح.",
+    "viewAll": "عرض كل الإشعارات"
   },
   "system": {
     "apiConfiguration": "إعدادات API",

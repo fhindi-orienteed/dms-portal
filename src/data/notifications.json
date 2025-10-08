@@ -1,0 +1,37 @@
+[
+  {
+    "id": "1",
+    "title": "notifications.newCustomerTitle",
+    "description": "notifications.newCustomerDesc",
+    "time": "2025-10-01T12:00:00Z",
+    "type": "account"
+  },
+  {
+    "id": "2",
+    "title": "notifications.newPackageTitle",
+    "description": "notifications.newPackageDesc",
+    "time": "2025-10-01T12:05:00Z",
+    "type": "package"
+  },
+  {
+    "id": "3",
+    "title": "notifications.systemAlertTitle",
+    "description": "notifications.systemAlertDesc",
+    "time": "2025-10-01T12:15:00Z",
+    "type": "system"
+  },
+  {
+    "id": "4",
+    "title": "notifications.deliveryCompletedTitle",
+    "description": "notifications.deliveryCompletedDesc",
+    "time": "2025-10-01T12:10:00Z",
+    "type": "collection"
+  },
+  {
+    "id": "5",
+    "title": "notifications.paymentReceivedTitle",
+    "description": "notifications.paymentReceivedDesc",
+    "time": "2025-10-01T12:20:00Z",
+    "type": "payment"
+  }
+]
