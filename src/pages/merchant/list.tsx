@@ -51,7 +51,7 @@ const merchantList :Merchant[] =[
         totalPackage:17,   
     }
 ];
-export default function List(){
+export default function MerchantsList(){
     const [searchTerm, setSearchTerm] = useState("");
     const [merchants] = useState<Merchant[]>(merchantList);
     const [filterInput,setFilterInput] = useState("");
@@ -68,7 +68,7 @@ export default function List(){
             return matchesSearch && statusFilterResult;    
            
         });
-    });
+    }, [merchants, searchTerm, filterInput]);
     return (
         <>
             <PageMeta 
