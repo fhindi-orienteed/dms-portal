@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 
-import { PageMeta } from "../components/common";
+import { PageBreadcrumb, PageMeta } from "../components/common";
 
 export default function TermsOfServices(){
     const { t } = useTranslation(); 
@@ -10,6 +10,7 @@ export default function TermsOfServices(){
                 title={`${t("otherLinks.termsOfService")}`}
                 description="otherLinks.termsOfService"
             />
+            <PageBreadcrumb pageTitle="Terms of service" />
             <h1 className="text-xl font-simi text-gray-800 mb-4">Terms of Service</h1>
             <div className="container mx-auto p-4 bg-white border border-gray-200 rounded-2xl text-gray-800">
                 
