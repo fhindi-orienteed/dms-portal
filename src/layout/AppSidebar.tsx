@@ -20,6 +20,8 @@ import {
 import { useSidebar } from "../context/SidebarContext";
 import { useLanguage } from "../context/LanguageContext";
 
+
+
 type NavItem = {
   name: string;
   icon: React.ReactNode;
@@ -109,13 +111,15 @@ const navItems: NavItem[] = [
 
 const othersItems: NavItem[] = [
   {
+
     icon:<GroupIcon/>,
     name:t('sidebar.merchants'),
     subItems:[
-      {name: t('merchants.marchentsList') , path:"/merchant/list", pro:false},
+      {name: t('merchants.merchentsList') , path:"/merchant/list", pro:false},
     ],
   },
   {
+
     icon: <SearchIcon />,
     name: t('sidebar.tracking'),
     //tracking

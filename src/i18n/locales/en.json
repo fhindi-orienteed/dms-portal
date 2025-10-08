@@ -64,6 +64,7 @@
     "reports": "Reports",
     "payments": "Payments",
     "returns": "Returns",
+    "merchants" :"Merchants", 
     "tracking": "Tracking",
     "customers": "Customers",
     "drivers": "Drivers",
@@ -208,9 +209,12 @@
     "driverPerformance": "Driver Performance",
     "driverAssignments": "Driver Assignments"
   },
+
   "merchants":{
-    "marchentsList": "Marchents list"
+    "allMerchants" :"All Merchants",
+    "merchentsList": "Merchents list"
   },
+
   "scheduling": {
     "deliverySchedule": "Delivery Schedule",
     "driverSchedule": "Driver Schedule",
