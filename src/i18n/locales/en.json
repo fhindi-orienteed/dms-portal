@@ -71,7 +71,6 @@
     "settings": "Settings",
     "schedule": "Schedule",
     "otherLinks": "Other Links"
-    
   },
   "auth": {
     "signIn": "Sign In",
@@ -100,44 +99,43 @@
     "Monthly_Sales": "Monthly Sales",
     "View_More": "View More",
     "Delete": "Delete",
-    "monthlyTarget" : "Monthly Target",
+    "monthlyTarget": "Monthly Target",
     "Monthly_Target_Description": " Target you’ve set for each month",
     "Today": "Today",
     "Revenue": "Revenue",
     "Target": "Target",
-  
-    "dailyEarningsMessage": "You earn $3287 today, it's higher than last month. Keep up your good work!"
-    ,
+
+    "dailyEarningsMessage": "You earn $3287 today, it's higher than last month. Keep up your good work!",
     "Statistics": "Statistics",
     "monthlyTargetDesc": " Target you’ve set for each month",
     "CustomersDemographics": "Customers Demographics",
-    "customerByCountry":"Number of customer based on country",
+    "customerByCountry": "Number of customer based on country",
     "RecentOrders": "Recent Orders",
     "Filter": "Filter",
     "SeeAll": "See All",
-    "Products"  : "Products",
-    "Category"    : "Category",
+    "Products": "Products",
+    "Category": "Category",
     "Price": "Price",
     "Status": "Status",
-   
-      "Jan": "Jan",
-      "Feb": "Feb",
-      "Mar": "Mar",
-      "Apr": "Apr",
-      "May": "May",
-      "Jun": "Jun",
-      "Jul": "Jul",
-      "Aug": "Aug",
-      "Sep": "Sep",
-      "Oct": "Oct",
-      "Nov": "Nov",
-      "Dec": "Dec",
-      "Sales": "Sales",
-      "status": {
-        "Delivered":"Delivered",
-        "Pending": "Pending",
-        "Canceled": "Canceled"
-      }
+
+    "Jan": "Jan",
+    "Feb": "Feb",
+    "Mar": "Mar",
+    "Apr": "Apr",
+    "May": "May",
+    "Jun": "Jun",
+    "Jul": "Jul",
+    "Aug": "Aug",
+    "Sep": "Sep",
+    "Oct": "Oct",
+    "Nov": "Nov",
+    "Dec": "Dec",
+    "Sales": "Sales",
+    "status": {
+      "Delivered": "Delivered",
+      "Pending": "Pending",
+      "Canceled": "Canceled"
+    }
   },
   "language": {
     "english": "English",
@@ -332,7 +330,19 @@
     "loudSound": "Loud",
     "customSound": "Custom",
     "settingsUpdatedSuccessfully": "Notification settings updated successfully!",
-    "updateFailed": "Failed to update notification settings. Please try again."
+    "updateFailed": "Failed to update notification settings. Please try again.",
+    "title": "Notifications",
+    "newCustomerTitle": "New Customer",
+    "newCustomerDesc": "A new customer account has been created.",
+    "newPackageTitle": "New Package Request",
+    "newPackageDesc": "A new package order has been submitted by a customer.",
+    "systemAlertTitle": "System Alert",
+    "systemAlertDesc": "High server load detected, please check system performance.",
+    "deliveryCompletedTitle": "Delivery Completed",
+    "deliveryCompletedDesc": "Package order #4478 has been delivered.",
+    "paymentReceivedTitle": "Payment Received",
+    "paymentReceivedDesc": "Payment for invoice #1234 has been successfully processed.",
+    "viewAll": "View All Notifications"
   },
   "system": {
     "apiConfiguration": "API Configuration",
