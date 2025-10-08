@@ -26,6 +26,7 @@ import FailedDeliveryPackages from "./pages/Packages/FailedDeliveryPackages";
 import AppLayout from "./layout/AppLayout";
 import { ScrollToTop } from "./components/common/ScrollToTop";
 import Home from "./pages/Dashboard/Home";
+import TermsOfServices from "./pages/TermsOFServices";
 import { AppConfigProvider } from "./context/AppConfig";
 import { AuthProvider } from "./context/AuthContext";
 import { ProtectedRoute } from "./components/auth/ProtectedRoute";
@@ -188,6 +189,13 @@ export default function App() {
                   <SystemSettings />
                 </ProtectedRoute>
               } />
+
+              <Route path="/terms" element={
+                  <ProtectedRoute>
+                    <TermsOfServices/>
+                  </ProtectedRoute>
+                }
+              />  
 
             </Route>
 
