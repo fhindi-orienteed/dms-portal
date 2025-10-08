@@ -26,6 +26,7 @@ import FailedDeliveryPackages from "./pages/Packages/FailedDeliveryPackages";
 import AppLayout from "./layout/AppLayout";
 import { ScrollToTop } from "./components/common/ScrollToTop";
 import Home from "./pages/Dashboard/Home";
+import TermsOfServices from "./pages/TermsOFServices";
 import { AppConfigProvider } from "./context/AppConfig";
 import { AuthProvider } from "./context/AuthContext";
 import { ProtectedRoute } from "./components/auth/ProtectedRoute";
@@ -34,7 +35,6 @@ import ForgotPassword from "./pages/AuthPages/ForgotPassword";
 import AccountSettings from "./pages/Settings/AccountSettings";
 import NotificationSettings from "./pages/Settings/NotificationSettings";
 import SystemSettings from "./pages/Settings/SystemSettings";
-import TermsOfServices from "./pages/TermsOFServices";
 
 
 export default function App() {
