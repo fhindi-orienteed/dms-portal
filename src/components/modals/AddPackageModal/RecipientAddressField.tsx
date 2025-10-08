@@ -1,17 +1,18 @@
 import TextArea from "../../form/input/TextArea";
 import Label from "../../form/Label";
-
+import { useTranslation } from "../../../hooks/useTranslation";
 interface Props {
   value: string;
   onChange: (value: string) => void;
 }
 
 export default function RecipientAddressField({ value, onChange }: Props) {
+  const { t } = useTranslation();
   return (
     <div>
-      <Label htmlFor="recipientAddress">Recipient Address *</Label>
+      <Label htmlFor="recipientAddress">{t("AddPackage.RecipientAddress*")}</Label>
       <TextArea
-        placeholder="Street address, city, state, postal code"
+       placeholder={t("AddPackage.addressPlaceholder")}
         rows={3}
         value={value}
         onChange={onChange}

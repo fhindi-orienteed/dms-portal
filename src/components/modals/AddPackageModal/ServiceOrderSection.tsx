@@ -2,7 +2,7 @@ import React from 'react';
 import Input from '../../form/input/InputField';
 import Select from '../../form/Select';
 import Label from '../../form/Label';
-
+import { useTranslation } from "../../../hooks/useTranslation";
 interface Option {
   value: string;
   label: string;
@@ -27,14 +27,15 @@ export default function ServiceOrderSection({
   onInputChange,
   onSelectChange
 }: Props) {
+  const { t } = useTranslation();
   return (
     <div className="space-y-4">
       {/* Service Type */}
       <div>
-        <Label htmlFor="serviceType">Service Type</Label>
+        <Label htmlFor="serviceType">{t("AddPackage.ServiceType")}</Label>
         <Select
           options={serviceOptions}
-          placeholder="Select service type"
+          placeholder={t("AddPackage.Selectservicetype")}
           defaultValue={serviceType}
           onChange={onSelectChange('serviceType')}
           className="w-full border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -43,21 +44,21 @@ export default function ServiceOrderSection({
 
       {/* Invoice Number */}
       <div>
-        <Label htmlFor="invoiceNumber">Invoice Number</Label>
+        <Label htmlFor="invoiceNumber">{t("AddPackage.InvoiceNumber")}</Label>
         <Input
           type="text"
           id="invoiceNumber"
           name="invoiceNumber"
           value={invoiceNumber}
           onChange={onInputChange}
-          placeholder="Enter invoice number"
+          placeholder={t("AddPackage.Enterinvoicenumber")}
           className="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
       </div>
 
       {/* Expected Delivery Date */}
       <div>
-        <Label htmlFor="expectedDeliveryDate">Expected Delivery Date</Label>
+        <Label htmlFor="expectedDeliveryDate">{t("AddPackage.ExpectedDeliveryDate")}</Label>
         <Input
           type="date"
           id="expectedDeliveryDate"
@@ -70,7 +71,7 @@ export default function ServiceOrderSection({
 
       {/* Expected Pickup Date */}
       <div>
-        <Label htmlFor="expectedPickupDate">Expected Pickup Date</Label>
+        <Label htmlFor="expectedPickupDate">{t("AddPackage.ExpectedPickupDate")}</Label>
         <Input
           type="date"
           id="expectedPickupDate"

@@ -2,6 +2,7 @@ import React from "react";
 import Input from "../../form/input/InputField";
 import Select from "../../form/Select";
 import Label from "../../form/Label";
+import { useTranslation } from "../../../hooks/useTranslation";
 
 interface Option {
   value: string;
@@ -23,24 +24,25 @@ export default function SenderSection({
   onInputChange,
   onSelectChange,
 }: Props) {
+  const { t } = useTranslation();
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
       <div>
-        <Label htmlFor="senderName">Sender Name</Label>
+        <Label htmlFor="senderName">{t("AddPackage.SenderName")}</Label>
         <Input
           type="text"
           id="senderName"
           name="senderName"
           value={senderName}
           onChange={onInputChange}
-          placeholder="Sender name"
+          placeholder={t("AddPackage.SenderName")}
         />
       </div>
       <div>
-        <Label htmlFor="packageType">Package Type</Label>
+        <Label htmlFor="packageType">{t("AddPackage.PackageType")}</Label>
         <Select
           options={packageTypeOptions}
-          placeholder="Select type"
+          placeholder={t("AddPackage.Selecttype")}
           defaultValue={packageType}
           onChange={onSelectChange("packageType")}
         />
