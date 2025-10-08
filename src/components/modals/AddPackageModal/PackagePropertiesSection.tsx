@@ -1,3 +1,4 @@
+import { useTranslation } from "../../../hooks/useTranslation";
 interface Props {
   properties: Record<string, boolean>;
   setProperties: (name: string, value: boolean) => void;
@@ -7,21 +8,26 @@ export default function PackagePropertiesSection({
   properties,
   setProperties,
 }: Props) {
-  const propsList = [
-    { key: "fragile", label: "Fragile" },
-    { key: "needsPackaging", label: "Needs Packaging" },
-    { key: "recipientFingerprint", label: "Recipient fingerprint required" },
-    { key: "flammable", label: "Contains Flammable or dangerous materials" },
-    { key: "destructible", label: "Destructible" },
-    { key: "preventOpening", label: "Prevent opening" },
-    { key: "deliveryNote", label: "Delivery Note" },
-    { key: "preventMeasuring", label: "Prevent Measuring" },
-  ];
+  const { t } = useTranslation();
+
+
+const propsList = [
+  { key: "fragile", label: t("AddPackage.fragile") },
+  { key: "needsPackaging", label: t("AddPackage.needsPackaging") },
+  { key: "recipientFingerprint", label: t("AddPackage.recipientFingerprint") },
+  { key: "flammable", label: t("AddPackage.flammable") },
+  { key: "destructible", label: t("AddPackage.destructible") },
+  { key: "preventOpening", label: t("AddPackage.preventOpening") },
+  { key: "deliveryNote", label: t("AddPackage.deliveryNote") },
+  { key: "preventMeasuring", label: t("AddPackage.preventMeasuring") },
+];
 
   return (
     <div className="mb-6">
       <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-4">
-        Properties
+       {t(
+        "AddPackage.Properties"
+       )}
       </h3>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {propsList.map((prop) => {

@@ -1,7 +1,7 @@
 import React from "react";
 import Input from "../../form/input/InputField";
 import Label from "../../form/Label";
-
+import { useTranslation } from "../../../hooks/useTranslation";
 interface Props {
   weight: string;
   dimensions: string;
@@ -15,10 +15,11 @@ export default function PackageDetailsSection({
   deliveryDate,
   onInputChange,
 }: Props) {
+  const { t } = useTranslation();
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
       <div>
-        <Label htmlFor="weight">Weight (kg)</Label>
+        <Label htmlFor="weight">{t("AddPackage.Weight")}</Label>
         <Input
           type="number"
           id="weight"
@@ -30,7 +31,7 @@ export default function PackageDetailsSection({
         />
       </div>
       <div>
-        <Label htmlFor="dimensions">Dimensions (L×W×H)</Label>
+      <Label htmlFor="dimensions">{t("AddPackage.Dimensions")}</Label>
         <Input
           type="text"
           id="dimensions"
@@ -41,7 +42,7 @@ export default function PackageDetailsSection({
         />
       </div>
       <div>
-        <Label htmlFor="deliveryDate">Delivery Date</Label>
+        <Label htmlFor="deliveryDate">{t("AddPackage.DeliveryDate")}</Label>
         <Input
           type="date"
           id="deliveryDate"

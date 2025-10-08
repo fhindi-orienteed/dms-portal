@@ -1,12 +1,13 @@
 import { useRef, useEffect } from "react";
+import { useTranslation } from "react-i18next"; // تأكد أنك تستخدم هذا أو الهُوك المناسب
 
 interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
   className?: string;
   children: React.ReactNode;
-  showCloseButton?: boolean; // New prop to control close button visibility
-  isFullscreen?: boolean; // Default to false for backwards compatibility
+  showCloseButton?: boolean;
+  isFullscreen?: boolean;
 }
 
 export const Modal: React.FC<ModalProps> = ({
@@ -14,34 +15,26 @@ export const Modal: React.FC<ModalProps> = ({
   onClose,
   children,
   className,
-  showCloseButton = true, // Default to true for backwards compatibility
+  showCloseButton = true,
   isFullscreen = false,
 }) => {
   const modalRef = useRef<HTMLDivElement>(null);
+  const { i18n } = useTranslation();
+
+ 
+  const isRTL = i18n.dir() === "rtl";
 
   useEffect(() => {
     const handleEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        onClose();
-      }
+      if (event.key === "Escape") onClose();
     };
 
-    if (isOpen) {
-      document.addEventListener("keydown", handleEscape);
-    }
-
-    return () => {
-      document.removeEventListener("keydown", handleEscape);
-    };
+    if (isOpen) document.addEventListener("keydown", handleEscape);
+    return () => document.removeEventListener("keydown", handleEscape);
   }, [isOpen, onClose]);
 
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-
+    document.body.style.overflow = isOpen ? "hidden" : "unset";
     return () => {
       document.body.style.overflow = "unset";
     };
@@ -51,25 +44,29 @@ export const Modal: React.FC<ModalProps> = ({
 
   const contentClasses = isFullscreen
     ? "w-full h-full"
-    : "relative w-full rounded-3xl bg-white  dark:bg-gray-900";
+    : "relative w-full rounded-3xl bg-white dark:bg-gray-900";
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center overflow-y-auto modal z-99999">
+    <div className="fixed inset-0 flex items-center justify-center overflow-y-auto z-99999">
       {!isFullscreen && (
         <div
           className="fixed inset-0 h-full w-full bg-gray-400/50 backdrop-blur-[32px]"
           onClick={onClose}
-        ></div>
+        />
       )}
       <div
         ref={modalRef}
-        className={`${contentClasses}  ${className}`}
+        className={`${contentClasses} ${className}`}
         onClick={(e) => e.stopPropagation()}
       >
         {showCloseButton && (
           <button
             onClick={onClose}
-            className="absolute right-3 top-3 z-999 flex h-9.5 w-9.5 items-center justify-center rounded-full bg-gray-100 text-gray-400 transition-colors hover:bg-gray-200 hover:text-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white sm:right-6 sm:top-6 sm:h-11 sm:w-11"
+            className={`absolute top-3 z-999 flex h-9.5 w-9.5 items-center justify-center rounded-full 
+            bg-gray-100 text-gray-400 transition-colors hover:bg-gray-200 hover:text-gray-700 
+            dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white 
+            sm:top-6 sm:h-11 sm:w-11
+            ${isRTL ? "left-3 sm:left-6" : "right-3 sm:right-6"}`}
           >
             <svg
               width="24"

@@ -2,7 +2,7 @@ import React from "react";
 import Input from "../../form/input/InputField";
 import Select from "../../form/Select";
 import Label from "../../form/Label";
-
+import { useTranslation } from "../../../hooks/useTranslation";
 interface Option {
   value: string;
   label: string;
@@ -27,14 +27,15 @@ export default function PaymentSection({
   onInputChange,
   onSelectChange,
 }: Props) {
+  const { t } = useTranslation();
   return (
     <div className="space-y-4">
       {/* Shipment Type */}
       <div>
-        <Label htmlFor="shipmentType">Shipment Type</Label>
+        <Label htmlFor="shipmentType">{t("AddPackage.ShipmentType")}</Label>
         <Select
           options={shipmentOptions}
-          placeholder="Select shipment type"
+          placeholder={t("AddPackage.selecttype")}
           defaultValue={shipmentType}
           onChange={onSelectChange("shipmentType")}
           className="w-full border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -43,24 +44,24 @@ export default function PaymentSection({
 
       {/* COD Amount */}
       <div>
-        <Label htmlFor="codAmount">COD (Delivery charges + price)</Label>
+        <Label htmlFor="codAmount">{t("AddPackage.COD")}</Label>
         <Input
           type="text"
           id="codAmount"
           name="codAmount"
           value={codAmount}
           onChange={onInputChange}
-          placeholder="Enter amount"
+          placeholder={t("AddPackage.enterAmount")}
           className="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
       </div>
 
       {/* Collection Method */}
       <div>
-        <Label htmlFor="collectionMethod">Collection Method</Label>
+        <Label htmlFor="collectionMethod">{t("AddPackage.CollectionMethod")}</Label>
         <Select
           options={collectionOptions}
-          placeholder="Select collection method"
+          placeholder={t("AddPackage.selectCollectionMethod")}
           defaultValue={collectionMethod}
           onChange={onSelectChange("collectionMethod")}
           className="w-full border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"

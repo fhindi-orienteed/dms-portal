@@ -12,6 +12,7 @@ import RecipientSection from "./RecipientSection";
 import PaymentSection from "./PaymentSection";
 import ServiceOrderSection from "./ServiceOrderSection";
 import PackagePropertiesSection from "./PackagePropertiesSection";
+import { useTranslation } from "../../../hooks/useTranslation";
 interface AddPackageModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -88,15 +89,18 @@ export default function AddPackageModal({
     console.log("Package data:", formData);
     onClose();
   };
+  const { t } = useTranslation();
   return (
     <Modal isOpen={isOpen} onClose={onClose} className="max-w-2xl">
       <div className="flex flex-col h-[100vh]">
         <div className="p-6 border-b border-gray-200 dark:border-gray-700">
           <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-2">
-            Add New Package
+            {t("AddPackage.Add-new-package")}
+           
           </h2>
           <p className="text-gray-600 dark:text-gray-400">
-            Enter package details to create a new delivery order
+          {t("AddPackage.Description")}
+          
           </p>
         </div>
         <div className="flex-1 overflow-y-auto p-6">
@@ -123,9 +127,9 @@ export default function AddPackageModal({
               recipientSecondPhone={formData.recipientPhone}
               priority={formData.priority}
               priorityOptions={[
-                { value: "standard", label: "Standard" },
-                { value: "express", label: "Express" },
-                { value: "overnight", label: "Overnight" },
+                { value: "standard", label: t("AddPackage.standard") },
+                { value: "express", label: t("AddPackage.express") },
+                { value: "overnight", label: t("AddPackage.overnight") },
               ]}
               onInputChange={handleInputChange}
               onSelectChange={handleSelectChange}
@@ -141,17 +145,17 @@ export default function AddPackageModal({
               codAmount={formData.codAmount}
               collectionMethod={formData.collectionMethod}
               shipmentOptions={[
-                { value: "standard", label: "Standard Shipping" },
-                { value: "express", label: "Express Shipping" },
-                { value: "overnight", label: "Overnight Shipping" },
+                { value: "standard", label: t("AddPackage.standard") },
+                { value: "express", label: t("AddPackage.express") },
+                { value: "overnight", label: t("AddPackage.overnight") },
               ]}
               collectionOptions={[
-                { value: "cash", label: "Cash" },
-                { value: "digital_wallet", label: "Digital Wallet" },
-                { value: "cheque", label: "Cheque" },
-                { value: "bank_transfer", label: "Bank Transfer" },
-                { value: "paymen_card", label: "Payment Card" },
-                { value: "cod", label: "COD" },
+                { value: "cash", label: t("AddPackage.cash") },
+                { value: "digital_wallet", label: t("AddPackage.digitalWallet") },
+                { value: "cheque", label: t("AddPackage.cheque") },
+                { value: "bank_transfer", label: t("AddPackage.bankTransfer") },
+                { value: "paymen_card", label: t("AddPackage.paymentCard") },
+                { value: "cod", label: t("AddPackage.cod") },
               ]}
               onInputChange={handleInputChange}
               onSelectChange={handleSelectChange}
@@ -162,9 +166,9 @@ export default function AddPackageModal({
               expectedDeliveryDate={formData.expectedDeliveryDate}
               expectedPickupDate={formData.expectedPickupDate}
               serviceOptions={[
-                { value: "standard", label: "Standard Service" },
-                { value: "express", label: "Express Service" },
-                { value: "overnight", label: "Overnight Service" },
+                { value: "standard", label: t("AddPackage.standard") },
+                { value: "express", label: t("AddPackage.express") },
+                { value: "overnight", label: t("AddPackage.overnight") },
               ]}
               onInputChange={handleInputChange}
               onSelectChange={handleSelectChange}
@@ -174,10 +178,10 @@ export default function AddPackageModal({
               senderName={formData.senderName}
               packageType={formData.packageType}
               packageTypeOptions={[
-                { value: "document", label: "Document" },
-                { value: "package", label: "Package" },
-                { value: "fragile", label: "Fragile" },
-                { value: "electronics", label: "Electronics" },
+                { value: "document", label: t("AddPackage.document") },
+                { value: "package", label: t("AddPackage.package") },
+                { value: "fragile", label: t("AddPackage.fragile") },
+                { value: "electronics", label: t("AddPackage.electronics") },
               ]}
               onInputChange={handleInputChange}
               onSelectChange={handleSelectChange}
@@ -195,9 +199,9 @@ export default function AddPackageModal({
             />
             {/* Special Instructions */}
             <div>
-              <Label htmlFor="specialInstructions">Special Instructions</Label>
+              <Label htmlFor="specialInstructions">{t("AddPackage.SpecialInstructions")}</Label>
               <TextArea
-                placeholder="Any special delivery instructions..."
+                placeholder={t("AddPackage.specialInstructionsPlaceholder")}
                 rows={3}
                 value={formData.specialInstructions}
                 onChange={handleTextAreaChange("specialInstructions")}
@@ -206,10 +210,11 @@ export default function AddPackageModal({
             {/* Action Buttons */}
             <div className="flex justify-end gap-3 pt-4 border-t border-gray-200 dark:border-gray-700">
               <Button type="button" variant="secondary" onClick={onClose}>
-                Cancel
+                
+              {t("AddPackage.Cancel")}
               </Button>
               <Button type="submit" variant="primary">
-                Create Package
+              {t("AddPackage.CreatePackage")} 
               </Button>
             </div>
           </form>

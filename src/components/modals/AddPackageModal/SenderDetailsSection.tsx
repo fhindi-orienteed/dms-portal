@@ -2,7 +2,7 @@ import React from "react";
 import Input from "../../form/input/InputField";
 import Select from "../../form/Select";
 import Label from "../../form/Label";
-
+import { useTranslation } from "../../../hooks/useTranslation";
 interface Option {
   value: string;
   label: string;
@@ -23,24 +23,25 @@ export default function SenderDetailsSection({
   onInputChange,
   onSelectChange,
 }: Props) {
+  const { t } = useTranslation();
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
       <div>
-        <Label htmlFor="commercialName">Commercial Name</Label>
+        <Label htmlFor="commercialName">{t("AddPackage.Commercial-Name")}</Label>
         <Input
           type="text"
           id="commercialName"
           name="commercialName"
           value={commercialName}
           onChange={onInputChange}
-          placeholder="Enter commercial name"
+          placeholder={t("AddPackage.enterCommercialName")}
         />
       </div>
       <div>
-        <Label htmlFor="branchAddress">Branch Address</Label>
+        <Label htmlFor="branchAddress">{t("AddPackage.BranchAddress")}</Label>
         <Select
           options={branchOptions}
-          placeholder="Select branch address"
+          placeholder={t("AddPackage.selectBranchAddress")}
           defaultValue={branchAddress}
           onChange={onSelectChange("branchAddress")}
         />
