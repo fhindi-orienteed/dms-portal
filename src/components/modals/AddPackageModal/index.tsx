@@ -51,6 +51,8 @@ export default function AddPackageModal({
     destructible: false,
     preventOpening: false,
     preventMeasuring: false,
+    recipientSecondPhone: "",
+  
   });
   const [properties, setProperties] = useState({
     fragile: false,
@@ -66,10 +68,10 @@ export default function AddPackageModal({
     }));
   };
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, checked } = e.target;
+    const { name, type, value, checked } = e.target;
     setFormData((prev) => ({
       ...prev,
-      [name]: checked,
+      [name]: type === "checkbox" ? checked : value,
     }));
   };
   const handleTextAreaChange = (name: string) => (value: string) => {
@@ -124,7 +126,7 @@ export default function AddPackageModal({
             <RecipientSection
               recipientName={formData.recipientName}
               recipientPhone={formData.recipientPhone}
-              recipientSecondPhone={formData.recipientPhone}
+              recipientSecondPhone={formData.recipientSecondPhone}
               priority={formData.priority}
               priorityOptions={[
                 { value: "standard", label: t("AddPackage.standard") },

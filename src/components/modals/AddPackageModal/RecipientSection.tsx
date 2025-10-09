@@ -3,6 +3,7 @@ import Input from "../../form/input/InputField";
 import Select from "../../form/Select";
 import Label from "../../form/Label";
 import { useTranslation } from "../../../hooks/useTranslation";
+import i18n from "../../../i18n";
 interface Option {
   value: string;
   label: string;
@@ -34,25 +35,29 @@ export default function RecipientSection({
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {/* Recipient Name */}
         <div>
-          <Label htmlFor="recipientName">{t("AddPackage.RecipientName*")}</Label>
+          <Label htmlFor="recipientName">
+            {t("AddPackage.RecipientName*")}
+          </Label>
           <Input
             type="text"
-            id="recipientName"
+            id="recipientName" 
             name="recipientName"
             value={recipientName}
             onChange={onInputChange}
-             placeholder={t("AddPackage.Fullname")}
+            placeholder={t("AddPackage.Fullname")}
             className="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
 
         {/* Mobile Number */}
         <div>
-          <Label htmlFor="recipientPhone">{t("AddPackage.MobileNumber*")}</Label>
+          <Label htmlFor="recipientPhone">
+            {t("AddPackage.MobileNumber*")}
+          </Label>
           <Input
             type="tel"
             id="recipientPhone"
-            name="recipientPhone"
+            name="recipientSecondPhone"
             value={recipientPhone}
             onChange={onInputChange}
             placeholder="+970 59 123 4567"
@@ -62,18 +67,20 @@ export default function RecipientSection({
       </div>
 
       {/* Second Mobile Number */}
-      <div>
-        <Label htmlFor="recipientSecondPhone">{t("AddPackage.SecondMobileNumber")}</Label>
-        <Input
-          type="tel"
-          id="recipientSecondPhone"
-          name="recipientSecondPhone"
-          value={recipientSecondPhone}
-          onChange={onInputChange}
-          placeholder={t("AddPackage.secondPhonePlaceholder")}
-          className="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
-      </div>
+      <div >
+  <Label htmlFor="recipientSecondPhone">
+    {t("AddPackage.SecondMobileNumber")}
+  </Label>
+  <Input
+  type="tel"
+  id="recipientSecondPhone"
+  name="recipientSecondPhone"
+  value={recipientSecondPhone}
+  onChange={onInputChange}
+  placeholder={t("AddPackage.secondPhonePlaceholder")}
+  dir={i18n.language === "ar" ? "rtl" : "ltr"} 
+/>
+</div>
 
       {/* Priority */}
       <div>
