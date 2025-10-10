@@ -2,6 +2,12 @@ import { BrowserRouter as Router, Routes, Route } from "react-router";
 import SignIn from "./pages/AuthPages/SignIn";
 import SignUp from "./pages/AuthPages/SignUp";
 import NotFound from "./pages/OtherPage/NotFound";
+import TermsOfService from "./pages/OtherPage/TermsOfService";
+import PrivacyPolicy from "./pages/OtherPage/PrivacyPolicy";
+import FAQ from "./pages/OtherPage/FAQ";
+import HelpCenter from "./pages/OtherPage/HelpCenter";
+import ContactSupport from "./pages/OtherPage/ContactSupport";
+import AboutUs from "./pages/OtherPage/AboutUs";
 import UserProfiles from "./pages/UserProfiles";
 import Videos from "./pages/UiElements/Videos";
 import Images from "./pages/UiElements/Images";
@@ -26,7 +32,6 @@ import FailedDeliveryPackages from "./pages/Packages/FailedDeliveryPackages";
 import AppLayout from "./layout/AppLayout";
 import { ScrollToTop } from "./components/common/ScrollToTop";
 import Home from "./pages/Dashboard/Home";
-import TermsOfServices from "./pages/TermsOFServices";
 import { AppConfigProvider } from "./context/AppConfig";
 import { AuthProvider } from "./context/AuthContext";
 import { ProtectedRoute } from "./components/auth/ProtectedRoute";
@@ -191,11 +196,40 @@ export default function App() {
               } />
 
               <Route path="/terms" element={
-                  <ProtectedRoute>
-                    <TermsOfServices/>
-                  </ProtectedRoute>
-                }
-              />  
+                <ProtectedRoute>
+                  <TermsOfService />
+                </ProtectedRoute>
+              } />
+
+              <Route path="/privacy" element={
+                <ProtectedRoute>
+                  <PrivacyPolicy />
+                </ProtectedRoute>
+              } />
+
+              <Route path="/faq" element={
+                <ProtectedRoute>
+                  <FAQ />
+                </ProtectedRoute>
+              } />
+
+              <Route path="/help" element={
+                <ProtectedRoute>
+                  <HelpCenter />
+                </ProtectedRoute>
+              } />
+
+              <Route path="/support" element={
+                <ProtectedRoute>
+                  <ContactSupport />
+                </ProtectedRoute>
+              } />
+
+              <Route path="/about" element={
+                <ProtectedRoute>
+                  <AboutUs />
+                </ProtectedRoute>
+              } />
 
             </Route>
 

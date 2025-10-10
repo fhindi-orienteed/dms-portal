@@ -16,7 +16,8 @@ interface InputProps {
   success?: boolean;
   error?: boolean;
   hint?: string;
-  dir?: "ltr" | "rtl";
+  dir?: "ltr" | "rtl" | "auto";
+  required?: boolean;
 }
 
 const Input = forwardRef<HTMLInputElement, InputProps>(({
@@ -36,6 +37,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(({
   error = false,
   hint,
   dir,
+  required = false,
 }, ref) => {
   let inputClasses = `h-11 w-full rounded-lg border appearance-none px-4 py-2.5 text-sm shadow-theme-xs placeholder:text-gray-400 focus:outline-hidden focus:ring-3 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 ${className}`;
 
@@ -64,7 +66,8 @@ const Input = forwardRef<HTMLInputElement, InputProps>(({
         max={max}
         step={step}
         disabled={disabled}
-        dir={dir} 
+        dir={dir}
+        required={required}
         className={inputClasses}
       />
 
