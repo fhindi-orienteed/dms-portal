@@ -1,20 +1,16 @@
-import Input from "../../components/form/input/InputField";
-import { SearchIcon } from "../../icons";
-import { useMemo, useState } from "react";
+import { useState, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { Merchant } from "../../types/merchant";
 import { UserCircleIcon } from "../../icons"; 
 import { PageMeta } from "../../components/common";
+import GenericDataTable from "../../components/tables/DataTables/GenericDataTable";
+import Badge from "../../components/ui/badge/Badge";
+import { getStatusColor } from "../../utils/packageUtils";
+import Input from "../../components/form/input/InputField";
 
-const status = [
-    "All status",
-    "Pending",
-     "In Transit",
-      "Delivered", 
-      "Failed"
-    ];
 const merchantList :Merchant[] =[
     {
+        id: 1,
         merchantName:"Ali Ahmad",
         mainAddress:"Jenin",
         createdDate:"20/3/2025",
@@ -24,6 +20,7 @@ const merchantList :Merchant[] =[
         totalPackage:17,   
     },
     {
+        id: 2,
         merchantName:"khaled Ahmad",
         mainAddress:"Nablus",
         createdDate:"20/3/2025",
@@ -33,6 +30,7 @@ const merchantList :Merchant[] =[
         totalPackage:7,   
     },
     {
+        id: 3,
         merchantName:"Omar ",
         mainAddress:"Nablus",
         createdDate:"20/5/2025",
@@ -42,6 +40,7 @@ const merchantList :Merchant[] =[
         totalPackage:5,   
     },
     {
+        id: 4,
         merchantName:"Othman",
         mainAddress:"Nablus",
         createdDate:"15/3/2025",
@@ -52,124 +51,117 @@ const merchantList :Merchant[] =[
     }
 ];
 export default function MerchantsList(){
-    const [searchTerm, setSearchTerm] = useState("");
     const [merchants] = useState<Merchant[]>(merchantList);
-    const [filterInput,setFilterInput] = useState("");
+    const [searchTerm, setSearchTerm] = useState("");
     const { t } = useTranslation();
 
-    const filteredMerchants = useMemo(()=>{
-        return merchants.filter(mer =>{
+    const filteredMerchants = useMemo(() => {
+        return merchants.filter(merchant => {
             const matchesSearch = 
-                mer.merchantName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                mer.branchCount.toString().includes(searchTerm.toString())||
-                mer.mainAddress.toLowerCase().includes(searchTerm.toLowerCase());
-
-            const statusFilterResult = mer.status.toString().includes(filterInput) || filterInput === "All status";
-            return matchesSearch && statusFilterResult;    
-           
+                merchant.merchantName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                merchant.mainAddress.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                merchant.branchCount.toString().includes(searchTerm.toLowerCase());
+            
+            return matchesSearch;
         });
-    }, [merchants, searchTerm, filterInput]);
+    }, [merchants, searchTerm]);
+
+    const columns = [
+        {
+            header: "Merchant Name",
+            accessor: (merchant: Merchant) => (
+                <div className="flex items-center gap-3">
+                    <div className="flex items-center justify-center w-10 h-10 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
+                        <UserCircleIcon className="size-5 text-blue-600 dark:text-blue-400" />
+                    </div>
+                    <div>
+                        <span className="font-medium text-gray-800 text-theme-sm dark:text-white/90">
+                            {merchant.merchantName}
+                        </span>
+                    </div>
+                </div>
+            )
+        },
+        {
+            header: "Main Address",
+            accessor: (merchant: Merchant) => (
+                <span className="text-gray-800 text-theme-sm dark:text-white/90">
+                    {merchant.mainAddress}
+                </span>
+            )
+        },
+        {
+            header: "Created Date",
+            accessor: (merchant: Merchant) => (
+                <span className="text-gray-500 text-theme-sm dark:text-gray-400">
+                    {merchant.createdDate}
+                </span>
+            )
+        },
+        {
+            header: "Branch Count",
+            accessor: (merchant: Merchant) => (
+                <span className="text-gray-800 text-theme-sm dark:text-white/90">
+                    {merchant.branchCount}
+                </span>
+            )
+        },
+        {
+            header: "User Count",
+            accessor: (merchant: Merchant) => (
+                <span className="text-gray-800 text-theme-sm dark:text-white/90">
+                    {merchant.userCount}
+                </span>
+            )
+        },
+        {
+            header: "Status",
+            accessor: (merchant: Merchant) => (
+                <Badge color={getStatusColor(merchant.status)}>
+                    {merchant.status}
+                </Badge>
+            )
+        },
+        {
+            header: "Total Package",
+            accessor: (merchant: Merchant) => (
+                <span className="text-gray-800 text-theme-sm dark:text-white/90">
+                    {merchant.totalPackage}
+                </span>
+            )
+        },
+    ];
     return (
         <>
             <PageMeta 
-                title={`${t('merchants.allMerchants')} | TailAdmin - React.js Admin Dashboard Template`} 
-                description={`${t('merchants.allMerchants')} - TailAdmin - React.js Tailwind CSS Admin Dashboard Template`}
+                title={`${t('merchants.allMerchants')} | DMS Portal`} 
+                description={`${t('merchants.allMerchants')} - DMS Portal`}
             />
-            <h2 className="text-xl font-semibold text-gray-800  flex flex-col pl-6 pr-6 dark:text-white/90"> All Merchants </h2>
-            <div className="bg-white rounded-lg h-1000px border border-gray-200 mt-6 dark:border-gray-800 dark:bg-white/[0.03]">
-                <div className="flex flex-col pl-6 pr-6">
-                    <span className ="mt-2">All merchants</span>
-                    <p className="text-sm text-gray-500 mt-1">4 merchants found</p>
-                    <hr className="mt-6 text-gray-100"></hr>
-                {/* inputs */}
-                <div className="flex justify-between ">
-                    {/* search input */}
-                    <div className="relative flex-1 max-w-md mt-4">
-                        <SearchIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400 z-10" />
-                        <Input
-                            type="text"
-                            placeholder={t('common.search')}
-                            value={searchTerm}
-                            onChange={(e) => setSearchTerm(e.target.value)}
-                            className="pl-10"
-                        />
+            <h2 className="text-xl font-semibold text-gray-800 dark:text-white/90 mb-6">All Merchants</h2>
+            
+            <div className="space-y-6">
+                {/* Search Controls */}
+                <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-6">
+                    <div className="flex flex-col lg:flex-row gap-4 items-start lg:items-center justify-between">
+                        <div className="flex-1 max-w-md">
+                            <Input
+                                placeholder="Search merchants..."
+                                value={searchTerm}
+                                onChange={(e) => setSearchTerm(e.target.value)}
+                                className="w-full"
+                            />
+                        </div>
                     </div>
-                    {/* search input */}
-
-                    
-                    {/* status filter */}
-                    <select className="relative flex-1 max-w-sm mt-4 border border-gray-200 rounded-lg text-md text-gray-800 w-[30%]"
-                        value={filterInput}
-                        onChange={(e)=> setFilterInput(e.target.value) } >
-                        {status.map((state) =>(
-                            <option value={state}>{state}</option>
-                        ))}
-                    </select>
-                    {/* status filter */}
-
-                
-                  
                 </div>
-                {/* inputs */}
-                
-                {/* list of merhants */}
-                <div className="border border-gray-200 mt-8 mb-8 rounded-lg" >
-                    {/* headers */}
-                    <div className="text-sm text-gray-500 flex flex-row justify-center p-2">
-                        <div className="flex flex-1 text-center">Merchant Name</div>
-                        <div className="flex flex-1 text-center">Main Address</div>
-                        <div className="flex flex-1 text-center">Created Date</div>
-                        <div className="flex flex-1 text-center"> Branch Count</div>
-                        <div className="flex flex-1 text-center">User Count</div>
-                        <div className="flex flex-1 text-center"> Status</div>
-                        <div className="flex flex-1 text-center">Total Package</div>
-                       
-                    </div>
-                     <hr></hr>
-                    {/* headers */}
 
-                    {/* table content */}
-                    <div>
-                        {  filteredMerchants.map((merr ,index) => (
-                            <div className="flex flex-row justify-center text-theme-sm text-black p-2" key={index}>
-                                <div className="flex flex-1 items-center" >
-                                    <div className="rounded-full bg-blue-100 w-10 h-10 flex justify-center items-center mr-1">
-                                        <UserCircleIcon className="text-lg text-blue-800 " /> 
-                                    </div>
-                                    {merr.merchantName }
-                                </div>
-                                <div className="flex flex-1 items-center" > {merr.mainAddress}</div>
-                                <div className="flex flex-1 items-center" > {merr.createdDate}</div>
-                                <div className="flex flex-1 items-center" > {merr.branchCount}</div>
-                                <div className="flex flex-1 items-center" > {merr.userCount}</div>
-                                <div className="flex flex-1 items-center" >
-                                    <span className={`text-center rounded-lg  ${merr.status === "Delivered"
-                                                                            ? "bg-success-50 text-success-800"
-                                                                            :merr.status==="In Transit" 
-                                                                            ? "bg-blue-light-50 text-blue-800"
-                                                                            :merr.status ==="Pending"
-                                                                            ? "bg-yellow-50 text-yellow-800"
-                                                                            :merr.status ==="Failed Delivery"
-                                                                            ?" bg-error-50 text-error-800"
-                                                                            : "bg-gray-50 text-gray-600"
-                                                                            }
-                                                `}
-                                    >
-                                    {merr.status}
-                                    </span> 
-                                 
-                                </div>
-                                <div className="flex flex-1 items-center" > {merr.totalPackage}</div>
-                                
-
-                            </div>
-                            
-                        ))}
-                        </div> 
-                        {/* table content */}
-                    </div>
-                    {/* list of merhants */}
-                </div>
+                {/* Table */}
+                <GenericDataTable
+                    data={filteredMerchants}
+                    columns={columns}
+                    itemsPerPage={10}
+                    showPagination={true}
+                    emptyMessage="No merchants found."
+                />
             </div>
         </>
     );

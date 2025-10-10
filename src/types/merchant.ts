@@ -1,4 +1,5 @@
 export interface Merchant {
+    id: number;
     merchantName:string,
     mainAddress:string,
     createdDate:string,
