@@ -1,31 +1,31 @@
-import EcommerceMetrics from "../../components/ecommerce/EcommerceMetrics";
-import MonthlySalesChart from "../../components/ecommerce/MonthlySalesChart";
-import StatisticsChart from "../../components/ecommerce/StatisticsChart";
-import MonthlyTarget from "../../components/ecommerce/MonthlyTarget";
-import RecentOrders from "../../components/ecommerce/RecentOrders";
-import DemographicCard from "../../components/ecommerce/DemographicCard";
 import PageMeta from "../../components/common/PageMeta";
 import PackageCard from "../../components/ecommerce/PackageCard";
-// import { DeliveredPackage, PendingPackage, ReturnedPackage } from "../../icons";
+import { DeliveredPackage, PendingPackage, ReturnedPackage } from "../../icons";
 import { useTranslation } from "../../hooks/useTranslation";
-import { usePackages } from "../../hooks/usePackageCard";
 
 
 export default function Home() {
   const { t } = useTranslation();
   
-  // const packageStatus = [
-  //   { statusName: "In Transit", count: 10, totalCOD: "500$", icon: DeliveredPackage, badgeColor: "warning" as const },
-  //   { statusName: "Delivered", count: 5, totalCOD: "200$", icon: DeliveredPackage, badgeColor: "success" as const },
-  //   { statusName: "Pending Pickup", count: 3, totalCOD: "100$", icon: PendingPackage, badgeColor: "info" as const },
-  //   { statusName: "Returned", count: 2, totalCOD: "50$", icon: ReturnedPackage, badgeColor: "error" as const },
-  //   { statusName: "Returned", count: 2, totalCOD: "50$", icon: ReturnedPackage, badgeColor: "error" as const }
-  // ];
-
-    const {packages, loading, error }=  usePackages();
-
-    if(error) return <p>Error : {error.message}</p>;
-    if(loading) return <p>Loading...</p>
+  const packageStatus = [
+    { statusName: "In Transit", count: 10, totalCOD: "500$", icon: DeliveredPackage, badgeColor: "warning" as const },
+    { statusName: "Delivered", count: 5, totalCOD: "200$", icon: DeliveredPackage, badgeColor: "success" as const },
+    { statusName: "Pending Pickup", count: 3, totalCOD: "100$", icon: PendingPackage, badgeColor: "info" as const },
+    { statusName: "Returned", count: 2, totalCOD: "50$", icon: ReturnedPackage, badgeColor: "error" as const },
+    { statusName: "In Transit", count: 10, totalCOD: "500$", icon: DeliveredPackage, badgeColor: "warning" as const },
+    { statusName: "Delivered", count: 5, totalCOD: "200$", icon: DeliveredPackage, badgeColor: "success" as const },
+    { statusName: "Pending Pickup", count: 3, totalCOD: "100$", icon: PendingPackage, badgeColor: "info" as const },
+    { statusName: "Returned", count: 2, totalCOD: "50$", icon: ReturnedPackage, badgeColor: "error" as const },
+    { statusName: "In Transit", count: 10, totalCOD: "500$", icon: DeliveredPackage, badgeColor: "warning" as const },
+    { statusName: "Delivered", count: 5, totalCOD: "200$", icon: DeliveredPackage, badgeColor: "success" as const },
+    { statusName: "Pending Pickup", count: 3, totalCOD: "100$", icon: PendingPackage, badgeColor: "info" as const },
+    { statusName: "Returned", count: 2, totalCOD: "50$", icon: ReturnedPackage, badgeColor: "error" as const }, 
+    { statusName: "In Transit", count: 10, totalCOD: "500$", icon: DeliveredPackage, badgeColor: "warning" as const },
+    { statusName: "Delivered", count: 5, totalCOD: "200$", icon: DeliveredPackage, badgeColor: "success" as const },
+    { statusName: "Delivered", count: 5, totalCOD: "200$", icon: DeliveredPackage, badgeColor: "success" as const },
+    { statusName: "Delivered", count: 5, totalCOD: "200$", icon: DeliveredPackage, badgeColor: "success" as const },
+    { statusName: "Pending Pickup", count: 3, totalCOD: "100$", icon: PendingPackage, badgeColor: "info" as const }
+  ];
 
   return (
     <>
@@ -41,46 +41,17 @@ export default function Home() {
       </div>
       
       <div className="mb-6">
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 md:gap-6">
-          {packages.map((pkg, index) => (
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-5 md:gap-6">
+          {packageStatus.map((pkg, index) => (
             <PackageCard
-              // key={index}
-              // statusName={status.statusName}
-              // count={status.count}
-              // totalCOD={status.totalCOD}
-              // icon={status.icon}
-              // badgeColor={status.badgeColor}
-              key= {index}
-              id={pkg.id}
-              userId={pkg.userId}
-              title= {pkg.title}
-              completed ={pkg.completed}
+              key={index}
+              statusName={pkg.statusName}
+              count={pkg.count}
+              totalCOD={pkg.totalCOD}
+              icon={pkg.icon}
+              badgeColor={pkg.badgeColor}
             />
           ))}
-        </div>
-      </div>
-
-      <div className="grid grid-cols-12 gap-4 md:gap-6">
-        <div className="col-span-12 space-y-6 xl:col-span-7">
-          <EcommerceMetrics />
-
-          <MonthlySalesChart />
-        </div>
-
-        <div className="col-span-12 xl:col-span-5">
-          <MonthlyTarget />
-        </div>
-
-        <div className="col-span-12">
-          <StatisticsChart />
-        </div>
-
-        <div className="col-span-12 xl:col-span-5">
-          <DemographicCard />
-        </div>
-
-        <div className="col-span-12 xl:col-span-7">
-          <RecentOrders />
         </div>
       </div>
     </>
