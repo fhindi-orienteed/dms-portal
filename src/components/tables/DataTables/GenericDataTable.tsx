@@ -14,6 +14,7 @@ interface GenericDataTableProps<T> {
   itemsPerPage?: number;
   showPagination?: boolean;
   emptyMessage?: string;
+  onRowClick?: (row: T) => void;
 }
 
 function GenericDataTable<T extends { id: number | string }>({
@@ -21,7 +22,8 @@ function GenericDataTable<T extends { id: number | string }>({
   columns,
   itemsPerPage = 10,
   showPagination = true,
-  emptyMessage = "No data found"
+  emptyMessage = "No data found",
+  onRowClick
 }: GenericDataTableProps<T>) {
   const [currentPage, setCurrentPage] = useState(1);
   const totalItems = data.length;
@@ -71,7 +73,11 @@ function GenericDataTable<T extends { id: number | string }>({
                 </TableRow>
               ) : (
                 currentData.map((row) => (
-                  <TableRow key={row.id}>
+                  <TableRow 
+                    key={row.id}
+                    onClick={() => onRowClick?.(row)}
+                    className={onRowClick ? "cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors" : ""}
+                  >
                     {columns.map((column, colIndex) => (
                       <TableCell 
                         key={colIndex} 

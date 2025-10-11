@@ -1,8 +1,9 @@
 import { useState, useMemo } from "react";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router";
 import { Merchant } from "../../types/merchant";
-import { UserCircleIcon } from "../../icons"; 
-import { PageMeta } from "../../components/common";
+import { SearchIcon, UserCircleIcon } from "../../icons"; 
+import { PageBreadcrumb, PageMeta } from "../../components/common";
 import GenericDataTable from "../../components/tables/DataTables/GenericDataTable";
 import Badge from "../../components/ui/badge/Badge";
 import { getStatusColor } from "../../utils/packageUtils";
@@ -54,6 +55,7 @@ export default function MerchantsList(){
     const [merchants] = useState<Merchant[]>(merchantList);
     const [searchTerm, setSearchTerm] = useState("");
     const { t } = useTranslation();
+    const navigate = useNavigate();
 
     const filteredMerchants = useMemo(() => {
         return merchants.filter(merchant => {
@@ -74,11 +76,9 @@ export default function MerchantsList(){
                     <div className="flex items-center justify-center w-10 h-10 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
                         <UserCircleIcon className="size-5 text-blue-600 dark:text-blue-400" />
                     </div>
-                    <div>
-                        <span className="font-medium text-gray-800 text-theme-sm dark:text-white/90">
-                            {merchant.merchantName}
-                        </span>
-                    </div>
+                    <span className="font-medium text-gray-800 text-theme-sm dark:text-white/90">
+                        {merchant.merchantName}
+                    </span>
                 </div>
             )
         },
@@ -137,18 +137,19 @@ export default function MerchantsList(){
                 title={`${t('merchants.allMerchants')} | DMS Portal`} 
                 description={`${t('merchants.allMerchants')} - DMS Portal`}
             />
-            <h2 className="text-xl font-semibold text-gray-800 dark:text-white/90 mb-6">All Merchants</h2>
+            <PageBreadcrumb pageTitle="All Merchants" />
             
             <div className="space-y-6">
                 {/* Search Controls */}
                 <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-6">
                     <div className="flex flex-col lg:flex-row gap-4 items-start lg:items-center justify-between">
-                        <div className="flex-1 max-w-md">
+                        <div className="relative flex-1 max-w-md">
+                            <SearchIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 size-4 text-gray-400 z-10" />
                             <Input
                                 placeholder="Search merchants..."
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
-                                className="w-full"
+                                className="w-full pl-10"
                             />
                         </div>
                     </div>
@@ -161,6 +162,7 @@ export default function MerchantsList(){
                     itemsPerPage={10}
                     showPagination={true}
                     emptyMessage="No merchants found."
+                    onRowClick={(merchant) => navigate(`/merchant/${merchant.id}`)}
                 />
             </div>
         </>

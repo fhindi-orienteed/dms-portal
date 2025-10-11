@@ -4,6 +4,7 @@ import PageBreadcrumb from "../components/common/PageBreadCrumb";
 import ComponentCard from "../components/common/ComponentCard";
 import Button from "../components/ui/button/Button";
 import { SearchIcon, CheckLineIcon, TrashBinIcon } from "../icons";
+import Select from "../components/form/Select";
 
 const mockNotifications = [
   {
@@ -219,6 +220,21 @@ export default function AllNotifications() {
   const [filterType, setFilterType] = useState("all");
   const [filterStatus, setFilterStatus] = useState("all");
 
+  const typeOptions = [
+    { value: "all", label: t("notifications.allTypes") || "All Types" },
+    { value: "project", label: t("notifications.project") || "Project" },
+    { value: "task", label: t("notifications.task") || "Task" },
+    { value: "comment", label: t("notifications.comment") || "Comment" },
+    { value: "file", label: t("notifications.file") || "File" },
+    { value: "assignment", label: t("notifications.assignment") || "Assignment" },
+  ];
+
+  const statusOptions = [
+    { value: "all", label: t("notifications.allStatus") || "All Status" },
+    { value: "unread", label: t("notifications.unread") || "Unread" },
+    { value: "read", label: t("notifications.read") || "Read" },
+  ];
+
   const handleMarkAsRead = (id: number) => {
     setNotifications(prev => 
       prev.map(notification => 
@@ -282,29 +298,20 @@ export default function AllNotifications() {
               </div>
 
               {/* Type Filter */}
-              <select
-                value={filterType}
-                onChange={(e) => setFilterType(e.target.value)}
-                className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-800 dark:border-gray-600 dark:text-white"
-              >
-                <option value="all">{t("notifications.allTypes")}</option>
-                <option value="project">{t("notifications.project")}</option>
-                <option value="task">{t("notifications.task")}</option>
-                <option value="comment">{t("notifications.comment")}</option>
-                <option value="file">{t("notifications.file")}</option>
-                <option value="assignment">{t("notifications.assignment")}</option>
-              </select>
+              <Select 
+                options={typeOptions}
+                placeholder={t("notifications.allTypes") || "All Types"}
+                onChange={(value) => setFilterType(value)}
+                defaultValue={filterType}
+              />
 
               {/* Status Filter */}
-              <select
-                value={filterStatus}
-                onChange={(e) => setFilterStatus(e.target.value)}
-                className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-800 dark:border-gray-600 dark:text-white"
-              >
-                <option value="all">{t("notifications.allStatus")}</option>
-                <option value="unread">{t("notifications.unread")}</option>
-                <option value="read">{t("notifications.read")}</option>
-              </select>
+              <Select
+                options={statusOptions}
+                placeholder={t("notifications.allStatus") || "All Status"}
+                onChange={(value) => setFilterStatus(value)}
+                defaultValue={filterStatus}
+              />
             </div>
 
             {/* Action Buttons */}

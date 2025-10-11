@@ -41,6 +41,7 @@ import AccountSettings from "./pages/Settings/AccountSettings";
 import NotificationSettings from "./pages/Settings/NotificationSettings";
 import SystemSettings from "./pages/Settings/SystemSettings";
 import MerchantsList from "./pages/merchant/list";
+import MerchantDetails from "./pages/merchant/details";
 
 
 export default function App() {
@@ -173,9 +174,13 @@ export default function App() {
                 <ProtectedRoute>
                   <MerchantsList/>
                 </ProtectedRoute>
-              }
-              
-              />  
+              } />
+
+              <Route path="/merchant/:id" element={
+                <ProtectedRoute>
+                  <MerchantDetails />
+                </ProtectedRoute>
+              } />  
 
               <Route path="/settings/account" element={
                 <ProtectedRoute>
