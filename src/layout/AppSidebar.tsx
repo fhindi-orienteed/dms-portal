@@ -133,7 +133,7 @@ const othersItems: NavItem[] = [
     icon: <UserCircleIcon />,
     name: t('sidebar.customers'),
     subItems: [
-      { name: t('customers.customerList'), path: "/customers", pro: false },
+      { name: t('customers.customerList'), path: "/customers/list", pro: false },
       { name: t('customers.blackList'), path: "/customers/blacklist", pro: false },
       { name: t('customers.customerSegment'), path: "/customers/segment", pro: false },
     ],

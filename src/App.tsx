@@ -42,6 +42,10 @@ import NotificationSettings from "./pages/Settings/NotificationSettings";
 import SystemSettings from "./pages/Settings/SystemSettings";
 import MerchantsList from "./pages/merchant/list";
 import MerchantDetails from "./pages/merchant/details";
+import CustomersList from "./pages/customers/list";
+import CustomerDetails from "./pages/customers/details";
+import BlacklistCustomers from "./pages/customers/blacklist";
+import CustomerSegment from "./pages/customers/segment";
 
 
 export default function App() {
@@ -180,7 +184,31 @@ export default function App() {
                 <ProtectedRoute>
                   <MerchantDetails />
                 </ProtectedRoute>
-              } />  
+              } />
+
+              <Route path="/customers/list" element={
+                <ProtectedRoute>
+                  <CustomersList />
+                </ProtectedRoute>
+              } />
+
+              <Route path="/customers/blacklist" element={
+                <ProtectedRoute>
+                  <BlacklistCustomers />
+                </ProtectedRoute>
+              } />
+
+              <Route path="/customers/segment" element={
+                <ProtectedRoute>
+                  <CustomerSegment />
+                </ProtectedRoute>
+              } />
+
+              <Route path="/customers/details/:id" element={
+                <ProtectedRoute>
+                  <CustomerDetails />
+                </ProtectedRoute>
+              } />
 
               <Route path="/settings/account" element={
                 <ProtectedRoute>
