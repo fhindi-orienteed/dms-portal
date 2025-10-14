@@ -24,53 +24,84 @@ export default function BranchesCarousel({ branches }: BranchesCarouselProps) {
     setCurrentIndex(index);
   };
 
-//   const nextBranches = () => {
-//     const nextIndex = Math.min(currentIndex + 1, maxIndex);
-//     scrollToIndex(nextIndex);
-//   };
+  const nextBranches = () => {
+   const nextIndex = Math.min(currentIndex + 1, maxIndex);
+    scrollToIndex(nextIndex);
+   };
 
-//   const prevBranches = () => {
-//     const prevIndex = Math.max(currentIndex - 1, 0);
-//     scrollToIndex(prevIndex);
-//   };
+   const prevBranches = () => {
+    const prevIndex = Math.max(currentIndex - 1, 0);
+    scrollToIndex(prevIndex);
+  };
 
   if (branches.length === 0) return null;
 
   return (
-    <div className="w-full">
+    <div className="w-full relative">
       <h3 className="text-lg font-semibold text-white mb-4 text-center">Our Branches</h3>
-      
-      <div className="relative">
-        {/* Branches Container */}
-        <div 
-          ref={scrollContainerRef}
-          className="flex space-x-3 overflow-hidden scrollbar-hide"
-          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-        >
-          {branches.map((branch) => (
-            <div 
-              key={branch.id} 
-              className="flex-shrink-0 w-full bg-white/5 rounded-lg p-4 border border-white/10 min-w-0"
-            >
-              <h4 className="text-white font-medium mb-2 truncate">{branch.name}</h4>
-              <div className="space-y-1 text-sm text-gray-300">
-                <p className="flex items-center">
-                  <span className="mr-2">📍</span>
-                  <span className="truncate">{branch.address}</span>
-                </p>
-                <p className="flex items-center">
-                  <span className="mr-2">📞</span>
-                  <span>{branch.phone}</span>
-                </p>
-                <p className="flex items-center">
-                  <span className="mr-2">🕒</span>
-                  <span className="truncate">{branch.hours}</span>
-                </p>
+      <div className="relative flex items-center justify-center">
+        {/* Left Arrow */}
+        {branches.length > 1 && (
+          <button
+            onClick={prevBranches}
+            disabled={currentIndex === 0}
+            className={`absolute left-0 md:-left-10 p-2 rounded-full bg-white/10 hover:bg-white/30 transition-all duration-200 text-white text-2xl ${
+              currentIndex === 0 ? "opacity-40 cursor-not-allowed" : ""
+            }`}
+          >
+            ‹
+          </button>)}
+      {/* Scrollable container */}
+      <div className="w-full max-w-md overflow-hidden rounded-xl border border-white/10 bg-white/5">
+          <div
+            ref={scrollContainerRef}
+            className="flex transition-transform duration-500 ease-in-out"
+            style={{
+              width: `${branches.length * 100}%`,
+              transform: `translateX(-${currentIndex * (100 / branches.length)}%)`,
+            }}
+          >
+            {branches.map((branch) => (
+              <div
+                key={branch.id}
+                className="w-full flex-shrink-0 flex justify-center px-2 py-4"
+                style={{ flex: `0 0 ${100 / branches.length}%` }}
+              >
+                <div className="w-full">
+                  <h4 className="text-white font-semibold mb-2 text-center">
+                    {branch.name}
+                  </h4>
+                  <div className="space-y-2 text-sm text-gray-300 text-center">
+                    <p className="flex justify-center items-center">
+                      <span className="mr-2">📍</span>
+                      {branch.address}
+                    </p>
+                    <p className="flex justify-center items-center">
+                      <span className="mr-2">📞</span>
+                      {branch.phone}
+                    </p>
+                    <p className="flex justify-center items-center">
+                      <span className="mr-2">🕒</span>
+                      {branch.hours}
+                    </p>
+                  </div>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-
+        {/* Right Arrow */}
+        {branches.length > 1 && (
+          <button
+            onClick={nextBranches}
+            disabled={currentIndex === maxIndex}
+            className={`absolute right-0 md:-right-10 p-2 rounded-full bg-white/10 hover:bg-white/30 transition-all duration-200 text-white text-2xl ${
+              currentIndex === maxIndex ? "opacity-40 cursor-not-allowed" : ""
+            }`}
+          >
+            ›
+          </button>)} 
+          </div>
         {/* Dots Indicator */}
         {branches.length > itemsPerView && (
           <div className="flex justify-center mt-4 space-x-2">
@@ -88,6 +119,6 @@ export default function BranchesCarousel({ branches }: BranchesCarouselProps) {
           </div>
         )}
       </div>
-    </div>
+   
   );
 } 
