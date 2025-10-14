@@ -48,7 +48,8 @@ import BlacklistCustomers from "./pages/customers/blacklist";
 import CustomerSegment from "./pages/customers/segment";
 import DriverPerformance from "./pages/drivers/performance";
 import DriverAssignments from "./pages/drivers/assignments";
-import DriverList from "./pages/drivers/DriversList";
+import DriverDetails from "./pages/drivers/details";
+import DriverList from "./pages/drivers/list";
 
 
 export default function App() {
@@ -226,6 +227,12 @@ export default function App() {
               <Route path="/drivers/assignments" element={
                 <ProtectedRoute>
                   <DriverAssignments />
+                </ProtectedRoute>
+              } />
+
+              <Route path="/drivers/:id" element={
+                <ProtectedRoute>
+                  <DriverDetails />
                 </ProtectedRoute>
               } />
 

@@ -1,5 +1,6 @@
 import { useState, useMemo } from "react";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router";
 import { SearchIcon, UserCircleIcon } from "../../icons"; 
 import { PageBreadcrumb, PageMeta } from "../../components/common";
 import GenericDataTable from "../../components/tables/DataTables/GenericDataTable";
@@ -27,6 +28,7 @@ export default function DriverList() {
     const [drivers] = useState<Driver[]>(driverList);
     const [searchTerm, setSearchTerm] = useState("");
     const { t } = useTranslation();
+    const navigate = useNavigate();
 
     const filteredDrivers = useMemo(() => {
         return drivers.filter(driver => 
@@ -35,6 +37,10 @@ export default function DriverList() {
             driver.email.toLowerCase().includes(searchTerm.toLowerCase())
         );
     }, [drivers, searchTerm]);
+
+    const handleRowClick = (driver: Driver) => {
+        navigate(`/drivers/${driver.id}`);
+    };
 
     const columns = [
         {
@@ -113,6 +119,7 @@ export default function DriverList() {
                     itemsPerPage={10}
                     showPagination={true}
                     emptyMessage="No drivers found."
+                    onRowClick={handleRowClick}
                 />
             </div>
         </>
