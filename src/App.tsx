@@ -48,8 +48,8 @@ import BlacklistCustomers from "./pages/customers/blacklist";
 import CustomerSegment from "./pages/customers/segment";
 import DriverPerformance from "./pages/drivers/performance";
 import DriverAssignments from "./pages/drivers/assignments";
-import DriverDetails from "./pages/drivers/details";
-import AssignmentDetails from "./pages/assignments/details";
+import DriverDetails from "./pages/drivers/details/index";
+import AssignmentDetails from "./pages/assignments/details/index";
 import DriverList from "./pages/drivers/list";
 
 
