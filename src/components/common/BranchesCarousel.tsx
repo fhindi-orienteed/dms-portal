@@ -1,5 +1,7 @@
 import { useState, useRef } from 'react';
 import type { Branch } from '../../types';
+// import { NextPageArrow } from '../../icons';
+
 
 interface BranchesCarouselProps {
   branches: Branch[];
@@ -24,15 +26,15 @@ export default function BranchesCarousel({ branches }: BranchesCarouselProps) {
     setCurrentIndex(index);
   };
 
-//   const nextBranches = () => {
-//     const nextIndex = Math.min(currentIndex + 1, maxIndex);
-//     scrollToIndex(nextIndex);
-//   };
+  const nextBranches = () => {
+    const nextIndex = Math.min(currentIndex + 1, maxIndex);
+    scrollToIndex(nextIndex);
+  };
 
-//   const prevBranches = () => {
-//     const prevIndex = Math.max(currentIndex - 1, 0);
-//     scrollToIndex(prevIndex);
-//   };
+  const prevBranches = () => {
+    const prevIndex = Math.max(currentIndex - 1, 0);
+    scrollToIndex(prevIndex);
+  };
 
   if (branches.length === 0) return null;
 
@@ -40,37 +42,52 @@ export default function BranchesCarousel({ branches }: BranchesCarouselProps) {
     <div className="w-full">
       <h3 className="text-lg font-semibold text-white mb-4 text-center">Our Branches</h3>
       
-      <div className="relative">
-        {/* Branches Container */}
-        <div 
-          ref={scrollContainerRef}
-          className="flex space-x-3 overflow-hidden scrollbar-hide"
-          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-        >
-          {branches.map((branch) => (
-            <div 
-              key={branch.id} 
-              className="flex-shrink-0 w-full bg-white/5 rounded-lg p-4 border border-white/10 min-w-0"
-            >
-              <h4 className="text-white font-medium mb-2 truncate">{branch.name}</h4>
-              <div className="space-y-1 text-sm text-gray-300">
-                <p className="flex items-center">
-                  <span className="mr-2">📍</span>
-                  <span className="truncate">{branch.address}</span>
-                </p>
-                <p className="flex items-center">
-                  <span className="mr-2">📞</span>
-                  <span>{branch.phone}</span>
-                </p>
-                <p className="flex items-center">
-                  <span className="mr-2">🕒</span>
-                  <span className="truncate">{branch.hours}</span>
-                </p>
+      <div className=" relative">
+         {/* Branches Container */}
+        <div className='flex flex-row'>
+          {/* previous branch */}
+          <div className="w-24 h-24 flex justify-center text-2xl font-bold  text-gray-300 "> 
+            <button onClick={prevBranches}>&lt;</button>
+          </div>
+         
+          {/* branch info */}
+          <div 
+            ref={scrollContainerRef}
+            className="flex space-x-3 overflow-hidden scrollbar-hide"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
+            {branches.map((branch) => (
+              <div 
+                key={branch.id} 
+                className="flex-shrink-0 w-full bg-white/5 rounded-lg p-4 border border-white/10 min-w-0"
+              >
+                <h4 className="text-white font-medium mb-2 truncate">{branch.name}</h4>
+                <div className="space-y-1 text-sm text-gray-300">
+                  <p className="flex items-center">
+                    <span className="mr-2">📍</span>
+                    <span className="truncate">{branch.address}</span>
+                  </p>
+                  <p className="flex items-center">
+                    <span className="mr-2">📞 </span>
+                    <span>{branch.phone}</span>
+                  </p>
+                  <p className="flex items-center">
+                    <span className="mr-2">🕒</span>
+                    <span className="truncate">{branch.hours}</span>
+                  </p>
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+          {/* next branch */}
+          <div className="w-24 h-24 flex justify-center text-2xl font-bold  text-white ">
+            <button onClick={nextBranches}  >&gt;</button>
+          </div>
 
+        </div>
+          
+
+     
         {/* Dots Indicator */}
         {branches.length > itemsPerView && (
           <div className="flex justify-center mt-4 space-x-2">
