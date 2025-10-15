@@ -48,9 +48,13 @@ import BlacklistCustomers from "./pages/customers/blacklist";
 import CustomerSegment from "./pages/customers/segment";
 import DriverPerformance from "./pages/drivers/performance";
 import DriverAssignments from "./pages/drivers/assignments";
-import DriverDetails from "./pages/drivers/details/index";
-import AssignmentDetails from "./pages/assignments/details/index";
+import DriverDetails from "./pages/drivers/details";
+import AssignmentDetails from "./pages/assignments/details";
 import DriverList from "./pages/drivers/list";
+import CustomerFollowUps from "./pages/follow-ups/customers";
+import PaymentFollowUps from "./pages/follow-ups/payments";
+import DeliveryFollowUps from "./pages/follow-ups/deliveries";
+import ReturnsFollowUps from "./pages/follow-ups/returns";
 
 
 export default function App() {
@@ -240,6 +244,30 @@ export default function App() {
               <Route path="/assignments/:id" element={
                 <ProtectedRoute>
                   <AssignmentDetails />
+                </ProtectedRoute>
+              } />
+
+              <Route path="/follow-ups/customers" element={
+                <ProtectedRoute>
+                  <CustomerFollowUps />
+                </ProtectedRoute>
+              } />
+
+              <Route path="/follow-ups/payments" element={
+                <ProtectedRoute>
+                  <PaymentFollowUps />
+                </ProtectedRoute>
+              } />
+
+              <Route path="/follow-ups/deliveries" element={
+                <ProtectedRoute>
+                  <DeliveryFollowUps />
+                </ProtectedRoute>
+              } />
+
+              <Route path="/follow-ups/returns" element={
+                <ProtectedRoute>
+                  <ReturnsFollowUps />
                 </ProtectedRoute>
               } />
 
