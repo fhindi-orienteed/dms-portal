@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router";
 import PageBreadcrumb from "../../components/common/PageBreadCrumb";
 import PageMeta from "../../components/common/PageMeta";
 import { Package } from "../../types/packages";
@@ -124,7 +125,12 @@ const mockPackages: Package[] = [
 ];
 export default function InTransitPackages() {
   const [packages] = useState<Package[]>(mockPackages);
+  const navigate = useNavigate();
   const { filters, searchTerm, clearAllFilters, updateSearchTerm, handleFilterChange, removeFilter } = useFilterManager();
+
+  const handleRowClick = (packageData: Package) => {
+    navigate(`/packages/${packageData.id}`);
+  };
 
   const availableFilters: FilterOption[] = [
     {
@@ -273,6 +279,7 @@ export default function InTransitPackages() {
           itemsPerPage={10}
           showPagination={true}
           emptyMessage="No in transit packages found."
+          onRowClick={handleRowClick}
         />
       </div>
     </>

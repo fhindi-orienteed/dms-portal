@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router";
 import PageBreadcrumb from "../../components/common/PageBreadCrumb";
 import PageMeta from "../../components/common/PageMeta";
 import { Package } from "../../types/packages";
@@ -66,7 +67,12 @@ const mockPackages: Package[] = [
 
 export default function FailedDeliveryPackages() {
   const [packages] = useState<Package[]>(mockPackages);
+  const navigate = useNavigate();
   const { filters, searchTerm, clearAllFilters, updateSearchTerm, handleFilterChange, removeFilter } = useFilterManager();
+
+  const handleRowClick = (packageData: Package) => {
+    navigate(`/packages/${packageData.id}`);
+  };
 
   const availableFilters: FilterOption[] = [
     {
@@ -216,6 +222,7 @@ export default function FailedDeliveryPackages() {
           itemsPerPage={10}
           showPagination={true}
           emptyMessage="No failed delivery packages found."
+          onRowClick={handleRowClick}
         />
       </div>
     </>

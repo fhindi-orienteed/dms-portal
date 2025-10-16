@@ -24,11 +24,11 @@ import DataTables from "./components/tables/DataTables/DataTableOne";
 import FormElements from "./pages/Forms/FormElements";
 import Blank from "./pages/Blank";
 import AllNotifications from "./pages/AllNotifications";
-import AllPackages from "./pages/Packages/AllPackages";
-import InTransitPackages from "./pages/Packages/InTransitPackages";
-import DeliveredPackages from "./pages/Packages/DeliveredPackages";
-import PendingPackages from "./pages/Packages/PendingPackages";
-import FailedDeliveryPackages from "./pages/Packages/FailedDeliveryPackages";
+import AllPackages from "./pages/packages/AllPackages";
+import InTransitPackages from "./pages/packages/InTransitPackages";
+import DeliveredPackages from "./pages/packages/DeliveredPackages";
+import PendingPackages from "./pages/packages/PendingPackages";
+import FailedDeliveryPackages from "./pages/packages/FailedDeliveryPackages";
 import AppLayout from "./layout/AppLayout";
 import { ScrollToTop } from "./components/common/ScrollToTop";
 import Home from "./pages/Dashboard/Home";
@@ -55,6 +55,7 @@ import CustomerFollowUps from "./pages/follow-ups/customers";
 import PaymentFollowUps from "./pages/follow-ups/payments";
 import DeliveryFollowUps from "./pages/follow-ups/deliveries";
 import ReturnsFollowUps from "./pages/follow-ups/returns";
+import PackageDetails from "./pages/packages/details";
 
 
 export default function App() {
@@ -268,6 +269,12 @@ export default function App() {
               <Route path="/follow-ups/returns" element={
                 <ProtectedRoute>
                   <ReturnsFollowUps />
+                </ProtectedRoute>
+              } />
+
+              <Route path="/packages/:id" element={
+                <ProtectedRoute>
+                  <PackageDetails />
                 </ProtectedRoute>
               } />
 
