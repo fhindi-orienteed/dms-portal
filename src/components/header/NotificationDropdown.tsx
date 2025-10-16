@@ -11,7 +11,7 @@ import { DropdownItem } from "../ui/dropdown/DropdownItem";
 import { Link } from "react-router";
 import { useTranslation } from "react-i18next";
 import { notificationService } from "../../services/notificationService";
-import { Notification } from "../../models/notificationModel";
+import { Notification, NotificationResponse } from "../../models/notificationModel";
 
 export default function NotificationDropdown() {
   const { t, i18n } = useTranslation();
@@ -22,8 +22,12 @@ export default function NotificationDropdown() {
 
   useEffect(() => {
     async function fetchData() {
-      const data = await notificationService.getNotifications();
-      setNotifications(data);
+      try {
+        const data: NotificationResponse = await notificationService.getNotifications();
+        setNotifications(data.content || []);
+      } catch (error) {
+        console.error("Error fetching notifications:", error);
+      }
     }
     fetchData();
   }, []);
@@ -35,13 +39,8 @@ export default function NotificationDropdown() {
     setNotifying(false);
   };
 
-  const translateOrText = (text: string) => {
-    try {
-      const translated = t(text);
-      return translated === text ? text : translated;
-    } catch {
-      return text;
-    }
+  const translateText = (text: string) => {
+    return t(`notifications.${text}`, { defaultValue: text });
   };
 
   return (
@@ -84,7 +83,7 @@ export default function NotificationDropdown() {
       >
         <div className="flex items-center justify-between pb-3 mb-3 border-b border-gray-100 dark:border-gray-700">
           <h5 className="text-lg font-semibold text-gray-800 dark:text-gray-200">
-            {translateOrText("notifications.title")}
+            {translateText("title")}
           </h5>
           <button
             onClick={toggleDropdown}
@@ -99,35 +98,24 @@ export default function NotificationDropdown() {
             <li key={n.id}>
               <DropdownItem className="flex items-start gap-3 dark:hover:bg-gray-700">
                 <div className="flex items-center justify-center w-15 h-12 bg-gray-100 rounded-xl dark:bg-gray-800">
-                  {n.type === "account" && (
-                    <UserCircleIcon className="text-gray-800 size-6 dark:text-white/90" />
-                  )}
-                  {n.type === "package" && (
-                    <BoxIconLine className="text-gray-800 size-6 dark:text-white/90" />
-                  )}
-                  {n.type === "system" && (
-                    <GridIcon className="text-gray-800 size-6 dark:text-white/90" />
-                  )}
-                  {n.type === "collection" && (
-                    <PieChartIcon className="text-gray-800 size-6 dark:text-white/90" />
-                  )}
-                  {n.type === "payment" && (
-                    <DollarLineIcon className="text-gray-800 size-6 dark:text-white/90" />
-                  )}
+                  {n.type === "ACCOUNT" && <UserCircleIcon className="text-gray-800 size-6 dark:text-white/90" />}
+                  {n.type === "PACKAGE" && <BoxIconLine className="text-gray-800 size-6 dark:text-white/90" />}
+                  {n.type === "SYSTEM" && <GridIcon className="text-gray-800 size-6 dark:text-white/90" />}
+                  {n.type === "COLLECTION" && <PieChartIcon className="text-gray-800 size-6 dark:text-white/90" />}
+                  {n.type === "PAYMENT" && <DollarLineIcon className="text-gray-800 size-6 dark:text-white/90" />}
                 </div>
 
                 <div className="flex flex-col items-start w-full">
                   <span className="font-medium text-gray-800 dark:text-white/90 flex items-center gap-2">
-                    {translateOrText(n.title)}
+                    {translateText(n.title)}
                     <span className="text-gray-400 text-xs">
-                      {new Date(n.time).toLocaleTimeString([], {
-                        hour: "2-digit",
-                        minute: "2-digit",
-                      })}
+                      {n.createdAt
+                        ? new Date(n.createdAt).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
+                        : ""}
                     </span>
                   </span>
                   <span className="text-gray-500 dark:text-gray-400 text-sm">
-                    {translateOrText(n.description)}
+                    {translateText(n.message)}
                   </span>
                 </div>
               </DropdownItem>
@@ -139,7 +127,7 @@ export default function NotificationDropdown() {
           to="/notifications"
           className="block px-4 py-2 mt-3 text-sm font-medium text-center text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700"
         >
-          {translateOrText("notifications.viewAll")}
+          {translateText("viewAll")}
         </Link>
       </Dropdown>
     </div>
