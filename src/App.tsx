@@ -58,6 +58,7 @@ import ReturnsFollowUps from "./pages/follow-ups/returns";
 import PackageDetails from "./pages/packages/details";
 
 import TrackPackage from "./pages/TrackPackage/TrackPackage";
+import TrackingHistory from "./pages/TrackPackage/TrackingHistory";
 
 
 export default function App() {
@@ -90,8 +91,13 @@ export default function App() {
                   <Blank />
                 </ProtectedRoute>
               } />
+                    <Route path="/tracking/history" element={
+                <ProtectedRoute>
+                  <TrackingHistory />
+                </ProtectedRoute>
+              } />
               
-
+              
               <Route path="/form-elements" element={
                 <ProtectedRoute>
                   <FormElements />
