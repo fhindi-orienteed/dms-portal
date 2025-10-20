@@ -57,6 +57,8 @@ import DeliveryFollowUps from "./pages/follow-ups/deliveries";
 import ReturnsFollowUps from "./pages/follow-ups/returns";
 import PackageDetails from "./pages/packages/details";
 
+import TrackPackage from "./pages/TrackPackage/TrackPackage";
+
 
 export default function App() {
   return (
@@ -82,11 +84,13 @@ export default function App() {
                   <Calendar />
                 </ProtectedRoute>
               } />
+              
               <Route path="/blank" element={
                 <ProtectedRoute>
                   <Blank />
                 </ProtectedRoute>
               } />
+              
 
               <Route path="/form-elements" element={
                 <ProtectedRoute>
@@ -162,12 +166,15 @@ export default function App() {
                 <ProtectedRoute>
                   <AllPackages />
                 </ProtectedRoute>
+
               } />
+              
               <Route path="/packages/in-transit" element={
                 <ProtectedRoute>
                   <InTransitPackages />
                 </ProtectedRoute>
               } />
+       
               <Route path="/packages/delivered" element={
                 <ProtectedRoute>
                   <DeliveredPackages />
@@ -199,6 +206,18 @@ export default function App() {
                   <MerchantDetails />
                 </ProtectedRoute>
               } />
+            
+             <Route
+          path="/tracking"
+         element={
+           <ProtectedRoute>
+             <TrackPackage />
+           </ProtectedRoute>
+          }
+            />
+ 
+            
+         
 
               <Route path="/customers/list" element={
                 <ProtectedRoute>
