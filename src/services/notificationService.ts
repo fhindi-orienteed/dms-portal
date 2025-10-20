@@ -12,7 +12,6 @@ export const notificationService = {
     try {
       const response = await api.get("notification/list", {
         headers: {
-           Accept: "application/json",
           Authorization: `Bearer ${token}`,
         },
       });
