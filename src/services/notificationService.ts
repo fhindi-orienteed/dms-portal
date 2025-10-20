@@ -1,25 +1,26 @@
 import { NotificationResponse } from "../models/notificationModel";
 import { apiUtils } from "../utils/apiUtils";
+import api from "../config/api";
 
 export const notificationService = {
   async getNotifications(): Promise<NotificationResponse> {
-    const token = apiUtils.auth.getToken(); 
+    const token = apiUtils.auth.getToken();
     if (!token) {
       throw new Error("User is not authenticated");
     }
 
-    const response = await fetch("http://api-dms.orienteed.ps/v1/web/notification/list", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    try {
+      const response = await api.get("notification/list", {
+        headers: {
+           Accept: "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
-    if (!response.ok) {
+      return response.data;
+    } catch (error) {
       throw new Error("Failed to fetch notifications");
     }
-
-    return response.json();
   },
 };
+
