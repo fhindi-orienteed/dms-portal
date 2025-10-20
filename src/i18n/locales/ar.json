@@ -53,6 +53,8 @@
   "dashboard": {
     "title": "لوحة التحكم",
     "welcomeMessage": "مرحباً بك في لوحة التحكم",
+    "export":"تصدير",
+    "import":"استيراد",
     "totalPackages": "إجمالي الطرود",
     "deliveredPackages": "الطرود المسلمة",
     "pendingPackages": "الطرود المعلقة",
