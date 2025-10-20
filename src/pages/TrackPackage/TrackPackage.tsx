@@ -9,7 +9,7 @@ import { useTracking } from "../../hooks/useTracking";
 export default function TrackPackagePage() {
   const { trackPackage, trackingResult, isTracking, resetTracking } = useTracking();
 
-  // Mock data for demonstration (replace with API data if available)
+
   const [trackingHistory] = useState([
     {
       id: 1,
