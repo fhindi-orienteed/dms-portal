@@ -8,8 +8,8 @@ export default function Home() {
   const { t } = useTranslation();
   
   const packageStatus = [
-    { statusName: "In Transit", count: 10, totalCOD: "500$", icon: DeliveredPackage, badgeColor: "warning" as const },
-    { statusName: "Delivered", count: 5, totalCOD: "200$", icon: DeliveredPackage, badgeColor: "success" as const },
+    { statusName: "In Transit", count: 10, totalCOD: "50$", icon: DeliveredPackage, badgeColor: "warning" as const },
+    { statusName: "Delivered", count: 5, totalCOD: "10$", icon: DeliveredPackage, badgeColor: "success" as const },
     { statusName: "Pending Pickup", count: 3, totalCOD: "100$", icon: PendingPackage, badgeColor: "info" as const },
     { statusName: "Returned", count: 2, totalCOD: "50$", icon: ReturnedPackage, badgeColor: "error" as const },
    

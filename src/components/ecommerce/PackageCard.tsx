@@ -25,12 +25,12 @@ export default function PackageCard({
                 <Icon className="text-gray-800 size-12 dark:text-white/90" />
             </div>
             
-            <div className="flex flex-col ml-5">
+            <div className="flex flex-col ml-4 mr-4">
                 <div className="flex flex-row justify-between  ">
                     <h4 className=" flex items-start  font-bold text-gray-800 text-title-sm dark:text-white/90">
                         {count}
                     </h4>
-                    <span className="flex items-end  w-8 text-center">
+                    <span className="flex items-end   text-center">
                         <Badge color={badgeColor} >
                             {totalCOD}
                         </Badge>
