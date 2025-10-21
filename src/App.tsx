@@ -24,11 +24,11 @@ import DataTables from "./components/tables/DataTables/DataTableOne";
 import FormElements from "./pages/Forms/FormElements";
 import Blank from "./pages/Blank";
 import AllNotifications from "./pages/AllNotifications";
-import AllPackages from "./pages/Packages/AllPackages";
-import InTransitPackages from "./pages/Packages/InTransitPackages";
-import DeliveredPackages from "./pages/Packages/DeliveredPackages";
-import PendingPackages from "./pages/Packages/PendingPackages";
-import FailedDeliveryPackages from "./pages/Packages/FailedDeliveryPackages";
+import AllPackages from "./pages/packages/AllPackages";
+import InTransitPackages from "./pages/packages/InTransitPackages";
+import DeliveredPackages from "./pages/packages/DeliveredPackages";
+import PendingPackages from "./pages/packages/PendingPackages";
+import FailedDeliveryPackages from "./pages/packages/FailedDeliveryPackages";
 import AppLayout from "./layout/AppLayout";
 import { ScrollToTop } from "./components/common/ScrollToTop";
 import Home from "./pages/Dashboard/Home";
@@ -51,6 +51,14 @@ import DriverAssignments from "./pages/drivers/assignments";
 import DriverDetails from "./pages/drivers/details";
 import AssignmentDetails from "./pages/assignments/details";
 import DriverList from "./pages/drivers/list";
+import CustomerFollowUps from "./pages/follow-ups/customers";
+import PaymentFollowUps from "./pages/follow-ups/payments";
+import DeliveryFollowUps from "./pages/follow-ups/deliveries";
+import ReturnsFollowUps from "./pages/follow-ups/returns";
+import PackageDetails from "./pages/packages/details";
+
+import TrackPackage from "./pages/TrackPackage/TrackPackage";
+import TrackingHistory from "./pages/TrackPackage/TrackingHistory";
 
 
 export default function App() {
@@ -77,12 +85,19 @@ export default function App() {
                   <Calendar />
                 </ProtectedRoute>
               } />
+              
               <Route path="/blank" element={
                 <ProtectedRoute>
                   <Blank />
                 </ProtectedRoute>
               } />
-
+                    <Route path="/tracking/history" element={
+                <ProtectedRoute>
+                  <TrackingHistory />
+                </ProtectedRoute>
+              } />
+              
+              
               <Route path="/form-elements" element={
                 <ProtectedRoute>
                   <FormElements />
@@ -157,12 +172,15 @@ export default function App() {
                 <ProtectedRoute>
                   <AllPackages />
                 </ProtectedRoute>
+
               } />
+              
               <Route path="/packages/in-transit" element={
                 <ProtectedRoute>
                   <InTransitPackages />
                 </ProtectedRoute>
               } />
+       
               <Route path="/packages/delivered" element={
                 <ProtectedRoute>
                   <DeliveredPackages />
@@ -194,6 +212,18 @@ export default function App() {
                   <MerchantDetails />
                 </ProtectedRoute>
               } />
+            
+             <Route
+          path="/tracking"
+         element={
+           <ProtectedRoute>
+             <TrackPackage />
+           </ProtectedRoute>
+          }
+            />
+ 
+            
+         
 
               <Route path="/customers/list" element={
                 <ProtectedRoute>
@@ -240,6 +270,36 @@ export default function App() {
               <Route path="/assignments/:id" element={
                 <ProtectedRoute>
                   <AssignmentDetails />
+                </ProtectedRoute>
+              } />
+
+              <Route path="/follow-ups/customers" element={
+                <ProtectedRoute>
+                  <CustomerFollowUps />
+                </ProtectedRoute>
+              } />
+
+              <Route path="/follow-ups/payments" element={
+                <ProtectedRoute>
+                  <PaymentFollowUps />
+                </ProtectedRoute>
+              } />
+
+              <Route path="/follow-ups/deliveries" element={
+                <ProtectedRoute>
+                  <DeliveryFollowUps />
+                </ProtectedRoute>
+              } />
+
+              <Route path="/follow-ups/returns" element={
+                <ProtectedRoute>
+                  <ReturnsFollowUps />
+                </ProtectedRoute>
+              } />
+
+              <Route path="/packages/:id" element={
+                <ProtectedRoute>
+                  <PackageDetails />
                 </ProtectedRoute>
               } />
 

@@ -86,6 +86,8 @@
   "dashboard": {
     "title": "Dashboard",
     "welcomeMessage": "Welcome to your dashboard",
+    "export":"Export",
+    "import":"Import",
     "totalPackages": "Total Packages",
     "deliveredPackages": "Delivered Packages",
     "pendingPackages": "Pending Packages",

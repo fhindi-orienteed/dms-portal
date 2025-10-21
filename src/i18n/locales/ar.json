@@ -53,6 +53,8 @@
   "dashboard": {
     "title": "لوحة التحكم",
     "welcomeMessage": "مرحباً بك في لوحة التحكم",
+    "export":"تصدير",
+    "import":"استيراد",
     "totalPackages": "إجمالي الطرود",
     "deliveredPackages": "الطرود المسلمة",
     "pendingPackages": "الطرود المعلقة",
@@ -329,7 +331,15 @@
     "deliveryCompletedDesc": "تم تسليم طلب الطرد رقم #4478.",
     "paymentReceivedTitle": "تم استلام الدفع",
     "paymentReceivedDesc": "تم معالجة الدفع للفاتورة رقم #1234 بنجاح.",
-    "viewAll": "عرض كل الإشعارات"
+    "viewAll": "عرض كل الإشعارات",
+    "Test Title": "عنوان تجريبي",
+  "Test Message": "رسالة تجريبية",
+  "Account created/updated successfully.": "تم إنشاء/تحديث الحساب بنجاح.",
+  "System Alert": "تنبيه النظام",
+  "A new system alert has been detected.": "تم اكتشاف تنبيه جديد للنظام",
+  "Payment processed successfully.": "تم معالجة الدفع بنجاح",
+  "Collection updated": "تم تحديث التحصيل",
+  "Package delivered": "تم تسليم الطرد"
   },
   "system": {
     "apiConfiguration": "إعدادات API",

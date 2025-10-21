@@ -21,6 +21,12 @@ export default function Home() {
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
           {t('dashboard.welcomeMessage')}
         </h1>
+
+        {/* export&import buttons */}
+        <div className="items-end">
+            <button className="mr-4 border border-gray-200 p-2 rounded-lg bg-blue-600 text-white">{t('dashboard.export')}</button>
+            <button className="mr-4 border border-gray-200 p-2 rounded-lg bg-blue-600 text-white">{t('dashboard.import')}</button>
+        </div>
       </div>
       
       <div className="mb-6">
