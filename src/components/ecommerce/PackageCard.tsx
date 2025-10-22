@@ -13,7 +13,7 @@ export default function PackageCard({
                 <BoxIcon  className="text-gray-800 size-12 dark:text-white/90" ></BoxIcon> 
             </div>
             
-            <div className="flex flex-col ml-5">
+            <div className="flex flex-col ml-4 mr-4">
                 <div className="flex flex-row justify-between  ">
                     <span className=" flex items-start  font-bold text-gray-800 text-title-sm dark:text-white/90">
                         {count}

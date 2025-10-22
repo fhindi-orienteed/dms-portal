@@ -10,6 +10,8 @@ import { getStatusColor } from "../../utils/packageUtils";
 import FilterDropdown, { FilterOption } from "../../components/common/FilterDropdown";
 import { useFilterManager, useFilters } from "../../hooks/useFilters";
 import Input from "../../components/form/input/InputField";
+import { Button } from "../../components/ui";
+import { useTranslation } from "react-i18next";
 const mockPackages: Package[] = [
   {
     id: 1,
@@ -344,7 +346,7 @@ export default function AllPackages() {
       )
     },
   ];
-
+  const { t } = useTranslation();
   return (
     <>
       <PageMeta
@@ -356,24 +358,32 @@ export default function AllPackages() {
       <div className="space-y-6">
         {/* Search and Filter Controls */}
         <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-6">
-          <div className="flex flex-col">
-            <div className="flex-1 max-w-md">
-              <Input
-                placeholder="Search packages..."
-                value={searchTerm}
-                onChange={(e) => updateSearchTerm(e.target.value)}
-                className="w-full"
-              />
+         
+          <div className="flex flex-row justify-between">
+            <div className="flex flex-col">
+              <div className="flex-1 max-w-md">
+                <Input
+                  placeholder="Search packages..."
+                  value={searchTerm}
+                  onChange={(e) => updateSearchTerm(e.target.value)}
+                  className="w-full"
+                />
+              </div>
+              <div className="flex-shrink-0">
+                <FilterDropdown
+                  filters={availableFilters}
+                  activeFilters={filters}
+                  onFilterChange={handleFilterChange}
+                  onRemoveFilter={removeFilter}
+                  onClearAll={clearAllFilters}
+                  placeholder="Add filter"
+                />
+              </div>
             </div>
-            <div className="flex-shrink-0">
-              <FilterDropdown
-                filters={availableFilters}
-                activeFilters={filters}
-                onFilterChange={handleFilterChange}
-                onRemoveFilter={removeFilter}
-                onClearAll={clearAllFilters}
-                placeholder="Add filter"
-              />
+            {/* export&import buttons */}
+            <div className="items-end">
+                  <Button className="mr-4 border border-gray-200 p-2 rounded-lg bg-blue-600 text-white">{t('packages.export')}</Button>
+                  <Button className="mr-4 border border-gray-200 p-2 rounded-lg bg-blue-600 text-white">{t('packages.import')}</Button>
             </div>
           </div>
         </div>
