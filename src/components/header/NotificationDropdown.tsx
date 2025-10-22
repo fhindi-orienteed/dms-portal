@@ -94,41 +94,49 @@ export default function NotificationDropdown() {
         </div>
 
         <ul className="flex flex-col h-auto overflow-y-auto custom-scrollbar">
-          {notifications.slice(0, 5).map((n) => (
-            <li key={n.id}>
-              <DropdownItem className="flex items-start gap-3 dark:hover:bg-gray-700">
-                <div className="flex items-center justify-center w-15 h-12 bg-gray-100 rounded-xl dark:bg-gray-800">
+          {notifications.length > 0 ? (
+            notifications.slice(0, 5).map((n) => (
+              <li key={n.id}>
+                <DropdownItem className="flex items-start gap-3 dark:hover:bg-gray-700">
+                  <div className="flex items-center justify-center w-15 h-12 bg-gray-100 rounded-xl dark:bg-gray-800">
                   {n.type === "ACCOUNT" && <UserCircleIcon className="text-gray-800 size-6 dark:text-white/90" />}
                   {n.type === "PACKAGE" && <BoxIconLine className="text-gray-800 size-6 dark:text-white/90" />}
                   {n.type === "SYSTEM" && <GridIcon className="text-gray-800 size-6 dark:text-white/90" />}
                   {n.type === "COLLECTION" && <PieChartIcon className="text-gray-800 size-6 dark:text-white/90" />}
                   {n.type === "PAYMENT" && <DollarLineIcon className="text-gray-800 size-6 dark:text-white/90" />}
-                </div>
+                  </div>
 
-                <div className="flex flex-col items-start w-full">
-                  <span className="font-medium text-gray-800 dark:text-white/90 flex items-center gap-2">
-                    {translateText(n.title)}
-                    <span className="text-gray-400 text-xs">
-                      {n.createdAt
+                  <div className="flex flex-col items-start w-full">
+                    <span className="font-medium text-gray-800 dark:text-white/90 flex items-center gap-2">
+                      {translateText(n.title)}
+                      <span className="text-gray-400 text-xs">
+                        {n.createdAt
                         ? new Date(n.createdAt).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
-                        : ""}
+                          : ""}
+                      </span>
                     </span>
-                  </span>
-                  <span className="text-gray-500 dark:text-gray-400 text-sm">
-                    {translateText(n.message)}
-                  </span>
-                </div>
-              </DropdownItem>
+                    <span className="text-gray-500 dark:text-gray-400 text-sm">
+                      {translateText(n.message)}
+                    </span>
+                  </div>
+                </DropdownItem>
+              </li>
+            ))
+          ) : (
+            <li className="flex items-center justify-center h-80 text-center text-gray-500 dark:text-gray-400">
+              {translateText("emptyMessage")}
             </li>
-          ))}
+          )}
         </ul>
 
-        <Link
-          to="/notifications"
-          className="block px-4 py-2 mt-3 text-sm font-medium text-center text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700"
-        >
-          {translateText("viewAll")}
-        </Link>
+        {notifications.length > 0 && (
+          <Link
+            to="/notifications"
+            className="block px-4 py-2 mt-3 text-sm font-medium text-center text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700"
+          >
+            {translateText("viewAll")}
+          </Link>
+        )}
       </Dropdown>
     </div>
   );

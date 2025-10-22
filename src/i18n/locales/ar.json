@@ -340,7 +340,8 @@
   "A new system alert has been detected.": "تم اكتشاف تنبيه جديد للنظام",
   "Payment processed successfully.": "تم معالجة الدفع بنجاح",
   "Collection updated": "تم تحديث التحصيل",
-  "Package delivered": "تم تسليم الطرد"
+  "Package delivered": "تم تسليم الطرد",
+   "emptyMessage": "ليس لديك أي إشعارات."
   },
   "system": {
     "apiConfiguration": "إعدادات API",
