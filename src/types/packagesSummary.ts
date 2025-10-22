@@ -1,6 +1,6 @@
 export interface PackageSummary{
-    userId: number,
-    id: number,
-    title:string,
-    completed: boolean;
+    code:string,
+    collectionAmount: number,
+    count: number,
+    
 }
