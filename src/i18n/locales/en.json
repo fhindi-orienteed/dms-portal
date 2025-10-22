@@ -86,8 +86,6 @@
   "dashboard": {
     "title": "Dashboard",
     "welcomeMessage": "Welcome to your dashboard",
-    "export":"Export",
-    "import":"Import",
     "totalPackages": "Total Packages",
     "deliveredPackages": "Delivered Packages",
     "pendingPackages": "Pending Packages",
@@ -154,6 +152,8 @@
     "delivered": "Delivered",
     "pending": "Pending",
     "failedDelivery": "Failed Delivery",
+    "export":"Export",
+    "import":"Import",
     "packagesList": "Packages List",
     "trackingNumber": "Tracking Number",
     "recipient": "Recipient",

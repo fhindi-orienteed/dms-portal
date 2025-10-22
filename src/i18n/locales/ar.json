@@ -53,8 +53,6 @@
   "dashboard": {
     "title": "لوحة التحكم",
     "welcomeMessage": "مرحباً بك في لوحة التحكم",
-    "export":"تصدير",
-    "import":"استيراد",
     "totalPackages": "إجمالي الطرود",
     "deliveredPackages": "الطرود المسلمة",
     "pendingPackages": "الطرود المعلقة",
@@ -155,7 +153,10 @@
     "inTransit": "قيد التوصيل",
     "delivered": "تم التوصيل",
     "pending": "معلق",
-    "failedDelivery": "فشل التوصيل"
+    "failedDelivery": "فشل التوصيل",
+    "export":"تصدير",
+    "import":"استيراد"
+    
   },
   "followUps": {
     "customer": "متابعة العملاء",
