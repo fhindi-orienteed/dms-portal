@@ -2,16 +2,13 @@ import { useState } from "react";
 import { PageMeta } from "../../../components/common";
 import MerchantHeader from "./MerchantHeader";
 import MerchantStats from "./MerchantStats";
-import MerchantTabs from "./MerchantTabs";
-import OverviewTab from "./OverviewTab";
-import PackagesTab from "./PackagesTab";
 import BranchesTab from "./BranchesTab";
 import UsersTab from "./UsersTab";
 import { mockMerchantData } from "./mockData.ts";
-
+import PriceListTab from "./PriceListTab"; 
 export default function MerchantDetails() {
   const [merchant, setMerchant] = useState(mockMerchantData);
-  const [activeTab, setActiveTab] = useState<"overview" | "packages" | "branches" | "users">("overview");
+  
 
   const handleAddUser = (user: any) => {
     const newUser = { id: merchant.users.length + 1, ...user };
@@ -42,14 +39,29 @@ export default function MerchantDetails() {
       <MerchantStats merchant={merchant} />
 
       <div className="mt-6">
-        <MerchantTabs activeTab={activeTab} setActiveTab={setActiveTab} />
+     
         
         <div className="mt-6">
-          {activeTab === "overview" && <OverviewTab merchant={merchant} />}
-          {activeTab === "packages" && <PackagesTab packages={merchant.recentPackages} />}
-          {activeTab === "branches" && <BranchesTab branches={merchant.branches} onAddBranch={handleAddBranch} />}
-          {activeTab === "users" && <UsersTab users={merchant.users} onAddUser={handleAddUser} />}
+        <div className="mb-6">
+        <BranchesTab branches={merchant.branches} onAddBranch={handleAddBranch} />
         </div>
+        <div className="mb-6">
+         <UsersTab users={merchant.users} onAddUser={handleAddUser} />
+         </div>
+         <div className="mb-6">
+  <PriceListTab
+    prices={merchant.priceList}
+    onAddPrice={(price) =>
+      setMerchant((prev: any) => ({
+        ...prev,
+        priceList: [...prev.priceList, price],
+      }))
+    }
+  />
+</div>
+         
+        </div>
+       
       </div>
     </>
   );

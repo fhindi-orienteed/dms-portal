@@ -11,6 +11,13 @@ export const mockMerchantData: any = {
   email: "ali.ahmad@example.com",
   phone: "+970 59 123 4567",
   description: "Leading logistics provider in Jenin region",
+  priceList: [
+    { id: 1, service: "Local Delivery", destination: "Jenin", price: 20 },
+    { id: 2, service: "City Delivery", destination: "Nablus", price: 30 },
+    { id: 3, service: "Nationwide", destination: "All Areas", price: 50 },
+  ],
+
+  
   recentPackages: [
     {
       id: 1,
