@@ -51,6 +51,7 @@ import DriverAssignments from "./pages/drivers/assignments";
 import DriverDetails from "./pages/drivers/details";
 import AssignmentDetails from "./pages/assignments/details";
 import DriverList from "./pages/drivers/list";
+import AreasList from "./pages/area/list";
 import CustomerFollowUps from "./pages/follow-ups/customers";
 import PaymentFollowUps from "./pages/follow-ups/payments";
 import DeliveryFollowUps from "./pages/follow-ups/deliveries";
@@ -354,6 +355,12 @@ export default function App() {
               <Route path="/about" element={
                 <ProtectedRoute>
                   <AboutUs />
+                </ProtectedRoute>
+              } />
+
+              <Route path="/area/list" element={
+                <ProtectedRoute>
+                  <AreasList />
                 </ProtectedRoute>
               } />
 
