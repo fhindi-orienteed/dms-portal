@@ -141,6 +141,7 @@
     "barChart": "الرسم البياني العمودي",
     "settings": "الإعدادات",
     "schedule": "الجدول الزمني",
+    "area": "المناطق",
     "otherLinks": "روابط أخرى"
   },
   "summary": {
@@ -187,6 +188,43 @@
     "merchants":{
     "marchentsList": "قائمة التجار"
   },
+
+  "area": {
+    "areaList": "قائمة المناطق",
+    "areaManagement": "إدارة المناطق",
+    "addArea": "إضافة منطقة",
+    "editArea": "تعديل منطقة",
+    "deleteArea": "حذف منطقة",
+    "areaName": "اسم المنطقة",
+    "areaDescription": "الوصف",
+    "country": "البلد",
+    "city": "المدينة",
+    "postalCode": "الرمز البريدي",
+    "coordinates": "الإحداثيات",
+    "latitude": "خط العرض",
+    "longitude": "خط الطول",
+    "status": "الحالة",
+    "active": "نشط",
+    "inactive": "غير نشط",
+    "createdDate": "تاريخ الإنشاء",
+    "updatedDate": "تاريخ التحديث",
+    "noAreasFound": "لم يتم العثور على مناطق",
+    "searchAreas": "البحث في المناطق...",
+    "allCountries": "جميع البلدان",
+    "allCities": "جميع المدن",
+    "allStatus": "جميع الحالات",
+    "areaDetails": "تفاصيل المنطقة",
+    "confirmDelete": "هل أنت متأكد من حذف هذه المنطقة؟",
+    "areaDeleted": "تم حذف المنطقة بنجاح",
+    "areaCreated": "تم إنشاء المنطقة بنجاح",
+    "areaUpdated": "تم تحديث المنطقة بنجاح",
+    "failedToDelete": "فشل في حذف المنطقة",
+    "failedToCreate": "فشل في إنشاء المنطقة",
+    "failedToUpdate": "فشل في تحديث المنطقة",
+    "loadingAreas": "جاري تحميل المناطق...",
+    "errorLoadingAreas": "خطأ في تحميل المناطق"
+  },
+
     "tracking": {
     "trackPackage": "تتبع الطرد",
     "bulkTracking": "تتبع جماعي",
