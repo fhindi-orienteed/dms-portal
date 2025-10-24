@@ -92,18 +92,18 @@ export default function UserInfoCard() {
         </button>
       </div>
 
-      <Modal isOpen={isOpen} onClose={closeModal} className="max-w-[700px] m-4">
-        <div className="no-scrollbar relative w-full max-w-[700px] overflow-y-auto rounded-3xl bg-white p-4 dark:bg-gray-900 lg:p-11">
-          <div className="px-2 pr-14">
+      <Modal isOpen={isOpen} onClose={closeModal} className="max-w-[700px]">
+        <div className="flex flex-col h-[100vh]">
+          <div className="p-6 border-b border-gray-200 dark:border-gray-700">
             <h4 className="mb-2 text-2xl font-semibold text-gray-800 dark:text-white/90">
               Edit Personal Information
             </h4>
-            <p className="mb-6 text-sm text-gray-500 dark:text-gray-400 lg:mb-7">
+            <p className="text-sm text-gray-500 dark:text-gray-400">
               Update your details to keep your profile up-to-date.
             </p>
           </div>
-          <form className="flex flex-col">
-            <div className="custom-scrollbar h-[450px] overflow-y-auto px-2 pb-3">
+          <div className="flex-1 overflow-y-auto p-6">
+            <form onSubmit={(e) => { e.preventDefault(); handleSave(); }} className="space-y-6">
               <div>
                 <h5 className="mb-5 text-lg font-medium text-gray-800 dark:text-white/90 lg:mb-6">
                   Social Links
@@ -137,7 +137,7 @@ export default function UserInfoCard() {
                   </div>
                 </div>
               </div>
-              <div className="mt-7">
+              <div>
                 <h5 className="mb-5 text-lg font-medium text-gray-800 dark:text-white/90 lg:mb-6">
                   Personal Information
                 </h5>
@@ -169,16 +169,16 @@ export default function UserInfoCard() {
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="flex items-center gap-3 px-2 mt-6 lg:justify-end">
-              <Button size="sm" variant="outline" onClick={closeModal}>
-                Close
-              </Button>
-              <Button size="sm" onClick={handleSave}>
-                Save Changes
-              </Button>
-            </div>
-          </form>
+            </form>
+          </div>
+          <div className="flex justify-end gap-3 p-6 border-t border-gray-200 dark:border-gray-700">
+            <Button variant="outline" onClick={closeModal}>
+              Close
+            </Button>
+            <Button onClick={handleSave}>
+              Save Changes
+            </Button>
+          </div>
         </div>
       </Modal>
     </div>
