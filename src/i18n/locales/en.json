@@ -343,7 +343,8 @@
     "deliveryCompletedDesc": "Package order #4478 has been delivered.",
     "paymentReceivedTitle": "Payment Received",
     "paymentReceivedDesc": "Payment for invoice #1234 has been successfully processed.",
-    "viewAll": "View All Notifications"
+    "viewAll": "View All Notifications",
+    "emptyMessage": "You don’t have any notifications."
   },
   "system": {
     "apiConfiguration": "API Configuration",
