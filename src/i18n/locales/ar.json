@@ -57,6 +57,8 @@
     "deliveredPackages": "الطرود المسلمة",
     "pendingPackages": "الطرود المعلقة",
     "recentActivity": "النشاط الأخير",
+    "packages": "طرود",
+    "statusLabel": "الحالة",
     "Monthly": "شهري",
     "Quarterly": "ربع سنوي",
     "Annually": "سنوي",
@@ -101,7 +103,12 @@
     "status": {
       "Delivered": "تم التوصيل",
       "Pending": "قيد الانتظار",
-      "Canceled": "ملغي"
+      "Canceled": "ملغي",
+      "NEW": "جديد",
+      "DELIVERED": "تم التوصيل",
+      "RETURNED": "مرتجع",
+      "CANCELED": "ملغي",
+      "SHIPPED": "تم الشحن"
     }
   },
 

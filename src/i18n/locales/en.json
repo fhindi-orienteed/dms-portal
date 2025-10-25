@@ -91,6 +91,8 @@
     "deliveredPackages": "Delivered Packages",
     "pendingPackages": "Pending Packages",
     "recentActivity": "Recent Activity",
+    "packages": "packages",
+    "statusLabel": "Status",
     "Monthly": "Monthly",
     "Quarterly": "Quarterly",
     "Annually": "Annually",
@@ -134,7 +136,12 @@
     "status": {
       "Delivered": "Delivered",
       "Pending": "Pending",
-      "Canceled": "Canceled"
+      "Canceled": "Canceled",
+      "NEW": "New",
+      "DELIVERED": "Delivered",
+      "RETURNED": "Returned",
+      "CANCELED": "Canceled",
+      "SHIPPED": "Shipped"
     }
   },
   "language": {
