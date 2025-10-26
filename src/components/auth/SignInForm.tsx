@@ -93,7 +93,7 @@ export default function SignInForm() {
       login(response.user, response.accessToken);
       showToast.success('Success! Login completed successfully!');
       
-      navigate('/');
+      navigate('/verfication');
     } catch (error: unknown) {
       console.error('Login error:', error);
       
