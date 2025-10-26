@@ -2,12 +2,13 @@ import { useState, useMemo, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router";
 import { Merchant } from "../../types/merchant";
-import { SearchIcon, UserCircleIcon, FacebookIcon, TwitterIcon, LinkedinIcon, MailIcon, EnvelopeIcon } from "../../icons"; 
+import { SearchIcon, UserCircleIcon, FacebookIcon, TwitterIcon, LinkedinIcon, MailIcon, EnvelopeIcon, PlusIcon } from "../../icons"; 
 import { PageBreadcrumb, PageMeta } from "../../components/common";
+import Loader from "../../components/ui/loader/Loader";
 import GenericDataTable from "../../components/tables/DataTables/GenericDataTable";
 import Badge from "../../components/ui/badge/Badge";
-import { getStatusColor } from "../../utils/packageUtils";
 import Input from "../../components/form/input/InputField";
+import { Button } from "../../components/ui";
 import { merchantService } from "../../services";
 
 export default function MerchantsList(){
@@ -143,7 +144,7 @@ export default function MerchantsList(){
         {
             header: "Status",
             accessor: (merchant: Merchant) => (
-                <Badge color={getStatusColor(merchant.status)}>
+                <Badge color={merchant.status === "Active" ? "success" : "error"}>
                     {merchant.status}
                 </Badge>
             )
@@ -194,16 +195,21 @@ export default function MerchantsList(){
                                 className="w-full pl-10"
                             />
                         </div>
+                        
+                        <Button
+                            variant="primary"
+                            size="sm"
+                            startIcon={<PlusIcon className="size-4 fill-white" />}
+                        >
+                            Add Merchant
+                        </Button>
                     </div>
                 </div>
 
                 {/* Loading State */}
                 {loading && (
                     <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-8">
-                        <div className="flex items-center justify-center">
-                            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
-                            <span className="ml-3 text-gray-600 dark:text-gray-400">Loading merchants...</span>
-                        </div>
+                        <Loader text="Loading merchants..." />
                     </div>
                 )}
 
