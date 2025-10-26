@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Button, Loader } from "../../components/ui";
 import { IntegrationCard } from "../../components/integrations";
+import PageBreadcrumb from "../../components/common/PageBreadCrumb";
 
 interface Integration {
   id: string;
@@ -118,6 +119,13 @@ const Integrations: React.FC = () => {
 
   return (
     <div className="p-6">
+      {/* Breadcrumb */}
+      <PageBreadcrumb 
+        pageTitle={t('integrations.title')}
+        pageLink="/"
+        pageLinkText={t('sidebar.home')}
+      />
+      
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-8">
         <div>

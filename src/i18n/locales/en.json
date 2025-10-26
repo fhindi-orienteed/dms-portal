@@ -39,6 +39,7 @@
     "applicationMenu": "Application Menu"
   },
   "sidebar": {
+    "home": "Home",
     "dashboard": "Dashboard",
     "profile": "Profile",
     "calendar": "Calendar",

@@ -118,6 +118,7 @@
     "switchLanguage": "تغيير اللغة"
   },
   "sidebar": {
+    "home": "الرئيسية",
     "mainMenu": "القائمة الرئيسية",
     "management": "ادارة المشروع",
     "merchants" :"التجار",
