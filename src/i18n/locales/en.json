@@ -70,6 +70,7 @@
     "settings": "Settings",
     "schedule": "Schedule",
     "area": "Area",
+    "integrations": "Integrations",
     "otherLinks": "Other Links"
   },
   "auth": {
@@ -549,5 +550,42 @@
     "aboutDesc": "Revolutionizing delivery management with technology and dedication",
     "lastUpdated": "Last updated",
     "version": "Version"
+  },
+  "integrations": {
+    "title": "Integrations",
+    "subtitle": "Connect your favorite tools and services to streamline your workflow",
+    "addNewIntegration": "Add New Integration",
+    "addIntegration": "Add Integration",
+    "noIntegrationsTitle": "No integrations available",
+    "noIntegrationsDesc": "Get started by adding your first integration to connect your tools.",
+    "loadingText": "Loading integrations...",
+    "details": "Details",
+    "settings": "Settings",
+    "active": "Active",
+    "inactive": "Inactive",
+    "activated": "activated",
+    "deactivated": "deactivated",
+    "integrationNames": {
+      "mailchimp": "Mailchimp",
+      "googleMeet": "Google Meet",
+      "zoom": "Zoom",
+      "loom": "Loom",
+      "linear": "Linear",
+      "gmail": "Gmail",
+      "trello": "Trello",
+      "notion": "Notion",
+      "jira": "Jira"
+    },
+    "integrationDescriptions": {
+      "mailchimp": "Connect Mailchimp to streamline your email marketing - automate campaigns.",
+      "googleMeet": "Connect your Google Meet account for seamless video conferencing.",
+      "zoom": "Integrate Zoom to streamline your virtual meetings and team collaborations.",
+      "loom": "Integrate Loom to easily record, share, and manage video messages.",
+      "linear": "Integrate Linear to manage issues, track progress, and streamline your team's.",
+      "gmail": "Integrate Gmail to send, receive, and manage emails directly from your workspace.",
+      "trello": "Capture, organize, and tackle your to-dos from anywhere.",
+      "notion": "Capture, organize, and tackle your to-dos from anywhere.",
+      "jira": "Track issues and manage projects with ease and full team visibility."
+    }
   }
 }

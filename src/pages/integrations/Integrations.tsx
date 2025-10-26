@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Button, Loader } from "../../components/ui";
 import { IntegrationCard } from "../../components/integrations";
 
@@ -11,70 +12,71 @@ interface Integration {
 }
 
 const Integrations: React.FC = () => {
+  const { t } = useTranslation();
   const [isLoading] = useState(false);
   
   // Hardcoded integrations data based on the provided image
   const [integrations, setIntegrations] = useState<Integration[]>([
     {
       id: "mailchimp",
-      name: "Mailchimp",
-      description: "Connect Mailchimp to streamline your email marketing - automate campaigns.",
+      name: t('integrations.integrationNames.mailchimp'),
+      description: t('integrations.integrationDescriptions.mailchimp'),
       logo: "https://cdn.worldvectorlogo.com/logos/mailchimp-freddie-icon.svg",
       isActive: true,
     },
     {
       id: "google-meet",
-      name: "Google Meet",
-      description: "Connect your Google Meet account for seamless video conferencing.",
+      name: t('integrations.integrationNames.googleMeet'),
+      description: t('integrations.integrationDescriptions.googleMeet'),
       logo: "https://cdn.worldvectorlogo.com/logos/google-meet-2020-.svg",
       isActive: false,
     },
     {
       id: "zoom",
-      name: "Zoom",
-      description: "Integrate Zoom to streamline your virtual meetings and team collaborations.",
+      name: t('integrations.integrationNames.zoom'),
+      description: t('integrations.integrationDescriptions.zoom'),
       logo: "https://cdn.worldvectorlogo.com/logos/zoom-communications-logo.svg",
       isActive: false,
     },
     {
       id: "loom",
-      name: "Loom",
-      description: "Integrate Loom to easily record, share, and manage video messages.",
+      name: t('integrations.integrationNames.loom'),
+      description: t('integrations.integrationDescriptions.loom'),
       logo: "https://cdn.worldvectorlogo.com/logos/loom-icon.svg",
       isActive: false,
     },
     {
       id: "linear",
-      name: "Linear",
-      description: "Integrate Linear to manage issues, track progress, and streamline your team's.",
+      name: t('integrations.integrationNames.linear'),
+      description: t('integrations.integrationDescriptions.linear'),
       logo: "https://cdn.worldvectorlogo.com/logos/linear-logo.svg",
       isActive: false,
     },
     {
       id: "gmail",
-      name: "Gmail",
-      description: "Integrate Gmail to send, receive, and manage emails directly from your workspace.",
+      name: t('integrations.integrationNames.gmail'),
+      description: t('integrations.integrationDescriptions.gmail'),
       logo: "https://cdn.worldvectorlogo.com/logos/gmail-icon.svg",
       isActive: false,
     },
     {
       id: "trello",
-      name: "Trello",
-      description: "Capture, organize, and tackle your to-dos from anywhere.",
+      name: t('integrations.integrationNames.trello'),
+      description: t('integrations.integrationDescriptions.trello'),
       logo: "https://cdn.worldvectorlogo.com/logos/trello.svg",
       isActive: false,
     },
     {
       id: "notion",
-      name: "Notion",
-      description: "Capture, organize, and tackle your to-dos from anywhere.",
+      name: t('integrations.integrationNames.notion'),
+      description: t('integrations.integrationDescriptions.notion'),
       logo: "https://cdn.worldvectorlogo.com/logos/notion-logo-1.svg",
       isActive: false,
     },
     {
       id: "jira",
-      name: "Jira",
-      description: "Track issues and manage projects with ease and full team visibility.",
+      name: t('integrations.integrationNames.jira'),
+      description: t('integrations.integrationDescriptions.jira'),
       logo: "https://cdn.worldvectorlogo.com/logos/jira-1.svg",
       isActive: false,
     },
@@ -88,7 +90,7 @@ const Integrations: React.FC = () => {
           : integration
       )
     );
-    console.log(`Integration ${id} ${isActive ? 'activated' : 'deactivated'}`);
+    console.log(`Integration ${id} ${isActive ? t('integrations.activated') : t('integrations.deactivated')}`);
   };
 
   const handleIntegrationDetails = (id: string) => {
@@ -109,7 +111,7 @@ const Integrations: React.FC = () => {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center min-h-96">
-        <Loader variant="modern" size="lg" text="Loading integrations..." />
+        <Loader variant="modern" size="lg" text={t('integrations.loadingText')} />
       </div>
     );
   }
@@ -120,10 +122,10 @@ const Integrations: React.FC = () => {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-8">
         <div>
           <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-            Integrations
+            {t('integrations.title')}
           </h1>
           <p className="text-gray-600 dark:text-gray-300">
-            Connect your favorite tools and services to streamline your workflow
+            {t('integrations.subtitle')}
           </p>
         </div>
         
@@ -138,7 +140,7 @@ const Integrations: React.FC = () => {
             </svg>
           }
         >
-          Add New Integration
+          {t('integrations.addNewIntegration')}
         </Button>
       </div>
 
@@ -168,10 +170,10 @@ const Integrations: React.FC = () => {
             </svg>
           </div>
           <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">
-            No integrations available
+            {t('integrations.noIntegrationsTitle')}
           </h3>
           <p className="text-gray-600 dark:text-gray-300 mb-6">
-            Get started by adding your first integration to connect your tools.
+            {t('integrations.noIntegrationsDesc')}
           </p>
           <Button
             variant="primary"
@@ -182,7 +184,7 @@ const Integrations: React.FC = () => {
               </svg>
             }
           >
-            Add Integration
+            {t('integrations.addIntegration')}
           </Button>
         </div>
       )}

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Button } from "../ui";
 import Switch from "../form/switch/Switch";
 
@@ -23,6 +24,7 @@ const IntegrationCard: React.FC<IntegrationCardProps> = ({
   onDetails,
   onSettings,
 }) => {
+  const { t } = useTranslation();
   const [isActive, setIsActive] = useState(initialActive);
 
   const handleToggle = (checked: boolean) => {
@@ -92,7 +94,7 @@ const IntegrationCard: React.FC<IntegrationCardProps> = ({
           onClick={handleDetails}
           className="text-gray-700 dark:text-gray-300"
         >
-          Details
+          {t('integrations.details')}
         </Button>
         
         <Switch
