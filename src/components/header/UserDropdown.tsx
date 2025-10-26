@@ -5,10 +5,13 @@ import { useNavigate } from "react-router";
 import { useAuth } from "../../context/AuthContext";
 import { Button } from "../ui";
 import { useTranslation } from "react-i18next";
+import { useProfile } from "../../hooks/useProfile";
+import userIcon from "../../icons/user.svg";
 
 export default function UserDropdown() {
   const [isOpen, setIsOpen] = useState(false);
-  const { user, logout } = useAuth();
+const { logout } = useAuth();
+const { profile } = useProfile();
   const navigate = useNavigate();
  const { i18n } = useTranslation();
   const isRTL = i18n.language === "ar";
@@ -25,6 +28,9 @@ export default function UserDropdown() {
     navigate('/signin');
     closeDropdown();
   };
+   const fullName =profile?.firstName && profile?.lastName? `${profile.firstName} ${profile.lastName}`: "User";
+  
+
   return (
     <div className="relative">
       <button
@@ -32,10 +38,10 @@ export default function UserDropdown() {
         className="flex items-center text-gray-700 dropdown-toggle dark:text-gray-400"
       >
         <span className="mr-3 overflow-hidden rounded-full h-11 w-11">
-          <img src="/images/user/owner.jpg" alt="User" />
+          <img   src={profile?.photo || userIcon} alt="User" />
         </span>
 
-        <span className="block mr-1 font-medium text-theme-sm">{user?.name || 'User'}</span>
+        <span className="block mr-1 font-medium text-theme-sm">{fullName }</span>
         <svg
           className={`stroke-gray-500 dark:stroke-gray-400 transition-transform duration-200 ${
             isOpen ? "rotate-180" : ""
@@ -65,14 +71,14 @@ export default function UserDropdown() {
           >
         <div>
           <span className="block font-medium text-gray-700 text-theme-sm dark:text-gray-400">
-            {user?.name || 'User'}
+            {fullName}
           </span>
           <span className="mt-0.5 block text-theme-xs text-gray-500 dark:text-gray-400">
-            {user?.email || 'user@example.com'}
+            {profile?.email || 'user@example.com'}
           </span>
-          {user?.role && (
+          {profile?.role && (
             <span className="mt-0.5 block text-theme-xs text-brand-500 font-medium">
-              {user.role.charAt(0).toUpperCase() + user.role.slice(1)}
+              {profile.role.charAt(0).toUpperCase() + profile.role.slice(1)}
             </span>
           )}
         </div>
