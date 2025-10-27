@@ -287,7 +287,7 @@ export default function SignInForm() {
                   to="/signup"
                   className="text-brand-500 hover:text-brand-600 dark:text-brand-400"
                 >
-                  Register as Merchant
+               Create Account
                 </Link>
               </p>
             </div>
