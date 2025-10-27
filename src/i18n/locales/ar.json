@@ -192,8 +192,94 @@
     "returnHistory": "سجل المرتجعات",
     "refundManagement": "إدارة الاستردادات"
   },
-    "merchants":{
-    "marchentsList": "قائمة التجار"
+  "merchants": {
+    "allMerchants": "جميع التجار",
+    "merchantsList": "قائمة التجار",
+    "searchPlaceholder": "ابحث في التجار...",
+    "noMerchantsFound": "لم يتم العثور على تجار.",
+    "loadingMerchants": "جاري تحميل التجار...",
+    "errorLoadingMerchants": "فشل في تحميل التجار",
+
+    "details": {
+      "title": "تفاصيل التاجر",
+      "breadcrumb": "التجار",
+      "description": "معلومات تفصيلية عن التاجر"
+    },
+
+    "stats": {
+      "totalPackages": "إجمالي الطرود",
+      "branches": "الفروع",
+      "users": "المستخدمين",
+      "status": "الحالة",
+      "mainAddress": "العنوان الرئيسي",
+      "createdDate": "تاريخ الإنشاء",
+      "accountStatus": "حالة الحساب",
+      "editMerchant": "تعديل التاجر",
+      "deleteMerchant": "حذف التاجر"
+    },
+
+    "tabs": {
+      "overview": "نظرة عامة",
+      "recentPackages": "الطرود الأخيرة",
+      "branches": "الفروع",
+      "users": "المستخدمين"
+    },
+
+    "overview": {
+      "title": "نظرة عامة على التاجر",
+      "description": "معلومات تفصيلية عن التاجر",
+      "descriptionLabel": "الوصف",
+      "registrationDate": "تاريخ التسجيل",
+      "accountStatus": "حالة الحساب",
+      "noDescription": "لا يوجد وصف متاح"
+    },
+
+    "packages": {
+      "trackingNumber": "رقم التتبع",
+      "recipient": "المستلم",
+      "destination": "الوجهة",
+      "status": "الحالة",
+      "date": "التاريخ",
+      "noPackages": "لم يتم العثور على طرود لهذا التاجر."
+    },
+
+    "branches": {
+      "addBranch": "إضافة فرع",
+      "branchName": "اسم الفرع",
+      "address": "العنوان",
+      "manager": "المدير",
+      "noBranches": "لم يتم العثور على فروع لهذا التاجر.",
+      "addNewBranch": "إضافة فرع جديد",
+      "enterBranchName": "أدخل اسم الفرع",
+      "enterBranchAddress": "أدخل عنوان الفرع",
+      "enterManagerName": "أدخل اسم المدير",
+      "branchAddedSuccess": "تمت إضافة الفرع بنجاح!",
+      "fillAllFields": "يرجى ملء جميع الحقول المطلوبة"
+    },
+
+    "users": {
+      "addUser": "إضافة مستخدم",
+      "name": "الاسم",
+      "role": "الدور",
+      "email": "البريد الإلكتروني",
+      "status": "الحالة",
+      "noUsers": "لم يتم العثور على مستخدمين لهذا التاجر.",
+      "addNewUser": "إضافة مستخدم جديد",
+      "enterUserName": "أدخل اسم المستخدم",
+      "enterEmailAddress": "أدخل عنوان البريد الإلكتروني",
+      "userAddedSuccess": "تمت إضافة المستخدم بنجاح!",
+      "fillAllFields": "يرجى ملء جميع الحقول المطلوبة",
+      "invalidEmail": "يرجى إدخال عنوان بريد إلكتروني صالح",
+      "roles": {
+        "admin": "مدير",
+        "user": "مستخدم",
+        "manager": "مدير"
+      },
+      "statuses": {
+        "active": "نشط",
+        "inactive": "غير نشط"
+      }
+    }
   },
 
   "area": {

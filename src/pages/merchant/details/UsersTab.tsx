@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import GenericDataTable from "../../../components/tables/DataTables/GenericDataTable";
 import Button from "../../../components/ui/button/Button";
 import Badge from "../../../components/ui/badge/Badge";
@@ -11,11 +12,12 @@ interface UsersTabProps {
 }
 
 export default function UsersTab({ users, onAddUser }: UsersTabProps) {
+  const { t } = useTranslation();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const columns = [
     {
-      header: "Name",
+      header: t("merchants.users.name"),
       accessor: (user: any) => (
         <div className="flex items-center gap-2">
           <div className="w-8 h-8 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center">
@@ -26,21 +28,25 @@ export default function UsersTab({ users, onAddUser }: UsersTabProps) {
       )
     },
     {
-      header: "Role",
+      header: t("merchants.users.role"),
       accessor: (user: any) => (
-        <Badge color={user.role === "Admin" ? "primary" : "success"}>{user.role}</Badge>
+        <Badge color={user.role === "Admin" ? "primary" : "success"}>
+          {t(`merchants.users.roles.${user.role.toLowerCase()}`)}
+        </Badge>
       )
     },
     {
-      header: "Email",
+      header: t("merchants.users.email"),
       accessor: (user: any) => (
         <span className="text-gray-600 dark:text-gray-400">{user.email}</span>
       )
     },
     {
-      header: "Status",
+      header: t("merchants.users.status"),
       accessor: (user: any) => (
-        <Badge color={user.status === "Active" ? "success" : "error"}>{user.status}</Badge>
+        <Badge color={user.status === "Active" ? "success" : "error"}>
+          {t(`merchants.users.statuses.${user.status.toLowerCase()}`)}
+        </Badge>
       )
     }
   ];
@@ -59,7 +65,7 @@ export default function UsersTab({ users, onAddUser }: UsersTabProps) {
           onClick={() => setIsModalOpen(true)}
           startIcon={<PlusIcon className="size-4 fill-white" />}
         >
-          Add User
+          {t("merchants.users.addUser")}
         </Button>
       </div>
       <GenericDataTable
@@ -67,7 +73,7 @@ export default function UsersTab({ users, onAddUser }: UsersTabProps) {
         columns={columns}
         itemsPerPage={10}
         showPagination={true}
-        emptyMessage="No users found for this merchant."
+        emptyMessage={t('merchants.users.noUsers')}
       />
       <AddUserModal
         isOpen={isModalOpen}

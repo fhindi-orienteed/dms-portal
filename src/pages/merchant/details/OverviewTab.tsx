@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import ComponentCard from "../../../components/common/ComponentCard";
 import Badge from "../../../components/ui/badge/Badge";
 import { getStatusColor } from "../../../utils/packageUtils";
@@ -7,20 +8,37 @@ interface OverviewTabProps {
 }
 
 export default function OverviewTab({ merchant }: OverviewTabProps) {
+  const { t } = useTranslation();
+
   return (
-    <ComponentCard title="Merchant Overview" desc="Detailed information about the merchant">
+    <ComponentCard
+      title={t("merchants.overview.title")}
+      desc={t("merchants.overview.description")}
+    >
       <div className="space-y-4">
         <div>
-          <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Description</h4>
-          <p className="text-gray-600 dark:text-gray-400">{merchant.description}</p>
+          <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            {t("merchants.overview.descriptionLabel")}
+          </h4>
+          <p className="text-gray-600 dark:text-gray-400">
+            {merchant.description || t("merchants.overview.noDescription")}
+          </p>
         </div>
         <div>
-          <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Registration Date</h4>
-          <p className="text-gray-600 dark:text-gray-400">{merchant.createdDate}</p>
+          <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            {t("merchants.overview.registrationDate")}
+          </h4>
+          <p className="text-gray-600 dark:text-gray-400">
+            {merchant.createdDate}
+          </p>
         </div>
         <div>
-          <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Account Status</h4>
-          <Badge color={getStatusColor(merchant.status)}>{merchant.status}</Badge>
+          <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            {t("merchants.overview.accountStatus")}
+          </h4>
+          <Badge color={getStatusColor(merchant.status)}>
+            {merchant.status}
+          </Badge>
         </div>
       </div>
     </ComponentCard>

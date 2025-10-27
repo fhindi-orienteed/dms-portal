@@ -179,7 +179,7 @@ export default function MerchantsList(){
                 title={`${t('merchants.allMerchants')} | DMS Portal`} 
                 description={`${t('merchants.allMerchants')} - DMS Portal`}
             />
-            <PageBreadcrumb pageTitle="All Merchants" />
+            <PageBreadcrumb pageTitle={t("merchants.allMerchants")} />
             
             <div className="space-y-6">
                 {/* Search Controls */}
@@ -188,7 +188,7 @@ export default function MerchantsList(){
                         <div className="relative flex-1 max-w-md">
                             <SearchIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 size-4 text-gray-400 z-10" />
                             <Input
-                                placeholder="Search merchants..."
+                                placeholder={t("merchants.searchPlaceholder")}
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
                                 className="w-full pl-10"
@@ -202,7 +202,9 @@ export default function MerchantsList(){
                     <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-8">
                         <div className="flex items-center justify-center">
                             <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
-                            <span className="ml-3 text-gray-600 dark:text-gray-400">Loading merchants...</span>
+                            <span className="ml-3 text-gray-600 dark:text-gray-400">
+                                {t("merchants.loadingMerchants")}
+                            </span>
                         </div>
                     </div>
                 )}
@@ -212,7 +214,9 @@ export default function MerchantsList(){
                     <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-xl p-4">
                         <div className="flex items-center">
                             <EnvelopeIcon className="size-5 text-red-600 dark:text-red-400" />
-                            <span className="ml-3 text-red-800 dark:text-red-200">{error}</span>
+                            <span className="ml-3 text-red-800 dark:text-red-200">
+                                {error || t("merchants.errorLoadingMerchants")}
+                            </span>
                         </div>
                     </div>
                 )}
@@ -224,7 +228,7 @@ export default function MerchantsList(){
                         columns={columns}
                         itemsPerPage={10}
                         showPagination={true}
-                        emptyMessage="No merchants found."
+                        emptyMessage={t('merchants.noMerchantsFound')}
                         onRowClick={(merchant) => navigate(`/merchant/${merchant.id}`)}
                     />
                 )}

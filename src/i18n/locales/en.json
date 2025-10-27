@@ -217,9 +217,94 @@
     "driverAssignments": "Driver Assignments"
   },
 
-  "merchants":{
-    "allMerchants" :"All Merchants",
-    "merchentsList": "Merchents list"
+  "merchants": {
+    "allMerchants": "All Merchants",
+    "merchantsList": "Merchants List",
+    "searchPlaceholder": "Search merchants...",
+    "noMerchantsFound": "No merchants found.",
+    "loadingMerchants": "Loading merchants...",
+    "errorLoadingMerchants": "Failed to load merchants",
+
+    "details": {
+      "title": "Merchant Details",
+      "breadcrumb": "Merchants",
+      "description": "Detailed information about the merchant"
+    },
+
+    "stats": {
+      "totalPackages": "Total Packages",
+      "branches": "Branches",
+      "users": "Users",
+      "status": "Status",
+      "mainAddress": "Main Address",
+      "createdDate": "Created Date",
+      "accountStatus": "Account Status",
+      "editMerchant": "Edit Merchant",
+      "deleteMerchant": "Delete Merchant"
+    },
+
+    "tabs": {
+      "overview": "Overview",
+      "recentPackages": "Recent Packages",
+      "branches": "Branches",
+      "users": "Users"
+    },
+
+    "overview": {
+      "title": "Merchant Overview",
+      "description": "Detailed information about the merchant",
+      "descriptionLabel": "Description",
+      "registrationDate": "Registration Date",
+      "accountStatus": "Account Status",
+      "noDescription": "No description available"
+    },
+
+    "packages": {
+      "trackingNumber": "Tracking Number",
+      "recipient": "Recipient",
+      "destination": "Destination",
+      "status": "Status",
+      "date": "Date",
+      "noPackages": "No packages found for this merchant."
+    },
+
+    "branches": {
+      "addBranch": "Add Branch",
+      "branchName": "Branch Name",
+      "address": "Address",
+      "manager": "Manager",
+      "noBranches": "No branches found for this merchant.",
+      "addNewBranch": "Add New Branch",
+      "enterBranchName": "Enter branch name",
+      "enterBranchAddress": "Enter branch address",
+      "enterManagerName": "Enter manager name",
+      "branchAddedSuccess": "Branch added successfully!",
+      "fillAllFields": "Please fill in all required fields"
+    },
+
+    "users": {
+      "addUser": "Add User",
+      "name": "Name",
+      "role": "Role",
+      "email": "Email",
+      "status": "Status",
+      "noUsers": "No users found for this merchant.",
+      "addNewUser": "Add New User",
+      "enterUserName": "Enter user name",
+      "enterEmailAddress": "Enter email address",
+      "userAddedSuccess": "User added successfully!",
+      "fillAllFields": "Please fill in all required fields",
+      "invalidEmail": "Please enter a valid email address",
+      "roles": {
+        "admin": "Admin",
+        "user": "User",
+        "manager": "Manager"
+      },
+      "statuses": {
+        "active": "Active",
+        "inactive": "Inactive"
+      }
+    }
   },
 
   "area": {
