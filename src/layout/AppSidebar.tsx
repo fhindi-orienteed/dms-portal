@@ -157,6 +157,13 @@ const othersItems: NavItem[] = [
     ],
   },
   {
+    icon: <GridIcon />,
+    name: t('sidebar.area'),
+    subItems: [
+      { name: t('area.areaList'), path: "/area/list", pro: false },
+    ],
+  },
+  {
     icon: <DocsIcon />,
     name:  t('sidebar.otherLinks'),
     subItems: [

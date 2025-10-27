@@ -1,68 +1,52 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router";
 import { Merchant } from "../../types/merchant";
-import { SearchIcon, UserCircleIcon } from "../../icons"; 
+import { SearchIcon, UserCircleIcon, FacebookIcon, TwitterIcon, LinkedinIcon, MailIcon, EnvelopeIcon, PlusIcon } from "../../icons"; 
 import { PageBreadcrumb, PageMeta } from "../../components/common";
+import Loader from "../../components/ui/loader/Loader";
 import GenericDataTable from "../../components/tables/DataTables/GenericDataTable";
 import Badge from "../../components/ui/badge/Badge";
-import { getStatusColor } from "../../utils/packageUtils";
 import Input from "../../components/form/input/InputField";
+import { Button } from "../../components/ui";
+import { merchantService } from "../../services";
 
-const merchantList :Merchant[] =[
-    {
-        id: 1,
-        merchantName:"Ali Ahmad",
-        mainAddress:"Jenin",
-        createdDate:"20/3/2025",
-        branchCount:5002,
-        userCount:7,
-        status:"Delivered",
-        totalPackage:17,   
-    },
-    {
-        id: 2,
-        merchantName:"khaled Ahmad",
-        mainAddress:"Nablus",
-        createdDate:"20/3/2025",
-        branchCount:5003,
-        userCount:2,
-        status:"Failed Delivery",
-        totalPackage:7,   
-    },
-    {
-        id: 3,
-        merchantName:"Omar ",
-        mainAddress:"Nablus",
-        createdDate:"20/5/2025",
-        branchCount:5007,
-        userCount:7,
-        status:"In Transit",
-        totalPackage:5,   
-    },
-    {
-        id: 4,
-        merchantName:"Othman",
-        mainAddress:"Nablus",
-        createdDate:"15/3/2025",
-        branchCount:5009,
-        userCount:7,
-        status:"Pending",
-        totalPackage:17,   
-    }
-];
 export default function MerchantsList(){
-    const [merchants] = useState<Merchant[]>(merchantList);
+    const [merchants, setMerchants] = useState<Merchant[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
     const [searchTerm, setSearchTerm] = useState("");
     const { t } = useTranslation();
     const navigate = useNavigate();
+
+    // Fetch merchants from API
+    useEffect(() => {
+        const fetchMerchants = async () => {
+            try {
+                setLoading(true);
+                const data = await merchantService.getMerchants();
+                setMerchants(data);
+                setError(null);
+            } catch (err: unknown) {
+                console.error('Failed to fetch merchants:', err);
+                setError(err instanceof Error ? err.message : 'Failed to load merchants');
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchMerchants();
+    }, []);
 
     const filteredMerchants = useMemo(() => {
         return merchants.filter(merchant => {
             const matchesSearch = 
                 merchant.merchantName.toLowerCase().includes(searchTerm.toLowerCase()) ||
                 merchant.mainAddress.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                merchant.branchCount.toString().includes(searchTerm.toLowerCase());
+                merchant.branchCount.toString().includes(searchTerm.toLowerCase()) ||
+                (merchant.merchantEmail && merchant.merchantEmail.toLowerCase().includes(searchTerm.toLowerCase())) ||
+                (merchant.merchantPhone && merchant.merchantPhone.includes(searchTerm)) ||
+                (merchant.registrationNumber && merchant.registrationNumber.toLowerCase().includes(searchTerm.toLowerCase()));
             
             return matchesSearch;
         });
@@ -70,24 +54,99 @@ export default function MerchantsList(){
 
     const columns = [
         {
-            header: "Merchant Name",
+            header: "Merchant",
             accessor: (merchant: Merchant) => (
                 <div className="flex items-center gap-3">
-                    <div className="flex items-center justify-center w-10 h-10 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
-                        <UserCircleIcon className="size-5 text-blue-600 dark:text-blue-400" />
+                    {merchant.merchantLogo ? (
+                        <img 
+                            src={merchant.merchantLogo} 
+                            alt={merchant.merchantName}
+                            className="w-10 h-10 rounded-lg object-cover"
+                        />
+                    ) : (
+                        <div className="flex items-center justify-center w-10 h-10 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
+                            <UserCircleIcon className="size-5 text-blue-600 dark:text-blue-400" />
+                        </div>
+                    )}
+                    <div>
+                        <div className="font-medium text-gray-800 text-theme-sm dark:text-white/90">
+                            {merchant.merchantName}
+                        </div>
+                        {merchant.registrationNumber && (
+                            <div className="text-xs text-gray-500 dark:text-gray-400">
+                                Reg: {merchant.registrationNumber}
+                            </div>
+                        )}
                     </div>
-                    <span className="font-medium text-gray-800 text-theme-sm dark:text-white/90">
-                        {merchant.merchantName}
-                    </span>
                 </div>
             )
         },
         {
-            header: "Main Address",
+            header: "Address",
             accessor: (merchant: Merchant) => (
-                <span className="text-gray-800 text-theme-sm dark:text-white/90">
-                    {merchant.mainAddress}
-                </span>
+                <div className="text-gray-800 text-theme-sm dark:text-white/90">
+                    <div>{merchant.mainAddress}</div>
+                    {(merchant.city || merchant.country) && (
+                        <div className="text-xs text-gray-500 dark:text-gray-400">
+                            {[merchant.city, merchant.country].filter(Boolean).join(', ')}
+                        </div>
+                    )}
+                </div>
+            )
+        },
+        {
+            header: "Contact",
+            accessor: (merchant: Merchant) => (
+                <div className="space-y-1">
+                    {merchant.merchantPhone && (
+                        <div className="text-gray-800 text-theme-sm dark:text-white/90">
+                            {merchant.merchantPhone}
+                        </div>
+                    )}
+                    {merchant.merchantEmail && (
+                        <div className="text-gray-500 text-theme-xs dark:text-gray-400">
+                            {merchant.merchantEmail}
+                        </div>
+                    )}
+                </div>
+            )
+        },
+        {
+            header: "Social Links",
+            accessor: (merchant: Merchant) => (
+                <div className="flex items-center gap-2">
+                    {merchant.socialLinks?.facebook && (
+                        <a href={merchant.socialLinks.facebook} target="_blank" rel="noopener noreferrer">
+                            <FacebookIcon className="size-4 text-blue-600 hover:text-blue-700" />
+                        </a>
+                    )}
+                    {merchant.socialLinks?.twitter && (
+                        <a href={merchant.socialLinks.twitter} target="_blank" rel="noopener noreferrer">
+                            <TwitterIcon className="size-4 text-blue-400 hover:text-blue-500" />
+                        </a>
+                    )}
+                    {merchant.socialLinks?.linkedin && (
+                        <a href={merchant.socialLinks.linkedin} target="_blank" rel="noopener noreferrer">
+                            <LinkedinIcon className="size-4 text-blue-700 hover:text-blue-800" />
+                        </a>
+                    )}
+                    {merchant.merchantEmail && (
+                        <a href={`mailto:${merchant.merchantEmail}`}>
+                            <MailIcon className="size-4 text-gray-600 hover:text-gray-700" />
+                        </a>
+                    )}
+                    {!merchant.socialLinks?.facebook && !merchant.socialLinks?.twitter && !merchant.socialLinks?.linkedin && !merchant.merchantEmail && (
+                        <span className="text-gray-400 text-theme-xs">-</span>
+                    )}
+                </div>
+            )
+        },
+        {
+            header: "Status",
+            accessor: (merchant: Merchant) => (
+                <Badge color={merchant.status === "Active" ? "success" : "error"}>
+                    {merchant.status}
+                </Badge>
             )
         },
         {
@@ -99,7 +158,7 @@ export default function MerchantsList(){
             )
         },
         {
-            header: "Branch Count",
+            header: "Branches",
             accessor: (merchant: Merchant) => (
                 <span className="text-gray-800 text-theme-sm dark:text-white/90">
                     {merchant.branchCount}
@@ -107,26 +166,10 @@ export default function MerchantsList(){
             )
         },
         {
-            header: "User Count",
+            header: "Users",
             accessor: (merchant: Merchant) => (
                 <span className="text-gray-800 text-theme-sm dark:text-white/90">
                     {merchant.userCount}
-                </span>
-            )
-        },
-        {
-            header: "Status",
-            accessor: (merchant: Merchant) => (
-                <Badge color={getStatusColor(merchant.status)}>
-                    {merchant.status}
-                </Badge>
-            )
-        },
-        {
-            header: "Total Package",
-            accessor: (merchant: Merchant) => (
-                <span className="text-gray-800 text-theme-sm dark:text-white/90">
-                    {merchant.totalPackage}
                 </span>
             )
         },
@@ -152,18 +195,45 @@ export default function MerchantsList(){
                                 className="w-full pl-10"
                             />
                         </div>
+                        
+                        <Button
+                            variant="primary"
+                            size="sm"
+                            startIcon={<PlusIcon className="size-4 fill-white" />}
+                        >
+                            Add Merchant
+                        </Button>
                     </div>
                 </div>
 
+                {/* Loading State */}
+                {loading && (
+                    <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-8">
+                        <Loader text="Loading merchants..." />
+                    </div>
+                )}
+
+                {/* Error State */}
+                {error && (
+                    <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-xl p-4">
+                        <div className="flex items-center">
+                            <EnvelopeIcon className="size-5 text-red-600 dark:text-red-400" />
+                            <span className="ml-3 text-red-800 dark:text-red-200">{error}</span>
+                        </div>
+                    </div>
+                )}
+
                 {/* Table */}
-                <GenericDataTable
-                    data={filteredMerchants}
-                    columns={columns}
-                    itemsPerPage={10}
-                    showPagination={true}
-                    emptyMessage="No merchants found."
-                    onRowClick={(merchant) => navigate(`/merchant/${merchant.id}`)}
-                />
+                {!loading && !error && (
+                    <GenericDataTable
+                        data={filteredMerchants}
+                        columns={columns}
+                        itemsPerPage={10}
+                        showPagination={true}
+                        emptyMessage="No merchants found."
+                        onRowClick={(merchant) => navigate(`/merchant/${merchant.id}`)}
+                    />
+                )}
             </div>
         </>
     );

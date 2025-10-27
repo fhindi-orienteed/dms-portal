@@ -1,15 +1,15 @@
 import PageMeta from "../../components/common/PageMeta";
 import PackageCard from "../../components/ecommerce/PackageCard";
-// import { DeliveredPackage, PendingPackage, ReturnedPackage } from "../../icons";
 import { useTranslation } from "../../hooks/useTranslation";
 import { usePackages } from "../../hooks/usePackageSummary";
+import { Loader } from "../../components/ui";
 
 export default function Home() {
   const { t } = useTranslation();
   const {packages, loading, error }=  usePackages();
 
   if(error) return <p>Error : </p>;
-  if(loading) return <p>Loading...</p>
+  if(loading) return <Loader />
 
   return (
     <>

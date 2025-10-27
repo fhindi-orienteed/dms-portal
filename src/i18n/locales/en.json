@@ -39,6 +39,7 @@
     "applicationMenu": "Application Menu"
   },
   "sidebar": {
+    "home": "Home",
     "dashboard": "Dashboard",
     "profile": "Profile",
     "calendar": "Calendar",
@@ -69,6 +70,8 @@
     "drivers": "Drivers",
     "settings": "Settings",
     "schedule": "Schedule",
+    "area": "Area",
+    "integrations": "Integrations",
     "otherLinks": "Other Links"
   },
   "auth": {
@@ -90,6 +93,8 @@
     "deliveredPackages": "Delivered Packages",
     "pendingPackages": "Pending Packages",
     "recentActivity": "Recent Activity",
+    "packages": "packages",
+    "statusLabel": "Status",
     "Monthly": "Monthly",
     "Quarterly": "Quarterly",
     "Annually": "Annually",
@@ -133,7 +138,12 @@
     "status": {
       "Delivered": "Delivered",
       "Pending": "Pending",
-      "Canceled": "Canceled"
+      "Canceled": "Canceled",
+      "NEW": "New",
+      "DELIVERED": "Delivered",
+      "RETURNED": "Returned",
+      "CANCELED": "Canceled",
+      "SHIPPED": "Shipped"
     }
   },
   "language": {
@@ -212,6 +222,42 @@
   "merchants":{
     "allMerchants" :"All Merchants",
     "merchentsList": "Merchents list"
+  },
+
+  "area": {
+    "areaList": "Area List",
+    "areaManagement": "Area Management",
+    "addArea": "Add Area",
+    "editArea": "Edit Area",
+    "deleteArea": "Delete Area",
+    "areaName": "Area Name",
+    "areaDescription": "Description",
+    "country": "Country",
+    "city": "City",
+    "postalCode": "Postal Code",
+    "coordinates": "Coordinates",
+    "latitude": "Latitude",
+    "longitude": "Longitude",
+    "status": "Status",
+    "active": "Active",
+    "inactive": "Inactive",
+    "createdDate": "Created Date",
+    "updatedDate": "Updated Date",
+    "noAreasFound": "No areas found",
+    "searchAreas": "Search areas...",
+    "allCountries": "All Countries",
+    "allCities": "All Cities",
+    "allStatus": "All Status",
+    "areaDetails": "Area Details",
+    "confirmDelete": "Are you sure you want to delete this area?",
+    "areaDeleted": "Area deleted successfully",
+    "areaCreated": "Area created successfully",
+    "areaUpdated": "Area updated successfully",
+    "failedToDelete": "Failed to delete area",
+    "failedToCreate": "Failed to create area",
+    "failedToUpdate": "Failed to update area",
+    "loadingAreas": "Loading areas...",
+    "errorLoadingAreas": "Error loading areas"
   },
 
   "scheduling": {
@@ -343,7 +389,8 @@
     "deliveryCompletedDesc": "Package order #4478 has been delivered.",
     "paymentReceivedTitle": "Payment Received",
     "paymentReceivedDesc": "Payment for invoice #1234 has been successfully processed.",
-    "viewAll": "View All Notifications"
+    "viewAll": "View All Notifications",
+    "emptyMessage": "You don’t have any notifications."
   },
   "system": {
     "apiConfiguration": "API Configuration",
@@ -508,7 +555,43 @@
   "pricelist":{
 
     "AddPrice": "Add Price"
-
+  },
+  "integrations": {
+    "title": "Integrations",
+    "subtitle": "Connect your favorite tools and services to streamline your workflow",
+    "addNewIntegration": "Add New Integration",
+    "addIntegration": "Add Integration",
+    "noIntegrationsTitle": "No integrations available",
+    "noIntegrationsDesc": "Get started by adding your first integration to connect your tools.",
+    "loadingText": "Loading integrations...",
+    "details": "Details",
+    "settings": "Settings",
+    "active": "Active",
+    "inactive": "Inactive",
+    "activated": "activated",
+    "deactivated": "deactivated",
+    "integrationNames": {
+      "mailchimp": "Mailchimp",
+      "googleMeet": "Google Meet",
+      "zoom": "Zoom",
+      "loom": "Loom",
+      "linear": "Linear",
+      "gmail": "Gmail",
+      "trello": "Trello",
+      "notion": "Notion",
+      "jira": "Jira"
+    },
+    "integrationDescriptions": {
+      "mailchimp": "Connect Mailchimp to streamline your email marketing - automate campaigns.",
+      "googleMeet": "Connect your Google Meet account for seamless video conferencing.",
+      "zoom": "Integrate Zoom to streamline your virtual meetings and team collaborations.",
+      "loom": "Integrate Loom to easily record, share, and manage video messages.",
+      "linear": "Integrate Linear to manage issues, track progress, and streamline your team's.",
+      "gmail": "Integrate Gmail to send, receive, and manage emails directly from your workspace.",
+      "trello": "Capture, organize, and tackle your to-dos from anywhere.",
+      "notion": "Capture, organize, and tackle your to-dos from anywhere.",
+      "jira": "Track issues and manage projects with ease and full team visibility."
+    }
   }
 }
 

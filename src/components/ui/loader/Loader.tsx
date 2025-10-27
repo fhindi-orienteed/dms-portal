@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 
 interface LoaderProps {
   size?: "xs" | "sm" | "md" | "lg" | "xl"; // Loader size
-  variant?: "spinner" | "dots" | "pulse" | "bars" | "skeleton"; // Loader type
+  variant?: "spinner" | "dots" | "pulse" | "bars" | "skeleton" | "modern"; // Loader type
   color?: "primary" | "secondary" | "white" | "gray"; // Color theme
   className?: string; // Additional CSS classes
   text?: string; // Optional loading text
@@ -146,6 +146,72 @@ const Loader: React.FC<LoaderProps> = ({
     );
   };
 
+  // Modern Loader - Sleek design similar to attachment
+  const ModernLoader = () => {
+    const containerSize = {
+      xs: "w-8 h-8",
+      sm: "w-10 h-10",
+      md: "w-12 h-12",
+      lg: "w-16 h-16",
+      xl: "w-20 h-20",
+    };
+
+    const ringSize = {
+      xs: "w-6 h-6",
+      sm: "w-8 h-8",
+      md: "w-10 h-10",
+      lg: "w-14 h-14",
+      xl: "w-18 h-18",
+    };
+
+    const borderWidth = {
+      xs: "border-[1.5px]",
+      sm: "border-2",
+      md: "border-[2.5px]",
+      lg: "border-[3px]",
+      xl: "border-4",
+    };
+
+    const getColorValue = () => {
+      switch (color) {
+        case 'primary': return '#3b82f6';
+        case 'secondary': return '#6b7280';
+        case 'white': return '#ffffff';
+        case 'gray': return '#9ca3af';
+        default: return '#3b82f6';
+      }
+    };
+
+    return (
+      <div className={`relative ${containerSize[size]} flex items-center justify-center`}>
+        {/* Background ring */}
+        <div
+          className={`absolute ${ringSize[size]} ${borderWidth[size]} border-gray-200/40 dark:border-gray-700/40 rounded-full`}
+        />
+        
+        {/* Animated gradient ring */}
+        <div
+          className={`absolute ${ringSize[size]} ${borderWidth[size]} border-transparent rounded-full`}
+          style={{
+            background: `conic-gradient(from 0deg, transparent 0deg, ${getColorValue()} 90deg, transparent 180deg)`,
+            borderRadius: '50%',
+            animation: 'spin 1.2s cubic-bezier(0.4, 0, 0.2, 1) infinite',
+          }}
+        />
+        
+        {/* Inner glow effect */}
+        <div
+          className={`absolute w-2 h-2 rounded-full opacity-80`}
+          style={{
+            backgroundColor: getColorValue(),
+            boxShadow: `0 0 8px ${getColorValue()}40`,
+            animation: 'pulse 2s ease-in-out infinite',
+          }}
+        />
+      </div>
+    );
+  };
+
   // Render appropriate loader variant
   const renderLoader = () => {
     switch (variant) {
@@ -157,6 +223,8 @@ const Loader: React.FC<LoaderProps> = ({
         return <BarsLoader />;
       case "skeleton":
         return <SkeletonLoader />;
+      case "modern":
+        return <ModernLoader />;
       default:
         return <SpinnerLoader />;
     }

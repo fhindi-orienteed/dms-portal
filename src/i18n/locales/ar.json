@@ -57,6 +57,8 @@
     "deliveredPackages": "الطرود المسلمة",
     "pendingPackages": "الطرود المعلقة",
     "recentActivity": "النشاط الأخير",
+    "packages": "طرود",
+    "statusLabel": "الحالة",
     "Monthly": "شهري",
     "Quarterly": "ربع سنوي",
     "Annually": "سنوي",
@@ -101,7 +103,12 @@
     "status": {
       "Delivered": "تم التوصيل",
       "Pending": "قيد الانتظار",
-      "Canceled": "ملغي"
+      "Canceled": "ملغي",
+      "NEW": "جديد",
+      "DELIVERED": "تم التوصيل",
+      "RETURNED": "مرتجع",
+      "CANCELED": "ملغي",
+      "SHIPPED": "تم الشحن"
     }
   },
 
@@ -111,6 +118,7 @@
     "switchLanguage": "تغيير اللغة"
   },
   "sidebar": {
+    "home": "الرئيسية",
     "mainMenu": "القائمة الرئيسية",
     "management": "ادارة المشروع",
     "merchants" :"التجار",
@@ -141,6 +149,8 @@
     "barChart": "الرسم البياني العمودي",
     "settings": "الإعدادات",
     "schedule": "الجدول الزمني",
+    "area": "المناطق",
+    "integrations": "التكاملات",
     "otherLinks": "روابط أخرى"
   },
   "summary": {
@@ -187,6 +197,43 @@
     "merchants":{
     "marchentsList": "قائمة التجار"
   },
+
+  "area": {
+    "areaList": "قائمة المناطق",
+    "areaManagement": "إدارة المناطق",
+    "addArea": "إضافة منطقة",
+    "editArea": "تعديل منطقة",
+    "deleteArea": "حذف منطقة",
+    "areaName": "اسم المنطقة",
+    "areaDescription": "الوصف",
+    "country": "البلد",
+    "city": "المدينة",
+    "postalCode": "الرمز البريدي",
+    "coordinates": "الإحداثيات",
+    "latitude": "خط العرض",
+    "longitude": "خط الطول",
+    "status": "الحالة",
+    "active": "نشط",
+    "inactive": "غير نشط",
+    "createdDate": "تاريخ الإنشاء",
+    "updatedDate": "تاريخ التحديث",
+    "noAreasFound": "لم يتم العثور على مناطق",
+    "searchAreas": "البحث في المناطق...",
+    "allCountries": "جميع البلدان",
+    "allCities": "جميع المدن",
+    "allStatus": "جميع الحالات",
+    "areaDetails": "تفاصيل المنطقة",
+    "confirmDelete": "هل أنت متأكد من حذف هذه المنطقة؟",
+    "areaDeleted": "تم حذف المنطقة بنجاح",
+    "areaCreated": "تم إنشاء المنطقة بنجاح",
+    "areaUpdated": "تم تحديث المنطقة بنجاح",
+    "failedToDelete": "فشل في حذف المنطقة",
+    "failedToCreate": "فشل في إنشاء المنطقة",
+    "failedToUpdate": "فشل في تحديث المنطقة",
+    "loadingAreas": "جاري تحميل المناطق...",
+    "errorLoadingAreas": "خطأ في تحميل المناطق"
+  },
+
     "tracking": {
     "trackPackage": "تتبع الطرد",
     "bulkTracking": "تتبع جماعي",
@@ -340,7 +387,8 @@
   "A new system alert has been detected.": "تم اكتشاف تنبيه جديد للنظام",
   "Payment processed successfully.": "تم معالجة الدفع بنجاح",
   "Collection updated": "تم تحديث التحصيل",
-  "Package delivered": "تم تسليم الطرد"
+  "Package delivered": "تم تسليم الطرد",
+   "emptyMessage": "ليس لديك أي إشعارات."
   },
   "system": {
     "apiConfiguration": "إعدادات API",
@@ -503,6 +551,42 @@
   "pricelist":{
 
     "AddPrice": "إضافة سعر جديد"
-
+  },
+  "integrations": {
+    "title": "التكاملات",
+    "subtitle": "اربط أدواتك وخدماتك المفضلة لتبسيط سير العمل",
+    "addNewIntegration": "إضافة تكامل جديد",
+    "addIntegration": "إضافة تكامل",
+    "noIntegrationsTitle": "لا توجد تكاملات متاحة",
+    "noIntegrationsDesc": "ابدأ بإضافة أول تكامل لك لربط أدواتك.",
+    "loadingText": "جاري تحميل التكاملات...",
+    "details": "التفاصيل",
+    "settings": "الإعدادات",
+    "active": "نشط",
+    "inactive": "غير نشط",
+    "activated": "تم تفعيله",
+    "deactivated": "تم إلغاء تفعيله",
+    "integrationNames": {
+      "mailchimp": "ميل تشيمب",
+      "googleMeet": "جوجل ميت",
+      "zoom": "زووم",
+      "loom": "لووم",
+      "linear": "لينير",
+      "gmail": "جيميل",
+      "trello": "تريلو",
+      "notion": "نوشن",
+      "jira": "جيرا"
+    },
+    "integrationDescriptions": {
+      "mailchimp": "اربط ميل تشيمب لتبسيط التسويق عبر البريد الإلكتروني - أتمتة الحملات.",
+      "googleMeet": "اربط حساب جوجل ميت الخاص بك لمؤتمرات فيديو سلسة.",
+      "zoom": "ادمج زووم لتبسيط اجتماعاتك الافتراضية وتعاون الفريق.",
+      "loom": "ادمج لووم لتسجيل ومشاركة وإدارة رسائل الفيديو بسهولة.",
+      "linear": "ادمج لينير لإدارة المشاكل وتتبع التقدم وتبسيط عمل فريقك.",
+      "gmail": "ادمج جيميل لإرسال واستقبال وإدارة الرسائل مباشرة من مساحة العمل.",
+      "trello": "التقط ونظم وتعامل مع مهامك من أي مكان.",
+      "notion": "التقط ونظم وتعامل مع مهامك من أي مكان.",
+      "jira": "تتبع المشاكل وإدارة المشاريع بسهولة ورؤية كاملة للفريق."
+    }
   }
 }
