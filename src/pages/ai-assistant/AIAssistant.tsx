@@ -2,6 +2,8 @@ import { useState, useRef, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Button } from "../../components/ui";
 import PageBreadcrumb from "../../components/common/PageBreadCrumb";
+import TextArea from "../../components/form/input/TextArea";
+import Input from "../../components/form/input/InputField";
 import { 
   PaperPlaneIcon,
   CopyIcon,
@@ -151,12 +153,6 @@ const AIAssistant: React.FC = () => {
     }, 1000);
   };
 
-  const handleKeyPress = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault();
-      handleSendMessage();
-    }
-  };
 
   const copyToClipboard = (content: string) => {
     navigator.clipboard.writeText(content);
@@ -187,71 +183,28 @@ const AIAssistant: React.FC = () => {
           </h1>
         </div>
 
-        {/* Mobile Chat History Toggle */}
-        <div className="lg:hidden bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 px-6 py-3">
-          <button
-            onClick={() => setIsMobileSidebarOpen(!isMobileSidebarOpen)}
-            className="flex items-center justify-between w-full text-left"
-          >
-            <span className="text-lg font-medium text-gray-900 dark:text-white">
+        {/* Mobile Chat History Header */}
+        <div className="lg:hidden bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 mx-4 my-3 rounded-xl px-6 py-4">
+          <div className="flex items-center justify-between">
+            <h2 className="text-lg font-medium text-gray-700 dark:text-gray-300">
               {t('aiAssistant.chatsHistory')}
-            </span>
-            <svg 
-              className={`w-5 h-5 text-gray-500 transition-transform ${isMobileSidebarOpen ? 'rotate-180' : ''}`}
-              fill="none" 
-              stroke="currentColor" 
-              viewBox="0 0 24 24"
+            </h2>
+            <Button
+              onClick={() => setIsMobileSidebarOpen(!isMobileSidebarOpen)}
+              variant="outline"
+              size="sm"
+              className="p-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700"
             >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-            </svg>
-          </button>
-          
-          {/* Mobile Chat History Dropdown */}
-          {isMobileSidebarOpen && (
-            <div className="mt-4 space-y-2 max-h-64 overflow-y-auto">
-              {todaySessions.length > 0 && (
-                <div>
-                  <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2">
-                    {t('aiAssistant.today')}
-                  </h3>
-                  {todaySessions.map((session) => (
-                    <div
-                      key={session.id}
-                      className="p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer"
-                    >
-                      <p className="text-sm font-medium text-gray-900 dark:text-white truncate">
-                        {session.title}
-                      </p>
-                      <p className="text-xs text-gray-500 dark:text-gray-400 truncate">
-                        {session.lastMessage}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              )}
-              
-              {yesterdaySessions.length > 0 && (
-                <div>
-                  <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2 mt-4">
-                    {t('aiAssistant.yesterday')}
-                  </h3>
-                  {yesterdaySessions.slice(0, 3).map((session) => (
-                    <div
-                      key={session.id}
-                      className="p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer"
-                    >
-                      <p className="text-sm font-medium text-gray-900 dark:text-white truncate">
-                        {session.title}
-                      </p>
-                      <p className="text-xs text-gray-500 dark:text-gray-400 truncate">
-                        {session.lastMessage}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-          )}
+              <svg 
+                className="w-4 h-4 text-gray-600 dark:text-gray-400"
+                fill="none" 
+                stroke="currentColor" 
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </Button>
+          </div>
         </div>
 
         {/* Messages Area */}
@@ -293,35 +246,36 @@ const AIAssistant: React.FC = () => {
           <div className="space-y-4">
             {/* Main Input Field */}
             <div className="relative">
-              <textarea
-                ref={inputRef}
+              <TextArea
                 value={currentInput}
-                onChange={(e) => {
-                  setCurrentInput(e.target.value);
+                onChange={(value) => {
+                  setCurrentInput(value);
                   // Auto-resize textarea
-                  const textarea = e.target;
-                  textarea.style.height = 'auto';
-                  textarea.style.height = Math.min(textarea.scrollHeight, 200) + 'px';
+                  if (inputRef.current) {
+                    inputRef.current.style.height = 'auto';
+                    inputRef.current.style.height = Math.min(inputRef.current.scrollHeight, 200) + 'px';
+                  }
                 }}
-                onKeyPress={handleKeyPress}
                 placeholder={t('aiAssistant.inputPlaceholder')}
-                className="w-full px-4 py-4 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 text-base leading-relaxed overflow-hidden"
                 rows={3}
-                style={{ minHeight: '100px', maxHeight: '200px' }}
+                className="text-base leading-relaxed overflow-hidden rounded-xl"
               />
             </div>
             
             {/* Bottom Controls */}
             <div className="flex items-center justify-between">
-              <button
-                type="button"
-                className="flex items-center gap-2 px-3 py-2 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors"
+              <Button
+                variant="outline"
+                size="sm"
+                className="flex items-center gap-2 px-3 py-2 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200"
+                startIcon={
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
+                  </svg>
+                }
               >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
-                </svg>
-                <span className="text-sm font-medium">{t('aiAssistant.attach')}</span>
-              </button>
+                {t('aiAssistant.attach')}
+              </Button>
               
               <Button
                 variant="primary"
@@ -358,13 +312,13 @@ const AIAssistant: React.FC = () => {
         {/* Search */}
         <div className="p-4 border-b border-gray-200 dark:border-gray-700">
           <div className="relative">
-            <SearchIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-            <input
+            <SearchIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 z-10" />
+            <Input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder={t('aiAssistant.searchPlaceholder')}
-              className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
+              className="pl-10"
             />
           </div>
         </div>
@@ -392,9 +346,13 @@ const AIAssistant: React.FC = () => {
                           {session.lastMessage}
                         </p>
                       </div>
-                      <button className="opacity-0 group-hover:opacity-100 p-1 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="opacity-0 group-hover:opacity-100 p-1 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
+                      >
                         <HorizontaLDots className="w-4 h-4" />
-                      </button>
+                      </Button>
                     </div>
                   </div>
                 ))}
@@ -423,9 +381,13 @@ const AIAssistant: React.FC = () => {
                           {session.lastMessage}
                         </p>
                       </div>
-                      <button className="opacity-0 group-hover:opacity-100 p-1 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="opacity-0 group-hover:opacity-100 p-1 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
+                      >
                         <HorizontaLDots className="w-4 h-4" />
-                      </button>
+                      </Button>
                     </div>
                   </div>
                 ))}
@@ -435,10 +397,13 @@ const AIAssistant: React.FC = () => {
 
           {/* Show more */}
           <div className="p-4">
-            <button className="w-full text-left text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 flex items-center">
+            <Button
+              variant="outline"
+              className="w-full text-left text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 flex items-center"
+              endIcon={<HorizontaLDots className="w-4 h-4" />}
+            >
               {t('aiAssistant.showMore')}
-              <HorizontaLDots className="w-4 h-4 ml-2" />
-            </button>
+            </Button>
           </div>
         </div>
       </div>
