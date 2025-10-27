@@ -1,14 +1,14 @@
 import { useTranslation } from "react-i18next";
 import ComponentCard from "../../../components/common/ComponentCard";
 import Badge from "../../../components/ui/badge/Badge";
-import { getStatusColor } from "../../../utils/packageUtils";
+import { getStatusColor, getTranslatedStatus, formatLocalizedDate } from "../../../utils/packageUtils";
 
 interface OverviewTabProps {
   merchant: any;
 }
 
 export default function OverviewTab({ merchant }: OverviewTabProps) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   return (
     <ComponentCard
@@ -29,7 +29,7 @@ export default function OverviewTab({ merchant }: OverviewTabProps) {
             {t("merchants.overview.registrationDate")}
           </h4>
           <p className="text-gray-600 dark:text-gray-400">
-            {merchant.createdDate}
+            {formatLocalizedDate(merchant.createdDate, i18n.language)}
           </p>
         </div>
         <div>
@@ -37,7 +37,7 @@ export default function OverviewTab({ merchant }: OverviewTabProps) {
             {t("merchants.overview.accountStatus")}
           </h4>
           <Badge color={getStatusColor(merchant.status)}>
-            {merchant.status}
+            {getTranslatedStatus(merchant.status, t)}
           </Badge>
         </div>
       </div>

@@ -6,7 +6,7 @@ import { SearchIcon, UserCircleIcon, FacebookIcon, TwitterIcon, LinkedinIcon, Ma
 import { PageBreadcrumb, PageMeta } from "../../components/common";
 import GenericDataTable from "../../components/tables/DataTables/GenericDataTable";
 import Badge from "../../components/ui/badge/Badge";
-import { getStatusColor } from "../../utils/packageUtils";
+import { getStatusColor, getTranslatedStatus, formatLocalizedDate } from "../../utils/packageUtils";
 import Input from "../../components/form/input/InputField";
 import { merchantService } from "../../services";
 
@@ -15,7 +15,7 @@ export default function MerchantsList(){
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const [searchTerm, setSearchTerm] = useState("");
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
     const navigate = useNavigate();
 
     // Fetch merchants from API
@@ -144,7 +144,7 @@ export default function MerchantsList(){
             header: "Status",
             accessor: (merchant: Merchant) => (
                 <Badge color={getStatusColor(merchant.status)}>
-                    {merchant.status}
+                    {getTranslatedStatus(merchant.status, t)}
                 </Badge>
             )
         },
@@ -152,7 +152,7 @@ export default function MerchantsList(){
             header: "Created Date",
             accessor: (merchant: Merchant) => (
                 <span className="text-gray-500 text-theme-sm dark:text-gray-400">
-                    {merchant.createdDate}
+                    {formatLocalizedDate(merchant.createdDate, i18n.language)}
                 </span>
             )
         },

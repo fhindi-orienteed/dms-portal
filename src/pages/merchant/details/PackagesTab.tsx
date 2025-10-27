@@ -1,14 +1,14 @@
 import { useTranslation } from "react-i18next";
 import GenericDataTable from "../../../components/tables/DataTables/GenericDataTable";
 import Badge from "../../../components/ui/badge/Badge";
-import { getStatusColor } from "../../../utils/packageUtils";
+import { getStatusColor, getTranslatedStatus, formatLocalizedDate } from "../../../utils/packageUtils";
 
 interface PackagesTabProps {
   packages: any[];
 }
 
 export default function PackagesTab({ packages }: PackagesTabProps) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const columns = [
     {
@@ -32,13 +32,13 @@ export default function PackagesTab({ packages }: PackagesTabProps) {
     {
       header: t("merchants.packages.status"),
       accessor: (pkg: any) => (
-        <Badge color={getStatusColor(pkg.status)}>{pkg.status}</Badge>
+        <Badge color={getStatusColor(pkg.status)}>{getTranslatedStatus(pkg.status, t)}</Badge>
       )
     },
     {
       header: t("merchants.packages.date"),
       accessor: (pkg: any) => (
-        <span className="text-gray-500 text-theme-sm dark:text-gray-400">{pkg.date}</span>
+        <span className="text-gray-500 text-theme-sm dark:text-gray-400">{formatLocalizedDate(pkg.date, i18n.language)}</span>
       )
     }
   ];

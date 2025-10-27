@@ -5,6 +5,7 @@ import Button from "../../../components/ui/button/Button";
 import Badge from "../../../components/ui/badge/Badge";
 import { PlusIcon, UserCircleIcon } from "../../../icons";
 import AddUserModal from "./AddUserModal";
+import { getTranslatedRole, getTranslatedUserStatus } from "../../../utils/packageUtils";
 
 interface UsersTabProps {
   users: any[];
@@ -31,7 +32,7 @@ export default function UsersTab({ users, onAddUser }: UsersTabProps) {
       header: t("merchants.users.role"),
       accessor: (user: any) => (
         <Badge color={user.role === "Admin" ? "primary" : "success"}>
-          {t(`merchants.users.roles.${user.role.toLowerCase()}`)}
+          {getTranslatedRole(user.role, t)}
         </Badge>
       )
     },
@@ -45,7 +46,7 @@ export default function UsersTab({ users, onAddUser }: UsersTabProps) {
       header: t("merchants.users.status"),
       accessor: (user: any) => (
         <Badge color={user.status === "Active" ? "success" : "error"}>
-          {t(`merchants.users.statuses.${user.status.toLowerCase()}`)}
+          {getTranslatedUserStatus(user.status, t)}
         </Badge>
       )
     }

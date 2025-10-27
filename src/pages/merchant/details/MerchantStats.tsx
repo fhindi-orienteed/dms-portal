@@ -3,7 +3,7 @@ import Badge from "../../../components/ui/badge/Badge";
 import Button from "../../../components/ui/button/Button";
 import { StatsCard } from "../../../components/ui/stats";
 import { BoxIcon, DollarLineIcon, GroupIcon, PlugInIcon, PencilIcon, TrashBinIcon } from "../../../icons";
-import { getStatusColor } from "../../../utils/packageUtils";
+import { getStatusColor, getTranslatedStatus, formatLocalizedDate } from "../../../utils/packageUtils";
 import { useTranslation } from "react-i18next";
 
 interface MerchantStatsProps {
@@ -11,7 +11,7 @@ interface MerchantStatsProps {
 }
 
 export default function MerchantStats({ merchant }: MerchantStatsProps) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   return (
     <ComponentCard title={merchant.merchantName} desc={merchant.description}>
       {/* Stats Cards */}
@@ -37,7 +37,7 @@ export default function MerchantStats({ merchant }: MerchantStatsProps) {
         <StatsCard
           icon={<DollarLineIcon className="size-6 text-orange-600 dark:text-orange-400" />}
           label={t("merchants.stats.status")}
-          value={<Badge color={getStatusColor(merchant.status)}>{merchant.status}</Badge>}
+          value={<Badge color={getStatusColor(merchant.status)}>{getTranslatedStatus(merchant.status, t)}</Badge>}
           color="orange"
         />
       </div>
@@ -48,19 +48,25 @@ export default function MerchantStats({ merchant }: MerchantStatsProps) {
           <p className="text-sm text-gray-500 dark:text-gray-400">
             {t("merchants.stats.mainAddress")}
           </p>
-          <p className="text-sm font-medium text-gray-900 dark:text-white mt-1">{merchant.mainAddress}</p>
+          <p className="text-sm font-medium text-gray-900 dark:text-white mt-1">
+            {merchant.mainAddress || t("fallbacks.noAddress")}
+          </p>
         </div>
         <div>
           <p className="text-sm text-gray-500 dark:text-gray-400">
             {t("merchants.stats.createdDate")}
           </p>
-          <p className="text-sm font-medium text-gray-900 dark:text-white mt-1">{merchant.createdDate}</p>
+          <p className="text-sm font-medium text-gray-900 dark:text-white mt-1">
+            {formatLocalizedDate(merchant.createdDate, i18n.language)}
+          </p>
         </div>
         <div>
           <p className="text-sm text-gray-500 dark:text-gray-400">
             {t("merchants.stats.accountStatus")}
           </p>
-          <p className="text-sm font-medium text-gray-900 dark:text-white mt-1">{merchant.status}</p>
+          <p className="text-sm font-medium text-gray-900 dark:text-white mt-1">
+            {getTranslatedStatus(merchant.status, t)}
+          </p>
         </div>
       </div>
 
