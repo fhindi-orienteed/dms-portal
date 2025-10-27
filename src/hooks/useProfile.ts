@@ -1,18 +1,5 @@
 import { useState, useEffect } from "react";
-import api from "../config/api";
-import { apiUtils } from "../utils/apiUtils";
-
-export interface UserProfile {
-  email: string;
-  role: string;
-  firstName: string;
-  lastName: string;
-  mobile: string;
-  address: string;
-  photo?: string;
-companyDetails?: string;
-driverDetails?: string;
-}
+import { profileService, type UserProfile } from "../services/ProfileService";
 
 const PROFILE_KEY = "userProfile";
 
@@ -21,30 +8,25 @@ export function useProfile() {
 
   const loadProfile = async () => {
     try {
-      const response = await api.get("/users/profile");
-
-       console.log(" Profile Response:", response.data);
-      const userData: UserProfile = response.data;
-
+      const userData = await profileService.getProfile();
       localStorage.setItem(PROFILE_KEY, JSON.stringify(userData));
-
       setProfile(userData);
     } catch (error) {
-      console.error(" Failed to load profile:", error);
+      console.error("Failed to load profile:", error);
     }
   };
 
   const getProfile = (): UserProfile | null => {
     const data = localStorage.getItem(PROFILE_KEY);
-    return data ? JSON.parse(data) : null;
+    return data ? (JSON.parse(data) as UserProfile) : null;
   };
 
   useEffect(() => {
-    const stored = getProfile();
-    if (stored) {
-      setProfile(stored);
+    const cached = getProfile();
+    if (cached) {
+      setProfile(cached);
     } else {
-      loadProfile();
+      void loadProfile();
     }
   }, []);
 
