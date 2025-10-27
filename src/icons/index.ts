@@ -65,7 +65,11 @@ import { ReactComponent as DeliveredPackage } from "./deleverdPackage.svg?react"
 import { ReactComponent as PendingPackage } from "./pending.svg?react";
 import { ReactComponent as ReturnedPackage } from "./returned.svg?react";
 
+import { ReactComponent as UploadIcon } from "./upload.svg?react";
+
 export {
+
+  UploadIcon,
   ErrorHexaIcon,
   AlertHexaIcon,
   MoreDotIcon,
