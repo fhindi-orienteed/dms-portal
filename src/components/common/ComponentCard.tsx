@@ -6,10 +6,10 @@ interface ComponentCardProps {
 }
 
 const ComponentCard: React.FC<ComponentCardProps> = ({
- 
+  title,
   children,
   className = "",
- 
+  desc = "",
 }) => {
   return (
     <div
