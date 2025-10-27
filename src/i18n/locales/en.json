@@ -504,5 +504,11 @@
     "aboutDesc": "Revolutionizing delivery management with technology and dedication",
     "lastUpdated": "Last updated",
     "version": "Version"
+  },
+  "pricelist":{
+
+    "AddPrice": "Add Price"
+
   }
 }
+

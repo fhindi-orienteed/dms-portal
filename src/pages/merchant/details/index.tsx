@@ -49,15 +49,15 @@ export default function MerchantDetails() {
          <UsersTab users={merchant.users} onAddUser={handleAddUser} />
          </div>
          <div className="mb-6">
-  <PriceListTab
-    prices={merchant.priceList}
-    onAddPrice={(price) =>
-      setMerchant((prev: any) => ({
-        ...prev,
-        priceList: [...prev.priceList, price],
-      }))
-    }
-  />
+         <PriceListTab
+  prices={merchant.priceList || []} // fallback لو undefined
+  onAddPrice={(price) =>
+    setMerchant((prev: any) => ({
+      ...prev,
+      priceList: [...(prev.priceList || []), price],
+    }))
+  }
+/>
 </div>
          
         </div>

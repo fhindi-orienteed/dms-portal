@@ -2,15 +2,29 @@ import ComponentCard from "../../../components/common/ComponentCard";
 import Badge from "../../../components/ui/badge/Badge";
 import Button from "../../../components/ui/button/Button";
 import { StatsCard } from "../../../components/ui/stats";
-import { BoxIcon, DollarLineIcon, GroupIcon, PlugInIcon, PencilIcon, MailIcon } from "../../../icons";
+import { BoxIcon, DollarLineIcon, GroupIcon, PlugInIcon, PencilIcon } from "../../../icons";
 import { getStatusColor } from "../../../utils/packageUtils";
 import { useState } from "react";
+import {
+
+  FacebookIcon,
+  TwitterIcon,
+  LinkedinIcon,
+  MailIcon,
+} from "../../../icons";
 
 interface MerchantStatsProps {
   merchant: any;
 }
 
 export default function MerchantStats({ merchant }: MerchantStatsProps) {
+  
+  const socialLinks = {
+    facebook: "https://facebook.com/ali.ahmad",
+    twitter: "https://twitter.com/ali.ahmad",
+    linkedin: "https://linkedin.com/in/aliahmad",
+    email: "ali.ahmad@example.com",
+  };
   
   const [enabled, setEnabled] = useState(true); 
 
@@ -75,8 +89,31 @@ export default function MerchantStats({ merchant }: MerchantStatsProps) {
         <div>
           <p className="text-sm text-gray-500 dark:text-gray-400">Email</p>
           <p className="text-sm font-medium text-gray-900 dark:text-white mt-1">{merchant.email}</p>
+          <div className="flex items-center gap-3 mt-3">
+            {socialLinks.facebook && (
+              <a href={socialLinks.facebook} target="_blank" rel="noopener noreferrer">
+                <FacebookIcon className="size-5 text-blue-600 hover:text-blue-700" />
+              </a>
+            )}
+            {socialLinks.twitter && (
+              <a href={socialLinks.twitter} target="_blank" rel="noopener noreferrer">
+                <TwitterIcon className="size-5 text-blue-400 hover:text-blue-500" />
+              </a>
+            )}
+            {socialLinks.linkedin && (
+              <a href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer">
+                <LinkedinIcon className="size-5 text-blue-700 hover:text-blue-800" />
+              </a>
+            )}
+            {socialLinks.email && (
+              <a href={`mailto:${socialLinks.email}`}>
+                <MailIcon className="size-5 text-gray-600 hover:text-gray-800" />
+              </a>
+            )}
+          </div>
         </div>
       </div>
+       
 
       {/* Actions */}
       <div className="mt-6 flex gap-3 pt-6 border-t border-gray-200 dark:border-gray-700">
