@@ -10,6 +10,8 @@ import Badge from "../../components/ui/badge/Badge";
 import Input from "../../components/form/input/InputField";
 import { Button } from "../../components/ui";
 import { merchantService } from "../../services";
+import AddMerchantModal from "./details/AddMerchantModal";
+import { showToast } from "../../utils/toast";
 
 export default function MerchantsList(){
     const [merchants, setMerchants] = useState<Merchant[]>([]);
@@ -18,6 +20,18 @@ export default function MerchantsList(){
     const [searchTerm, setSearchTerm] = useState("");
     const { t } = useTranslation();
     const navigate = useNavigate();
+const [isModalOpen, setIsModalOpen] = useState(false);
+const handleAddMerchant = async (merchant: any) => {
+  try {
+    const response = await merchantService.createMerchant(merchant);
+    showToast.success("Merchant created successfully!");
+    setMerchants((prev) => [...prev, response]); // لتحديث الجدول
+    setIsModalOpen(false);
+  } catch (error) {
+    showToast.error("Failed to add merchant");
+    console.error(error);
+  }
+};
 
     // Fetch merchants from API
     useEffect(() => {
@@ -200,9 +214,16 @@ export default function MerchantsList(){
                             variant="primary"
                             size="sm"
                             startIcon={<PlusIcon className="size-4 fill-white" />}
+                            onClick={() => setIsModalOpen(true)}
+
                         >
                             Add Merchant
                         </Button>
+                        <AddMerchantModal
+  isOpen={isModalOpen}
+  onClose={() => setIsModalOpen(false)}
+  onAdd={handleAddMerchant}
+/>
                     </div>
                 </div>
 
