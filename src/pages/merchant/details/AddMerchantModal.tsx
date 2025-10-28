@@ -30,6 +30,7 @@ const { businessName, registrationNumber, email, phone, address } = formData;
       return;
     }
     onAdd(formData);
+    onClose();
     showToast.success("Merchant added successfully!");
     setFormData({
       businessName: "",registrationNumber: "",email: "",phone: "",address: "",
@@ -41,7 +42,7 @@ const { businessName, registrationNumber, email, phone, address } = formData;
   return (
     <Modal isOpen={isOpen} onClose={onClose} className="max-w-md">
       <div className="p-6">
-        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-6">Add New Branch</h3>
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-6"> Add New Merchant</h3>
         
         <div className="space-y-4">
           <div>

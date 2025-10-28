@@ -219,14 +219,15 @@ const handleAddMerchant = async (merchant: any) => {
                         >
                             Add Merchant
                         </Button>
-                        <AddMerchantModal
+                
+
+                    </div>
+                </div>
+<AddMerchantModal
   isOpen={isModalOpen}
   onClose={() => setIsModalOpen(false)}
   onAdd={handleAddMerchant}
 />
-                    </div>
-                </div>
-
                 {/* Loading State */}
                 {loading && (
                     <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-8">
