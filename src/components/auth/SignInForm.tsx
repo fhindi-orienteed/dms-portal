@@ -13,12 +13,13 @@ import { useAuth } from "../../context/AuthContext";
 import { showToast } from "../../utils/toast";
 import { loginSchema, LoginFormData } from "../../validation/loginSchema";
 import { z } from "zod";
+import { useTranslation } from "react-i18next";
 
 export default function SignInForm() {
   const [showPassword, setShowPassword] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
   const [showSignIn, setShowSignIn] = useState(true);
-  
+  const { t } = useTranslation();
   const [credentials, setCredentials] = useState<LoginFormData>({
     userName: '',
     password: ''
@@ -287,7 +288,7 @@ export default function SignInForm() {
                   to="/signup"
                   className="text-brand-500 hover:text-brand-600 dark:text-brand-400"
                 >
-               Create Account
+               {t("sigin.CreateAccount")}
                 </Link>
               </p>
             </div>

@@ -610,7 +610,11 @@
     "alreadyHaveAccount": "هل لديك حساب بالفعل؟",
     "signIn": "تسجيل الدخول",
     "signUpButton": "إنشاء الحساب"
+  },
+  "sigin":{
+    "CreateAccount": "إنشاء حساب"
   }
+  
 
   
 }

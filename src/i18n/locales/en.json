@@ -613,5 +613,8 @@
     "alreadyHaveAccount": "Already have an account?",
     "signIn": "Sign In",
     "signUpButton": "Sign Up"
+  },
+  "sigin":{
+    "CreateAccount": "Create Account"
   }
 }
