@@ -689,5 +689,33 @@
       "notion": "Capture, organize, and tackle your to-dos from anywhere.",
       "jira": "Track issues and manage projects with ease and full team visibility."
     }
+  },
+  "sigmup": {
+    "backToDashboard": "Back to dashboard",
+    "signUpTitle": "Sign Up",
+    "signUpDescription": "Enter your email and password to sign up!",
+    "signUpWithGoogle": "Sign up with Google",
+    "signUpWithX": "Sign up with X",
+    "or": "Or",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "enterFirstName": "Enter your first name",
+    "enterLastName": "Enter your last name",
+    "enterEmail": "Enter your email",
+    "enterPassword": "Enter your password",
+    "confirmYourPassword": "Confirm your password",
+    "terms": "Terms and Conditions",
+    "privacy": "Privacy Policy",
+    "agreement": "By creating an account means you agree to the",
+    "and": "and",
+    "alreadyHaveAccount": "Already have an account?",
+    "signIn": "Sign In",
+    "signUpButton": "Sign Up"
+  },
+  "sigin":{
+    "CreateAccount": "Create Account"
   }
 }

@@ -684,5 +684,37 @@
       "notion": "التقط ونظم وتعامل مع مهامك من أي مكان.",
       "jira": "تتبع المشاكل وإدارة المشاريع بسهولة ورؤية كاملة للفريق."
     }
+  },
+
+  "sigmup":{
+    "backToDashboard": "العودة إلى لوحة التحكم",
+    "signUpTitle": "إنشاء حساب",
+    "signUpDescription": "أدخل بريدك الإلكتروني وكلمة المرور للتسجيل!",
+    "signUpWithGoogle": "التسجيل عبر جوجل",
+    "signUpWithX": "التسجيل عبر X",
+    "or": "أو",
+    "firstName": "الاسم الأول",
+    "lastName": "اسم العائلة",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "confirmPassword": "تأكيد كلمة المرور",
+    "enterFirstName": "أدخل اسمك الأول",
+    "enterLastName": "أدخل اسم العائلة",
+    "enterEmail": "أدخل البريد الإلكتروني",
+    "enterPassword": "أدخل كلمة المرور",
+    "confirmYourPassword": "أعد إدخال كلمة المرور",
+    "terms": "الشروط والأحكام",
+    "privacy": "سياسة الخصوصية",
+    "agreement": "بإنشاء حساب، فإنك توافق على",
+    "and": "و",
+    "alreadyHaveAccount": "هل لديك حساب بالفعل؟",
+    "signIn": "تسجيل الدخول",
+    "signUpButton": "إنشاء الحساب"
+  },
+  "sigin":{
+    "CreateAccount": "إنشاء حساب"
   }
+  
+
+  
 }
