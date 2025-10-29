@@ -25,11 +25,10 @@ const handleAddMerchant = async (merchant: any) => {
   try {
     const response = await merchantService.createMerchant(merchant);
     showToast.success("Merchant created successfully!");
-    setMerchants((prev) => [...prev, response]); // لتحديث الجدول
+    setMerchants((prev) => [...prev, response]); 
     setIsModalOpen(false);
   } catch (error) {
     showToast.error("Failed to add merchant");
-    console.error(error);
   }
 };
 
