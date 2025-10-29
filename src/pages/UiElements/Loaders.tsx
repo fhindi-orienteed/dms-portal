@@ -227,6 +227,78 @@ const Loaders = () => {
           </div>
         </ComponentCard>
 
+        {/* Modern Loaders */}
+        <ComponentCard
+          title="Modern Loaders"
+          desc="Sleek and modern loader design with gradient animations and glow effects"
+        >
+          <div className="space-y-6">
+            {/* Different Sizes */}
+            <div>
+              <h4 className="mb-3 text-sm font-medium text-gray-700 dark:text-gray-300">
+                Sizes
+              </h4>
+              <div className="flex items-center gap-6">
+                <div className="text-center">
+                  <Loader variant="modern" size="xs" />
+                  <p className="mt-2 text-xs text-gray-500">XS</p>
+                </div>
+                <div className="text-center">
+                  <Loader variant="modern" size="sm" />
+                  <p className="mt-2 text-xs text-gray-500">SM</p>
+                </div>
+                <div className="text-center">
+                  <Loader variant="modern" size="md" />
+                  <p className="mt-2 text-xs text-gray-500">MD</p>
+                </div>
+                <div className="text-center">
+                  <Loader variant="modern" size="lg" />
+                  <p className="mt-2 text-xs text-gray-500">LG</p>
+                </div>
+                <div className="text-center">
+                  <Loader variant="modern" size="xl" />
+                  <p className="mt-2 text-xs text-gray-500">XL</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Different Colors */}
+            <div>
+              <h4 className="mb-3 text-sm font-medium text-gray-700 dark:text-gray-300">
+                Colors
+              </h4>
+              <div className="flex items-center gap-6">
+                <div className="text-center">
+                  <Loader variant="modern" color="primary" />
+                  <p className="mt-2 text-xs text-gray-500">Primary</p>
+                </div>
+                <div className="text-center">
+                  <Loader variant="modern" color="secondary" />
+                  <p className="mt-2 text-xs text-gray-500">Secondary</p>
+                </div>
+                <div className="text-center">
+                  <Loader variant="modern" color="gray" />
+                  <p className="mt-2 text-xs text-gray-500">Gray</p>
+                </div>
+                <div className="text-center">
+                  <div className="bg-gray-800 p-3 rounded-lg">
+                    <Loader variant="modern" color="white" />
+                  </div>
+                  <p className="mt-2 text-xs text-gray-500">White</p>
+                </div>
+              </div>
+            </div>
+
+            {/* With Text */}
+            <div>
+              <h4 className="mb-3 text-sm font-medium text-gray-700 dark:text-gray-300">
+                With Text
+              </h4>
+              <Loader variant="modern" text="Loading..." size="lg" />
+            </div>
+          </div>
+        </ComponentCard>
+
         {/* Overlay Loader */}
         <ComponentCard
           title="Overlay Loader"

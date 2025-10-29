@@ -2,16 +2,15 @@ import { useState, useMemo, useEffect, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router";
 import { Area, AreaFilters } from "../../types/area";
-import { SearchIcon, GridIcon, PlusIcon, PencilIcon, TrashBinIcon } from "../../icons"; 
+import { SearchIcon, GridIcon, PlusIcon } from "../../icons"; 
 import { PageBreadcrumb, PageMeta } from "../../components/common";
+import Loader from "../../components/ui/loader/Loader";
 import GenericDataTable from "../../components/tables/DataTables/GenericDataTable";
 import Badge from "../../components/ui/badge/Badge";
-import { getStatusColor } from "../../utils/packageUtils";
 import Input from "../../components/form/input/InputField";
 import { Button } from "../../components/ui";
 import Select from "../../components/form/Select";
 import { areaService } from "../../services";
-import toast from "react-hot-toast";
 
 export default function AreasList() {
     const [areas, setAreas] = useState<Area[]>([]);
@@ -24,8 +23,6 @@ export default function AreasList() {
     const [countries, setCountries] = useState<string[]>([]);
     const [cities, setCities] = useState<string[]>([]);
     const [showAddModal, setShowAddModal] = useState(false);
-    const [showEditModal, setShowEditModal] = useState(false);
-    const [editingArea, setEditingArea] = useState<Area | null>(null);
     
     const { t } = useTranslation();
     const navigate = useNavigate();
@@ -93,23 +90,6 @@ export default function AreasList() {
         return () => clearTimeout(timeoutId);
     }, [searchTerm, selectedCountry, selectedCity, selectedStatus, fetchAreas]);
 
-    const handleDeleteArea = async (area: Area) => {
-        if (window.confirm(t('area.confirmDelete'))) {
-            try {
-                await areaService.deleteArea(area.id);
-                toast.success(t('area.areaDeleted'));
-                fetchAreas();
-            } catch (err) {
-                toast.error(t('area.failedToDelete'));
-                console.error('Delete error:', err);
-            }
-        }
-    };
-
-    const handleEditArea = (area: Area) => {
-        setEditingArea(area);
-        setShowEditModal(true);
-    };
 
     const filteredAreas = useMemo(() => {
         return areas.filter(area => {
@@ -201,7 +181,7 @@ export default function AreasList() {
         {
             header: "Status",
             accessor: (area: Area) => (
-                <Badge color={getStatusColor(area.status)}>
+                <Badge color={area.status === "Active" ? "success" : "error"}>
                     {area.status}
                 </Badge>
             )
@@ -212,29 +192,6 @@ export default function AreasList() {
                 <span className="text-gray-500 text-theme-sm dark:text-gray-400">
                     {area.createdDate}
                 </span>
-            )
-        },
-        {
-            header: "Actions",
-            accessor: (area: Area) => (
-                <div className="flex items-center gap-2">
-                    <Button
-                        variant="outline"
-                        size="sm"
-                        onClick={() => handleEditArea(area)}
-                        className="text-blue-600 hover:text-blue-700 hover:bg-blue-50"
-                    >
-                        <PencilIcon className="size-4" />
-                    </Button>
-                    <Button
-                        variant="outline"
-                        size="sm"
-                        onClick={() => handleDeleteArea(area)}
-                        className="text-red-600 hover:text-red-700 hover:bg-red-50"
-                    >
-                        <TrashBinIcon className="size-4" />
-                    </Button>
-                </div>
             )
         },
     ];
@@ -287,10 +244,11 @@ export default function AreasList() {
                             />
                             
                             <Button
+                                variant="primary"
+                                size="sm"
                                 onClick={() => setShowAddModal(true)}
-                                className="flex items-center gap-2"
+                                startIcon={<PlusIcon className="size-4 fill-white" />}
                             >
-                                <PlusIcon className="size-4" />
                                 {t('area.addArea')}
                             </Button>
                         </div>
@@ -300,10 +258,7 @@ export default function AreasList() {
                 {/* Loading State */}
                 {loading && (
                     <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-8">
-                        <div className="flex items-center justify-center">
-                            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
-                            <span className="ml-3 text-gray-600 dark:text-gray-400">{t('area.loadingAreas')}</span>
-                        </div>
+                        <Loader text={t('area.loadingAreas')} />
                     </div>
                 )}
 
@@ -346,23 +301,6 @@ export default function AreasList() {
                 </div>
             )}
 
-            {showEditModal && editingArea && (
-                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-                    <div className="bg-white dark:bg-gray-800 rounded-lg p-6 w-full max-w-md">
-                        <h3 className="text-lg font-semibold mb-4">{t('area.editArea')}: {editingArea.name}</h3>
-                        <p className="text-gray-600 dark:text-gray-400">Edit Area modal will be implemented in the next phase.</p>
-                        <Button 
-                            onClick={() => {
-                                setShowEditModal(false);
-                                setEditingArea(null);
-                            }}
-                            className="mt-4"
-                        >
-                            Close
-                        </Button>
-                    </div>
-                </div>
-            )}
         </>
     );
 }

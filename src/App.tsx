@@ -57,6 +57,7 @@ import PaymentFollowUps from "./pages/follow-ups/payments";
 import DeliveryFollowUps from "./pages/follow-ups/deliveries";
 import ReturnsFollowUps from "./pages/follow-ups/returns";
 import PackageDetails from "./pages/packages/details";
+import Integrations from "./pages/integrations/Integrations";
 
 import TrackPackage from "./pages/TrackPackage/TrackPackage";
 import TrackingHistory from "./pages/TrackPackage/TrackingHistory";
@@ -361,6 +362,12 @@ export default function App() {
               <Route path="/area/list" element={
                 <ProtectedRoute>
                   <AreasList />
+                </ProtectedRoute>
+              } />
+
+              <Route path="/integrations" element={
+                <ProtectedRoute>
+                  <Integrations />
                 </ProtectedRoute>
               } />
 
