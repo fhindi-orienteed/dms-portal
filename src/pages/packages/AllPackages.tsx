@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { useNavigate } from "react-router";
+import {  useNavigate } from "react-router";
 import PageBreadcrumb from "../../components/common/PageBreadCrumb";
 import PageMeta from "../../components/common/PageMeta";
 import { Package } from "../../types/packages";
 import GenericDataTable from "../../components/tables/DataTables/GenericDataTable";
 import Badge from "../../components/ui/badge/Badge";
-import { BoxIcon } from "../../icons";
+import { BoxIcon, DownloadIcon,  UploadIcon } from "../../icons";
 import { getStatusColor } from "../../utils/packageUtils";
 import FilterDropdown, { FilterOption } from "../../components/common/FilterDropdown";
 import { useFilterManager, useFilters } from "../../hooks/useFilters";
@@ -381,10 +381,25 @@ export default function AllPackages() {
               </div>
             </div>
             {/* export&import buttons */}
-            <div className="items-end">
-                  <Button className="mr-4 border border-gray-200 p-2 rounded-lg bg-blue-600 text-white">{t('packages.export')}</Button>
-                  <Button className="mr-4 border border-gray-200 p-2 rounded-lg bg-blue-600 text-white">{t('packages.import')}</Button>
-            </div>
+            <div className="flex items-end">
+  <Button
+    variant="outline"
+    className="mr-4 mt-4 border border-gray-200 p-3 rounded-lg text-gray-3 00 flex items-center gap-2"
+  >
+    <UploadIcon className="w-5 h-5" />
+    {t('packages.export')} CSV
+  </Button>
+
+  <Button
+    variant="outline"
+    className="mr-4 mt-4 border border-gray-200 p-3 rounded-lg text-gray-300 flex items-center gap-2"
+  >
+    <DownloadIcon className="w-5 h-5" />
+    {t('packages.import')} CSV
+  </Button>
+</div>
+
+
           </div>
         </div>
 

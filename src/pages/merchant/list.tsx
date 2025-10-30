@@ -2,12 +2,14 @@ import { useState, useMemo, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router";
 import { Merchant } from "../../types/merchant";
-import { SearchIcon, UserCircleIcon, FacebookIcon, TwitterIcon, LinkedinIcon, MailIcon, EnvelopeIcon } from "../../icons"; 
+import { SearchIcon, UserCircleIcon, FacebookIcon, TwitterIcon, LinkedinIcon, MailIcon, EnvelopeIcon, PlusIcon } from "../../icons"; 
 import { PageBreadcrumb, PageMeta } from "../../components/common";
+import Loader from "../../components/ui/loader/Loader";
 import GenericDataTable from "../../components/tables/DataTables/GenericDataTable";
 import Badge from "../../components/ui/badge/Badge";
-import { getStatusColor } from "../../utils/packageUtils";
+import { getStatusColor, getTranslatedStatus, formatLocalizedDate } from "../../utils/packageUtils";
 import Input from "../../components/form/input/InputField";
+import { Button } from "../../components/ui";
 import { merchantService } from "../../services";
 
 export default function MerchantsList(){
@@ -15,7 +17,7 @@ export default function MerchantsList(){
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const [searchTerm, setSearchTerm] = useState("");
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
     const navigate = useNavigate();
 
     // Fetch merchants from API
@@ -144,7 +146,7 @@ export default function MerchantsList(){
             header: "Status",
             accessor: (merchant: Merchant) => (
                 <Badge color={getStatusColor(merchant.status)}>
-                    {merchant.status}
+                    {getTranslatedStatus(merchant.status, t)}
                 </Badge>
             )
         },
@@ -152,7 +154,7 @@ export default function MerchantsList(){
             header: "Created Date",
             accessor: (merchant: Merchant) => (
                 <span className="text-gray-500 text-theme-sm dark:text-gray-400">
-                    {merchant.createdDate}
+                    {formatLocalizedDate(merchant.createdDate, i18n.language)}
                 </span>
             )
         },
@@ -179,7 +181,7 @@ export default function MerchantsList(){
                 title={`${t('merchants.allMerchants')} | DMS Portal`} 
                 description={`${t('merchants.allMerchants')} - DMS Portal`}
             />
-            <PageBreadcrumb pageTitle="All Merchants" />
+            <PageBreadcrumb pageTitle={t("merchants.allMerchants")} />
             
             <div className="space-y-6">
                 {/* Search Controls */}
@@ -188,22 +190,27 @@ export default function MerchantsList(){
                         <div className="relative flex-1 max-w-md">
                             <SearchIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 size-4 text-gray-400 z-10" />
                             <Input
-                                placeholder="Search merchants..."
+                                placeholder={t("merchants.searchPlaceholder")}
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
                                 className="w-full pl-10"
                             />
                         </div>
+                        
+                        <Button
+                            variant="primary"
+                            size="sm"
+                            startIcon={<PlusIcon className="size-4 fill-white" />}
+                        >
+                            Add Merchant
+                        </Button>
                     </div>
                 </div>
 
                 {/* Loading State */}
                 {loading && (
                     <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-8">
-                        <div className="flex items-center justify-center">
-                            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
-                            <span className="ml-3 text-gray-600 dark:text-gray-400">Loading merchants...</span>
-                        </div>
+                        <Loader />
                     </div>
                 )}
 
@@ -212,7 +219,9 @@ export default function MerchantsList(){
                     <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-xl p-4">
                         <div className="flex items-center">
                             <EnvelopeIcon className="size-5 text-red-600 dark:text-red-400" />
-                            <span className="ml-3 text-red-800 dark:text-red-200">{error}</span>
+                            <span className="ml-3 text-red-800 dark:text-red-200">
+                                {error || t("merchants.errorLoadingMerchants")}
+                            </span>
                         </div>
                     </div>
                 )}
@@ -224,7 +233,7 @@ export default function MerchantsList(){
                         columns={columns}
                         itemsPerPage={10}
                         showPagination={true}
-                        emptyMessage="No merchants found."
+                        emptyMessage={t('merchants.noMerchantsFound')}
                         onRowClick={(merchant) => navigate(`/merchant/${merchant.id}`)}
                     />
                 )}

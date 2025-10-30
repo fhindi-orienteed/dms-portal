@@ -1,41 +1,44 @@
+import { useTranslation } from "react-i18next";
 import GenericDataTable from "../../../components/tables/DataTables/GenericDataTable";
 import Badge from "../../../components/ui/badge/Badge";
-import { getStatusColor } from "../../../utils/packageUtils";
+import { getStatusColor, getTranslatedStatus, formatLocalizedDate } from "../../../utils/packageUtils";
 
 interface PackagesTabProps {
   packages: any[];
 }
 
 export default function PackagesTab({ packages }: PackagesTabProps) {
+  const { t, i18n } = useTranslation();
+
   const columns = [
     {
-      header: "Tracking Number",
+      header: t("merchants.packages.trackingNumber"),
       accessor: (pkg: any) => (
         <span className="font-medium text-blue-600 dark:text-blue-400">{pkg.trackingNumber}</span>
       )
     },
     {
-      header: "Recipient",
+      header: t("merchants.packages.recipient"),
       accessor: (pkg: any) => (
         <span className="text-gray-800 text-theme-sm dark:text-white/90">{pkg.recipient}</span>
       )
     },
     {
-      header: "Destination",
+      header: t("merchants.packages.destination"),
       accessor: (pkg: any) => (
         <span className="text-gray-600 dark:text-gray-400">{pkg.destination}</span>
       )
     },
     {
-      header: "Status",
+      header: t("merchants.packages.status"),
       accessor: (pkg: any) => (
-        <Badge color={getStatusColor(pkg.status)}>{pkg.status}</Badge>
+        <Badge color={getStatusColor(pkg.status)}>{getTranslatedStatus(pkg.status, t)}</Badge>
       )
     },
     {
-      header: "Date",
+      header: t("merchants.packages.date"),
       accessor: (pkg: any) => (
-        <span className="text-gray-500 text-theme-sm dark:text-gray-400">{pkg.date}</span>
+        <span className="text-gray-500 text-theme-sm dark:text-gray-400">{formatLocalizedDate(pkg.date, i18n.language)}</span>
       )
     }
   ];
@@ -46,7 +49,7 @@ export default function PackagesTab({ packages }: PackagesTabProps) {
       columns={columns}
       itemsPerPage={10}
       showPagination={true}
-      emptyMessage="No packages found for this merchant."
+      emptyMessage={t('merchants.packages.noPackages')}
     />
   );
 }
