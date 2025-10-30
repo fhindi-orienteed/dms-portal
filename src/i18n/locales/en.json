@@ -72,6 +72,7 @@
     "schedule": "Schedule",
     "area": "Area",
     "integrations": "Integrations",
+    "aiAssistant": "AI Assistant",
     "otherLinks": "Other Links"
   },
   "auth": {
@@ -690,6 +691,23 @@
       "jira": "Track issues and manage projects with ease and full team visibility."
     }
   },
+  "aiAssistant": {
+    "title": "AI Assistant",
+    "subtitle": "Get intelligent assistance for your tasks and questions",
+    "newChat": "New Chat",
+    "copy": "Copy",
+    "inputPlaceholder": "Type your prompt here...",
+    "searchPlaceholder": "Search...",
+    "today": "TODAY",
+    "yesterday": "YESTERDAY",
+    "chatsHistory": "Chats History",
+    "showMore": "Show more...",
+    "attach": "Attach",
+    "send": "Send",
+    "thinking": "AI is thinking...",
+    "errorMessage": "Sorry, something went wrong. Please try again.",
+    "emptyState": "Start a conversation with your AI assistant",
+    "emptyStateDesc": "Ask questions, get help with tasks, or brainstorm ideas"
   "sigmup": {
     "backToDashboard": "Back to dashboard",
     "signUpTitle": "Sign Up",
