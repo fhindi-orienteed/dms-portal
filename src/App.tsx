@@ -59,6 +59,7 @@ import ReturnsFollowUps from "./pages/follow-ups/returns";
 import PackageDetails from "./pages/packages/details";
 import Verfication from "./pages/AuthPages/Verfication"; 
 import Integrations from "./pages/integrations/Integrations";
+
 import TrackPackage from "./pages/TrackPackage/TrackPackage";
 import TrackingHistory from "./pages/TrackPackage/TrackingHistory";
 
