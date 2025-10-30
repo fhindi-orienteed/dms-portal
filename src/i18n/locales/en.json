@@ -163,8 +163,8 @@
     "delivered": "Delivered",
     "pending": "Pending",
     "failedDelivery": "Failed Delivery",
-    "export":"Export",
-    "import":"Import",
+    "export": "Export",
+    "import": "Import",
     "packagesList": "Packages List",
     "trackingNumber": "Tracking Number",
     "recipient": "Recipient",
@@ -220,9 +220,94 @@
     "driverAssignments": "Driver Assignments"
   },
 
-  "merchants":{
-    "allMerchants" :"All Merchants",
-    "merchentsList": "Merchents list"
+  "merchants": {
+    "allMerchants": "All Merchants",
+    "merchantsList": "Merchants List",
+    "searchPlaceholder": "Search merchants...",
+    "noMerchantsFound": "No merchants found.",
+    "loadingMerchants": "Loading merchants...",
+    "errorLoadingMerchants": "Failed to load merchants",
+
+    "details": {
+      "title": "Merchant Details",
+      "breadcrumb": "Merchants",
+      "description": "Detailed information about the merchant"
+    },
+
+    "stats": {
+      "totalPackages": "Total Packages",
+      "branches": "Branches",
+      "users": "Users",
+      "status": "Status",
+      "mainAddress": "Main Address",
+      "createdDate": "Created Date",
+      "accountStatus": "Account Status",
+      "editMerchant": "Edit Merchant",
+      "deleteMerchant": "Delete Merchant"
+    },
+
+    "tabs": {
+      "overview": "Overview",
+      "recentPackages": "Recent Packages",
+      "branches": "Branches",
+      "users": "Users"
+    },
+
+    "overview": {
+      "title": "Merchant Overview",
+      "description": "Detailed information about the merchant",
+      "descriptionLabel": "Description",
+      "registrationDate": "Registration Date",
+      "accountStatus": "Account Status",
+      "noDescription": "No description available"
+    },
+
+    "packages": {
+      "trackingNumber": "Tracking Number",
+      "recipient": "Recipient",
+      "destination": "Destination",
+      "status": "Status",
+      "date": "Date",
+      "noPackages": "No packages found for this merchant."
+    },
+
+    "branches": {
+      "addBranch": "Add Branch",
+      "branchName": "Branch Name",
+      "address": "Address",
+      "manager": "Manager",
+      "noBranches": "No branches found for this merchant.",
+      "addNewBranch": "Add New Branch",
+      "enterBranchName": "Enter branch name",
+      "enterBranchAddress": "Enter branch address",
+      "enterManagerName": "Enter manager name",
+      "branchAddedSuccess": "Branch added successfully!",
+      "fillAllFields": "Please fill in all required fields"
+    },
+
+    "users": {
+      "addUser": "Add User",
+      "name": "Name",
+      "role": "Role",
+      "email": "Email",
+      "status": "Status",
+      "noUsers": "No users found for this merchant.",
+      "addNewUser": "Add New User",
+      "enterUserName": "Enter user name",
+      "enterEmailAddress": "Enter email address",
+      "userAddedSuccess": "User added successfully!",
+      "fillAllFields": "Please fill in all required fields",
+      "invalidEmail": "Please enter a valid email address",
+      "roles": {
+        "admin": "Admin",
+        "user": "User",
+        "manager": "Manager"
+      },
+      "statuses": {
+        "active": "Active",
+        "inactive": "Inactive"
+      }
+    }
   },
 
   "area": {
@@ -472,9 +557,9 @@
     "invalidInput": "Invalid input",
     "errorMessage": "Something went wrong. Please try again."
   },
-  "AddPackage":{
+  "AddPackage": {
     "Add-new-package": "Add New Package",
-    "Description":"  Enter package details to create a new delivery order",
+    "Description": "  Enter package details to create a new delivery order",
     "Tracking-Number*": "Tracking Number *",
     "Commercial-Name": "Commercial Name",
     "BranchAddress": "Branch Address",
@@ -484,7 +569,7 @@
     "Priority": "Priority *",
     "RecipientAddress*": "Recipient Address *",
     "ShipmentType": "Shipment Type ",
-    "COD":"COD (Delivery charges + price)",
+    "COD": "COD (Delivery charges + price)",
     "CollectionMethod": "Collection Method",
     "ServiceType": "Service Type",
     "InvoiceNumber": "Invoice Number",
@@ -508,34 +593,34 @@
     "SpecialInstructions": "Special Instructions",
     "Cancel": "Cancel",
     "CreatePackage": "Create Package",
-     "specialInstructionsPlaceholder": "Any special delivery instructions...",
-     "document": "Document",
+    "specialInstructionsPlaceholder": "Any special delivery instructions...",
+    "document": "Document",
     "package": "Package",
 
     "electronics": "Electronics",
     "Selecttype": " Select type",
     "standard": "Standard Service",
-  "express": "Express Service",
-  "overnight": "Overnight Service",
-  "selectService": "Select service",
-  "Selectservicetype": " Select service type",
-  "Enterinvoicenumber": " Enter invoice number",
-  "cash": "Cash",
-  "digitalWallet": "Digital Wallet",
-  "cheque": "Cheque",
-  "bankTransfer": "Bank Transfer",
-  "paymentCard": "Payment Card",
-  "cod": "COD",
-  "enterAmount": " Enter amount",
-  "selecttype": " Select type",
-  "selectCollectionMethod": "Select collection method",
-  "enterTrackingNumber": " Enter tracking number",
-  "enterCommercialName": " Enter commercial name",
-  "selectBranchAddress": " Select branch address",
-  "Fullname": " Full name",
-  "secondPhonePlaceholder": " Second phone number",
-  "addressPlaceholder": "Street address, city, state, postal code",
-  "priorityselect": "Select priority"
+    "express": "Express Service",
+    "overnight": "Overnight Service",
+    "selectService": "Select service",
+    "Selectservicetype": " Select service type",
+    "Enterinvoicenumber": " Enter invoice number",
+    "cash": "Cash",
+    "digitalWallet": "Digital Wallet",
+    "cheque": "Cheque",
+    "bankTransfer": "Bank Transfer",
+    "paymentCard": "Payment Card",
+    "cod": "COD",
+    "enterAmount": " Enter amount",
+    "selecttype": " Select type",
+    "selectCollectionMethod": "Select collection method",
+    "enterTrackingNumber": " Enter tracking number",
+    "enterCommercialName": " Enter commercial name",
+    "selectBranchAddress": " Select branch address",
+    "Fullname": " Full name",
+    "secondPhonePlaceholder": " Second phone number",
+    "addressPlaceholder": "Street address, city, state, postal code",
+    "priorityselect": "Select priority"
   },
   "staticPages": {
     "termsTitle": "Terms of Service",
@@ -552,6 +637,22 @@
     "aboutDesc": "Revolutionizing delivery management with technology and dedication",
     "lastUpdated": "Last updated",
     "version": "Version"
+  },
+  "status": {
+    "active": "Active",
+    "inactive": "Inactive",
+    "suspended": "Suspended",
+    "pending": "Pending",
+    "inTransit": "In Transit",
+    "delivered": "Delivered",
+    "failedDelivery": "Failed Delivery",
+    "allStatus": "All Status"
+  },
+  "fallbacks": {
+    "noAddress": "No address provided",
+    "unknownMerchant": "Unknown Merchant",
+    "notAvailable": "N/A",
+    "invalidDate": "Invalid Date"
   },
   "integrations": {
     "title": "Integrations",
@@ -607,5 +708,32 @@
     "errorMessage": "Sorry, something went wrong. Please try again.",
     "emptyState": "Start a conversation with your AI assistant",
     "emptyStateDesc": "Ask questions, get help with tasks, or brainstorm ideas"
+  "sigmup": {
+    "backToDashboard": "Back to dashboard",
+    "signUpTitle": "Sign Up",
+    "signUpDescription": "Enter your email and password to sign up!",
+    "signUpWithGoogle": "Sign up with Google",
+    "signUpWithX": "Sign up with X",
+    "or": "Or",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "enterFirstName": "Enter your first name",
+    "enterLastName": "Enter your last name",
+    "enterEmail": "Enter your email",
+    "enterPassword": "Enter your password",
+    "confirmYourPassword": "Confirm your password",
+    "terms": "Terms and Conditions",
+    "privacy": "Privacy Policy",
+    "agreement": "By creating an account means you agree to the",
+    "and": "and",
+    "alreadyHaveAccount": "Already have an account?",
+    "signIn": "Sign In",
+    "signUpButton": "Sign Up"
+  },
+  "sigin":{
+    "CreateAccount": "Create Account"
   }
 }

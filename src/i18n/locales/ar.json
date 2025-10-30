@@ -67,18 +67,17 @@
     "Monthly_Sales": "المبيعات الشهرية",
     "View_More": "عرض المزيد",
     "Delete": "حذف",
-   "monthlyTarget" : "الهدف الشهري",
-   "Monthly_Target_Description": " الهدف الذي حددته لكل شهر",
-   "Today": "اليوم",
-   "Revenue": "الإيرادات",
-   "Target": "الهدف",
-     
-      "dailyEarningsMessage": "لقد ربحت 3287$ اليوم، وهذا أعلى من الشهر الماضي. استمر في عملك الجيد!"
-   ,
-   "Statistics": "الإحصائيات",
-   
-   "monthlyTargetDesc": "الهدف الذي حددته لكل شهر",
-  "CustomersDemographic": "العملاء - التركيبة السكانية",
+    "monthlyTarget": "الهدف الشهري",
+    "Monthly_Target_Description": " الهدف الذي حددته لكل شهر",
+    "Today": "اليوم",
+    "Revenue": "الإيرادات",
+    "Target": "الهدف",
+
+    "dailyEarningsMessage": "لقد ربحت 3287$ اليوم، وهذا أعلى من الشهر الماضي. استمر في عملك الجيد!",
+    "Statistics": "الإحصائيات",
+
+    "monthlyTargetDesc": "الهدف الذي حددته لكل شهر",
+    "CustomersDemographic": "العملاء - التركيبة السكانية",
     "customerByCountry": "العملاء حسب البلد",
     "RecentOrders": "الطلبات الأخيرة",
     "Filter": "تصفية",
@@ -121,7 +120,7 @@
     "home": "الرئيسية",
     "mainMenu": "القائمة الرئيسية",
     "management": "ادارة المشروع",
-    "merchants" :"التجار",
+    "merchants": "التجار",
     "dashboard": "لوحة التحكم",
     "summary": "ملخص",
     "overview": "نظرة عامة",
@@ -165,9 +164,8 @@
     "delivered": "تم التوصيل",
     "pending": "معلق",
     "failedDelivery": "فشل التوصيل",
-    "export":"تصدير",
-    "import":"استيراد"
-    
+    "export": "تصدير",
+    "import": "استيراد"
   },
   "followUps": {
     "customer": "متابعة العملاء",
@@ -195,8 +193,94 @@
     "returnHistory": "سجل المرتجعات",
     "refundManagement": "إدارة الاستردادات"
   },
-    "merchants":{
-    "marchentsList": "قائمة التجار"
+  "merchants": {
+    "allMerchants": "جميع التجار",
+    "merchantsList": "قائمة التجار",
+    "searchPlaceholder": "ابحث في التجار...",
+    "noMerchantsFound": "لم يتم العثور على تجار.",
+    "loadingMerchants": "جاري تحميل التجار...",
+    "errorLoadingMerchants": "فشل في تحميل التجار",
+
+    "details": {
+      "title": "تفاصيل التاجر",
+      "breadcrumb": "التجار",
+      "description": "معلومات تفصيلية عن التاجر"
+    },
+
+    "stats": {
+      "totalPackages": "إجمالي الطرود",
+      "branches": "الفروع",
+      "users": "المستخدمين",
+      "status": "الحالة",
+      "mainAddress": "العنوان الرئيسي",
+      "createdDate": "تاريخ الإنشاء",
+      "accountStatus": "حالة الحساب",
+      "editMerchant": "تعديل التاجر",
+      "deleteMerchant": "حذف التاجر"
+    },
+
+    "tabs": {
+      "overview": "نظرة عامة",
+      "recentPackages": "الطرود الأخيرة",
+      "branches": "الفروع",
+      "users": "المستخدمين"
+    },
+
+    "overview": {
+      "title": "نظرة عامة على التاجر",
+      "description": "معلومات تفصيلية عن التاجر",
+      "descriptionLabel": "الوصف",
+      "registrationDate": "تاريخ التسجيل",
+      "accountStatus": "حالة الحساب",
+      "noDescription": "لا يوجد وصف متاح"
+    },
+
+    "packages": {
+      "trackingNumber": "رقم التتبع",
+      "recipient": "المستلم",
+      "destination": "الوجهة",
+      "status": "الحالة",
+      "date": "التاريخ",
+      "noPackages": "لم يتم العثور على طرود لهذا التاجر."
+    },
+
+    "branches": {
+      "addBranch": "إضافة فرع",
+      "branchName": "اسم الفرع",
+      "address": "العنوان",
+      "manager": "المدير",
+      "noBranches": "لم يتم العثور على فروع لهذا التاجر.",
+      "addNewBranch": "إضافة فرع جديد",
+      "enterBranchName": "أدخل اسم الفرع",
+      "enterBranchAddress": "أدخل عنوان الفرع",
+      "enterManagerName": "أدخل اسم المدير",
+      "branchAddedSuccess": "تمت إضافة الفرع بنجاح!",
+      "fillAllFields": "يرجى ملء جميع الحقول المطلوبة"
+    },
+
+    "users": {
+      "addUser": "إضافة مستخدم",
+      "name": "الاسم",
+      "role": "الدور",
+      "email": "البريد الإلكتروني",
+      "status": "الحالة",
+      "noUsers": "لم يتم العثور على مستخدمين لهذا التاجر.",
+      "addNewUser": "إضافة مستخدم جديد",
+      "enterUserName": "أدخل اسم المستخدم",
+      "enterEmailAddress": "أدخل عنوان البريد الإلكتروني",
+      "userAddedSuccess": "تمت إضافة المستخدم بنجاح!",
+      "fillAllFields": "يرجى ملء جميع الحقول المطلوبة",
+      "invalidEmail": "يرجى إدخال عنوان بريد إلكتروني صالح",
+      "roles": {
+        "admin": "مدير",
+        "user": "مستخدم",
+        "manager": "مدير"
+      },
+      "statuses": {
+        "active": "نشط",
+        "inactive": "غير نشط"
+      }
+    }
   },
 
   "area": {
@@ -235,7 +319,7 @@
     "errorLoadingAreas": "خطأ في تحميل المناطق"
   },
 
-    "tracking": {
+  "tracking": {
     "trackPackage": "تتبع الطرد",
     "bulkTracking": "تتبع جماعي",
     "trackingHistory": "سجل التتبع"
@@ -382,14 +466,14 @@
     "paymentReceivedDesc": "تم معالجة الدفع للفاتورة رقم #1234 بنجاح.",
     "viewAll": "عرض كل الإشعارات",
     "Test Title": "عنوان تجريبي",
-  "Test Message": "رسالة تجريبية",
-  "Account created/updated successfully.": "تم إنشاء/تحديث الحساب بنجاح.",
-  "System Alert": "تنبيه النظام",
-  "A new system alert has been detected.": "تم اكتشاف تنبيه جديد للنظام",
-  "Payment processed successfully.": "تم معالجة الدفع بنجاح",
-  "Collection updated": "تم تحديث التحصيل",
-  "Package delivered": "تم تسليم الطرد",
-   "emptyMessage": "ليس لديك أي إشعارات."
+    "Test Message": "رسالة تجريبية",
+    "Account created/updated successfully.": "تم إنشاء/تحديث الحساب بنجاح.",
+    "System Alert": "تنبيه النظام",
+    "A new system alert has been detected.": "تم اكتشاف تنبيه جديد للنظام",
+    "Payment processed successfully.": "تم معالجة الدفع بنجاح",
+    "Collection updated": "تم تحديث التحصيل",
+    "Package delivered": "تم تسليم الطرد",
+    "emptyMessage": "ليس لديك أي إشعارات."
   },
   "system": {
     "apiConfiguration": "إعدادات API",
@@ -470,28 +554,28 @@
     "invalidInput": "إدخال غير صالح",
     "errorMessage": "حدث خطأ ما. يرجى المحاولة مرة أخرى."
   },
-  "AddPackage":{
+  "AddPackage": {
     "Add-new-package": "إضافة طرد جديد",
-    "Description":" أدخل تفاصيل الحزمة لإنشاء أمر تسليم جديد",
-     "Tracking-Number*": "رقم التتبع*",
-     "Commercial-Name": "الاسم التجاري",
-     "BranchAddress": "عنوان الفرع",
-     "RecipientName*": "اسم المستلم*",
+    "Description": " أدخل تفاصيل الحزمة لإنشاء أمر تسليم جديد",
+    "Tracking-Number*": "رقم التتبع*",
+    "Commercial-Name": "الاسم التجاري",
+    "BranchAddress": "عنوان الفرع",
+    "RecipientName*": "اسم المستلم*",
     "MobileNumber*": "رقم الجوال*",
     "SecondMobileNumber": "رقم الجوال الثاني",
     "Priority": "الأولوية*",
     "RecipientAddress*": "عنوان المستلم*",
     "ShipmentType": "نوع الشحنة",
-    "COD":"(رسوم التوصيل + السعر) الدفع عند الاستلام",
+    "COD": "(رسوم التوصيل + السعر) الدفع عند الاستلام",
     "CollectionMethod": "طريقة التحصيل",
     "ServiceType": "نوع الخدمة",
     "InvoiceNumber": "رقم الفاتورة",
     "ExpectedDeliveryDate": "تاريخ التسليم المتوقع",
     "ExpectedPickupDate": "تاريخ الاستلام المتوقع",
     "SenderName": "اسم المرسل",
-     "PackageType": "نوع الطرد",
-     "Weight": "الوزن (كجم)*",
-      "Dimensions": "الأبعاد (ط×ع×إ)",
+    "PackageType": "نوع الطرد",
+    "Weight": "الوزن (كجم)*",
+    "Dimensions": "الأبعاد (ط×ع×إ)",
     "DeliveryDate": "تاريخ التسليم",
     "fragile": "قابل للكسر",
     "needsPackaging": "يحتاج إلى تغليف",
@@ -505,33 +589,33 @@
     "SpecialInstructions": "تعليمات خاصة",
     "Cancel": "إلغاء",
     "CreatePackage": "إنشاء طرد",
-   "specialInstructionsPlaceholder": "أي تعليمات تسليم خاصة...",
-   "document": "مستند",
-   "package": "طرد",
-   "electronics": "إلكترونيات",
-   "Selecttype": "اختر النوع",
-   "standard": "خدمة قياسية",
-  "express": "خدمة سريعة",
-  "overnight": "خدمة بين عشية وضحاها",
-  "selectService": " اختر الخدمة",
-  "Selectservicetype": " اختر نوع الخدمة",
-  "Enterinvoicenumber": " أدخل رقم الفاتورة",
-  "cash": "نقداً",
-  "digitalWallet": "محفظة رقمية",
-  "cheque": "شيك",
-  "bankTransfer": "تحويل بنكي",
-  "paymentCard": "بطاقة دفع",
-  "cod": "الدفع عند الاستلام",
-  "enterAmount": " أدخل المبلغ",
-  "selecttype": " اختر النوع",
-   "selectCollectionMethod": "اختر طريقة التحصيل",
-   "enterTrackingNumber": " أدخل رقم التتبع",
-   "enterCommercialName": " أدخل الاسم التجاري",
-   "selectBranchAddress": " اختر عنوان الفرع",
-   "Fullname": " الاسم الكامل",
-   "secondPhonePlaceholder": " أدخل رقم الجوال الثاني",
-  "addressPlaceholder": "العنوان: الشارع، المدينة، المحافظة، الرمز البريدي",
-  "priorityselect": "اختر الأولوية"
+    "specialInstructionsPlaceholder": "أي تعليمات تسليم خاصة...",
+    "document": "مستند",
+    "package": "طرد",
+    "electronics": "إلكترونيات",
+    "Selecttype": "اختر النوع",
+    "standard": "خدمة قياسية",
+    "express": "خدمة سريعة",
+    "overnight": "خدمة بين عشية وضحاها",
+    "selectService": " اختر الخدمة",
+    "Selectservicetype": " اختر نوع الخدمة",
+    "Enterinvoicenumber": " أدخل رقم الفاتورة",
+    "cash": "نقداً",
+    "digitalWallet": "محفظة رقمية",
+    "cheque": "شيك",
+    "bankTransfer": "تحويل بنكي",
+    "paymentCard": "بطاقة دفع",
+    "cod": "الدفع عند الاستلام",
+    "enterAmount": " أدخل المبلغ",
+    "selecttype": " اختر النوع",
+    "selectCollectionMethod": "اختر طريقة التحصيل",
+    "enterTrackingNumber": " أدخل رقم التتبع",
+    "enterCommercialName": " أدخل الاسم التجاري",
+    "selectBranchAddress": " اختر عنوان الفرع",
+    "Fullname": " الاسم الكامل",
+    "secondPhonePlaceholder": " أدخل رقم الجوال الثاني",
+    "addressPlaceholder": "العنوان: الشارع، المدينة، المحافظة، الرمز البريدي",
+    "priorityselect": "اختر الأولوية"
   },
   "staticPages": {
     "termsTitle": "شروط الخدمة",
@@ -548,6 +632,22 @@
     "aboutDesc": "إحداث ثورة في إدارة التوصيل بالتكنولوجيا والتفاني",
     "lastUpdated": "آخر تحديث",
     "version": "الإصدار"
+  },
+  "status": {
+    "active": "نشط",
+    "inactive": "غير نشط",
+    "suspended": "معلق",
+    "pending": "قيد الانتظار",
+    "inTransit": "قيد النقل",
+    "delivered": "تم التسليم",
+    "failedDelivery": "فشل التسليم",
+    "allStatus": "جميع الحالات"
+  },
+  "fallbacks": {
+    "noAddress": "لا يوجد عنوان",
+    "unknownMerchant": "تاجر غير معروف",
+    "notAvailable": "غير متوفر",
+    "invalidDate": "تاريخ غير صالح"
   },
   "integrations": {
     "title": "التكاملات",
@@ -603,5 +703,36 @@
     "errorMessage": "عذراً، حدث خطأ ما. يرجى المحاولة مرة أخرى.",
     "emptyState": "ابدأ محادثة مع مساعدك الذكي",
     "emptyStateDesc": "اطرح أسئلة، احصل على مساعدة في المهام، أو تبادل الأفكار"
+
+  "sigmup":{
+    "backToDashboard": "العودة إلى لوحة التحكم",
+    "signUpTitle": "إنشاء حساب",
+    "signUpDescription": "أدخل بريدك الإلكتروني وكلمة المرور للتسجيل!",
+    "signUpWithGoogle": "التسجيل عبر جوجل",
+    "signUpWithX": "التسجيل عبر X",
+    "or": "أو",
+    "firstName": "الاسم الأول",
+    "lastName": "اسم العائلة",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "confirmPassword": "تأكيد كلمة المرور",
+    "enterFirstName": "أدخل اسمك الأول",
+    "enterLastName": "أدخل اسم العائلة",
+    "enterEmail": "أدخل البريد الإلكتروني",
+    "enterPassword": "أدخل كلمة المرور",
+    "confirmYourPassword": "أعد إدخال كلمة المرور",
+    "terms": "الشروط والأحكام",
+    "privacy": "سياسة الخصوصية",
+    "agreement": "بإنشاء حساب، فإنك توافق على",
+    "and": "و",
+    "alreadyHaveAccount": "هل لديك حساب بالفعل؟",
+    "signIn": "تسجيل الدخول",
+    "signUpButton": "إنشاء الحساب"
+  },
+  "sigin":{
+    "CreateAccount": "إنشاء حساب"
   }
+  
+
+  
 }

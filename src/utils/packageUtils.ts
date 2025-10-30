@@ -149,3 +149,99 @@ export const getStatusBackgroundColor = (status: string): string => {
       return 'from-gray-100 to-gray-200 dark:from-gray-500/20 dark:to-gray-600/20';
   }
 };
+
+/**
+ * Get translated status text
+ * @param status - The status string from API
+ * @param t - Translation function from useTranslation hook
+ * @returns Translated status string
+ */
+export const getTranslatedStatus = (status: string, t: (key: string) => string): string => {
+  // Normalize the status string (handle different formats)
+  const normalizedStatus = status.toLowerCase().replace(/\s+/g, '');
+  
+  const statusKeyMap: Record<string, string> = {
+    'active': 'status.active',
+    'inactive': 'status.inactive',
+    'suspended': 'status.suspended',
+    'pending': 'status.pending',
+    'intransit': 'status.inTransit',
+    'delivered': 'status.delivered',
+    'faileddelivery': 'status.failedDelivery',
+    'allstatus': 'status.allStatus'
+  };
+  
+  const translationKey = statusKeyMap[normalizedStatus];
+  
+  // If we have a translation key, use it. Otherwise, return original status
+  return translationKey ? t(translationKey) : status;
+};
+
+/**
+ * Get translated role text
+ * @param role - The role string from API
+ * @param t - Translation function from useTranslation hook
+ * @returns Translated role string
+ */
+export const getTranslatedRole = (role: string, t: (key: string) => string): string => {
+  const normalizedRole = role.toLowerCase();
+  
+  const roleKeyMap: Record<string, string> = {
+    'admin': 'merchants.users.roles.admin',
+    'user': 'merchants.users.roles.user',
+    'manager': 'merchants.users.roles.manager'
+  };
+  
+  const translationKey = roleKeyMap[normalizedRole];
+  
+  return translationKey ? t(translationKey) : role;
+};
+
+/**
+ * Get translated user status text
+ * @param status - The status string from API
+ * @param t - Translation function from useTranslation hook
+ * @returns Translated status string
+ */
+export const getTranslatedUserStatus = (status: string, t: (key: string) => string): string => {
+  const normalizedStatus = status.toLowerCase();
+  
+  const statusKeyMap: Record<string, string> = {
+    'active': 'merchants.users.statuses.active',
+    'inactive': 'merchants.users.statuses.inactive'
+  };
+  
+  const translationKey = statusKeyMap[normalizedStatus];
+  
+  return translationKey ? t(translationKey) : status;
+};
+
+/**
+ * Format date according to user's locale
+ * @param dateString - The date string to format
+ * @param locale - The locale code (en, ar, etc.)
+ * @returns Formatted date string
+ */
+export const formatLocalizedDate = (dateString: string, locale: string = 'en'): string => {
+  if (!dateString || dateString === 'N/A') {
+    return dateString;
+  }
+  
+  try {
+    const date = new Date(dateString);
+    
+    // Check if date is valid
+    if (isNaN(date.getTime())) {
+      return dateString;
+    }
+    
+    // Format date based on locale
+    return new Intl.DateTimeFormat(locale === 'ar' ? 'ar-EG' : 'en-GB', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit'
+    }).format(date);
+  } catch {
+    return dateString;
+  }
+};
