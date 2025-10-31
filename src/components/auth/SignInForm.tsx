@@ -13,8 +13,11 @@ import { useAuth } from "../../context/AuthContext";
 import { showToast } from "../../utils/toast";
 import { loginSchema, LoginFormData } from "../../validation/loginSchema";
 import { z } from "zod";
+import UseVerfication from "../../hooks/useVerfication";
 
 export default function SignInForm() {
+  const { verficatinStatus } = UseVerfication();
+
   const [showPassword, setShowPassword] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
   const [showSignIn, setShowSignIn] = useState(true);
@@ -93,7 +96,10 @@ export default function SignInForm() {
       login(response.user, response.accessToken);
       showToast.success('Success! Login completed successfully!');
       
-      navigate('/verfication');
+      if(verficatinStatus?.newlyGenerated)
+        navigate('/verfication');
+      else
+         navigate('/');
     } catch (error: unknown) {
       console.error('Login error:', error);
       

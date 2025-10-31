@@ -1,11 +1,16 @@
 import { Link } from "react-router";
 import { ChevronLeftIcon } from "../../icons";
 import { Button } from "../ui";
+// import UseVerfication from "../../hooks/useVerfication";
+
 
 export default function VerficationPage(){
+    // const { verficatinStatus, loading, error } = UseVerfication();
+    // if (loading) return <p>Loading...</p>;
+    // if (error) return <p>Error: {error}</p>;
     return(
         <div className="flex flex-col flex-1 w-full overflow-y-auto lg:w-1/2 no-scrollbar ">
-           
+          
             <div className="w-full max-w-md mx-auto mb-5 sm:pt-10">
                 <Link
                     to="/"
