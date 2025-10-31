@@ -4,7 +4,7 @@
  * @param t - Translation function from useTranslation hook
  * @returns Translated status string
  */
-export const getStatusTranslationKey = (status: string | undefined, entity: string | undefined): string => {
+export const getStatusTranslationKey = (status: string | undefined, entity?: string | undefined): string => {
   if (!status) {
     return 'status.unknown';
   }
