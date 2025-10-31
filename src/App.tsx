@@ -65,6 +65,7 @@ import { ApiKeysList } from "./pages/api-keys";
 import TrackPackage from "./pages/TrackPackage/TrackPackage";
 import TrackingHistory from "./pages/TrackPackage/TrackingHistory";
 import ServerError from "./pages/OtherPage/ServerError";
+import Error503 from "./pages/OtherPage/Error503";
 
 
 export default function App() {
@@ -395,8 +396,10 @@ export default function App() {
             <Route path="/verfication" element={<Verfication />} />
 
             {/* Fallback Route */}
-            <Route path="*" element={<NotFound />} />
+            <Route path="/503" element={<Error503/>}/>
             <Route path="/500" element={<ServerError />} />
+             <Route path="*" element={<NotFound />} />
+
           </Routes>
         </Router>
         <Toaster />
