@@ -10,9 +10,9 @@ import { useMerchants } from '../../../hooks/useMerchants';
 import { EnvelopeIcon } from '../../../icons';
 import { Merchant } from '../../../types/merchant';
 import { formatLocalizedDate } from '../../../utils/packageUtils';
-import MerchantsListHeader from './components/Header';
-import MerchantName from './components/MerchantName';
-import MerchantSocialLinks from './components/SocialLinks';
+import MerchantsListHeader from '../components/Header';
+import MerchantName from '../components/MerchantName';
+import MerchantSocialLinks from '../components/SocialLinks';
 
 export default function MerchantsList() {
   const [searchTerm, setSearchTerm] = useState('');

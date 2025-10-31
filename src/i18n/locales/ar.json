@@ -646,6 +646,9 @@
     "lastUpdated": "آخر تحديث",
     "version": "الإصدار"
   },
+  "pricelist":{
+    "AddPrice": "إضافة سعر جديد"
+  },
   "status": {
     "active": "نشط",
     "inactive": "غير نشط",

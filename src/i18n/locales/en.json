@@ -652,6 +652,9 @@
     "lastUpdated": "Last updated",
     "version": "Version"
   },
+  "pricelist":{
+    "AddPrice": "Add Price"
+  },
   "status": {
     "active": "Active",
     "inactive": "Inactive",
@@ -756,3 +759,4 @@
     "CreateAccount": "Create Account"
   }
 }
+

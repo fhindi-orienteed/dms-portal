@@ -1,5 +1,5 @@
-import LineItemText from '../../../../components/LineItemText';
-import { Merchant } from '../../../../types/merchant';
+import LineItemText from '../../../components/LineItemText';
+import { Merchant } from '../../../types/merchant';
 import { FaStore } from 'react-icons/fa6';
 
 export interface Props {
