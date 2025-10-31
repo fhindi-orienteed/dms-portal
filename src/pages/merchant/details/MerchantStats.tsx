@@ -5,6 +5,7 @@ import { StatsCard } from '../../../components/ui/stats';
 import { BoxIcon, DollarLineIcon, GroupIcon, PlugInIcon, PencilIcon, TrashBinIcon } from '../../../icons';
 import { getStatusColor, getTranslatedStatus, formatLocalizedDate } from '../../../utils/packageUtils';
 import { useTranslation } from 'react-i18next';
+import MerchantSocialLinks from '../components/SocialLinks';
 
 interface MerchantStatsProps {
   merchant: any;
@@ -70,26 +71,7 @@ export default function MerchantStats({ merchant }: MerchantStatsProps) {
           <p className='text-sm text-gray-500 dark:text-gray-400'>Email</p>
           <p className='text-sm font-medium text-gray-900 dark:text-white mt-1'>{merchant.email}</p>
           <div className='flex items-center gap-3 mt-3'>
-            {socialLinks.facebook && (
-              <a href={socialLinks.facebook} target='_blank' rel='noopener noreferrer'>
-                <FacebookIcon className='size-5 text-blue-600 hover:text-blue-700' />
-              </a>
-            )}
-            {socialLinks.twitter && (
-              <a href={socialLinks.twitter} target='_blank' rel='noopener noreferrer'>
-                <TwitterIcon className='size-5 text-blue-400 hover:text-blue-500' />
-              </a>
-            )}
-            {socialLinks.linkedin && (
-              <a href={socialLinks.linkedin} target='_blank' rel='noopener noreferrer'>
-                <LinkedinIcon className='size-5 text-blue-700 hover:text-blue-800' />
-              </a>
-            )}
-            {socialLinks.email && (
-              <a href={`mailto:${socialLinks.email}`}>
-                <MailIcon className='size-5 text-gray-600 hover:text-gray-800' />
-              </a>
-            )}
+            <MerchantSocialLinks merchant={merchant} />
           </div>
         </div>
       </div>

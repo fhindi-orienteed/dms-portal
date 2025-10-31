@@ -1,5 +1,5 @@
-import SocialLinks from '../../../../components/SocialLinks';
-import { Merchant } from '../../../../types/merchant';
+import SocialLinks from '../../../components/SocialLinks';
+import { Merchant } from '../../../types/merchant';
 
 export interface SocialLinksProps {
   merchant: Merchant;

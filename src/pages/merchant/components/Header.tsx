@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import Input from '../../../../components/form/input/InputField';
-import { Button } from '../../../../components/ui';
-import { PlusIcon, SearchIcon } from '../../../../icons';
-import { merchantService } from '../../../../services';
-import { showToast } from '../../../../utils/toast';
-import AddMerchantModal from './../../details/AddMerchantModal';
+import Input from '../../../components/form/input/InputField';
+import { Button } from '../../../components/ui';
+import { PlusIcon, SearchIcon } from '../../../icons';
+import { merchantService } from '../../../services';
+import { showToast } from '../../../utils/toast';
+import AddMerchantModal from '../details/AddMerchantModal';
 
 export default function MerchantsListHeader({
   onChange,
