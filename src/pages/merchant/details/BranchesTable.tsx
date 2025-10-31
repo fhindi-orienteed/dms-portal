@@ -46,7 +46,7 @@ export default function BranchesTable({ branches, onAddBranch }: Props) {
         </Button>
       </div>
       <GenericDataTable
-        data={branches}
+        data={branches || []}
         columns={columns}
         itemsPerPage={10}
         showPagination={true}

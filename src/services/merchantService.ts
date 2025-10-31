@@ -20,7 +20,7 @@ export const merchantService = {
    * @param id - Merchant ID
    * @returns Promise with merchant data
    */
-  getMerchantById: async (id: number): Promise<Merchant> => {
+  getMerchantById: async (id: string): Promise<Merchant> => {
     const response = await api.get(`${endpoints.company.byId(id)}`);
     return buildMerchantObject(response.data.data);
   },

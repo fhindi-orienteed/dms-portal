@@ -7,7 +7,7 @@ export function useMerchants() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
 
-  const loadPackages = async () => {
+  const loadMerchantList = async () => {
     try {
       const data = await merchantService.getMerchants();
       setMerchants(data);
@@ -34,7 +34,7 @@ export function useMerchants() {
   };
 
   useEffect(() => {
-    loadPackages();
+    loadMerchantList();
   }, []);
-  return { merchants, loading, error, filterMerchants, refreshMerchantList: loadPackages };
+  return { merchants, loading, error, filterMerchants, refreshMerchantList: loadMerchantList };
 }

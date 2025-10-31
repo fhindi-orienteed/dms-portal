@@ -63,7 +63,7 @@ export default function UsersTable({ users, onAddUser }: UsersTabProps) {
         </Button>
       </div>
       <GenericDataTable
-        data={users}
+        data={users || []}
         columns={columns}
         itemsPerPage={10}
         showPagination={true}

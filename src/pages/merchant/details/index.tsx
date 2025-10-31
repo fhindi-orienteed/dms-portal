@@ -1,38 +1,23 @@
-import { useState } from 'react';
+import { useParams } from 'react-router';
 import { PageMeta } from '../../../components/common';
+import { useMerchant } from '../../../hooks/useMerchant.ts';
 import BranchesTable from './BranchesTable';
 import MerchantHeader from './MerchantHeader';
 import MerchantInformation from './MerchantInformation';
-import { mockMerchantData } from './mockData.ts';
 import PriceListTab from './PriceListTab';
 import UsersTable from './UsersTable.tsx';
 export default function MerchantDetails() {
-  const [merchant, setMerchant] = useState(mockMerchantData);
+  const { id } = useParams();
 
-  const handleAddUser = (user: any) => {
-    const newUser = { id: merchant.users.length + 1, ...user };
-    setMerchant((prev: any) => ({
-      ...prev,
-      users: [...prev.users, newUser],
-      userCount: prev.userCount + 1,
-    }));
-  };
+  const { merchant } = useMerchant(id);
 
-  const handleAddBranch = (branch: any) => {
-    const newBranch = { id: merchant.branches.length + 1, ...branch };
-    setMerchant((prev: any) => ({
-      ...prev,
-      branches: [...prev.branches, newBranch],
-      branchCount: prev.branchCount + 1,
-    }));
-  };
+  const handleAddUser = (user: any) => {};
+
+  const handleAddBranch = (branch: any) => {};
 
   return (
     <>
-      <PageMeta
-        title={`${merchant.merchantName} | DMS Portal`}
-        description={`Merchant details for ${merchant.merchantName}`}
-      />
+      <PageMeta title={`${merchant.name} | DMS Portal`} description={`Merchant details for ${merchant.name}`} />
 
       <MerchantHeader />
 
@@ -47,15 +32,7 @@ export default function MerchantDetails() {
             <UsersTable users={merchant.users} onAddUser={handleAddUser} />
           </div>
           <div className='mb-6'>
-            <PriceListTab
-              prices={merchant.priceList || []} // fallback لو undefined
-              onAddPrice={(price) =>
-                setMerchant((prev: any) => ({
-                  ...prev,
-                  priceList: [...(prev.priceList || []), price],
-                }))
-              }
-            />
+            <PriceListTab prices={merchant.priceList || []} onAddPrice={(price) => {}} />
           </div>
         </div>
       </div>
