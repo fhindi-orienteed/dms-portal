@@ -57,7 +57,9 @@ import PaymentFollowUps from "./pages/follow-ups/payments";
 import DeliveryFollowUps from "./pages/follow-ups/deliveries";
 import ReturnsFollowUps from "./pages/follow-ups/returns";
 import PackageDetails from "./pages/packages/details";
+import Verfication from "./pages/AuthPages/Verfication"; 
 import Integrations from "./pages/integrations/Integrations";
+import AIAssistant from "./pages/ai-assistant/AIAssistant";
 
 import TrackPackage from "./pages/TrackPackage/TrackPackage";
 import TrackingHistory from "./pages/TrackPackage/TrackingHistory";
@@ -371,11 +373,18 @@ export default function App() {
                 </ProtectedRoute>
               } />
 
+              <Route path="/ai-assistant" element={
+                <ProtectedRoute>
+                  <AIAssistant />
+                </ProtectedRoute>
+              } />
+
             </Route>
 
             <Route path="/signin" element={<SignIn />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
+            <Route path="/verfication" element={<Verfication />} />
 
             {/* Fallback Route */}
             <Route path="*" element={<NotFound />} />

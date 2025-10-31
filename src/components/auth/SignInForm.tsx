@@ -13,12 +13,16 @@ import { useAuth } from "../../context/AuthContext";
 import { showToast } from "../../utils/toast";
 import { loginSchema, LoginFormData } from "../../validation/loginSchema";
 import { z } from "zod";
+import UseVerfication from "../../hooks/useVerfication";
+import { useTranslation } from "react-i18next";
 
 export default function SignInForm() {
+  const { verficatinStatus } = UseVerfication();
+
   const [showPassword, setShowPassword] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
   const [showSignIn, setShowSignIn] = useState(true);
-  
+  const { t } = useTranslation();
   const [credentials, setCredentials] = useState<LoginFormData>({
     userName: '',
     password: ''
@@ -93,7 +97,10 @@ export default function SignInForm() {
       login(response.user, response.accessToken);
       showToast.success('Success! Login completed successfully!');
       
-      navigate('/');
+      if(verficatinStatus?.newlyGenerated)
+        navigate('/verfication');
+      else
+         navigate('/');
     } catch (error: unknown) {
       console.error('Login error:', error);
       
@@ -287,7 +294,7 @@ export default function SignInForm() {
                   to="/signup"
                   className="text-brand-500 hover:text-brand-600 dark:text-brand-400"
                 >
-                  Register as Merchant
+               {t("sigin.CreateAccount")}
                 </Link>
               </p>
             </div>

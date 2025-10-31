@@ -2,7 +2,7 @@ import axios, { AxiosInstance, AxiosResponse, InternalAxiosRequestConfig } from 
 
 const API_CONFIG = {
   BASE_URL: import.meta.env.VITE_API_BASE_URL || 'http://api-dms.orienteed.ps/v1/web',
-  TIMEOUT: 30000, 
+  TIMEOUT: 30000,
   RETRY_ATTEMPTS: 3,
   RETRY_DELAY: 1000,
 };
@@ -12,7 +12,7 @@ const api: AxiosInstance = axios.create({
   timeout: API_CONFIG.TIMEOUT,
   headers: {
     'Content-Type': 'application/json',
-    'Accept': 'application/json',
+    Accept: 'application/json',
   },
 });
 
@@ -41,15 +41,13 @@ api.interceptors.response.use(
     const originalRequest = error.config;
     if (error.response?.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
-      
+
       localStorage.removeItem('authToken');
       localStorage.removeItem('user');
 
-      
       return Promise.reject(error);
     }
 
-   
     if (error.response?.status === 403) {
       console.warn('Access forbidden - insufficient permissions');
     }
@@ -60,16 +58,13 @@ api.interceptors.response.use(
 
       if (originalRequest._retryCount < API_CONFIG.RETRY_ATTEMPTS) {
         originalRequest._retryCount++;
-        
-        await new Promise(resolve => 
-          setTimeout(resolve, API_CONFIG.RETRY_DELAY * originalRequest._retryCount)
-        );
-        
+
+        await new Promise((resolve) => setTimeout(resolve, API_CONFIG.RETRY_DELAY * originalRequest._retryCount));
+
         return api(originalRequest);
       }
     }
 
-   
     const errorMessage = error.response?.data?.message || error.message || 'An unexpected error occurred';
     const errorStatus = error.response?.status || 0;
 
