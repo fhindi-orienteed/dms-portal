@@ -64,6 +64,7 @@ import { ApiKeysList } from "./pages/api-keys";
 
 import TrackPackage from "./pages/TrackPackage/TrackPackage";
 import TrackingHistory from "./pages/TrackPackage/TrackingHistory";
+import ServerError from "./pages/OtherPage/ServerError";
 
 
 export default function App() {
@@ -395,6 +396,7 @@ export default function App() {
 
             {/* Fallback Route */}
             <Route path="*" element={<NotFound />} />
+            <Route path="/500" element={<ServerError />} />
           </Routes>
         </Router>
         <Toaster />

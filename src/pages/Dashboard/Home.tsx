@@ -3,10 +3,35 @@ import PackageCard from "../../components/ecommerce/PackageCard";
 import { useTranslation } from "../../hooks/useTranslation";
 import { usePackages } from "../../hooks/usePackageSummary";
 import { Loader } from "../../components/ui";
+import { useMemo } from "react";
+
+const ALL_STATUSES = [
+  'PENDING_COLLECTION',
+  'SCHEDULED',
+  'IN_PROGRESS',
+  'AT_COLLECTION',
+  'COLLECTED',
+  'MISSED',
+  'CANCELLED',
+  'RESCHEDULED',
+  'FAILED',
+  'RETURNED'
+] as const;
 
 export default function Home() {
   const { t } = useTranslation();
   const {packages, loading, error }=  usePackages();
+
+  const allPackages = useMemo(() => {
+    const result: Record<string, { count: number; collectionAmount: number }> = {};
+    const packagesObj = packages as unknown as Record<string, { count: number; collectionAmount: number }>;
+    
+    ALL_STATUSES.forEach(status => {
+      result[status] = packagesObj[status] || { count: 0, collectionAmount: 0 };
+    });
+    
+    return result;
+  }, [packages]);
 
   if(error) return <p>Error : </p>;
   if(loading) return <Loader />
@@ -24,8 +49,8 @@ export default function Home() {
       </div>
       
       <div className="mb-6">
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 md:gap-6">
-          {Object.entries(packages).map(([statusName, values]) => (
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5">
+          {Object.entries(allPackages).map(([statusName, values]) => (
             <PackageCard
               key={statusName}
               code={statusName}
@@ -33,7 +58,6 @@ export default function Home() {
               collectionAmount={values.collectionAmount}
             />
           ))}
-          
         </div>
       </div>
     </>
