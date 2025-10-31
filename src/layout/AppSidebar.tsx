@@ -17,6 +17,7 @@ import {
   TaskIcon,
   GroupIcon,
   ChatIcon,
+  LockIcon,
 } from "../icons";
 import { useSidebar } from "../context/SidebarContext";
 import { useLanguage } from "../context/LanguageContext";
@@ -180,6 +181,11 @@ const othersItems: NavItem[] = useMemo(() => [
       { name: t('otherLinks.contactSupport'), path: "/support", pro: false },
       { name: t('otherLinks.aboutUs'), path: "/about", pro: false },
     ],
+  },
+  {
+    icon: <LockIcon />,
+    name: t('sidebar.apiKeys'),
+    path: "/api-keys",
   },
   {
     icon: <PlugInIcon />,
