@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { Table, TableBody, TableCell, TableHeader, TableRow } from "../../ui/table";
-import Pagination from "../../common/Pagination";
+import { useState } from 'react';
+import { Table, TableBody, TableCell, TableHeader, TableRow } from '../../ui/table';
+import Pagination from '../../common/Pagination';
 
 interface Column<T> {
   header: string;
@@ -22,11 +22,11 @@ function GenericDataTable<T extends { id: number | string }>({
   columns,
   itemsPerPage = 10,
   showPagination = true,
-  emptyMessage = "No data found",
-  onRowClick
+  emptyMessage = 'No data found',
+  onRowClick,
 }: GenericDataTableProps<T>) {
   const [currentPage, setCurrentPage] = useState(1);
-  const totalItems = data.length;
+  const totalItems = data?.length;
   const totalPages = Math.ceil(totalItems / itemsPerPage);
 
   const startIndex = (currentPage - 1) * itemsPerPage;
@@ -45,44 +45,43 @@ function GenericDataTable<T extends { id: number | string }>({
   };
 
   return (
-    <div className="space-y-4">
+    <div className='space-y-4'>
       {/* Table */}
-      <div className="overflow-hidden rounded-xl border border-gray-200 bg-white dark:border-white/[0.05] dark:bg-white/[0.03]">
-        <div className="max-w-full overflow-x-auto">
+      <div className='overflow-hidden rounded-xl border border-gray-200 bg-white dark:border-white/[0.05] dark:bg-white/[0.03]'>
+        <div className='max-w-full overflow-x-auto'>
           <Table>
-            <TableHeader className="border-b border-gray-100 dark:border-white/[0.05]">
+            <TableHeader className='border-b border-gray-100 dark:border-white/[0.05]'>
               <TableRow>
                 {columns.map((column, index) => (
                   <TableCell
                     key={index}
                     isHeader
-                    className={`px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 ${column.className || ''}`}
-                  >
+                    className={`px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 ${
+                      column.className || ''
+                    }`}>
                     {column.header}
                   </TableCell>
                 ))}
               </TableRow>
             </TableHeader>
 
-            <TableBody className="divide-y divide-gray-100 dark:divide-white/[0.05]">
+            <TableBody className='divide-y divide-gray-100 dark:divide-white/[0.05]'>
               {currentData.length === 0 ? (
                 <TableRow>
-                  <TableCell className="px-5 py-8 text-center text-gray-500 dark:text-gray-400">
+                  <TableCell className='px-5 py-8 text-center text-gray-500 dark:text-gray-400'>
                     {emptyMessage}
                   </TableCell>
                 </TableRow>
               ) : (
                 currentData.map((row) => (
-                  <TableRow 
+                  <TableRow
                     key={row.id}
                     onClick={() => onRowClick?.(row)}
-                    className={onRowClick ? "cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors" : ""}
-                  >
+                    className={
+                      onRowClick ? 'cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors' : ''
+                    }>
                     {columns.map((column, colIndex) => (
-                      <TableCell 
-                        key={colIndex} 
-                        className={`px-5 py-4 text-start ${column.className || ''}`}
-                      >
+                      <TableCell key={colIndex} className={`px-5 py-4 text-start ${column.className || ''}`}>
                         {getCellValue(row, column)}
                       </TableCell>
                     ))}
@@ -110,4 +109,3 @@ function GenericDataTable<T extends { id: number | string }>({
 }
 
 export default GenericDataTable;
-
