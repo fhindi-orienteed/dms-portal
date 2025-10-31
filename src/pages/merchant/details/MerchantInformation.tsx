@@ -6,15 +6,16 @@ import { BoxIcon, DollarLineIcon, GroupIcon, PlugInIcon, PencilIcon, TrashBinIco
 import { getStatusColor, getTranslatedStatus, formatLocalizedDate } from '../../../utils/packageUtils';
 import { useTranslation } from 'react-i18next';
 import MerchantSocialLinks from '../components/SocialLinks';
+import { Merchant } from '../../../types/merchant';
 
-interface MerchantStatsProps {
-  merchant: any;
+interface Props {
+  merchant: Merchant;
 }
 
-export default function MerchantStats({ merchant }: MerchantStatsProps) {
+export default function MerchantInformation({ merchant }: Props) {
   const { t, i18n } = useTranslation();
   return (
-    <ComponentCard title={merchant.merchantName} desc={merchant.description}>
+    <ComponentCard title={merchant.name} desc={merchant.description}>
       {/* Stats Cards */}
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'>
         <StatsCard
@@ -48,7 +49,7 @@ export default function MerchantStats({ merchant }: MerchantStatsProps) {
         <div>
           <p className='text-sm text-gray-500 dark:text-gray-400'>{t('merchants.stats.mainAddress')}</p>
           <p className='text-sm font-medium text-gray-900 dark:text-white mt-1'>
-            {merchant.mainAddress || t('fallbacks.noAddress')}
+            {merchant.address || t('fallbacks.noAddress')}
           </p>
         </div>
         <div>
