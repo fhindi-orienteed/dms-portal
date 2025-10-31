@@ -49,7 +49,7 @@ export default function Home() {
       </div>
       
       <div className="mb-6">
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5">
           {Object.entries(allPackages).map(([statusName, values]) => (
             <PackageCard
               key={statusName}

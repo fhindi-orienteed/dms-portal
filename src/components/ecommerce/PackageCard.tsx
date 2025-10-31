@@ -87,11 +87,10 @@ export default function PackageCard({
       </div>
       
       <div className="flex-1 min-w-0">
-        <h3 className="text-2xl font-semibold text-gray-800 dark:text-white/90 mb-1">
-          {count}
-        </h3>
-        <p className="flex items-center gap-3 text-gray-500 dark:text-gray-400">
-          {t(`dashboard.status.${code}`) || code}
+        <div className="flex items-center gap-3 mb-1">
+          <h3 className="text-2xl font-semibold text-gray-800 dark:text-white/90">
+            {count}
+          </h3>
           <Badge 
             color={getAmountBadgeColor(collectionAmount)}
             variant="light"
@@ -99,6 +98,9 @@ export default function PackageCard({
           >
             {formatAmount(collectionAmount)}
           </Badge>
+        </div>
+        <p className="text-gray-500 dark:text-gray-400">
+          {t(`dashboard.status.${code}`) || code}
         </p>
       </div>
     </article>
