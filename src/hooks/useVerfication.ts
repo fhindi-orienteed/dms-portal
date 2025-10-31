@@ -12,16 +12,6 @@ export default function UseVerfication(){
             try{
                 const data = await VerficationService();
                 setVerficationStatus( data);
-                
-                //**try if the response is true**//
-
-                // const fakeResponse: VerficationStatuse = {
-                // qrCodeUrl: "https://api.qrserver.com/v1/create-qr-code/?data=test",
-                // newlyGenerated: true, // 👈 force it to be true for testing navigation
-                // };
-                // await new Promise((resolve) => setTimeout(resolve, 500));
-
-                // setVerficationStatus(fakeResponse);
             }
             catch(error){
                 setError(error as string);
