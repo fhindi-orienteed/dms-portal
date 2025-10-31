@@ -144,7 +144,16 @@
       "DELIVERED": "Delivered",
       "RETURNED": "Returned",
       "CANCELED": "Canceled",
-      "SHIPPED": "Shipped"
+      "SHIPPED": "Shipped",
+      "PENDING_COLLECTION": "Pending Collection",
+      "SCHEDULED": "Scheduled",
+      "IN_PROGRESS": "In Progress",
+      "AT_COLLECTION": "At Collection",
+      "COLLECTED": "Collected",
+      "MISSED": "Missed",
+      "CANCELLED": "Cancelled",
+      "RESCHEDULED": "Rescheduled",
+      "FAILED": "Failed"
     }
   },
   "language": {

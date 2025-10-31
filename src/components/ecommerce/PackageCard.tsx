@@ -6,14 +6,19 @@ import {
   PendingPackage, 
   ReturnedPackage,
   CloseIcon,
-  PaperPlaneIcon
+  PaperPlaneIcon,
+  CalenderIcon,
+  BoltIcon,
+  BoxCubeIcon,
+  CheckCircleIcon,
+  AlertIcon,
+  TimeIcon,
+  ErrorIcon
 } from "../../icons";
 import { 
   formatAmount, 
   getAmountBadgeColor, 
-  getStatusIconName, 
-  getStatusTextColor, 
-  getStatusBackgroundColor 
+  getStatusIconName
 } from "../../utils/packageUtils";
 import { useTranslation } from "../../hooks/useTranslation";
 
@@ -34,14 +39,29 @@ export default function PackageCard({
     const iconName = getStatusIconName(status);
     
     switch (iconName) {
-      case 'DeliveredPackage':
-        return DeliveredPackage;
       case 'PendingPackage':
         return PendingPackage;
-      case 'ReturnedPackage':
-        return ReturnedPackage;
+      case 'CalenderIcon':
+        return CalenderIcon;
+      case 'BoltIcon':
+        return BoltIcon;
+      case 'BoxCubeIcon':
+        return BoxCubeIcon;
+      case 'CheckCircleIcon':
+        return CheckCircleIcon;
+      case 'AlertIcon':
+        return AlertIcon;
       case 'CloseIcon':
         return CloseIcon;
+      case 'TimeIcon':
+        return TimeIcon;
+      case 'ErrorIcon':
+        return ErrorIcon;
+      case 'ReturnedPackage':
+        return ReturnedPackage;
+      // Legacy icons
+      case 'DeliveredPackage':
+        return DeliveredPackage;
       case 'PaperPlaneIcon':
         return PaperPlaneIcon;
       default:
@@ -49,43 +69,29 @@ export default function PackageCard({
     }
   };
 
+  const StatusIcon = getStatusIcon(code);
+
   return (
-    <div 
+    <article 
       className={`
-        group relative flex items-center gap-4 rounded-2xl border border-gray-200 
-        bg-white p-5 transition-all duration-200 hover:shadow-lg hover:border-gray-300
-        dark:border-gray-800 dark:bg-white/[0.03] dark:hover:border-gray-700
-        ${onClick ? 'cursor-pointer hover:scale-[1.02]' : ''}
+        flex items-center gap-5 rounded-2xl border border-gray-200 bg-white p-4
+        dark:border-gray-800 dark:bg-white/3
+        transition-all duration-200
+        ${onClick ? 'cursor-pointer hover:shadow-sm' : ''}
         ${className}
       `}
       onClick={onClick}
     >
-      {/* Icon Container */}
-      {(() => {
-        const StatusIcon = getStatusIcon(code);
-        const statusColor = getStatusTextColor(code);
-        const statusBgColor = getStatusBackgroundColor(code);
-        
-        return (
-          <div className={`flex items-center justify-center w-16 h-16 bg-gradient-to-br ${statusBgColor} rounded-xl group-hover:scale-110 transition-all duration-200`}>
-            <StatusIcon className={`size-8 ${statusColor} group-hover:scale-110 transition-all duration-200`} />
-          </div>
-        );
-      })()}
+      <div className="inline-flex h-16 w-16 items-center justify-center rounded-xl bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-white/90 flex-shrink-0">
+        <StatusIcon className="h-7 w-7" />
+      </div>
       
-      {/* Content Container */}
       <div className="flex-1 min-w-0">
-        {/* Header Row */}
-        <div className="flex items-center justify-between mb-2">
-          <div className="flex items-center gap-2">
-            <span className="text-2xl font-bold text-gray-900 dark:text-white">
-              {count}
-            </span>
-            <span className="text-sm text-gray-500 dark:text-gray-400 font-medium">
-              {t('dashboard.packages')}
-            </span>
-          </div>
-          
+        <h3 className="text-2xl font-semibold text-gray-800 dark:text-white/90 mb-1">
+          {count}
+        </h3>
+        <p className="flex items-center gap-3 text-gray-500 dark:text-gray-400">
+          {t(`dashboard.status.${code}`) || code}
           <Badge 
             color={getAmountBadgeColor(collectionAmount)}
             variant="light"
@@ -93,25 +99,8 @@ export default function PackageCard({
           >
             {formatAmount(collectionAmount)}
           </Badge>
-        </div>
-        
-        {/* Status Display */}
-        <div className="flex items-center gap-2">
-          <span className="text-xs text-gray-400 dark:text-gray-500 font-medium uppercase tracking-wide">
-            {t('dashboard.statusLabel')}:
-          </span>
-          <span className={`text-sm font-semibold px-2 py-1 rounded-md ${getStatusTextColor(code)} bg-opacity-10`}>
-            {t(`dashboard.status.${code}`) || code}
-          </span>
-        </div>
+        </p>
       </div>
-
-      {/* Hover Effect Indicator */}
-      {onClick && (
-        <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-          <div className="w-2 h-2 bg-brand-500 rounded-full"></div>
-        </div>
-      )}
-    </div>
+    </article>
   );
 }

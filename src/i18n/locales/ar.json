@@ -107,7 +107,16 @@
       "DELIVERED": "تم التوصيل",
       "RETURNED": "مرتجع",
       "CANCELED": "ملغي",
-      "SHIPPED": "تم الشحن"
+      "SHIPPED": "تم الشحن",
+      "PENDING_COLLECTION": "في انتظار التحصيل",
+      "SCHEDULED": "مجدول",
+      "IN_PROGRESS": "قيد التنفيذ",
+      "AT_COLLECTION": "عند التحصيل",
+      "COLLECTED": "تم التحصيل",
+      "MISSED": "فات",
+      "CANCELLED": "ملغي",
+      "RESCHEDULED": "إعادة الجدولة",
+      "FAILED": "فشل"
     }
   },
 
