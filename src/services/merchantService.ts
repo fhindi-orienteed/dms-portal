@@ -9,14 +9,12 @@ export const merchantService = {
    * @returns Promise with merchants data
    */
   getMerchants: async (params?: PaginationParams): Promise<Merchant[]> => {
-    const response = await api.get<ApiResponse<MerchantApiResponse[]>>('/company/list', {
-      params
-    });
-    
+    const response = await api.get<ApiResponse<MerchantApiResponse[]>>('/company/list', {params});
     // Transform API response to match our Merchant interface
     return response.data.data.map(transformApiResponseToMerchant);
   },
 
+ 
   /**
    * Get single merchant by ID
    * @param id - Merchant ID
@@ -24,6 +22,24 @@ export const merchantService = {
    */
   getMerchantById: async (id: number): Promise<Merchant> => {
     const response = await api.get<ApiResponse<MerchantApiResponse>>(`/company/${id}`);
+    return transformApiResponseToMerchant(response.data.data);
+  },
+ /**
+   *  Create new merchant 
+   */
+  createMerchant: async (merchantData: any): Promise<Merchant> => {
+    const requestBody = {
+      name: merchantData.businessName,
+      registrationNumber: merchantData.registrationNumber,
+      email: merchantData.email,
+      phone: merchantData.phone,
+      address: {
+        street: merchantData.address
+      }
+    };
+
+    const response = await api.post<ApiResponse<MerchantApiResponse>>('/company', requestBody);
+
     return transformApiResponseToMerchant(response.data.data);
   }
 };
