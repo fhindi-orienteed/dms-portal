@@ -60,6 +60,7 @@ import PackageDetails from "./pages/packages/details";
 import Verfication from "./pages/AuthPages/Verfication"; 
 import Integrations from "./pages/integrations/Integrations";
 import AIAssistant from "./pages/ai-assistant/AIAssistant";
+import { ApiKeysList } from "./pages/api-keys";
 
 import TrackPackage from "./pages/TrackPackage/TrackPackage";
 import TrackingHistory from "./pages/TrackPackage/TrackingHistory";
@@ -376,6 +377,12 @@ export default function App() {
               <Route path="/ai-assistant" element={
                 <ProtectedRoute>
                   <AIAssistant />
+                </ProtectedRoute>
+              } />
+
+              <Route path="/api-keys" element={
+                <ProtectedRoute>
+                  <ApiKeysList />
                 </ProtectedRoute>
               } />
 
