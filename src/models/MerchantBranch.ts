@@ -1,7 +1,7 @@
 import { IMerchantBranch } from '../types/interface';
 
 export default class MerchantBranch implements IMerchantBranch {
-  id: string | null;
+  id: string;
   companyId: string | null;
   createdDate: string | null;
   name: string | null;

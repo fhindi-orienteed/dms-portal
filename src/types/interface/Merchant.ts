@@ -1,5 +1,5 @@
 export interface IMerchantBranch {
-  id: string | null;
+  id: string;
   companyId: string | null;
   createdDate: string | null;
   name: string | null;

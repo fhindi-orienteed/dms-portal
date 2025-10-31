@@ -2,15 +2,17 @@ import { useEffect, useState } from 'react';
 import { merchantService } from '../services';
 import { Merchant } from '../types/merchant';
 
-export function useMerchant(id: string) {
+export function useMerchant(id: string | undefined | null) {
   const [merchant, setMerchant] = useState<Merchant>({} as Merchant);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
 
   const fetchMerchant = async () => {
     try {
-      const data = await merchantService.getMerchantById(id);
-      setMerchant(data);
+      if (id) {
+        const data = await merchantService.getMerchantById(id);
+        setMerchant(data);
+      }
     } catch (err) {
       setError(err as Error);
     } finally {

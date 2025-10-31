@@ -17,6 +17,7 @@ interface Props {
 export default function PriceListTable({ merchantId }: Props) {
   const [data, setData] = useState([]);
   const { t } = useTranslation();
+  console.log('Merchant ID in PriceListTable:', merchantId);
 
   const columns = [
     {
@@ -35,7 +36,9 @@ export default function PriceListTable({ merchantId }: Props) {
     },
   ];
 
-  const handleAdd = () => {};
+  const handleAdd = () => {
+    setData([]); // Placeholder for adding a new price item
+  };
 
   return (
     <>

@@ -60,7 +60,7 @@ export default function BranchesTable({ merchantId }: Props) {
     },
   ];
 
-  const handleAdd = (branch: any) => {
+  const handleAdd = () => {
     setIsModalOpen(false);
   };
 

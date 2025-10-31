@@ -14,6 +14,7 @@ interface UsersTabProps {
 export default function UsersTable({ merchantId }: UsersTabProps) {
   const { t } = useTranslation();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  console.log('Merchant ID in UsersTable:', merchantId);
 
   const columns = [
     {
@@ -45,7 +46,7 @@ export default function UsersTable({ merchantId }: UsersTabProps) {
     },
   ];
 
-  const handleAdd = (user: any) => {
+  const handleAdd = () => {
     setIsModalOpen(false);
   };
 
