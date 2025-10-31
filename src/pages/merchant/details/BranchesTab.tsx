@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import GenericDataTable from "../../../components/tables/DataTables/GenericDataTable";
 import Button from "../../../components/ui/button/Button";
 import { PlusIcon } from "../../../icons";
@@ -10,23 +11,24 @@ interface BranchesTabProps {
 }
 
 export default function BranchesTab({ branches, onAddBranch }: BranchesTabProps) {
+  const { t } = useTranslation();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const columns = [
     {
-      header: "Branch Name",
+      header: t("merchants.branches.branchName"),
       accessor: (branch: any) => (
         <span className="font-medium text-gray-800 dark:text-white/90">{branch.name}</span>
       )
     },
     {
-      header: "Address",
+      header: t("merchants.branches.address"),
       accessor: (branch: any) => (
         <span className="text-gray-600 dark:text-gray-400">{branch.address}</span>
       )
     },
     {
-      header: "Manager",
+      header: t("merchants.branches.manager"),
       accessor: (branch: any) => (
         <span className="text-gray-800 dark:text-white/90">{branch.manager}</span>
       )
@@ -47,7 +49,7 @@ export default function BranchesTab({ branches, onAddBranch }: BranchesTabProps)
           onClick={() => setIsModalOpen(true)}
           startIcon={<PlusIcon className="size-4 fill-white" />}
         >
-          Add Branch
+          {t("merchants.branches.addBranch")}
         </Button>
       </div>
       <GenericDataTable
@@ -55,7 +57,7 @@ export default function BranchesTab({ branches, onAddBranch }: BranchesTabProps)
         columns={columns}
         itemsPerPage={10}
         showPagination={true}
-        emptyMessage="No branches found for this merchant."
+        emptyMessage={t('merchants.branches.noBranches')}
       />
       <AddBranchModal
         isOpen={isModalOpen}

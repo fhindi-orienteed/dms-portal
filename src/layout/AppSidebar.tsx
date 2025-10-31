@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Link, useLocation } from "react-router"; 
 // Assume these icons are imported from an icon library
 import {
@@ -16,6 +16,7 @@ import {
   SearchIcon,
   TaskIcon,
   GroupIcon,
+  ChatIcon,
 } from "../icons";
 import { useSidebar } from "../context/SidebarContext";
 import { useLanguage } from "../context/LanguageContext";
@@ -44,7 +45,7 @@ const AppSidebar: React.FC = () => {
   const location = useLocation();
 
 
-const navItems: NavItem[] = [
+const navItems: NavItem[] = useMemo(() => [
   
   {
     icon: <GridIcon />,
@@ -107,9 +108,9 @@ const navItems: NavItem[] = [
       { name: t('returns.refundManagement'), path: "/returns/refunds", pro: false },
     ],
   },
-];
+], [t]);
 
-const othersItems: NavItem[] = [
+const othersItems: NavItem[] = useMemo(() => [
   {
 
     icon:<GroupIcon/>,
@@ -164,6 +165,11 @@ const othersItems: NavItem[] = [
     ],
   },
   {
+    icon: <ChatIcon />,
+    name: t('sidebar.aiAssistant'),
+    path: "/ai-assistant",
+  },
+  {
     icon: <DocsIcon />,
     name:  t('sidebar.otherLinks'),
     subItems: [
@@ -185,7 +191,7 @@ const othersItems: NavItem[] = [
       { name: t('settings.systemSettings'), path: "/settings/system", pro: false },
     ],
   },
-];
+], [t]);
 
   const [openSubmenu, setOpenSubmenu] = useState<{
     type: "main" | "others";
@@ -223,7 +229,7 @@ const othersItems: NavItem[] = [
     if (!submenuMatched) {
       setOpenSubmenu(null);
     }
-  }, [location, isActive]);
+  }, [location, isActive, navItems, othersItems]);
 
   useEffect(() => {
     if (openSubmenu !== null) {
