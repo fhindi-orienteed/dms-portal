@@ -660,7 +660,11 @@
     "inTransit": "In Transit",
     "delivered": "Delivered",
     "failedDelivery": "Failed Delivery",
-    "allStatus": "All Status"
+    "allStatus": "All Status",
+    "merchant": {
+      "active": "Active",
+      "disabled": "Inactive"
+    }
   },
   "fallbacks": {
     "noAddress": "No address provided",
@@ -722,6 +726,7 @@
     "errorMessage": "Sorry, something went wrong. Please try again.",
     "emptyState": "Start a conversation with your AI assistant",
     "emptyStateDesc": "Ask questions, get help with tasks, or brainstorm ideas"
+  },
   "sigmup": {
     "backToDashboard": "Back to dashboard",
     "signUpTitle": "Sign Up",
