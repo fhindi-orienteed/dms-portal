@@ -1,6 +1,6 @@
 import LineItemText from '../../../../components/LineItemText';
-import { UserCircleIcon } from '../../../../icons';
 import { Merchant } from '../../../../types/merchant';
+import { FaStore } from 'react-icons/fa6';
 
 export interface Props {
   merchant: Merchant;
@@ -15,7 +15,7 @@ export default function MerchantName({ merchant }: Props) {
         <img src={logo} alt={name} className='w-10 h-10 rounded-lg object-cover' />
       ) : (
         <div className='flex items-center justify-center w-10 h-10 bg-blue-100 dark:bg-blue-900/30 rounded-lg'>
-          <UserCircleIcon className='size-5 text-blue-600 dark:text-blue-400' />
+          <FaStore className='size-5 text-blue-600 dark:text-blue-400' />
         </div>
       )}
       <div>
