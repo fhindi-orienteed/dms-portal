@@ -4,10 +4,11 @@ import Button from '../ui/button/Button';
 import Input from '../form/input/InputField';
 import Label from '../form/Label';
 import { useTranslation } from 'react-i18next';
-
+import { useProfile } from "../../hooks/useProfile";
 export default function UserInfoCard() {
   const { t } = useTranslation();
   const { isOpen, openModal, closeModal } = useModal();
+  const{profile}=useProfile();
   const handleSave = () => {
     // Handle save logic here
     console.log('Saving changes...');
@@ -24,29 +25,29 @@ export default function UserInfoCard() {
           <div className='grid grid-cols-1 gap-4 lg:grid-cols-2 lg:gap-7 2xl:gap-x-32'>
             <div>
               <p className='mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400'>{t('profile.firstName')}</p>
-              <p className='text-sm font-medium text-gray-800 dark:text-white/90'>Musharof</p>
+              <p className='text-sm font-medium text-gray-800 dark:text-white/90'>{profile?.firstName}</p>
             </div>
 
             <div>
               <p className='mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400'>{t('profile.lastName')}</p>
-              <p className='text-sm font-medium text-gray-800 dark:text-white/90'>Chowdhury</p>
+              <p className='text-sm font-medium text-gray-800 dark:text-white/90'>{profile?.lastName}</p>
             </div>
 
             <div>
               <p className='mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400'>
                 {t('profile.emailAddress')}
               </p>
-              <p className='text-sm font-medium text-gray-800 dark:text-white/90'>randomuser@pimjo.com</p>
+              <p className='text-sm font-medium text-gray-800 dark:text-white/90'>{profile?.email}</p>
             </div>
 
             <div>
               <p className='mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400'>{t('profile.phone')}</p>
-              <p className='text-sm font-medium text-gray-800 dark:text-white/90'>+09 363 398 46</p>
+              <p className='text-sm font-medium text-gray-800 dark:text-white/90'>{profile?.mobile}</p>
             </div>
 
             <div>
               <p className='mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400'>{t('profile.bio')}</p>
-              <p className='text-sm font-medium text-gray-800 dark:text-white/90'>Team Manager</p>
+              <p className='text-sm font-medium text-gray-800 dark:text-white/90'>{profile?.role}</p>
             </div>
           </div>
         </div>

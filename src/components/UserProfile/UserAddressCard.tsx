@@ -4,10 +4,13 @@ import Button from "../ui/button/Button";
 import Input from "../form/input/InputField";
 import Label from "../form/Label";
 import { useTranslation } from "react-i18next";
+import { useProfile } from "../../hooks/useProfile";
 
 export default function UserAddressCard() {
     const { t } = useTranslation();
   const { isOpen, openModal, closeModal } = useModal();
+    const{profile}=useProfile();
+
   const handleSave = () => {
     // Handle save logic here
     console.log("Saving changes...");
@@ -37,7 +40,7 @@ export default function UserAddressCard() {
                    {t('profile.cityState')}
                 </p>
                 <p className="text-sm font-medium text-gray-800 dark:text-white/90">
-                  Phoenix, Arizona, United States.
+                  {profile?.address }
                 </p>
               </div>
 
