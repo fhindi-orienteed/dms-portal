@@ -1,42 +1,25 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router';
-import { EnvelopeIcon, PlusIcon, SearchIcon } from '../../../icons';
 import { PageBreadcrumb, PageMeta } from '../../../components/common';
-import Input from '../../../components/form/input/InputField';
-import GenericDataTable from '../../../components/tables/DataTables/GenericDataTable';
-import { Button } from '../../../components/ui';
-import Badge from '../../../components/ui/badge/Badge';
-import Loader from '../../../components/ui/loader/Loader';
-import { merchantService } from '../../../services';
-import { Merchant } from '../../../types/merchant';
-import { formatLocalizedDate, getStatusColor, getTranslatedStatus } from '../../../utils/packageUtils';
-import { showToast } from '../../../utils/toast';
-import MerchantSocialLinks from './components/SocialLinks';
-import AddMerchantModal from './../details/AddMerchantModal';
-import MerchantName from './components/MerchantName';
-import { useMerchants } from '../../../hooks/useMerchants';
-import LineItemText from '../../../components/LineItemText';
 import EntityStatus from '../../../components/EntityStatus';
+import LineItemText from '../../../components/LineItemText';
+import GenericDataTable from '../../../components/tables/DataTables/GenericDataTable';
+import Loader from '../../../components/ui/loader/Loader';
+import { useMerchants } from '../../../hooks/useMerchants';
+import { EnvelopeIcon } from '../../../icons';
+import { Merchant } from '../../../types/merchant';
+import { formatLocalizedDate } from '../../../utils/packageUtils';
+import MerchantsListHeader from './components/Header';
+import MerchantName from './components/MerchantName';
+import MerchantSocialLinks from './components/SocialLinks';
 
 export default function MerchantsList() {
   const [searchTerm, setSearchTerm] = useState('');
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const { loading, error, filterMerchants, refresh } = useMerchants();
-
-  const handleAddMerchant = async (merchant: any) => {
-    try {
-      const response = await merchantService.createMerchant(merchant);
-      showToast.success('Merchant created successfully!');
-      refresh();
-      setIsModalOpen(false);
-    } catch (error) {
-      showToast.error('Failed to add merchant');
-    }
-  };
+  const { loading, error, filterMerchants, refreshMerchantList } = useMerchants();
 
   const filteredMerchants = useMemo(() => {
     return filterMerchants(searchTerm);
@@ -96,29 +79,8 @@ export default function MerchantsList() {
       <PageBreadcrumb pageTitle={t('merchants.allMerchants')} />
 
       <div className='space-y-6'>
-        {/* Search Controls */}
-        <div className='bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-6'>
-          <div className='flex flex-col lg:flex-row gap-4 items-start lg:items-center justify-between'>
-            <div className='relative flex-1 max-w-md'>
-              <SearchIcon className='absolute left-3 top-1/2 transform -translate-y-1/2 size-4 text-gray-400 z-10' />
-              <Input
-                placeholder={t('merchants.searchPlaceholder')}
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className='w-full pl-10'
-              />
-            </div>
+        <MerchantsListHeader onChange={refreshMerchantList} searchTerm={searchTerm} onSearch={setSearchTerm} />
 
-            <Button
-              variant='primary'
-              size='sm'
-              startIcon={<PlusIcon className='size-4 fill-white' />}
-              onClick={() => setIsModalOpen(true)}>
-              Add Merchant
-            </Button>
-          </div>
-        </div>
-        <AddMerchantModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} onAdd={handleAddMerchant} />
         {/* Loading State */}
         {loading && (
           <div className='bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-8'>
