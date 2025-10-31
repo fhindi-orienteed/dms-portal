@@ -57,6 +57,7 @@ import PaymentFollowUps from "./pages/follow-ups/payments";
 import DeliveryFollowUps from "./pages/follow-ups/deliveries";
 import ReturnsFollowUps from "./pages/follow-ups/returns";
 import PackageDetails from "./pages/packages/details";
+import Verfication from "./pages/AuthPages/Verfication"; 
 import Integrations from "./pages/integrations/Integrations";
 import AIAssistant from "./pages/ai-assistant/AIAssistant";
 
@@ -383,6 +384,7 @@ export default function App() {
             <Route path="/signin" element={<SignIn />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
+            <Route path="/verfication" element={<Verfication />} />
 
             {/* Fallback Route */}
             <Route path="*" element={<NotFound />} />

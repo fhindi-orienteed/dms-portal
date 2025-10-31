@@ -13,9 +13,12 @@ import { useAuth } from "../../context/AuthContext";
 import { showToast } from "../../utils/toast";
 import { loginSchema, LoginFormData } from "../../validation/loginSchema";
 import { z } from "zod";
+import UseVerfication from "../../hooks/useVerfication";
 import { useTranslation } from "react-i18next";
 
 export default function SignInForm() {
+  const { verficatinStatus } = UseVerfication();
+
   const [showPassword, setShowPassword] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
   const [showSignIn, setShowSignIn] = useState(true);
@@ -94,7 +97,10 @@ export default function SignInForm() {
       login(response.user, response.accessToken);
       showToast.success('Success! Login completed successfully!');
       
-      navigate('/');
+      if(verficatinStatus?.newlyGenerated)
+        navigate('/verfication');
+      else
+         navigate('/');
     } catch (error: unknown) {
       console.error('Login error:', error);
       
