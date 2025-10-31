@@ -1,23 +1,15 @@
 // src/services/profileService.ts
-import api from "../config/api";
+import api from '../config/api';
+import endpoints from '../config/endpoint';
+import UserProfile from '../models/UerProfile';
 
-export interface UserProfile {
-  email: string | null;
-  role: string | null;
-  firstName: string | null;
-  lastName: string | null;
-  mobile: string | null;
-  address: string | null;
-  photo?: string | null;
-  companyDetails?:  string | null;
-  driverDetails?:  string | null;
-}
+async function getProfile(): Promise<UserProfile | null> {
+  const response = await api.get(endpoints.user.profile);
 
-const ENDPOINT = "/users/profile";
-
-async function getProfile(): Promise<UserProfile> {
-  const { data } = await api.get<UserProfile>(ENDPOINT);
-  return data;
+  if (response.data) {
+    return new UserProfile(response.data);
+  }
+  return null;
 }
 
 export const profileService = { getProfile };
