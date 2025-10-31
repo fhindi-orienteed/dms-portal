@@ -261,19 +261,33 @@
     "users": {
       "addUser": "إضافة مستخدم",
       "name": "الاسم",
-      "role": "الدور",
+      "firstName": "الاسم الأول",
+      "lastName": "الاسم الأخير",
+      "birthDay": "تاريخ الميلاد",
+      "mobile": "رقم الجوال",
       "email": "البريد الإلكتروني",
+      "address": "العنوان",
+      "identifierNumber": "رقم الهوية",
+      "employeeNumber": "رقم الموظف",
+      "branch": "الفرع",
+      "role": "الدور",
       "status": "الحالة",
       "noUsers": "لم يتم العثور على مستخدمين لهذا التاجر.",
       "addNewUser": "إضافة مستخدم جديد",
-      "enterUserName": "أدخل اسم المستخدم",
+      "enterFirstName": "أدخل الاسم الأول",
+      "enterLastName": "أدخل الاسم الأخير",
       "enterEmailAddress": "أدخل عنوان البريد الإلكتروني",
+      "enterMobile": "أدخل رقم الجوال",
+      "enterAddress": "أدخل العنوان",
+      "enterIdentifierNumber": "أدخل رقم الهوية",
+      "enterEmployeeNumber": "أدخل رقم الموظف",
+      "enterBranch": "أدخل اسم الفرع",
       "userAddedSuccess": "تمت إضافة المستخدم بنجاح!",
       "fillAllFields": "يرجى ملء جميع الحقول المطلوبة",
       "invalidEmail": "يرجى إدخال عنوان بريد إلكتروني صالح",
       "roles": {
         "admin": "مدير",
-        "user": "مستخدم",
+        "employee": "موظف",
         "manager": "مدير"
       },
       "statuses": {
@@ -282,7 +296,6 @@
       }
     }
   },
-
   "area": {
     "areaList": "قائمة المناطق",
     "areaManagement": "إدارة المناطق",
@@ -704,7 +717,7 @@
     "emptyState": "ابدأ محادثة مع مساعدك الذكي",
     "emptyStateDesc": "اطرح أسئلة، احصل على مساعدة في المهام، أو تبادل الأفكار"
 
-  "sigmup":{
+  "sigmup": {
     "backToDashboard": "العودة إلى لوحة التحكم",
     "signUpTitle": "إنشاء حساب",
     "signUpDescription": "أدخل بريدك الإلكتروني وكلمة المرور للتسجيل!",
@@ -729,10 +742,7 @@
     "signIn": "تسجيل الدخول",
     "signUpButton": "إنشاء الحساب"
   },
-  "sigin":{
+  "sigin": {
     "CreateAccount": "إنشاء حساب"
   }
-  
-
-  
 }
