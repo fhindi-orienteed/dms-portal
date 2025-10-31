@@ -93,9 +93,7 @@ export default function MerchantsList() {
           <div className='bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-xl p-4'>
             <div className='flex items-center'>
               <EnvelopeIcon className='size-5 text-red-600 dark:text-red-400' />
-              <span className='ml-3 text-red-800 dark:text-red-200'>
-                {error || t('merchants.errorLoadingMerchants')}
-              </span>
+              <span className='ml-3 text-red-800 dark:text-red-200'>{t('merchants.errorLoadingMerchants')}</span>
             </div>
           </div>
         )}
