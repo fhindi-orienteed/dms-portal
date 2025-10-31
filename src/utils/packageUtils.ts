@@ -3,38 +3,26 @@
  * @param status - The package status
  * @returns The badge color string
  */
-export const getStatusColor = (status: string): "primary" | "success" | "warning" | "error" | "info" | "dark" => {
-  switch (status) {
-    case "Delivered":
-      return "success";
-    case "In Transit":
-      return "info";
-    case "Pending":
-      return "warning";
-    case "Failed Delivery":
-      return "error";
-    default:
-      return "primary";
-  }
-};
+export const getStatusColor = (
+  status: string | undefined
+): 'primary' | 'success' | 'warning' | 'error' | 'info' | 'dark' => {
+  if (!status) return 'primary';
 
-/**
- * Get the appropriate translation key for a package status
- * @param status - The package status
- * @returns The translation key string
- */
-export const getStatusTranslationKey = (status: string): string => {
-  switch (status) {
-    case "In Transit":
-      return "packages.status.InTransit";
-    case "Failed Delivery":
-      return "packages.status.FailedDelivery";
-    case "Pending":
-      return "packages.status.Pending";
-    case "Delivered":
-      return "packages.status.Delivered";
+  switch (status?.toLocaleLowerCase()) {
+    case 'delivered':
+      return 'success';
+    case 'active':
+      return 'success';
+    case 'disbaled':
+      return 'error';
+    case 'in transit':
+      return 'info';
+    case 'pending':
+      return 'warning';
+    case 'failed delivery':
+      return 'error';
     default:
-      return `packages.status.${status}`;
+      return 'primary';
   }
 };
 
@@ -66,10 +54,10 @@ export const formatAmount = (amount: number): string => {
  * @param amount - The amount to evaluate
  * @returns Badge color string
  */
-export const getAmountBadgeColor = (amount: number): "success" | "warning" | "error" => {
-  if (amount >= 1000) return "success";
-  if (amount >= 500) return "warning";
-  return "error";
+export const getAmountBadgeColor = (amount: number): 'success' | 'warning' | 'error' => {
+  if (amount >= 1000) return 'success';
+  if (amount >= 500) return 'warning';
+  return 'error';
 };
 
 /**
@@ -78,8 +66,8 @@ export const getAmountBadgeColor = (amount: number): "success" | "warning" | "er
  * @returns Icon component name
  */
 export const getStatusIconName = (status: string): string => {
-  const statusLower = status.toLowerCase();
-  
+  const statusLower = status?.toLowerCase();
+
   switch (statusLower) {
     case 'delivered':
       return 'DeliveredPackage';
@@ -104,8 +92,8 @@ export const getStatusIconName = (status: string): string => {
  * @returns CSS color classes
  */
 export const getStatusTextColor = (status: string): string => {
-  const statusLower = status.toLowerCase();
-  
+  const statusLower = status?.toLowerCase();
+
   switch (statusLower) {
     case 'delivered':
       return 'text-green-600 dark:text-green-400';
@@ -130,8 +118,8 @@ export const getStatusTextColor = (status: string): string => {
  * @returns CSS background gradient classes
  */
 export const getStatusBackgroundColor = (status: string): string => {
-  const statusLower = status.toLowerCase();
-  
+  const statusLower = status?.toLowerCase();
+
   switch (statusLower) {
     case 'delivered':
       return 'from-green-100 to-green-200 dark:from-green-500/20 dark:to-green-600/20';
@@ -158,21 +146,21 @@ export const getStatusBackgroundColor = (status: string): string => {
  */
 export const getTranslatedStatus = (status: string, t: (key: string) => string): string => {
   // Normalize the status string (handle different formats)
-  const normalizedStatus = status.toLowerCase().replace(/\s+/g, '');
-  
+  const normalizedStatus = status?.toLowerCase().replace(/\s+/g, '');
+
   const statusKeyMap: Record<string, string> = {
-    'active': 'status.active',
-    'inactive': 'status.inactive',
-    'suspended': 'status.suspended',
-    'pending': 'status.pending',
-    'intransit': 'status.inTransit',
-    'delivered': 'status.delivered',
-    'faileddelivery': 'status.failedDelivery',
-    'allstatus': 'status.allStatus'
+    active: 'status.active',
+    inactive: 'status.inactive',
+    suspended: 'status.suspended',
+    pending: 'status.pending',
+    intransit: 'status.inTransit',
+    delivered: 'status.delivered',
+    faileddelivery: 'status.failedDelivery',
+    allstatus: 'status.allStatus',
   };
-  
+
   const translationKey = statusKeyMap[normalizedStatus];
-  
+
   // If we have a translation key, use it. Otherwise, return original status
   return translationKey ? t(translationKey) : status;
 };
@@ -184,16 +172,16 @@ export const getTranslatedStatus = (status: string, t: (key: string) => string):
  * @returns Translated role string
  */
 export const getTranslatedRole = (role: string, t: (key: string) => string): string => {
-  const normalizedRole = role.toLowerCase();
-  
+  const normalizedRole = role?.toLowerCase();
+
   const roleKeyMap: Record<string, string> = {
-    'admin': 'merchants.users.roles.admin',
-    'user': 'merchants.users.roles.user',
-    'manager': 'merchants.users.roles.manager'
+    admin: 'merchants.users.roles.admin',
+    user: 'merchants.users.roles.user',
+    manager: 'merchants.users.roles.manager',
   };
-  
+
   const translationKey = roleKeyMap[normalizedRole];
-  
+
   return translationKey ? t(translationKey) : role;
 };
 
@@ -204,15 +192,15 @@ export const getTranslatedRole = (role: string, t: (key: string) => string): str
  * @returns Translated status string
  */
 export const getTranslatedUserStatus = (status: string, t: (key: string) => string): string => {
-  const normalizedStatus = status.toLowerCase();
-  
+  const normalizedStatus = status?.toLowerCase();
+
   const statusKeyMap: Record<string, string> = {
-    'active': 'merchants.users.statuses.active',
-    'inactive': 'merchants.users.statuses.inactive'
+    active: 'merchants.users.statuses.active',
+    inactive: 'merchants.users.statuses.inactive',
   };
-  
+
   const translationKey = statusKeyMap[normalizedStatus];
-  
+
   return translationKey ? t(translationKey) : status;
 };
 
@@ -226,20 +214,20 @@ export const formatLocalizedDate = (dateString: string, locale: string = 'en'): 
   if (!dateString || dateString === 'N/A') {
     return dateString;
   }
-  
+
   try {
     const date = new Date(dateString);
-    
+
     // Check if date is valid
     if (isNaN(date.getTime())) {
       return dateString;
     }
-    
+
     // Format date based on locale
     return new Intl.DateTimeFormat(locale === 'ar' ? 'ar-EG' : 'en-GB', {
       year: 'numeric',
       month: '2-digit',
-      day: '2-digit'
+      day: '2-digit',
     }).format(date);
   } catch {
     return dateString;

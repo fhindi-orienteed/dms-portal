@@ -150,6 +150,7 @@
     "schedule": "الجدول الزمني",
     "area": "المناطق",
     "integrations": "التكاملات",
+    "aiAssistant": "المساعد الذكي",
     "otherLinks": "روابط أخرى"
   },
   "summary": {
@@ -260,19 +261,33 @@
     "users": {
       "addUser": "إضافة مستخدم",
       "name": "الاسم",
-      "role": "الدور",
+      "firstName": "الاسم الأول",
+      "lastName": "الاسم الأخير",
+      "birthDay": "تاريخ الميلاد",
+      "mobile": "رقم الجوال",
       "email": "البريد الإلكتروني",
+      "address": "العنوان",
+      "identifierNumber": "رقم الهوية",
+      "employeeNumber": "رقم الموظف",
+      "branch": "الفرع",
+      "role": "الدور",
       "status": "الحالة",
       "noUsers": "لم يتم العثور على مستخدمين لهذا التاجر.",
       "addNewUser": "إضافة مستخدم جديد",
-      "enterUserName": "أدخل اسم المستخدم",
+      "enterFirstName": "أدخل الاسم الأول",
+      "enterLastName": "أدخل الاسم الأخير",
       "enterEmailAddress": "أدخل عنوان البريد الإلكتروني",
+      "enterMobile": "أدخل رقم الجوال",
+      "enterAddress": "أدخل العنوان",
+      "enterIdentifierNumber": "أدخل رقم الهوية",
+      "enterEmployeeNumber": "أدخل رقم الموظف",
+      "enterBranch": "أدخل اسم الفرع",
       "userAddedSuccess": "تمت إضافة المستخدم بنجاح!",
       "fillAllFields": "يرجى ملء جميع الحقول المطلوبة",
       "invalidEmail": "يرجى إدخال عنوان بريد إلكتروني صالح",
       "roles": {
         "admin": "مدير",
-        "user": "مستخدم",
+        "employee": "موظف",
         "manager": "مدير"
       },
       "statuses": {
@@ -281,7 +296,6 @@
       }
     }
   },
-
   "area": {
     "areaList": "قائمة المناطق",
     "areaManagement": "إدارة المناطق",
@@ -684,5 +698,51 @@
       "notion": "التقط ونظم وتعامل مع مهامك من أي مكان.",
       "jira": "تتبع المشاكل وإدارة المشاريع بسهولة ورؤية كاملة للفريق."
     }
+  },
+  "aiAssistant": {
+    "title": "المساعد الذكي",
+    "subtitle": "احصل على مساعدة ذكية لمهامك وأسئلتك",
+    "newChat": "محادثة جديدة",
+    "copy": "نسخ",
+    "inputPlaceholder": "اكتب طلبك هنا...",
+    "searchPlaceholder": "بحث...",
+    "today": "اليوم",
+    "yesterday": "أمس",
+    "chatsHistory": "سجل المحادثات",
+    "showMore": "عرض المزيد...",
+    "attach": "إرفاق",
+    "send": "إرسال",
+    "thinking": "الذكي الاصطناعي يفكر...",
+    "errorMessage": "عذراً، حدث خطأ ما. يرجى المحاولة مرة أخرى.",
+    "emptyState": "ابدأ محادثة مع مساعدك الذكي",
+    "emptyStateDesc": "اطرح أسئلة، احصل على مساعدة في المهام، أو تبادل الأفكار"
+  },
+  "sigmup": {
+    "backToDashboard": "العودة إلى لوحة التحكم",
+    "signUpTitle": "إنشاء حساب",
+    "signUpDescription": "أدخل بريدك الإلكتروني وكلمة المرور للتسجيل!",
+    "signUpWithGoogle": "التسجيل عبر جوجل",
+    "signUpWithX": "التسجيل عبر X",
+    "or": "أو",
+    "firstName": "الاسم الأول",
+    "lastName": "اسم العائلة",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "confirmPassword": "تأكيد كلمة المرور",
+    "enterFirstName": "أدخل اسمك الأول",
+    "enterLastName": "أدخل اسم العائلة",
+    "enterEmail": "أدخل البريد الإلكتروني",
+    "enterPassword": "أدخل كلمة المرور",
+    "confirmYourPassword": "أعد إدخال كلمة المرور",
+    "terms": "الشروط والأحكام",
+    "privacy": "سياسة الخصوصية",
+    "agreement": "بإنشاء حساب، فإنك توافق على",
+    "and": "و",
+    "alreadyHaveAccount": "هل لديك حساب بالفعل؟",
+    "signIn": "تسجيل الدخول",
+    "signUpButton": "إنشاء الحساب"
+  },
+  "sigin": {
+    "CreateAccount": "إنشاء حساب"
   }
 }

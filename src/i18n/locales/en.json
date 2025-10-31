@@ -72,6 +72,7 @@
     "schedule": "Schedule",
     "area": "Area",
     "integrations": "Integrations",
+    "aiAssistant": "AI Assistant",
     "otherLinks": "Other Links"
   },
   "auth": {
@@ -287,19 +288,33 @@
     "users": {
       "addUser": "Add User",
       "name": "Name",
-      "role": "Role",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "birthDay": "Birth Date",
+      "mobile": "Mobile",
       "email": "Email",
+      "address": "Address",
+      "identifierNumber": "Identifier Number",
+      "employeeNumber": "Employee Number",
+      "branch": "Branch",
+      "role": "Role",
       "status": "Status",
       "noUsers": "No users found for this merchant.",
       "addNewUser": "Add New User",
-      "enterUserName": "Enter user name",
+      "enterFirstName": "Enter first name",
+      "enterLastName": "Enter last name",
       "enterEmailAddress": "Enter email address",
+      "enterMobile": "Enter mobile number",
+      "enterAddress": "Enter address",
+      "enterIdentifierNumber": "Enter identifier number",
+      "enterEmployeeNumber": "Enter employee number",
+      "enterBranch": "Enter branch name",
       "userAddedSuccess": "User added successfully!",
       "fillAllFields": "Please fill in all required fields",
       "invalidEmail": "Please enter a valid email address",
       "roles": {
         "admin": "Admin",
-        "user": "User",
+        "employee": "Employee",
         "manager": "Manager"
       },
       "statuses": {
@@ -645,7 +660,11 @@
     "inTransit": "In Transit",
     "delivered": "Delivered",
     "failedDelivery": "Failed Delivery",
-    "allStatus": "All Status"
+    "allStatus": "All Status",
+    "merchant": {
+      "active": "Active",
+      "disabled": "Inactive"
+    }
   },
   "fallbacks": {
     "noAddress": "No address provided",
@@ -689,5 +708,51 @@
       "notion": "Capture, organize, and tackle your to-dos from anywhere.",
       "jira": "Track issues and manage projects with ease and full team visibility."
     }
+  },
+  "aiAssistant": {
+    "title": "AI Assistant",
+    "subtitle": "Get intelligent assistance for your tasks and questions",
+    "newChat": "New Chat",
+    "copy": "Copy",
+    "inputPlaceholder": "Type your prompt here...",
+    "searchPlaceholder": "Search...",
+    "today": "TODAY",
+    "yesterday": "YESTERDAY",
+    "chatsHistory": "Chats History",
+    "showMore": "Show more...",
+    "attach": "Attach",
+    "send": "Send",
+    "thinking": "AI is thinking...",
+    "errorMessage": "Sorry, something went wrong. Please try again.",
+    "emptyState": "Start a conversation with your AI assistant",
+    "emptyStateDesc": "Ask questions, get help with tasks, or brainstorm ideas"
+  },
+  "sigmup": {
+    "backToDashboard": "Back to dashboard",
+    "signUpTitle": "Sign Up",
+    "signUpDescription": "Enter your email and password to sign up!",
+    "signUpWithGoogle": "Sign up with Google",
+    "signUpWithX": "Sign up with X",
+    "or": "Or",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "enterFirstName": "Enter your first name",
+    "enterLastName": "Enter your last name",
+    "enterEmail": "Enter your email",
+    "enterPassword": "Enter your password",
+    "confirmYourPassword": "Confirm your password",
+    "terms": "Terms and Conditions",
+    "privacy": "Privacy Policy",
+    "agreement": "By creating an account means you agree to the",
+    "and": "and",
+    "alreadyHaveAccount": "Already have an account?",
+    "signIn": "Sign In",
+    "signUpButton": "Sign Up"
+  },
+  "sigin":{
+    "CreateAccount": "Create Account"
   }
 }
