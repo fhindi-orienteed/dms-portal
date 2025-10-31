@@ -1,5 +1,6 @@
 import api from '../config/api';
 import endpoints from '../config/endpoint';
+import MerchantBranch from '../models/MerchantBranch';
 import type { PaginationParams } from '../types/api';
 import type { Merchant } from '../types/merchant';
 
@@ -22,7 +23,17 @@ export const merchantService = {
    */
   getMerchantById: async (id: string): Promise<Merchant> => {
     const response = await api.get(`${endpoints.company.byId(id)}`);
-    return buildMerchantObject(response.data.data);
+    return buildMerchantObject(response.data);
+  },
+
+  /**
+   * Get single merchant by ID
+   * @param id - Merchant ID
+   * @returns Promise with merchant data
+   */
+  getMerchantBranchList: async (merchantId: string): Promise<MerchantBranch[]> => {
+    const response = await api.get(`${endpoints.company.branch.list(merchantId)}`);
+    return response.data.map(buildMerchantBranchObject);
   },
 
   /**
@@ -69,6 +80,27 @@ function buildMerchantObject(json: any): Merchant {
     createdDate: json.createdDate,
     branchCount: json.branchCount || 0,
     userCount: json.userCount || 0,
+    status: json.status,
+  };
+}
+
+/**
+ * Transform API JSON response to Merchant interface
+ * @param apiMerchant - Merchant data from API
+ * @returns Transformed merchant object
+ */
+function buildMerchantBranchObject(json: any): MerchantBranch {
+  return {
+    id: json.id,
+    companyId: json.companyId,
+    createdDate: json.createdDate,
+    name: json.name,
+    country: json.country,
+    city: json.city,
+    address: json.address,
+    email: json.email,
+    phone: json.phone,
+    mobile: json.mobile,
     status: json.status,
   };
 }

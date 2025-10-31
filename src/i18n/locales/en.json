@@ -667,6 +667,10 @@
     "merchant": {
       "active": "Active",
       "disabled": "Inactive"
+    },
+    "branch": {
+      "active": "Active",
+      "disabled": "Inactive"
     }
   },
   "fallbacks": {

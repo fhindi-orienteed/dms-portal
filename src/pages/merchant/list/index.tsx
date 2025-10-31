@@ -42,7 +42,7 @@ export default function MerchantsList() {
     },
     {
       header: 'Social Links',
-      accessor: (merchant: Merchant) => <MerchantSocialLinks merchant={merchant} />,
+      accessor: (merchant: Merchant) => <MerchantSocialLinks merchant={merchant} size={6} />,
     },
     {
       header: 'Status',

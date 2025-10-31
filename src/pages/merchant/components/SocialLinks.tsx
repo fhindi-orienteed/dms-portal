@@ -3,9 +3,10 @@ import { Merchant } from '../../../types/merchant';
 
 export interface SocialLinksProps {
   merchant: Merchant;
+  size?: number;
 }
 
-export default function MerchantSocialLinks({ merchant }: SocialLinksProps) {
+export default function MerchantSocialLinks({ merchant, size = 4 }: SocialLinksProps) {
   if (!merchant.socialLinks) {
     return null;
   }
@@ -14,7 +15,6 @@ export default function MerchantSocialLinks({ merchant }: SocialLinksProps) {
   const twitter = merchant.socialLinks.twitter;
   const instagram = merchant.socialLinks.instagram;
   const linkedin = merchant.socialLinks.linkedin;
-  const email = merchant.email;
 
-  return <SocialLinks facebook={facebook} instagram={instagram} twitter={twitter} linkedin={linkedin} email={email} />;
+  return <SocialLinks size={size} facebook={facebook} instagram={instagram} twitter={twitter} linkedin={linkedin} />;
 }

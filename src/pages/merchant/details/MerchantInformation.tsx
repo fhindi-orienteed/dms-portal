@@ -45,8 +45,10 @@ export default function MerchantInformation({ merchant }: Props) {
         <div>
           <p className='text-sm text-gray-500 dark:text-gray-400'>Email</p>
           <p className='text-sm font-medium text-gray-900 dark:text-white mt-1'>{merchant.email}</p>
+        </div>
+        <div>
           <div className='flex items-center gap-3 mt-3'>
-            <MerchantSocialLinks merchant={merchant} />
+            <MerchantSocialLinks merchant={merchant} size={8} />
           </div>
         </div>
       </div>

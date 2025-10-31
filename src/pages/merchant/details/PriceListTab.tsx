@@ -10,13 +10,12 @@ interface PriceItem {
   price: number;
 }
 
-interface PriceListTableProps {
-  prices: PriceItem[];
-  onAddPrice: (price: PriceItem) => void;
+interface Props {
+  merchantId: string;
 }
 
-export default function PriceListTable({ prices, onAddPrice }: PriceListTableProps) {
-  const [data, setData] = useState(prices || []);
+export default function PriceListTable({ merchantId }: Props) {
+  const [data, setData] = useState([]);
   const { t } = useTranslation();
 
   const columns = [
@@ -36,17 +35,7 @@ export default function PriceListTable({ prices, onAddPrice }: PriceListTablePro
     },
   ];
 
-  const handleAdd = () => {
-    const newPrice: PriceItem = {
-      id: data.length + 1,
-      service: 'New Service',
-      destination: 'New City',
-      price: 0,
-    };
-    const updated = [...data, newPrice];
-    setData(updated);
-    onAddPrice(newPrice);
-  };
+  const handleAdd = () => {};
 
   return (
     <>

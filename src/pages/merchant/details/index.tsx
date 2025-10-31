@@ -11,10 +11,6 @@ export default function MerchantDetails() {
 
   const { merchant } = useMerchant(id);
 
-  const handleAddUser = (user: any) => {};
-
-  const handleAddBranch = (branch: any) => {};
-
   return (
     <>
       <PageMeta title={`${merchant.name} | DMS Portal`} description={`Merchant details for ${merchant.name}`} />
@@ -23,19 +19,21 @@ export default function MerchantDetails() {
 
       <MerchantInformation merchant={merchant} />
 
-      <div className='mt-6'>
+      {id && (
         <div className='mt-6'>
-          <div className='mb-6'>
-            <BranchesTable branches={merchant.branches} onAddBranch={handleAddBranch} />
-          </div>
-          <div className='mb-6'>
-            <UsersTable users={merchant.users} onAddUser={handleAddUser} />
-          </div>
-          <div className='mb-6'>
-            <PriceListTab prices={merchant.priceList || []} onAddPrice={(price) => {}} />
+          <div className='mt-6'>
+            <div className='mb-12'>
+              <BranchesTable merchantId={id} />
+            </div>
+            <div className='mb-12'>
+              <UsersTable merchantId={id} />
+            </div>
+            <div className='mb-12'>
+              <PriceListTab merchantId={id} />
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </>
   );
 }

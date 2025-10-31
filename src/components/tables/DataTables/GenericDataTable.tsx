@@ -18,7 +18,7 @@ interface GenericDataTableProps<T> {
 }
 
 function GenericDataTable<T extends { id: number | string }>({
-  data,
+  data = [],
   columns,
   itemsPerPage = 10,
   showPagination = true,
@@ -31,7 +31,7 @@ function GenericDataTable<T extends { id: number | string }>({
 
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-  const currentData = data.slice(startIndex, endIndex);
+  const currentData = data?.slice?.(startIndex, endIndex);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
@@ -66,14 +66,14 @@ function GenericDataTable<T extends { id: number | string }>({
             </TableHeader>
 
             <TableBody className='divide-y divide-gray-100 dark:divide-white/[0.05]'>
-              {currentData.length === 0 ? (
+              {currentData?.length === 0 ? (
                 <TableRow>
                   <TableCell className='px-5 py-8 text-center text-gray-500 dark:text-gray-400'>
                     {emptyMessage}
                   </TableCell>
                 </TableRow>
               ) : (
-                currentData.map((row) => (
+                currentData?.map((row) => (
                   <TableRow
                     key={row.id}
                     onClick={() => onRowClick?.(row)}

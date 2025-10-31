@@ -8,11 +8,10 @@ import AddUserModal from './AddUserModal';
 import { getTranslatedRole, getTranslatedUserStatus } from '../../../utils/packageUtils';
 
 interface UsersTabProps {
-  users: any[];
-  onAddUser: (user: any) => void;
+  merchantId: string;
 }
 
-export default function UsersTable({ users, onAddUser }: UsersTabProps) {
+export default function UsersTable({ merchantId }: UsersTabProps) {
   const { t } = useTranslation();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -47,13 +46,13 @@ export default function UsersTable({ users, onAddUser }: UsersTabProps) {
   ];
 
   const handleAdd = (user: any) => {
-    onAddUser(user);
     setIsModalOpen(false);
   };
 
   return (
     <>
-      <div className='mb-4 flex justify-end'>
+      <div className='mb-4 flex justify-between items-center w-full'>
+        <h2 className='text-xl'>Users List</h2>
         <Button
           variant='primary'
           size='sm'
@@ -63,7 +62,7 @@ export default function UsersTable({ users, onAddUser }: UsersTabProps) {
         </Button>
       </div>
       <GenericDataTable
-        data={users || []}
+        data={[]}
         columns={columns}
         itemsPerPage={10}
         showPagination={true}
