@@ -21,16 +21,14 @@ export default function MerchantDetails() {
 
       {id && (
         <div className='mt-6'>
-          <div className='mt-6'>
-            <div className='mb-12'>
-              <BranchesTable merchantId={id} />
-            </div>
-            <div className='mb-12'>
-              <UsersTable merchantId={id} />
-            </div>
-            <div className='mb-12'>
-              <PriceListTab merchantId={id} />
-            </div>
+          <div className='mt-12'>
+            <BranchesTable merchantId={id} />
+          </div>
+          <div className='mt-12'>
+            <UsersTable merchantId={id} />
+          </div>
+          <div className='mt-12'>
+            <PriceListTab merchantId={id} />
           </div>
         </div>
       )}

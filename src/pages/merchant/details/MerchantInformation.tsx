@@ -1,10 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import ComponentCard from '../../../components/common/ComponentCard';
-import Button from '../../../components/ui/button/Button';
-import { PencilIcon, TrashBinIcon } from '../../../icons';
 import { Merchant } from '../../../types/merchant';
 import { formatLocalizedDate, getTranslatedStatus } from '../../../utils/packageUtils';
-import MerchantSocialLinks from '../components/SocialLinks';
+import MerchantMetaCard from './MerchantMetaCard';
 import Statistic from './Statistic';
 
 interface Props {
@@ -16,6 +14,8 @@ export default function MerchantInformation({ merchant }: Props) {
 
   return (
     <ComponentCard title={merchant.name} desc={merchant.registrationNumber}>
+      <MerchantMetaCard merchant={merchant} />
+
       <Statistic merchant={merchant} />
 
       {/* Contact Info */}
@@ -46,21 +46,6 @@ export default function MerchantInformation({ merchant }: Props) {
           <p className='text-sm text-gray-500 dark:text-gray-400'>Email</p>
           <p className='text-sm font-medium text-gray-900 dark:text-white mt-1'>{merchant.email}</p>
         </div>
-        <div>
-          <div className='flex items-center gap-3 mt-3'>
-            <MerchantSocialLinks merchant={merchant} size={8} />
-          </div>
-        </div>
-      </div>
-
-      {/* Actions */}
-      <div className='mt-6 flex gap-3 pt-6 border-t border-gray-200 dark:border-gray-700'>
-        <Button variant='primary' size='sm' startIcon={<PencilIcon className='size-4' />}>
-          {t('merchants.stats.editMerchant')}
-        </Button>
-        <Button variant='danger' size='sm' startIcon={<TrashBinIcon className='size-4' />}>
-          {t('merchants.stats.deleteMerchant')}
-        </Button>
       </div>
     </ComponentCard>
   );
