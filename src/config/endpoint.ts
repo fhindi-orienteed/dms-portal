@@ -6,6 +6,10 @@ const endpoints = {
     byId: (id: number) => `${COMPANY_ROOT}/${id}`,
     new: `${COMPANY_ROOT}/new`,
   },
+  user: {
+    profile: '/user/current/profile',
+    current: '/user/current',
+  },
 } as const;
 
 export default endpoints;
