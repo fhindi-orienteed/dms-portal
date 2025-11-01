@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router";
 import SignIn from "./pages/AuthPages/SignIn";
 import SignUp from "./pages/AuthPages/SignUp";
 import NotFound from "./pages/OtherPage/NotFound";
+import Success from "./pages/OtherPage/SuccessPage";
 import TermsOfService from "./pages/OtherPage/TermsOfService";
 import PrivacyPolicy from "./pages/OtherPage/PrivacyPolicy";
 import FAQ from "./pages/OtherPage/FAQ";
@@ -397,6 +398,7 @@ export default function App() {
             {/* Fallback Route */}
             <Route path="*" element={<NotFound />} />
             <Route path="/500" element={<ServerError />} />
+            <Route path="/success" element={<Success />} />
           </Routes>
         </Router>
         <Toaster />
